@@ -265,14 +265,6 @@ body.invite-page {
   h3 {
     font-size: var(--font-0);
   }
-  p.quote-known {
-    overflow: auto;
-    max-height: 110px;
-    padding: 0.5em;
-    margin: 0.5em;
-    border-radius: $br-em;
-    background: var(--fkb-panel);
-  }
   .reads {
     display: flex;
     align-items: center;
