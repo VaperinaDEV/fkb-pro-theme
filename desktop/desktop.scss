@@ -42,8 +42,11 @@ body.invite-page {
 #list-area {
   width: 600px;
   @media screen and (max-width: 1100px) {
-    width: calc(100vw - 20px);
+    width: 100%;
   }
+  @media screen and (max-width: 800px) {
+    width: calc(100vw - 20px);
+  }  
 }
 
 // Banner alert
@@ -264,6 +267,14 @@ body.invite-page {
   }
   h3 {
     font-size: var(--font-0);
+  }
+  p.quote-known {
+    overflow: auto;
+    max-height: 110px;
+    padding: 0.5em;
+    margin: 0.5em;
+    border-radius: $br-em;
+    background: var(--fkb-panel);
   }
   .reads {
     display: flex;
@@ -623,8 +634,6 @@ body.user-activity-page .bookmark-list-wrapper {
     height: 34px;
   }
 }
-
-
 
 // Signup CTA
 
