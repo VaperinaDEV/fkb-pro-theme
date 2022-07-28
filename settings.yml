@@ -1,6 +1,14 @@
 sidebar_show_intro: 
   type: bool 
   default: true
+fkb_panel_show_solutions:
+  type: bool
+  default: false
+  description:
+    en: "Enable if you use Discourse Solved plugin."  
+fkb_panel_show_badges:
+  type: bool
+  default: true
 mobile_full_width: 
   type: bool 
   default: false
