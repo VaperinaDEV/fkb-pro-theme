@@ -1,6 +1,4 @@
-/* Variables */
-
-// Global Variables
+// Global
 
 $br-avatar: #{$border_radius_avatar};
 $br-em: #{$border_radius_em};
@@ -10,14 +8,14 @@ $br-select-header: #{$border_radius_select_header};
 $br-input: #{$border_radius_input};
 $br-auto: Max(0px, Min($br-em, calc((100vw - 100%) * 9999))) / $br-em;
 
-// Desktop Topic Variables
+// Desktop Topic
 
 $avatar-post-width: calc(60px + 1em + #{$topic-body-width} + (#{$topic-body-width-padding} * 2) + (12px * 2));
 $wo-avatar-width: calc(#{$topic-body-width} + (#{$topic-body-width-padding} * 2) + (12px * 2));
 $topic-post-full-width: calc(60px + 1em + #{$topic-body-width} + (#{$topic-body-width-padding} * 2) + (12px * 2) + 83px);
 $posts-filter-width: calc(60px + 1em + #{$topic-body-width} + (#{$topic-body-width-padding} * 2) + (12px * 2) - 2em);
 
-// Mobile Wrap Padding Variables
+// Mobile Wrap Padding
 
 $wrap-padding: 0 10px;
 
