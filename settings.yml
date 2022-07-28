@@ -1,0 +1,80 @@
+sidebar_show_intro: 
+  type: bool 
+  default: true
+mobile_full_width: 
+  type: bool 
+  default: false
+  description:
+    en: "Remove side padding on mobile under 600px width"
+border_radius_avatar: 
+  type: enum
+  default: 50%
+  choices: 
+    - 0%
+    - 10%
+    - 20%
+    - 30%
+    - 40%
+    - 50%
+  description:
+    en: "Avatar shape."
+border_radius_em: 
+  default: "1em"
+  description:
+    en: "Highly rounded corners. We use it on topic list items, posts and modals."
+border_radius_button: 
+  default: "2em"
+  description:
+    en: "Rounded corners. We use it on buttons. inputs etc..."
+border_radius_input: 
+  default: "2em"
+  description:
+    en: "Rounded corners. We use it on inputs etc..." 
+border_radius_select_body: 
+  default: "0.75em"
+  description:
+    en: "Rounded corners. We use it on select-kit body etc..." 
+border_radius_select_header: 
+  default: "2em"
+  description:
+    en: "Rounded corners. We use it on select-kit header etc..."
+light_bg:
+  default: "#f0f2f5"
+  description:
+    en: "Light background color"
+dark_bg:
+  default: "#18191a"
+  description:
+    en: "Dark background color"
+light_header_btn:
+  default: "#e1e5eb"
+  description:
+    en: "Light header buttons color"
+dark_header_btn:
+  default: "#3a3b3e"
+  description:
+    en: "Dark header buttons color"
+light_header_btn_hover:
+  default: "#d2d8e1"
+  description:
+    en: "Light header buttons hover color"
+dark_header_btn_hover:
+  default: "rgba(var(--primary-rgb),.1)"
+  description:
+    en: "Dark header buttons hover color"
+light_btn:
+  default: "#e1e5eb"
+  description:
+    en: "Light buttons color"
+dark_btn:
+  default: "#383838"
+  description:
+    en: "Dark buttons color"
+light_btn_hover:
+  default: "#d2d8e1"
+  description:
+    en: "Light buttons hover color"
+dark_btn_hover:
+  default: "rgba(var(--primary-rgb),.1)"
+  description:
+    en: "Dark buttons hover color"

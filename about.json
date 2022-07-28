@@ -1,0 +1,37 @@
+{
+  "name": "FKB Pro theme",
+  "license_url": null,
+  "about_url": null,
+  "authors": null,
+  "assets": {
+  },
+  "color_schemes": {
+    "FKB Pro - Light": {
+      "primary": "242526",
+      "secondary": "ffffff",
+      "tertiary": "147efb",
+      "quaternary": "147efb",
+      "header_background": "ffffff",
+      "header_primary": "242526",
+      "highlight": "147efb",
+      "danger": "f8745c",
+      "success": "42b72a",
+      "love": "fa6c8d"
+    },
+    "FKB Pro - Dark": {
+      "primary": "ffffff",
+      "secondary": "242526",
+      "tertiary": "147efb",
+      "quaternary": "4267b2",
+      "header_background": "242526",
+      "header_primary": "ffffff",
+      "highlight": "147efb",
+      "danger": "f8745c",
+      "success": "42b72a",
+      "love": "fa6c8d"
+    }
+  },
+  "modifiers": {
+    "serialize_topic_excerpts": true
+  },
+}

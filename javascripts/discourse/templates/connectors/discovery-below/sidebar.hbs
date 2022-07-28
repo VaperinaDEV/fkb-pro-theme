@@ -1,0 +1,71 @@
+{{#unless site.mobileView}}
+  <div class="dbook-sidebar">
+    {{#if user}}
+      <div class="fkb-panel-top" style="background-image: url('{{userCardBg}}');">
+        <div class="fkb-panel-contents">
+          <div class="fkb-panel-contents-top">
+            <div class="fkb-avatar">
+              <MountWidget @widget="fkb-avatar" />
+            </div>
+          </div>
+          <div class="fkb-panel-contents-stats">
+            <div class="stats">
+              <UserStat @value={{userLikesReceived}} @icon="heart" @label="user.summary.likes_received" /> 
+              <a href="/u/{{user}}/activity/likes-given">
+                <UserStat @value={{userLikesGiven}} @icon="heart" @label="user.summary.likes_given" />
+              </a>
+              <a href="/u/{{user}}/activity/solved">
+                <UserStat @value={{userSolvedCount}} @icon="check-square" @label="solved.solution_summary.other" />
+              </a>
+              <a href="/u/{{user}}/activity/topics">
+                <UserStat @value={{userTopicCount}} @label="user.summary.topic_count" />
+              </a>
+              <a href="/u/{{user}}/activity/replies">
+                <UserStat @value={{userPostCount}} @label="user.summary.post_count" />
+              </a>
+            </div>
+            {{#if stinkinBadges}}
+              <div class="badges">
+                {{#each stinkinBadges as |b|}}
+                  <a href="/badges/{{b.id}}/{{b.slug}}">
+                    <span class="user-badge badge-type-{{b.badge_type_id}}" title={{b.description}} data-badge-name={{b.name}}>
+                      {{icon-or-image b}}
+                      <span class="badge-display-name">{{b.name}}</span>
+                      {{#if b.multiple_grant}}
+                        <span class="count">&nbsp;(&times;{{b.grant_count}})</span>
+                      {{/if}}
+                      {{yield}}
+                    </span>
+                  </a>
+                {{/each}}
+                <a href="/u/{{user}}/badges">
+                  <span class="user-badge">
+                    <span class="count">{{i18n (theme-prefix "sidebar.all_badges")}} ({{allBadges}})</span>
+                  </span>
+                </a>
+              </div>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    {{/if}}   
+    
+    {{#if user}}
+      <div class="fkb-panel-contents-bottom">
+        <a class="fkb-link btn-default btn no-text btn-icon" href="/u/{{user}}/summary">{{d-icon "user"}}</a>
+        <a class="fkb-link btn-default btn no-text btn-icon" href="/u/{{user}}/preferences/account">{{d-icon "cog"}}</a>
+        <a class="fkb-link btn-default btn no-text btn-icon" href="/u/{{user}}/activity/drafts">{{d-icon "pencil-alt"}}</a>
+        <a class="fkb-link btn-default btn no-text btn-icon" href="/u/{{user}}/activity/bookmarks">{{d-icon "bookmark"}}&nbsp;{{userBookmarkCount}}</a>
+        <a class="fkb-link btn-default btn no-text btn-icon" href="/u/{{user}}/messages">{{d-icon "envelope"}}</a>
+      </div>
+    {{/if}}
+    
+    {{#unless user}}
+      <div class="visitor">
+        <h2>{{i18n (theme-prefix "sidebar.welcome")}}</h2>
+        {{replace-emoji (i18n "signup_cta.value_prop")}}
+        <DButton @class="btn-primary sign-up-button" @action={{route-action "showCreateAccount"}} @label="sign_up" />
+      </div>
+    {{/unless}}
+  </div>
+{{/unless}}

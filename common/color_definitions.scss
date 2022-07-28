@@ -1,0 +1,28 @@
+$dark-theme-fkb-bg: #{$dark_bg};
+$light-theme-fkb-bg: #{$light_bg};
+
+$dark-theme-fkb-header-btn: #{$dark_header_btn};
+$light-theme-fkb-header-btn: #{$light_header_btn};
+
+$dark-theme-fkb-header-btn-hover: #{$dark_header_btn_hover};
+$light-theme-fkb-header-btn-hover: #{$light_header_btn_hover};
+
+$dark-theme-fkb-btn: #{$dark_btn};
+$light-theme-fkb-btn: #{$light_btn};
+
+$dark-theme-fkb-btn-hover: #{$dark_btn_hover};
+$light-theme-fkb-btn-hover: #{$light_btn_hover};
+
+$fkb-bg: dark-light-choose($light-theme-fkb-bg, $dark-theme-fkb-bg);
+$fkb-header-btn: dark-light-choose($light-theme-fkb-header-btn, $dark-theme-fkb-header-btn);
+$fkb-header-btn-hover: dark-light-choose($light-theme-fkb-header-btn-hover, $dark-theme-fkb-header-btn-hover);
+$fkb-btn: dark-light-choose($light-theme-fkb-btn, $dark-theme-fkb-btn);
+$fkb-btn-hover: dark-light-choose($light-theme-fkb-btn-hover, $dark-theme-fkb-btn-hover);
+
+:root {
+  --fkb-bg: #{$fkb-bg};
+  --fkb-header-btn: #{$fkb-header-btn};
+  --fkb-header-btn-hover: #{$fkb-header-btn-hover};
+  --fkb-btn: #{$fkb-btn};
+  --fkb-btn-hover: #{$fkb-btn-hover};
+}

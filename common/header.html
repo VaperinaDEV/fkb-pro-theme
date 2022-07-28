@@ -1,0 +1,14 @@
+<script type="text/discourse-plugin" version="0.8">
+  const { findRawTemplate } = require("discourse-common/lib/raw-templates");
+
+  api.modifyClass("component:topic-list-item", {
+    pluginId: "FKBPro",
+    
+    renderTopicListItem() {
+      const template = findRawTemplate("list/custom-topic-list-item");
+      if (template) {
+        this.set("topicListItemContents", template(this).htmlSafe());
+      }
+    },
+  });
+</script>
