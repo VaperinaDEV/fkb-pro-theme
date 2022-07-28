@@ -645,12 +645,17 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     display: flex;
     flex: 1;
     @media screen and (max-width: 1100px) {
-      flex: 1 1 100%;
+      .mobile-view & {
+        flex: 1 1 100%;
+      }
       padding: 0;
       .full-width {
         max-width: calc(100vw - 20px);
         width: 100%;
       }
+    }
+    @media screen and (max-width: 800px) {
+      flex: 1 1 100%;
     }
     flex-direction: row;
     align-items: stretch;
@@ -675,6 +680,14 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
       flex: 0 1 100%;
       .desktop-view & {
         margin-bottom: 1em;
+        flex: 0 1 28%;
+        padding-right: 0.75em;
+      }
+    }
+    @media screen and (max-width: 800px) {
+      .desktop-view & {
+        flex: 0 1 100%;
+        padding-right: 0;
       }
     }
     .category-heading {
