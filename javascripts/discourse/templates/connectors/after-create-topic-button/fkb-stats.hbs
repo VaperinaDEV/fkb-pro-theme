@@ -7,9 +7,11 @@
         <a href="/u/{{user}}/activity/likes-given">
           <UserStat @value={{userLikesGiven}} @icon="heart" @label="user.summary.likes_given" />
         </a>
-        <a href="/u/{{user}}/activity/solved">
-          <UserStat @value={{userSolvedCount}} @icon="check-square" @label="solved.solution_summary.other" />
-        </a>
+        {{#if (theme-setting 'fkb_panel_show_solutions')}}
+          <a href="/u/{{user}}/activity/solved">
+            <UserStat @value={{userSolvedCount}} @icon="check-square" @label="solved.solution_summary.other" />
+          </a>
+        {{/if}}
         <a href="/u/{{user}}/activity/topics">
           <UserStat @value={{userTopicCount}} @label="user.summary.topic_count" />
         </a>
@@ -17,6 +19,7 @@
           <UserStat @value={{userPostCount}} @label="user.summary.post_count" />
         </a>
       </div>
+      {{#if (theme-setting 'fkb_panel_show_badges')}}
       {{#if stinkinBadges}}
         <div class="badges">
           {{#each stinkinBadges as |b|}}
@@ -37,6 +40,7 @@
             </span>
           </a>
         </div>
+      {{/if}}
       {{/if}}
     </div>
     <div class="fkb-panel-contents-bottom">
