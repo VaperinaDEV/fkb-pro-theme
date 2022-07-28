@@ -42,8 +42,11 @@ body.invite-page {
 #list-area {
   width: 600px;
   @media screen and (max-width: 1100px) {
-    width: calc(100vw - 20px);
+    width: 100%;
   }
+  @media screen and (max-width: 800px) {
+    width: calc(100vw - 20px);
+  }  
 }
 
 // Banner alert
@@ -623,8 +626,6 @@ body.user-activity-page .bookmark-list-wrapper {
     height: 34px;
   }
 }
-
-
 
 // Signup CTA
 
