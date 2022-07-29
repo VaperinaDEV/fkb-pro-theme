@@ -43,10 +43,15 @@ body.search-page {
     &:first-child {
       margin-top: 1em;
       border-radius: $br-em 0 0 0;
+      border-top: none !important;
     }
     &:last-child {
       margin-bottom: 2em;
       border-radius: 0 0 0 $br-em;
+      border-bottom: none !important;
+    }
+    .main-link {
+      box-shadow: none;
     }
   }
 }
