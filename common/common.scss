@@ -657,9 +657,8 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     @media screen and (max-width: 800px) {
       flex: 1 1 100%;
     }
-    flex-direction: row;
-    align-items: stretch;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     position: relative;
     min-width: 0;
     + span {
@@ -906,7 +905,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
   color: var(--tertiary);
 }
 
-body:not(.categories-list) .topic-list {
+.topic-list {
   .topic-list-body {
     display: block;
     border: none;
@@ -945,6 +944,9 @@ body:not(.categories-list) .topic-list {
   }
   .main-link {
     @include bg-br-auto;
+    .mobile-view & {
+      width: 100%;
+    }
     font-size: var(--font-up-1-rem);
     .byline {
       display: flex;
@@ -1363,6 +1365,9 @@ body[class*="category-"] {
 
 .category-list {
   @include bg-br-auto;
+  &.with-topics {
+    margin-left: 0;
+  }
   thead {
     display: none;
   }
@@ -1375,6 +1380,9 @@ body[class*="category-"] {
         border-left: 6px solid var(--category-color);
       }
     }
+    .latest {
+      padding: 0 10px 10px 10px;
+    }
   }
   .topics {
     padding-right: 10px;
@@ -1382,13 +1390,22 @@ body[class*="category-"] {
 }
 
 // Category boxes
+
 .category-boxes,
 .category-boxes-with-topics {
   .category-box {
     width: 100%;
+    .mobile-view & {
+      width: calc(100vw - 20px);
+      @if $mobile-full-width == "true" {
+        @media screen and (max-width: 600px) {
+          width: 100vw;
+        }
+      }
+    }
     margin: 0 0 16px 0;
     background: var(--secondary);
-    border-radius: 1em;
+    border-radius: $br-auto;
     border: 2px solid var(--category-color);;
     .category-box-inner {
       border: none;
