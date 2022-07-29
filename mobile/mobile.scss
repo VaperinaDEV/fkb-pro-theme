@@ -433,6 +433,9 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner),
         flex: 1 0 auto;
         width: auto;
         max-width: 100%;
+        .bulk-select.btn {
+          display: none;
+        }        
         .btn {
           margin-right: 0;
         }
@@ -564,6 +567,9 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
           }
           padding: 0.75em 1em 0.5em 1em;
         }
+        .bulk-select.btn {
+          display: none;
+        }        
       }
     }
   }
