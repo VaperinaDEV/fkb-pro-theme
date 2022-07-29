@@ -1571,6 +1571,14 @@ aside.quote.accepted-answer {
 }
 
 .badge-wrapper.bullet {
+  .badge-category-parent-bg {
+    width: 9px;
+    margin-right: 2px;
+    border-radius: 50%;
+    + .badge-category-bg {
+      width: 9px;
+    }
+  }
   .badge-category-bg {
     border-radius: 50%;
   }
