@@ -74,7 +74,7 @@ $wrap-padding: 0 10px;
 @mixin fkb-poll {
   display: flex;
   flex-flow: column;
-  background: var(--hljs-bg);
+  background: var(--fkb-bg);
   border-radius: $br-em;
 }
 
