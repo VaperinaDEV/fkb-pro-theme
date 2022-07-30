@@ -532,6 +532,13 @@ body {
   background: var(--fkb-bg);
 }
 
+#main > div {
+  #main-outlet {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
 img.avatar,
 .card-avatar-placeholder,
 .placeholder-avatar {
