@@ -566,6 +566,11 @@ div[class^="category-title-header"] {
   border-radius: $br-em;
 }
 
+.user-card,
+.group-card {
+  z-index: z("header");
+}
+
 .user-card {
   .first-row {
     .user-card-avatar {
