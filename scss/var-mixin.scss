@@ -69,15 +69,6 @@ $wrap-padding: 0 10px;
   margin-left: auto;
 }
 
-// Poll Mixins
-
-@mixin fkb-poll {
-  display: flex;
-  flex-flow: column;
-  background: var(--fkb-bg);
-  border-radius: $br-em;
-}
-
 // Keyframes
 
 // Topics and Posts

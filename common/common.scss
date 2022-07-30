@@ -2361,15 +2361,13 @@ iframe {
 
 // Poll
 
-// Poll
-
 .poll-ui-builder {
   .poll-options .poll-option-value button {
     margin-bottom: 9px;
   }
   .poll-type .poll-type-value {
     padding: 6px;
-    border-radius: $br-em;
+    border-radius: $br-button;
   }
 }
 
@@ -2380,20 +2378,5 @@ iframe {
 }
 
 .poll {
-  @include fkb-poll;
-  ul {
-    @include fkb-poll;
-  }
-  ol {
-    @include fkb-poll;
-  }
-  li[data-poll-option-id] {
-    display: flex;
-    align-items: center;
-  }
-  li {
-    span {
-      margin-left: 5px;
-    }
-  }
+  border-radius: $br-em;
 }
