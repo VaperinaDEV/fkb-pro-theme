@@ -330,6 +330,35 @@ body.invite-page {
   }
 }
 
+.embedded-posts {
+  &.top {
+    .row {
+      padding: 0;
+      .topic-body {
+        box-shadow: none;
+        padding: 12px 0 0 0;
+        margin-left: 0;
+        border-top: none;
+      }
+    }
+  }
+  &.bottom {
+    .row {
+      padding: 0;
+      .topic-body {
+        box-shadow: none;
+        padding: 12px 0 0 0;
+        margin-left: 0;
+        border-radius: 0;
+      }
+    }
+  }
+  .collapse-down,
+  .collapse-up {
+    padding: 10px;
+  }
+}
+
 .topic-map {
   margin: 20px 11px;
 }
