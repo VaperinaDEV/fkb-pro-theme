@@ -1,19 +1,31 @@
-sidebar_show_intro: 
-  type: bool 
-  default: true
+custom_sidebar_enabled:
+  type: bool
+  default: false
+  description: "Custom sidebar content for visitor."
+custom_sidebar_image:
+  type: upload
+  default: ""
+  description: "Upload an image to display on the sidebar for visitor."
+custom_sidebar_description:
+  type: string
+  textarea: true
+  default: |
+            <strong>Lorem ipsum</strong> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
+            in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  description: "Custom sidebar description for visitors. (HTML allowed)"
 fkb_panel_show_solutions:
   type: bool
   default: false
-  description:
-    en: "Enable if you use Discourse Solved plugin."  
+  description: "Enable if you use Discourse Solved plugin."  
 fkb_panel_show_badges:
   type: bool
   default: true
 mobile_full_width: 
   type: bool 
   default: false
-  description:
-    en: "Remove side padding on mobile under 600px width"
+  description: "Remove side padding on mobile under 600px width."
 border_radius_avatar: 
   type: enum
   default: 50%
@@ -24,65 +36,49 @@ border_radius_avatar:
     - 30%
     - 40%
     - 50%
-  description:
-    en: "Avatar shape."
+  description: "Avatar shape."
 border_radius_em: 
   default: "1em"
-  description:
-    en: "Highly rounded corners. We use it on topic list items, posts and modals."
+  description: "Highly rounded corners. We use it on topic list items, posts and modals."
 border_radius_button: 
   default: "2em"
-  description:
-    en: "Rounded corners. We use it on buttons. inputs etc..."
+  description: "Rounded corners. We use it on buttons. inputs etc..."
 border_radius_input: 
   default: "2em"
-  description:
-    en: "Rounded corners. We use it on inputs etc..." 
+  description: "Rounded corners. We use it on inputs etc..." 
 border_radius_select_body: 
   default: "0.75em"
-  description:
-    en: "Rounded corners. We use it on select-kit body etc..." 
+  description: "Rounded corners. We use it on select-kit body etc..." 
 border_radius_select_header: 
   default: "2em"
-  description:
-    en: "Rounded corners. We use it on select-kit header etc..."
+  description: "Rounded corners. We use it on select-kit header etc..."
 light_bg:
   default: "#f0f2f5"
-  description:
-    en: "Light background color"
+  description: "Light background color"
 dark_bg:
   default: "#18191a"
-  description:
-    en: "Dark background color"
+  description: "Dark background color"
 light_header_btn:
   default: "#e1e5eb"
-  description:
-    en: "Light header buttons color"
+  description: "Light header buttons color"
 dark_header_btn:
   default: "#3a3b3e"
-  description:
-    en: "Dark header buttons color"
+  description: "Dark header buttons color"
 light_header_btn_hover:
   default: "#d2d8e1"
-  description:
-    en: "Light header buttons hover color"
+  description: "Light header buttons hover color"
 dark_header_btn_hover:
   default: "rgba(var(--primary-rgb),.1)"
-  description:
-    en: "Dark header buttons hover color"
+  description: "Dark header buttons hover color"
 light_btn:
   default: "#e1e5eb"
-  description:
-    en: "Light buttons color"
+  description: "Light buttons color"
 dark_btn:
   default: "#383838"
-  description:
-    en: "Dark buttons color"
+  description: "Dark buttons color"
 light_btn_hover:
   default: "#d2d8e1"
-  description:
-    en: "Light buttons hover color"
+  description: "Light buttons hover color"
 dark_btn_hover:
   default: "rgba(var(--primary-rgb),.1)"
-  description:
-    en: "Dark buttons hover color"
+  description: "Dark buttons hover color"
