@@ -314,7 +314,6 @@ textarea {
 
 // User Menu
 
-
 div.menu-links-header .menu-links-row button {
   border-radius: $br-em $br-em 0 0;
 }
@@ -1329,6 +1328,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
   }
 }
 
+// Category
 
 body[class*="category-"] {
   &:not(.archetype-regular) {
@@ -1465,6 +1465,7 @@ body[class*="category-"] {
 }
 
 // Tags Page
+
 .tags-page {
   #main-outlet {
     .tag-sort-options {
@@ -2195,6 +2196,12 @@ button.save-fast-edit {
           gap: 0.5em;
         }
       }
+    }
+  }
+  // Activation page
+  .activate-account {
+    .perform-activation {
+      background-color: var(--secondary);
     }
   }
 }
