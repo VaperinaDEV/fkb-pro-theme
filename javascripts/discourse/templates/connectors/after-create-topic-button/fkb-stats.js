@@ -40,8 +40,6 @@ export default {
           const userCardBg = result.user.card_background_upload_url;
           const stinkinBadges = [];
           const allBadges = result.user.badge_count;
-          const followersCount = result.user.total_followers;
-          const followingCount = result.user.total_following;
 
           if (result.badges) {
             result.badges.forEach(function(badges){
@@ -52,8 +50,6 @@ export default {
           component.set("userCardBg", `${getURLWithCDN(userCardBg)}`);
           component.set("stinkinBadges", stinkinBadges);
           component.set("allBadges", allBadges);
-          component.set("followersCount", followersCount);
-          component.set("followingCount", followingCount);
         });
       });
     }
