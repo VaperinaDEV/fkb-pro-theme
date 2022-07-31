@@ -67,7 +67,14 @@
     {{#unless user}}
       <div class="visitor">
         <h2>{{i18n (theme-prefix "sidebar.welcome")}}</h2>
-        {{replace-emoji (i18n "signup_cta.value_prop")}}
+        {{#if (theme-setting 'custom_sidebar_enabled') }}
+          {{#if (theme-setting 'custom_sidebar_image') }}
+            <img src="{{theme-setting 'custom_sidebar_image'}}"/>
+          {{/if}}
+          <p>{{{theme-setting 'custom_sidebar_description'}}}</p>
+          {{else}}
+          {{replace-emoji (i18n "signup_cta.value_prop")}}
+        {{/if}}
         <DButton @class="btn-primary sign-up-button" @action={{route-action "showCreateAccount"}} @label="sign_up" />
       </div>
     {{/unless}}

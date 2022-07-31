@@ -383,46 +383,6 @@ div.menu-links-header .menu-links-row button {
   }
 }
 
-// Sidebar
-
-.sidebar {
-  display: none;
-  top: 6.5em;
-  position: sticky;
-  max-height: calc(100vh - 6em);
-  max-width: 100%;
-  @include bg-br-auto;
-  @media screen and (max-width: 1100px) {
-    display: none;
-  }
-  .visitor {
-    display: none;
-  }
-}
-
-.user-badge,
-.user-card .badge-section .more-user-badges a {
-  border-radius: $br-em;
-}
-
-.anon {
-  .sidebar {
-    .dbook-sidebar {
-      padding: 1em;
-      h2 {
-        margin-left: 0;
-      }
-    }
-    .visitor {
-      display: block;
-      button {
-        display: block;
-        margin-top: 1em;
-      }
-    }
-  }
-}
-
 // Spinner
 
 .spinner {
@@ -1568,6 +1528,11 @@ aside.quote.accepted-answer {
 }
 
 // Badges
+
+.user-badge,
+.user-card .badge-section .more-user-badges a {
+  border-radius: $br-em;
+}
 
 .badge-wrapper {
   font-weight: normal;
