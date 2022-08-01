@@ -495,6 +495,12 @@ body {
   #main-outlet {
     max-width: 100%;
     width: 100%;
+    .desktop-view & {
+      @media screen and (min-width: 1440px) {
+        max-width: 1440px;
+        margin: auto;
+      }
+    }
   }
 }
 
