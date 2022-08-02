@@ -52,7 +52,7 @@
       {{/if}}
       {{#if topic.image_url}}
         <a href="{{topic.lastUnreadUrl}}">
-          <div class="topic-image" style="background: url({{topic.image_url}}); height: 300px; background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
+          <div class="topic-image" style="background: url({{topic.image_url}}); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
         </a>
       {{/if}}
       {{discourse-tags topic mode="list" tagsForUser=tagsForUser}}
