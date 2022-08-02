@@ -368,6 +368,9 @@ body.invite-page {
   &.top {
     .row {
       padding: 0;
+      .topic-avatar {
+        border-top: none;
+      }
       .topic-body {
         box-shadow: none;
         padding: 12px 0 0 0;
