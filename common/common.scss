@@ -1353,6 +1353,7 @@ body[class*="category-"] {
 }
 
 .category-list {
+  margin-bottom: 16px;
   @include bg-br-auto;
   &.with-topics {
     margin-left: 0;
@@ -1369,6 +1370,12 @@ body[class*="category-"] {
         border-left: 6px solid var(--category-color);
       }
     }
+    .topic-list-item,
+    tr {
+      &:last-child {
+        border-bottom: none;
+      }
+    }
     .latest {
       padding: 0 10px 10px 10px;
     }
@@ -1382,6 +1389,8 @@ body[class*="category-"] {
 
 .category-boxes,
 .category-boxes-with-topics {
+  margin-top: 0;
+  margin-bottom: 0;
   .category-box {
     width: 100%;
     .mobile-view & {
