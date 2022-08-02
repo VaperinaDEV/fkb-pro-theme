@@ -282,6 +282,7 @@ body.invite-page {
     }
     .fkb-panel-contents-bottom {
       display: flex;
+      flex-wrap: wrap;
       grid-auto-flow: column;
       position: relative;
       padding: 0.5em;
