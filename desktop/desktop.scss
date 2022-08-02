@@ -39,14 +39,22 @@ body.invite-page {
 
 // Global
 
-#list-area {
+.full-width {
+  max-width: 100%;
   width: 600px;
-  @media screen and (max-width: 1100px) {
-    width: 100%;
+  margin: auto;
+  @media (min-height: 790px) {
+    width: 680px;
   }
-  @media screen and (max-width: 800px) {
-    width: calc(100vw - 20px);
-  }  
+  #list-area {
+    max-width: 100%;
+    @media screen and (max-width: 1100px) {
+      width: 100%;
+    }
+    @media screen and (max-width: 800px) {
+      width: calc(100vw - 20px);
+    }
+  }
 }
 
 // Banner alert
@@ -309,10 +317,6 @@ body.invite-page {
 }
 
 // Topic View
-
-.full-width:last-child {
-  max-width: 600px;
-}
 
 .container.posts {
   > .row {

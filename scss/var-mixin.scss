@@ -62,6 +62,14 @@ $wrap-padding: 0 10px;
   hyphens: auto;
 }
 
+// Topic list sidebars
+
+@mixin sidebar-width($min-width, $max-width) {
+  min-width: $min-width;
+  max-width: $max-width;
+  flex-basis: 100%;
+}
+
 // Desktop Topic Mixins
 
 @mixin topic-elements {

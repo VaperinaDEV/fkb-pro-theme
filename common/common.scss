@@ -496,8 +496,8 @@ body {
     max-width: 100%;
     width: 100%;
     .desktop-view & {
-      @media screen and (min-width: 1440px) {
-        max-width: 1440px;
+      @media(min-width: 1921px) {
+        max-width: 1460px;
         margin: auto;
       }
     }
@@ -588,11 +588,11 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     .sidebar,
     .dbook-sidebar {
       display: block;
-      @media screen and (max-width: 1100px) {
+      @media screen and (max-width: 1099px) {
         display: none;
       }
     }
-    @media screen and (max-width: 1100px) {
+    @media screen and (max-width: 1099px) {
       display: none;
     }
   }
@@ -616,49 +616,65 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     // min-width: 70%; // Don't let the topic list get too narrow
     display: flex;
     flex: 1;
-    @media screen and (max-width: 1100px) {
-      .mobile-view & {
-        flex: 1 1 100%;
-      }
+    @media (max-width: 800px) {
+      flex-basis: 100%;
+    }
+    @media (max-width: 1099px) {
       padding: 0;
       .full-width {
         max-width: calc(100vw - 20px);
         width: 100%;
       }
     }
-    @media screen and (max-width: 800px) {
-      flex: 1 1 100%;
-    }
     flex-direction: column;
     align-items: center;
     position: relative;
     min-width: 0;
     + span {
-      flex: 0 1 20%;
       .desktop-view & {
         margin-left: auto;
+        @media (min-width: 1100px) and (max-width: 1280px) {
+          flex-basis: 21%;
+        }
+        @media (min-width: 1281px) and (max-width: 1600px) {
+          @include sidebar-width(280px, 320px);
+        }
+        @media (min-width: 1601px) and (max-width: 1920px) {
+          @include sidebar-width(320px, 360px);      
+        }
+        @media (min-width: 1921px) {
+          @include sidebar-width(280px, 320px);
+        }
       }
     }
   }
   .list-controls {
-    flex: 0 1 20%;
     z-index: 100;
-    min-width: 0;
+    .mobile-view & {
+      flex-basis: 100%;
+    }
     .desktop-view & {
       margin-right: auto;
-    }
-    @media screen and (max-width: 1100px) {
-      flex: 0 1 100%;
-      .desktop-view & {
+      @media (max-width: 800px) {
+        flex-basis: 100%;
+        padding-right: 0;
         margin-bottom: 1em;
-        flex: 0 1 28%;
+      }
+      @media (min-width: 801px) and (max-width: 1099px) {
+        flex-basis: 28%;
         padding-right: 0.75em;
       }
-    }
-    @media screen and (max-width: 800px) {
-      .desktop-view & {
-        flex: 0 1 100%;
-        padding-right: 0;
+      @media (min-width: 1100px) and (max-width: 1280px) {
+        flex-basis: 21%;
+      }
+      @media (min-width: 1281px) and (max-width: 1600px) {
+        @include sidebar-width(280px, 320px);
+      }
+      @media (min-width: 1601px) and (max-width: 1920px) {
+        @include sidebar-width(320px, 360px);      
+      }
+      @media (min-width: 1921px) {
+        @include sidebar-width(280px, 320px);
       }
     }
     .category-heading {
