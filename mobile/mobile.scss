@@ -921,7 +921,7 @@ aside.onebox{
       &.badges-page,
       &.groups-page {
         #main-outlet {
-          width: calc(100vw - 20px);
+          width: calc(100vw - 20px) !important; // !important required to override Versatile Banner main-outlet
           margin: auto;
         }
       }

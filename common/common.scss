@@ -394,6 +394,20 @@ div.menu-links-header .menu-links-row button {
 
 // Main Outlet
 
+#main-outlet {
+  // Versatile Banner Requires This
+  #main > div & {
+    max-width: 100%;
+    width: 100%;
+    .desktop-view & {
+      @media (min-width: 1921px) {
+        max-width: 1460px;
+        margin: auto;
+      }
+    }
+  }
+}
+
 .wrap {
   &.not-found-container {
     max-width: $large-width;
@@ -489,19 +503,6 @@ div.menu-links-header .menu-links-row button {
 
 body {
   background: var(--fkb-bg);
-}
-
-#main > div {
-  #main-outlet {
-    max-width: 100%;
-    width: 100%;
-    .desktop-view & {
-      @media (min-width: 1921px) {
-        max-width: 1460px;
-        margin: auto;
-      }
-    }
-  }
 }
 
 img.avatar,
