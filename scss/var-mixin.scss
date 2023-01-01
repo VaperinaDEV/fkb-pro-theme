@@ -1,21 +1,13 @@
 // Global
 
-$br-avatar: #{$border_radius_avatar};
-$br-em: #{$border_radius_em};
-$br-button: #{$border_radius_button};
-$br-select-body: #{$border_radius_select_body};
-$br-select-header: #{$border_radius_select_header};
-$br-input: #{$border_radius_input};
-$br-auto: Max(0px, Min($br-em, calc((100vw - 100%) * 9999))) / $br-em;
-
-// Desktop Topic
-
-$avatar-post-width: calc(60px + 1em + #{$topic-body-width} + (#{$topic-body-width-padding} * 2) + (12px * 2));
-$wo-avatar-width: calc(#{$topic-body-width} + (#{$topic-body-width-padding} * 2) + (12px * 2));
-$topic-post-full-width: calc(60px + 1em + #{$topic-body-width} + (#{$topic-body-width-padding} * 2) + (12px * 2) + 83px);
-$posts-filter-width: calc(60px + 1em + #{$topic-body-width} + (#{$topic-body-width-padding} * 2) + (12px * 2) - 2em);
-
-// Mobile Wrap Padding
+:root {
+  --d-button-border-radius: #{$border_radius_button};
+  --d-default-border-radius: #{$border_radius_em};
+  --d-input-border-radius: #{$border_radius_input};
+  --d-select-header-border-radius: #{$border_radius_select_header};
+  --d-select-body-border-radius: #{$border_radius_select_body};
+  --d-avatar-border-radius: #{$border_radius_avatar};
+}
 
 $wrap-padding: 0 10px;
 
@@ -23,31 +15,15 @@ $wrap-padding: 0 10px;
 
 // GLobal Mixins
 
-@mixin bg-br-auto {
-  background: var(--secondary);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  border-radius: $br-auto;
-}
-
 @mixin bg-br {
   background: var(--secondary);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  border-radius: $br-em;
+  border-radius: var(--d-default-border-radius);
 }
 
 @mixin fkb-focus {
   outline: none !important;
   box-shadow: 0px 0px 0px 1px var(--tertiary);
-}
-
-@mixin fkb-input {
-  border-radius: $br-input;
-  outline: none !important;
-}
-
-@mixin fkb-input-textarea {
-  border-radius: $br-em;
-  outline: none !important;
 }
 
 @mixin fkb-word-wrap {
@@ -60,21 +36,6 @@ $wrap-padding: 0 10px;
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
-}
-
-// Topic list sidebars
-
-@mixin sidebar-width($min-width, $max-width) {
-  min-width: $min-width;
-  max-width: $max-width;
-  flex-basis: 100%;
-}
-
-// Desktop Topic Mixins
-
-@mixin topic-elements {
-  max-width: $wo-avatar-width;
-  margin-left: auto;
 }
 
 // Keyframes
