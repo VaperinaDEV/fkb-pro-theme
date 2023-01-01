@@ -534,7 +534,7 @@ textarea,
 // Reactions
 
 .discourse-reactions-double-button {
-  border-radius: 50px;
+  border-radius: var(--d-button-border-radius);
   &:hover,
   &:focus {
     background: var(--primary-low) !important;
@@ -542,15 +542,15 @@ textarea,
 }
 
 .discourse-reactions-counter.only-like .reactions-counter {
-  padding-right: 5px;
-}
-
-.discourse-reactions-counter.only-like .reactions-counter {
   color: var(--primary-medium);
+  padding-right: 5px;
 }
 
 .discourse-reactions-counter {
   padding: 0 10px 0 0;
+  .discourse-reactions-state-panel .container {
+    border-radius: calc(var(--d-default-border-radius) / 2);
+  }
 }
 
 .discourse-reactions-actions {
