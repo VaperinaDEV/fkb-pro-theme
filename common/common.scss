@@ -2381,7 +2381,7 @@ input.channel-members-view__search-input,
 .docs:not(.nav-item_docs) {
   background: var(--secondary);
   padding: 0.5em;
-  border-radius: 1em;
+  border-radius: var(--d-default-border-radius);
   margin-bottom: 2em;
   .topic-list {
     .topic-list-body {
