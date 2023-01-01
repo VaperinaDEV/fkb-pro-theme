@@ -22,10 +22,6 @@ fkb_panel_show_solutions:
 fkb_panel_show_badges:
   type: bool
   default: true
-mobile_full_width: 
-  type: bool 
-  default: false
-  description: "Remove side padding on mobile under 600px width."
 border_radius_avatar: 
   type: enum
   default: 50%
