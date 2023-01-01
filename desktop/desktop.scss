@@ -4,6 +4,9 @@
 
 :root {
   --d-sidebar-width: 20em;
+  @media screen and (max-width: 1250px) {
+    --d-sidebar-width: 18em;
+  }
   --d-sidebar-row-font-size: var(--font-0);
   
   // Desktop topic variables
@@ -47,24 +50,7 @@
 
 body.has-sidebar-page {
   #main-outlet-wrapper {
-    padding-left: 1em;
-    @media screen and (max-width: 1000px) {
-      .hamburger-panel {
-        .menu-panel {
-          .panel-body {
-            max-height: calc(100vh - 0.5em);
-            .sidebar-footer-wrapper {
-              .sidebar-footer-actions {
-                padding: 0.5em 0;
-              }
-            }
-          }
-        }
-        .header-cloak {
-          z-index: z("header") + 2;
-        }
-      }
-    }    
+    padding-left: 1em;    
     .sidebar-wrapper {
       padding: 0;
       background: var(--secondary);
@@ -78,6 +64,27 @@ body.has-sidebar-page {
   &.has-full-page-chat {
     #main-outlet-wrapper {
       gap: 0 2em;
+      @media screen and (max-width: 1100px) {
+        gap: 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .hamburger-panel {
+    .menu-panel {
+      .panel-body {
+        max-height: calc(100vh - 0.5em);
+        .sidebar-footer-wrapper {
+          .sidebar-footer-actions {
+            padding: 0.5em 0;
+          }
+        }
+      }
+    }
+    .header-cloak {
+      z-index: z("header") + 2;
     }
   }
 }
@@ -105,7 +112,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     .list-controls {
       grid-area: nav;
       @include bg-br;
-      margin-bottom: 1.5em;   
+      margin-bottom: 1.5em;
       + .loading-container {
         grid-area: loader;
         margin: 0 auto;
@@ -114,12 +121,10 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
         margin: var(--nav-space) 0 var(--nav-space) var(--nav-space);
       }     
       #navigation-bar {
-        margin: var(--nav-space) auto var(--nav-space) 0;
+        margin: var(--nav-space) auto var(--nav-space) var(--nav-space);
       }     
       .navigation-controls {
-        margin-top: var(--nav-space);
-        margin-right: var(--nav-space);
-        
+        margin: var(--nav-space);        
         #create-topic {
           color: var(--secondary);
           border: 2px solid var(--tertiary);
@@ -158,6 +163,9 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
   
   #main-outlet {
     display: grid;
+    @media screen and (max-width: 800px) {
+      display: block;
+    }
     grid-template-areas:
       "alerts alerts alerts"
       "pins pins pins"
@@ -166,6 +174,9 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     grid-template-columns: auto 1fr auto;
     grid-template-rows: auto auto auto 1fr;
     gap: 0 2em;
+    @media screen and (max-width: 1100px) {
+      gap: 0;
+    }
   }
   .container:first-of-type {
     grid-area: alerts;
@@ -212,6 +223,14 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     z-index: 100;
     grid-area: nav;
     max-width: var(--d-sidebar-width);
+    @media screen and (max-width: 1100px) {
+      margin-right: 2em;
+    }
+    @media screen and (max-width: 800px) {
+      margin-right: 0;
+      margin-bottom: 1em;
+      max-width: 100%;
+    }
     + .loading-container {
       grid-area: loader;
       margin: 0 auto;
@@ -323,6 +342,9 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
       ol {
         padding: 1em 1em 0 1em;
         margin: 0;
+        @media screen and (max-width: 800px) {
+          margin: 0 0 var(--nav-space) 0;
+        }
       }
       .select-kit .select-kit-header .caret-icon {
         &:before {
@@ -334,6 +356,9 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
         width: 100%;
         margin-bottom: 0;
         padding: 0 1em 1em 1em;
+        @media screen and (max-width: 800px) {
+          padding: 1em;
+        }
         button.edit-category {
           margin-bottom: 0.5em;
           .mobile-view & {
@@ -350,7 +375,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
   #list-area {
     max-width: calc(var(--d-sidebar-width) * 2 + 6em + 2em);
     @media screen and (max-width: 1100px) {
-      width: 100%;
+      max-width: 100%;
     }
     @media screen and (max-width: 800px) {
       width: calc(100vw - 20px);
