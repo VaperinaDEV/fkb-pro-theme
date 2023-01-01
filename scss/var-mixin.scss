@@ -4,12 +4,9 @@
   --d-button-border-radius: #{$border_radius_button};
   --d-default-border-radius: #{$border_radius_em};
   --d-input-border-radius: #{$border_radius_input};
-  --d-select-header-border-radius: #{$border_radius_select_header};
   --d-select-body-border-radius: #{$border_radius_select_body};
   --d-avatar-border-radius: #{$border_radius_avatar};
 }
-
-$wrap-padding: 0 10px;
 
 /* Mixins */
 
