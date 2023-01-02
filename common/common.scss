@@ -240,6 +240,13 @@ textarea,
       }
     }
   }
+  .badge-notification {
+    &.with-icon {
+      .d-icon {
+        color: var(--secondary) !important;
+      }
+    }
+  }  
   // Welcome spot
   .ring.revamped {
     top: -4px;
