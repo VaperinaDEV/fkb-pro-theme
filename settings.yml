@@ -22,10 +22,6 @@ fkb_panel_show_solutions:
 fkb_panel_show_badges:
   type: bool
   default: true
-mobile_full_width: 
-  type: bool 
-  default: false
-  description: "Remove side padding on mobile under 600px width."
 border_radius_avatar: 
   type: enum
   default: 50%
@@ -48,10 +44,7 @@ border_radius_input:
   description: "Rounded corners. We use it on inputs etc..." 
 border_radius_select_body: 
   default: "0.75em"
-  description: "Rounded corners. We use it on select-kit body etc..." 
-border_radius_select_header: 
-  default: "2em"
-  description: "Rounded corners. We use it on select-kit header etc..."
+  description: "Rounded corners. We use it on select-kit body etc..."
 light_bg:
   default: "#f0f2f5"
   description: "Light background color"
