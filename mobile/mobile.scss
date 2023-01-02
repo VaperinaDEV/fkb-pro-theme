@@ -188,7 +188,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
         }
         .btn:not(#create-topic) {
           padding: 0.75em 0.817em;
-          border-radius: 50%;
+          border-radius: var(--d-button-border-radius);
           background: var(--primary-low);
           .d-icon {
             color: var(--primary-high);
@@ -205,7 +205,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
           order: 2;
           margin-right: 0;
           padding: 1.25em;
-          border-radius: 50%;
+          border-radius: var(--d-button-border-radius);
           border: none;
           background: var(--tertiary);
           font-size: var(--font-0);
@@ -816,9 +816,9 @@ aside.onebox{
   margin-bottom: 0;
 }
 
-// FKBM - Tudaster
+// FKBM - Docs
 
-// Tudaster
+// Docs
 
 body:not(.categories-list) .docs-browse {
   .docs-topic-list {
@@ -841,31 +841,13 @@ body:not(.categories-list) .docs-browse {
 
 // FKBM - Chat
 
-// Chat header icon and tab bar
-
-.header-dropdown-toggle.open-chat .icon.active {
-  border: 1px solid transparent;
-  background: none;
-  .d-icon-comment {
-    color: var(--secondary-low);
-  }
-}
-
 body.has-full-page-chat {
-  .header-dropdown-toggle.open-chat {
-    .icon.active {
-      background: var(--tertiary-low);
-      border-radius: 50px;
-      .d-icon-comment {
-        color: var(--tertiary);
-      }
-    }
-  }
   // New Private Chat button
   .btn-floating.open-draft-channel-page-btn {
     bottom: 1em;
     right: 1em;
     font-size: var(--font-0);
+    border-radius: var(--d-button-border-radius);
     padding: 1.25em;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     .d-icon {
