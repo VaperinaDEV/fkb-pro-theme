@@ -1010,7 +1010,7 @@ img.avatar,
 
 .topic-navigation-outlet.no-answer {
   .topic-navigation-popup {
-    border-radius: Max(0px, Min(10px, calc((100vw - 100%) * 9999))) / 10px;
+    border-radius: var(--d-default-border-radius);
     padding: 1em;
     p {
       margin-bottom: 0;
