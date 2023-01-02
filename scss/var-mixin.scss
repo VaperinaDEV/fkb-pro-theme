@@ -64,3 +64,27 @@
     background-color: var(--secondary);
   }
 }
+
+// New Topic banner
+
+// Animation
+
+@keyframes newPostUpSticky {
+  0% {
+    transform: translateY(-7.5em);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+// Sticky
+
+@mixin sticky-new-topic {
+  position: sticky;
+  position: -webkit-sticky;
+  top: calc(var(--header-offset) + 0.5em);
+  animation: newPostUpSticky 0.2s ease-out;
+  width: max-content;
+  margin: -22px auto -22px;
+}
