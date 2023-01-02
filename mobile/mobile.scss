@@ -318,6 +318,125 @@ body.nav-controls-hidden {
   margin: 0;
 }
 
+// Sticky New Topic Banner
+
+#list-area {
+  
+  // Latest page
+  
+  .alert.alert-info.clickable {
+    @include sticky-new-topic;
+    z-index: 8;
+    padding: 0.75em 1em;
+    background: var(--tertiary);
+    color: var(--secondary);
+    border-radius: var(--d-button-border-radius);
+    box-shadow: 0px 5px 5px -1px rgba(0, 0, 0, 0.25);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    &:active {
+      background: var(--tertiary-hover);
+      box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.25);
+      transform: scale(0.95);
+      &:focus {
+        @include default-focus;
+        border-color: var(--tertiary-hover);
+        outline-color: var(--tertiary-hover);
+      }
+    }
+    &:focus {
+      @include default-focus;
+      border-color: var(--tertiary);
+      outline-color: var(--tertiary);
+    }
+    span {
+      margin: auto;
+    }
+  }
+  
+  // Tag page
+  
+  .show-more {
+    @include sticky-new-topic;
+    z-index: 8;
+    .alert.alert-info.clickable {
+      padding: 0.75em 1em;
+      background: var(--tertiary);
+      color: var(--secondary);
+      border-radius: var(--d-button-border-radius);
+      box-shadow: 0px 5px 5px -1px rgba(0, 0, 0, 0.25);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      &:active {
+        background: var(--tertiary-hover);
+        box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.25);
+        transform: scale(0.95);
+        &:focus {
+          @include default-focus;
+          border-color: var(--tertiary-hover);
+          outline-color: var(--tertiary-hover);
+        }
+      }
+      &:focus {
+        @include default-focus;
+        border-color: var(--tertiary);
+        outline-color: var(--tertiary);
+      }
+      span {
+        margin: auto;
+      }
+    }
+  }
+  
+  .top-lists {
+    margin: 0 0 16px 0;
+    h2 {
+      margin: 8px 0;
+    }
+  }
+}
+
+.list-controls {
+  scroll-margin-top: calc(var(--header-offset) * 2);
+}
+
+// User message Sticky New Message Banner
+
+.user-messages-page {
+  .show-mores {
+    @include sticky-new-topic;
+    z-index: 8;
+    .alert.alert-info.clickable {
+      padding: 0.75em 1em;
+      background: var(--tertiary);
+      color: var(--secondary);
+      border-radius: var(--d-button-border-radius);
+      box-shadow: 0px 5px 5px -1px rgba(0, 0, 0, 0.25);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      &:active {
+        background: var(--tertiary-hover);
+        box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.25);
+        transform: scale(0.95);
+        &:focus {
+          @include default-focus;
+          border-color: var(--tertiary-hover);
+          outline-color: var(--tertiary-hover);
+        }
+      }
+      &:focus {
+        @include default-focus;
+        border-color: var(--tertiary);
+        outline-color: var(--tertiary);
+      }
+      span {
+        margin: auto;
+      }
+    }
+  }
+}
+
+.user-primary-navigation {
+  scroll-margin-top: calc(var(--header-offset) * 2);
+}
+
 // FKBM - Topic
 
 // Topics
