@@ -75,7 +75,7 @@ textarea,
       &.is-expanded {
         .select-kit-collection,
         .select-kit-body {
-          overflow: hidden;
+          overflow: auto;
           border-radius: var(--d-select-body-border-radius);
         }
       }
@@ -94,7 +94,7 @@ textarea,
     }
     &.is-expanded {
       .select-kit-body {
-        overflow: hidden;
+        overflow: auto;
         border-radius: var(--d-select-body-border-radius);
       }
       .multi-select-header {
@@ -116,7 +116,7 @@ textarea,
       @include fkb-focus;
     }
     .select-kit-body {
-      overflow: hidden;
+      overflow: auto;
       border-radius: var(--d-select-body-border-radius);
       border: 1px solid var(--primary-low);
     }
@@ -147,7 +147,7 @@ textarea,
     &.is-expanded {
       .select-kit-collection,
       .select-kit-body {
-        overflow: hidden;
+        overflow: auto;
         border-radius: var(--d-select-body-border-radius);
       }
     }
