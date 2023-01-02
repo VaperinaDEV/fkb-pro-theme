@@ -120,10 +120,12 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     z-index: z("usercard");
     .container {
       max-width: 100%;
+      @include bg-br;
+      padding: 1em;
+      margin-bottom: 1em;
     }
     .navigation-container {
       position: relative;
-      margin-bottom: 1em;
       &:before {
         content: "";
         position: absolute;
@@ -132,7 +134,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
         bottom: 0;
         height: 45px;
         z-index: 1;
-        background: linear-gradient(to right, var(--fkb-bg), transparent);
+        background: linear-gradient(to right, rgba(var(--secondary-rgb), 1), rgba(var(--secondary-rgb), 0));
       }
       &:after {
         content: "";
@@ -141,7 +143,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
         bottom: 0;
         width: 30px;
         height: 45px;
-        background: linear-gradient(to right, transparent, var(--fkb-bg));
+        background: linear-gradient(to right, rgba(var(--secondary-rgb), 0), rgba(var(--secondary-rgb), 1));
       }      
       // Navigation Bar
       #navigation-bar {
