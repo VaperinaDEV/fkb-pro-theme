@@ -25,6 +25,9 @@
 
 #main-outlet-wrapper {
   padding: 0 1em;
+  #main-outlet {
+    padding-top: 2em;
+  }
 }
 
 // FKBD - Header
@@ -112,7 +115,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     .list-controls {
       grid-area: nav;
       @include bg-br;
-      margin-bottom: 1.5em;
+      margin-bottom: 2em;
       + .loading-container {
         grid-area: loader;
         margin: 0 auto;
@@ -394,21 +397,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
       animation: none;
     }
     .alert.alert-info.clickable {
-      padding: 13px 16px;
-      margin-bottom: 0;
-      background: var(--tertiary);
-      color: var(--secondary);
-      border-radius: var(--d-button-border-radius);
-      box-shadow: 0px 5px 5px -1px rgba(0, 0, 0, 0.25);
-      transition: background 0.25s ease;
-      &:hover,
-      &:focus {
-        background: var(--tertiary-hover);
-      }
-      span {
-        margin: auto;
-        line-height: 1.199;
-      }
+      @include alert-info-clickable-desktop;
     }
   }
   .top-lists {
@@ -419,10 +408,6 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
   }
 }
 
-.list-controls {
-  scroll-margin-top: calc(var(--header-offset) * 2);
-}
-
 // User message Sticky New Message Banner
 
 .user-messages-page {
@@ -430,25 +415,12 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     @include sticky-new-topic;
     z-index: 1;
     .alert.alert-info.clickable {
-      padding: 13px 16px;
-      margin-bottom: 0;
-      background: var(--tertiary);
-      color: var(--secondary);
-      border-radius: var(--d-button-border-radius);
-      box-shadow: 0px 5px 5px -1px rgba(0, 0, 0, 0.25);
-      transition: background 0.25s ease;
-      &:hover,
-      &:focus {
-        background: var(--tertiary-hover);
-      }
-      span {
-        margin: auto;
-        line-height: 1.199;
-      }
+      @include alert-info-clickable-desktop;
     }
   }
 }
 
+.list-controls,
 .user-primary-navigation {
   scroll-margin-top: calc(var(--header-offset) * 2);
 }
