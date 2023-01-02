@@ -463,13 +463,15 @@ textarea,
       color: var(--primary-high);
       padding: 10px;
       border-radius: var(--d-button-border-radius);
-
+      max-height: 37px;
+      &.no-text {
+        max-width: 37px;
+      }
       &.toggle-like:not(.my-likes) {
         .d-icon {
           color: var(--love);
         }
       }
-      
       &.delete {
         &:active,
         &:hover,
@@ -478,8 +480,7 @@ textarea,
             color: var(--secondary);
           }
         }
-      }
-      
+      }  
       .d-icon,
       .d-button-label {
         color: var(--primary-high);
@@ -556,15 +557,6 @@ textarea,
   &.only-like .reactions-counter {
     color: var(--primary-medium);
     padding-right: 5px;
-  }
-}
-
-.discourse-reactions-actions {
-  &.custom-reaction-used.has-reactions.has-reacted,
-  &.has-reactions.has-reacted.has-used-main-reaction,
-  &:not(.my-post),
-  &.my-post {
-    margin-right: 0.25em;
   }
 }
 
