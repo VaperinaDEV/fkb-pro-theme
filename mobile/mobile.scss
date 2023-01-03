@@ -126,6 +126,9 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     }
     .navigation-container {
       position: relative;
+      .category-breadcrumb {
+        display: flex !important;
+      }      
       &:before {
         content: "";
         position: absolute;
@@ -144,7 +147,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
         width: 30px;
         height: 45px;
         background: linear-gradient(to right, rgba(var(--secondary-rgb), 0), rgba(var(--secondary-rgb), 1));
-      }      
+      }
       // Navigation Bar
       #navigation-bar {
         width: 100%;
