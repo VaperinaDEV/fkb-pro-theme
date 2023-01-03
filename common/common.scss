@@ -1986,17 +1986,12 @@ blockquote aside.onebox {
 
 // Video
 
-#video-description,
-.video-details label {
-  display: none;
-}
-
 .onebox.video-onebox,
 .video-container {
   background: #000;
-  border-radius: 1em;
+  border-radius: var(--d-default-border-radius);
   video {
-    border-radius: 1em;
+    border-radius: var(--d-default-border-radius);
   }
 }
 
