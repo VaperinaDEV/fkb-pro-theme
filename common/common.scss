@@ -1470,34 +1470,13 @@ body {
   }
 }
 
-body.user-activity-page .user-stream .item,
-body.user-notifications-page .user-stream .item {
-  .user-stream .user-stream-item {
-    background: var(--secondary);
-  }
-}
-
-.top-sub-section li {
-  padding: 2px 0;
-  border-left: none;
-}
-
 .user-stream {
   .item,
   .user-stream-item {
     @include bg-br;
     margin-bottom: 0.5em;
     .excerpt {
-      .lightbox-wrapper {
-        .lightbox {
-          border-radius: var(--d-default-border-radius);
-        }
-        img {
-          max-width: 100%;
-          height: auto;
-        }
-      }
-      p img {
+      img:not(.thumbnail):not(.site-icon):not(.avatar):not(.emoji):not(.ytp-thumbnail-image) {
         border-radius: var(--d-default-border-radius);
         max-width: 100%;
         height: auto;
@@ -1506,37 +1485,17 @@ body.user-notifications-page .user-stream .item {
   }
 }
 
-.stats-section {
-  ul {
-    display: flex;
-    flex-wrap: wrap;
-    li.linked-stat a,
-    li {
-      flex: 0 0 auto;
-      padding: 0;
-    }
-    li {
-      margin-right: 1.5em;
-      margin-bottom: 1em;
-    }
-  }
-  .label {
-    color: var(--primary-medium);
-  }
+.uploaded-image-preview {
+  border-radius: var(--d-default-border-radius);
 }
 
+// Warning when mailing list mode on
+
 .user-preferences {
-  .warning-wrap {
-    margin-bottom: 30px;
-  }
   .warning {
     width: auto;
     border-radius: var(--d-default-border-radius);
   }
-}
-
-.uploaded-image-preview {
-  border-radius: var(--d-default-border-radius);
 }
 
 // User Card
