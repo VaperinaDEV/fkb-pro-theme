@@ -1019,26 +1019,14 @@ img.avatar,
 
 // Suggested
 
-#suggested-topics {
-  .topic-list .main-link {
-    .link-bottom-line {
-      .latest-poster-tlist {
-        display: none;
-      }
-      .latest-activity-tlist {
-        margin-left: auto;
-      }
-    }
+.suggested-topics {
+  .suggested-topics-title {
+    font-size: var(--font-up-4);
+    font-weight: normal;
   }
-}
-
-.suggested-topics h3 .badge-wrapper.box span {
-  display: inline-flex;
-}
-
-.suggested-topics .suggested-topics-title {
-  font-size: var(--font-up-4);
-  font-weight: normal;
+  h3 .badge-wrapper.box span {
+    display: inline-flex;
+  }
 }
 
 // Private Messages
