@@ -2299,7 +2299,7 @@ input.channel-members-view__search-input,
     .main-link {
       background: none;
       box-shadow: none;
-      border-radius: none;
+      border-radius: 0;
       .link-bottom-line {
         padding: 0;
         font-size: var(--font-0);
@@ -2312,7 +2312,7 @@ input.channel-members-view__search-input,
   .topic-body {
     background: none;
     box-shadow: none;
-    border-radius: none;
+    border-radius: 0;
     margin-left: 0;
   }
 }
