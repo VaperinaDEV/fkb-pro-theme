@@ -68,6 +68,12 @@
     <a class="num views {{topic.viewsHeat}}" href="{{topic.summaryUrl}}">
       {{number topic.views numberKey="views_long"}} {{d-icon "far-eye"}}
     </a>
+    <a href="{{topic.lastPostUrl}}" data-user-card="{{topic.last_poster_username}}" class="latest-poster-tlist">
+      {{avatar topic.lastPosterUser imageSize="tiny"}}
+    </a>
+    <a class="latest-activity-tlist {{view.likesHeat}}" href="{{topic.lastPostUrl}}">
+      {{~format-date topic.bumpedAt format="tiny" noTitle="true"~}} {{d-icon "history"}}
+    </a>
     {{raw "list/posts-count-column" topic=topic}}
   </div>
 </div>
