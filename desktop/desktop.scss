@@ -904,6 +904,7 @@ div[class^="category-title-header"] {
 
 .user-card,
 .group-card {
+  position: absolute;
   z-index: z("header");
 }
 
