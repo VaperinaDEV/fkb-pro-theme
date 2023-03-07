@@ -927,6 +927,14 @@ div[class^="category-title-header"] {
   }
 }
 
+.new-user-wrapper {
+  .new-user-content-wrapper {
+    .user-content {
+      padding: 1em;
+    }
+  }
+}
+
 .user-content .list-actions {
   margin-bottom: 0;
 }
