@@ -183,6 +183,9 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     @media screen and (max-width: 1100px) {
       gap: 0;
     }
+    @if $right-sidebar-blocks-enabled == "true" {
+      gap: 0;
+    }    
   }
   .container:first-of-type {
     grid-area: alerts;
@@ -202,6 +205,9 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     @media screen and (max-width: 1099px) {
       display: none;
     }
+    @if $right-sidebar-blocks-enabled == "true" {
+      display: none;
+    }    
   }
   .category-breadcrumb {
     .badge-wrapper.bullet .badge-category-parent-bg,
@@ -232,6 +238,9 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     @media screen and (max-width: 1100px) {
       margin-right: 2em;
     }
+    @if $right-sidebar-blocks-enabled == "true" {
+      margin-right: 2em;
+    }    
     @media screen and (max-width: 800px) {
       margin-right: 0;
       margin-bottom: 1em;
@@ -385,6 +394,37 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     }
     @media screen and (max-width: 800px) {
       width: calc(100vw - 20px);
+    }
+  }
+}
+
+// Right Sidebar Blocks Support
+
+@if $right-sidebar-blocks-enabled == "true" {    
+  .full-width {
+    display: grid;
+    grid: "tc-topic-list tc-right-sidebar";
+    gap: 0 2em;
+    @media screen and (max-width: 1099px) {
+      display: block;
+    }
+    #list-area {
+      width: 100%;
+      grid-area: tc-topic-list;
+    }
+    .tc-right-sidebar {
+      @include sticky;
+      top: 5.5em;
+      max-height: calc(100vh - 6em);
+      max-width: var(--d-sidebar-width);
+      width: 100%;
+      @include bg-br;
+      padding: 1em;
+      overflow-y: auto;
+      grid-area: tc-right-sidebar;
+      @media screen and (max-width: 1099px) {
+        display: none;
+      }
     }
   }
 }
