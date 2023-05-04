@@ -293,7 +293,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
 
 .full-width {
   #list-area {
-    max-width: calc(var(--d-sidebar-width) * 2 + 6em + 2em);
+    max-width: calc(var(--d-sidebar-width) * 2 + 2em);
     @media screen and (max-width: 1100px) {
       max-width: 100%;
     }
