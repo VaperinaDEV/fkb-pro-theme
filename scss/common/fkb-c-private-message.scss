@@ -1,0 +1,33 @@
+// FKBC - Private Messages
+
+// Private Messages
+
+.archetype-private_message {
+  .current-user-post {
+    .topic-body {
+      .cooked {
+        background: var(--tertiary-low) !important;
+      }
+      &.highlighted {
+        .cooked {
+          animation: background-fade-mypmpostlight 2s ease-out !important;
+        }
+      }
+    }
+  }
+  .topic-body {
+    background: none;
+    box-shadow: none;
+    .cooked {
+      background: var(--secondary);
+    }
+    &.highlighted {
+      .cooked {
+        animation: background-fade-pmpostlight 2s ease-out !important;
+      }
+    }
+    .topic-meta-data {
+      padding: 0 22px 0.25em 0px;
+    }
+  }
+}
