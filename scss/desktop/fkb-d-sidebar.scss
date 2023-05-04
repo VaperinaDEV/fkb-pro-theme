@@ -22,8 +22,11 @@ body.has-sidebar-page {
   #main-outlet-wrapper {
     padding-left: 1em;    
     .sidebar-wrapper {
+      @include bg-br;
       padding: 0;
-      background: var(--secondary);
+      top: calc(var(--header-offset) + 2em);
+      margin-top: calc(var(--header-offset) - 2em);
+      height: calc(var(--100dvh) - var(--header-offset, 0px) - 4em);
       .sidebar-footer-wrapper {
         .sidebar-footer-container {
           background: var(--primary-low);
