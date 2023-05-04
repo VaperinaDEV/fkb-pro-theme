@@ -53,6 +53,17 @@
   border-radius: var(--d-default-border-radius);
 }
 
+// Invite
+
+.invites-show input {
+  width: auto;
+}
+
+.invites-show .login-welcome-header {
+  padding: 1em;
+  border-radius: var(--d-default-border-radius);
+}
+
 // Activate account page
 
 #simple-container {
