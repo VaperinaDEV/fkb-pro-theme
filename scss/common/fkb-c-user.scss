@@ -67,6 +67,7 @@ h2.username,
     }
   }
   .new-user-content-wrapper {
+    position: relative;
     @include bg-br;
     margin-top: 1em;
     min-height: 265px;
@@ -75,8 +76,8 @@ h2.username,
       border-bottom: none;
     }
     .spinner {
-      margin: auto;
-      top: 1em;
+      position: absolute;
+      left: 50%;
     }
     .user-content {
       padding: 1em;
