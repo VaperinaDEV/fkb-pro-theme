@@ -16,6 +16,10 @@ img.avatar,
   border-radius: calc(var(--d-default-border-radius) / 2);
 }
 
+.popup-tip {
+  border-radius: var(--d-default-border-radius);
+}
+
 .btn.show-summary {
   background: var(--fkb-btn);
 }
