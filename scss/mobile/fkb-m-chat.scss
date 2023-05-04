@@ -1,0 +1,30 @@
+// FKBM - Chat
+
+// Chat new dm button
+
+body.has-full-page-chat {
+  // New Private Chat button
+  .btn-floating.open-draft-channel-page-btn {
+    bottom: 1em;
+    right: 1em;
+    font-size: var(--font-0);
+    border-radius: var(--d-button-border-radius);
+    padding: 1.25em;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    .d-icon {
+      width: 1.5em;
+      height: 1.5em;
+      color: var(--secondary);
+    }
+    &:active {
+      background: var(--tertiary-hover);
+      box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.25);
+      transform: scale(0.9);
+    }
+    &:focus {
+      background: var(--tertiary-hover);
+      outline: none;
+      border: none;
+    }
+  }
+}
