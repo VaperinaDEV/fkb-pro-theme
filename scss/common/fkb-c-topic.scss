@@ -1,0 +1,219 @@
+// FKBC - Topic
+
+// Topic View
+
+.timeline-container {
+  .topic-timeline {
+    .timeline-handle {
+      background: var(--tertiary);
+    }
+    .timeline-scrollarea {
+      border-color: var(--tertiary-medium);
+    }
+  }
+}
+
+.post-notice{
+  border-radius: var(--d-default-border-radius);
+  border-top: none;
+}
+
+.topic-map {
+  border-radius: var(--d-default-border-radius);
+  section {
+    border-top: none;
+  }
+  .buttons .btn {
+    border-radius: var(--d-default-border-radius);
+  }
+}
+
+.topic-above-footer-buttons-outlet.presence {
+  .presence-users {
+    background-color: transparent;
+    color: var(--primary-very-high);
+    margin: 5px;
+  }
+}
+
+#topic-footer-buttons {
+  padding: 0;
+}
+
+.topic-list-bottom {
+  margin: 0;
+}
+
+#share-link {
+  border-radius: var(--d-default-border-radius);
+}
+
+.topic-status-info,
+.topic-timer-info {
+  border-top: none;
+}
+
+.small-action {
+  .topic-avatar,
+  .small-action-desc {
+    border-top: none;
+  }
+  &.topic-post-visited {
+    padding: 8px 0;
+    .topic-post-visited-line {
+      border-bottom: 1px solid var(--tertiary);
+      line-height: 0;
+      .topic-post-visited-message {
+        background-color: var(--tertiary);
+        color: #ffffff;
+        border-radius: var(--d-default-border-radius);
+      }
+    }
+  }
+}
+
+// Topic post controls actions
+
+.topic-post nav.post-controls {
+  .actions {
+    button {
+      color: var(--primary-high);
+      padding: 10px;
+      border-radius: var(--d-button-border-radius);
+      max-height: 37px;
+      &.no-text {
+        max-width: 37px;
+      }
+      &.toggle-like:not(.my-likes) {
+        .d-icon {
+          color: var(--love);
+        }
+      }
+      &.delete {
+        &:active,
+        &:hover,
+        &:focus {
+          .d-icon {
+            color: var(--secondary);
+          }
+        }
+      }  
+      .d-icon,
+      .d-button-label {
+        color: var(--primary-high);
+        pointer-events: none;
+      }
+    }
+    .double-button {
+      button.my-likes,
+      button.read-indicator,
+      button.regular-likes {
+        .d-icon {
+          color: var(--primary-high);
+          padding-left: 15px;
+        }
+      }
+      &:hover,
+      &:focus {
+        button.button-count {
+          background: transparent;
+        }
+      }
+      button.button-count {
+        padding: 10px 5px 10px 10px;
+        + .toggle-like,
+        + .create-flag {
+          padding: 10px;
+        }
+        &:active,
+        &:hover,
+        &:focus {
+          background: transparent;
+        }
+      }
+    }
+    .extra-buttons {
+      .accepted {
+        .d-icon,
+        .d-button-label {
+          color: green;
+        }
+      }
+    }
+  }
+  .replies-button-visible .show-replies,
+  .show-replies {
+    border-radius: var(--d-button-border-radius);
+    margin-right: 0.25em;
+    color: var(--primary-high);
+    .d-icon {
+      color: var(--primary-high);
+    }
+    &:focus,
+    &:hover {
+      background: var(--primary-low);
+    }
+  }
+}
+
+// Reactions
+
+.discourse-reactions-double-button {
+  border-radius: var(--d-button-border-radius);
+  &:hover,
+  &:focus {
+    background: var(--primary-low) !important;
+  }
+}
+
+.discourse-reactions-counter {
+  padding: 0 10px 0 0;
+  .discourse-reactions-state-panel .container {
+    border-radius: calc(var(--d-default-border-radius) / 2);
+  }
+  &.only-like .reactions-counter {
+    color: var(--primary-medium);
+    padding-right: 5px;
+  }
+}
+
+span.highlighted {
+  background-color: var(--tertiary-low-or-tertiary-high);
+}
+
+// Solved
+
+.post-controls .extra-buttons .accepted-text {
+  color: var(--primary-high);
+  border-radius: var(--d-button-border-radius);
+  margin-left: 3px;
+  margin-right: 0.25em;
+  padding: 9px 10px;
+  span {
+    padding: 7px 1px;
+  }
+}
+
+// No answer popup
+
+.topic-navigation-outlet.no-answer {
+  .topic-navigation-popup {
+    border-radius: var(--d-default-border-radius);
+    padding: 1em;
+    p {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Suggested
+
+.suggested-topics {
+  .suggested-topics-title {
+    font-size: var(--font-up-4);
+    font-weight: normal;
+  }
+  h3 .badge-wrapper.box span {
+    display: inline-flex;
+  }
+}
