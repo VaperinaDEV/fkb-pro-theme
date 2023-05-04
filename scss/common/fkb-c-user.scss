@@ -54,34 +54,32 @@ h2.username,
   width: 100%;
 }
 
-.user-content {
-  padding: 1em;
-  @include bg-br;
-  .user-notifications-filter {
-    border-bottom: none;
-  }
-}
+// User navigation
 
-body {
-  &.user-activity-page,
-  &.user-notifications-page,
-  &.user-badges-page,
-  &.user-messages-page,
-  &.user-follow-page {
-    .user-content {
-      background: transparent;
-      padding: 0;
-      box-shadow: none;
-      border-radius: unset;
+.new-user-wrapper {
+  margin-top: 1em;
+  .user-navigation {
+    &.user-navigation-primary {
+      @include bg-br;
+      padding: 0 1em;
+      margin: 1em 0 0;
+      border-bottom: none;
+    }
+  }
+  .new-user-content-wrapper {
+    @include bg-br;
+    margin-top: 2em;
+    .user-navigation-secondary {
+      padding: 0 1em;
     }
   }
 }
 
+// User stream
+
 .user-stream {
   .item,
   .user-stream-item {
-    @include bg-br;
-    margin-bottom: 0.5em;
     .excerpt {
       img:not(.thumbnail):not(.site-icon):not(.avatar):not(.emoji):not(.ytp-thumbnail-image) {
         border-radius: var(--d-default-border-radius);
