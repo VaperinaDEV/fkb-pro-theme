@@ -7,7 +7,7 @@
   top: 5.5em;
   position: sticky;
   max-height: calc(100vh - 6em);
-  max-width: var(--d-sidebar-width);
+  width: var(--d-sidebar-width);
   @include bg-br;
   .fkb-panel {
     display: none;
