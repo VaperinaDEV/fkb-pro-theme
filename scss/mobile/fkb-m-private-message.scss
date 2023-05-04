@@ -1,0 +1,43 @@
+// FKBM - Private Message
+
+// Private Messages
+
+.archetype-private_message {
+  .post-stream {
+    article {
+      max-width: calc(100vw - 20px);
+      margin-bottom: 5px;
+    }
+  }
+  .topic-post article {
+    .topic-avatar {
+      margin: 10px 10px -1em 0;
+    }
+    .topic-body {
+      background: none;
+      box-shadow: none;
+      padding: 0;
+      &.highlighted {
+        animation: none;
+      }
+      .topic-meta-data {
+        margin-top: 10px;
+      }
+    }
+  }
+  .gap {
+    padding: 8px 10px;
+    margin: 8px 0 8px auto;
+    @media screen and (max-width: 600px) {
+      padding: 8px 20px;
+    }
+  }
+  .small-action .topic-avatar {
+    margin: 0 11px 0 0;
+  }
+  .small-action-desc.timegap {
+    padding: 1em;
+    margin: 8px 0;
+    border-radius: var(--d-button-border-radius);
+  }
+}
