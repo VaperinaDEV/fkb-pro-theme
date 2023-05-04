@@ -73,6 +73,11 @@ h2.username,
       padding: 0 1em;
     }
   }
+  .topic-list {
+    .main-link {
+      border: 1px solid var(--primary-low);
+    }
+  }
 }
 
 // User stream
