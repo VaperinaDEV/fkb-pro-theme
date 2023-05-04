@@ -1,0 +1,189 @@
+// FKBD - FKB Panel
+
+// FKB Panel
+
+.fkb-panel-sidebar {
+  display: none;
+  top: calc(var(--header-offset) + 2em);
+  position: sticky;
+  max-height: calc(100vh - 6em);
+  width: var(--d-sidebar-width);
+  @include bg-br;
+  .fkb-panel {
+    display: none;
+    margin-bottom: 0.5em;
+    color: var(--primary-high);
+    .visitor {
+      display: none;
+    }
+    .anon & {
+      padding: 1em;
+      .visitor {
+        display: block;
+        h2 {
+          margin-left: 0;
+        }
+        img {
+          max-width: 100%;
+          height: auto;
+          border-radius: var(--d-default-border-radius);
+        }
+        button {
+          display: block;
+          margin-top: 1em;
+        }
+      }
+    }
+    .fkb-panel-top {
+      border-radius: var(--d-default-border-radius) var(--d-default-border-radius) 0 0;
+      background: var(--secondary);
+      background-size: cover;
+      background-position: center;
+      margin: 0 auto;
+    }
+    .fkb-panel-contents {
+      border-radius: var(--d-default-border-radius) var(--d-default-border-radius) 0 0;
+      background: rgba(var(--secondary-rgb), 0.85);
+    }
+    .fkb-panel-contents-top {
+      display: flex;
+      flex: 1 1 100%;
+      align-items: center;
+      flex-flow: row;
+      padding: 0.5em 0.5em 0;
+      .fkb-avatar {
+        margin: 0.5em;
+        div {
+          display: flex;
+          align-items: center;
+        }
+        .fkb-user-names {
+          display: flex;
+          flex-flow: column;
+          padding-left: 0.5em;
+          max-width: 180px;
+          .fkb-name {
+            font-size: var(--font-up-1);
+            font-weight: bold;
+            color: var(--primary-high);
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+          .fkb-username {
+            font-size: var(--font-0);
+            font-weight: normal;
+            color: var(--primary-high);
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            &:before {
+              content: '@';
+            }
+          }
+          span:empty+span:not(:empty) {
+            font-size: var(--font-up-1);
+            font-weight: bold;
+            color: var(--primary-high);
+          }
+        }
+      }
+    }
+    .fkb-panel-contents-stats {
+      display: flex;
+      flex-flow: column;
+      padding: 0 0.5em 0.5em;
+      .stats {
+        a {
+          display: inline-block;
+        }
+        .user-stat {
+          display: inline-block;
+          margin: 0.25em;
+          .value {
+            color: var(--primary);
+            font-weight: 600;
+            vertical-align: middle;
+          }
+          .label {
+            color: var(--primary-high);
+            vertical-align: middle;
+            svg {
+              font-size: 0.9em;
+            }
+            .d-icon-heart {
+              color: var(--love);
+            }
+            .d-icon-clock {
+              color: var(--primary);
+            }
+            .d-icon-bookmark {
+              color: var(--primary);
+            }
+            .d-icon-check-square {
+              color: var(--success);
+            } 
+          }
+        }
+      }
+      .badges {
+        display: flex;
+        align-items: center;
+        flex-flow: row wrap;
+        gap: 0.25em;
+        .user-badge {
+          border-radius: var(--d-default-border-radius);
+        }
+        .badge-type-1 {
+          .d-icon {
+            color: var(--gold);
+          }
+        }
+        .badge-type-2 {
+          .d-icon {
+            color: var(--silver);
+          }
+        }
+        .badge-type-3 {
+          .d-icon {
+            color: var(--bronze);
+          }
+        }
+      }
+    }
+    .fkb-panel-contents-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      grid-auto-flow: column;
+      position: relative;
+      padding: 0.5em;
+      gap: 0.5em;
+      .fkb-link {
+        color: var(--primary-high);
+        &:hover,
+        &:focus {
+          color: var(--secondary);
+        }
+      }
+    }
+    h2 {
+      font-size: var(--font-up-2);
+      font-weight: 600;
+      margin-bottom: 10px;
+      margin-left: 0.5em;
+      line-height: var(--line-height-medium);
+    }
+    h3 {
+      font-size: var(--font-0);
+    }
+    .reads {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.25em;
+      .d-icon {
+        margin-right: 0.25em;
+        font-size: 0.9em;
+      }
+    }
+  }
+}

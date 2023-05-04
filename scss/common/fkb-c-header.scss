@@ -1,0 +1,256 @@
+// FKBC Header
+
+// Header
+
+.d-header {
+  .header-buttons {
+    margin-top: 0;
+  }
+}
+
+// Header buttons
+
+.d-header-icons {
+  display: flex;
+  align-items: center;
+  .icon {
+    padding: 0.2em;
+    border-bottom: 1px solid transparent;
+    transition: none;
+    &:hover,
+    &:focus,
+    &:active {
+      background: transparent;
+      .d-icon {
+        color: var(--secondary-low);
+      }
+    }
+    .discourse-no-touch &:hover,
+    .discourse-no-touch &:focus {
+      background: var(--fkb-header-btn-hover);
+      border-bottom: 1px solid transparent;
+      border-radius: var(--d-button-border-radius);
+      .d-icon {
+        color: var(--secondary-low);
+      }
+    }
+  }
+  .d-icon {
+    font-size: var(--font-up-3);
+    color: var(--secondary-low);
+  }
+  .header-dropdown-toggle {
+    position: relative;
+    border-radius: var(--d-button-border-radius);
+    background: var(--fkb-header-btn);
+    margin-left: 0.5em;
+    &:hover {
+      background: var(--fkb-header-btn-hover);
+    }
+    &.active {
+      background: var(--tertiary-low);
+      .d-icon {
+        color: var(--tertiary);
+      }
+      &:hover {
+        background: var(--tertiary-low);
+        .d-icon {
+          color: var(--tertiary);
+        }
+      }
+    }
+  }
+  .badge-notification {
+    &.with-icon {
+      .d-icon {
+        color: var(--secondary) !important;
+      }
+    }
+  }  
+  // Welcome spot
+  .ring.revamped {
+    top: -4px;
+    right: -2px;
+  }
+}
+
+// Chat header icon
+
+.header-dropdown-toggle {
+  &.chat-header-icon {
+    a.icon,
+    span.icon,
+    .icon {
+      &:hover,
+      &:focus {
+        background: var(--fkb-header-btn-hover);
+      }
+      &.active {
+        background: var(--tertiary-low);
+        border-radius: var(--d-button-border-radius);
+        border: 1px solid transparent;
+        .d-icon {
+          color: var(--tertiary);
+        }
+        &:hover {
+          background: var(--tertiary-low);
+          .d-icon {
+            color: var(--tertiary);
+          }
+        }
+      }
+    }
+    .d-icon {
+      color: var(--secondary-low);
+    }
+  }
+}
+
+// Notification Badges
+
+.badge-notification {
+  font-size: var(--font-down-1);
+  border-radius: 25px;
+  padding: 0.22em 0.42em;
+}
+
+.drop-down-mode .d-header-icons .active .icon {
+  background-color: transparent;
+  border-color: transparent;
+  &:hover {
+    border-bottom: 1px solid transparent;
+  }
+  &:after {
+    border-color: transparent;
+  }
+  .d-icon {
+    color: var(--tertiary);
+  }
+}
+
+// Menu panel
+
+.menu-panel {
+  border: none;
+  .widget-link,
+  .categories-link {
+    .d-icon {
+      color: inherit;
+    }
+  }
+  &.drop-down {
+    border: 1px solid var(--primary-low);
+    margin-top: 0.25em;
+  }
+  @media screen and (max-width: 1000px) {
+    .desktop-view & {
+      z-index: z("header") + 3;
+      .panel-body {
+        max-height: 100%;
+      } 
+    }
+  }
+}
+
+// User Menu
+
+.user-menu {
+  &.revamped {
+    padding: 0;
+    .menu-tabs-container {
+      padding: 0;
+      border-left: 1px solid var(--primary-300);
+      background: rgba(var(--primary-rgb), 0.02);
+    }    
+    .tabs-list {
+      .btn {
+        border-radius: 0;
+        .desktop-view & {
+          padding: 1em;
+        }
+        &:hover {
+          background: var(--tertiary-400);
+        }
+      }
+      &.bottom-tabs {
+        border-top: 1px solid var(--primary-300);
+      }
+    }
+    #quick-access-profile {
+      max-height: calc(100% + 1px);
+      padding: 0;
+      ul {
+        margin: 0;
+        li {
+          @media screen and (min-width: 1000px) {
+            .desktop-view & {
+              max-height: unset;
+            }
+          }
+          > * {
+            height: unset;
+            padding: 0.5em 0.75em;
+          }
+        }
+        .set-user-status .emoji {
+          padding: 0.5em;
+        }
+      }
+    }    
+    .quick-access-panel {
+      padding: 0.5em 0 0;
+      max-height: calc(100% + 1px);
+      ul {
+        margin: -0.5em 0 0;
+        li {
+          border-radius: 0;
+          a,
+          .profile-tab-btn {
+            margin: 0;
+            padding: 0.5em 0.75em;
+          }
+          &:not(.show-all) {
+            a {
+              align-items: center;
+            }
+            .d-icon {
+              width: 2em;
+              height: 2em;
+              padding-top: 0;
+              background: rgba(var(--primary-rgb), 0.1);;
+              color: var(--primary);
+              border-radius: var(--d-button-border-radius);
+              margin-right: 0.5em;
+              > use {
+                transform: scale(0.5);
+                transform-origin: 1em;
+              }
+            }
+          }
+          &:hover,
+          &:focus-within {
+            background: var(--tertiary-400);
+          }
+        }
+      }
+    }
+    .panel-body-bottom {
+      padding: 0;
+      margin-top: 0;
+      border-top: 1px solid var(--primary-300);
+      .btn {
+        border-radius: 0;
+        padding: 0.75em;
+        background: rgba(var(--primary-rgb), 0.02);
+        &:hover,
+        &:focus {
+          background: rgba(var(--primary-rgb), 0.06);
+        }
+      }
+      .notifications-dismiss {
+        margin-left: 0;
+        border-left: 1px solid var(--primary-300);
+      }
+    }    
+  }
+}

@@ -1,0 +1,46 @@
+// FKBD - User
+
+// User
+
+.user-table {
+  padding: 1em;
+  background: var(--secondary);
+  box-sizing: border-box;
+  border-radius: var(--d-default-border-radius);
+}
+
+.user-card,
+.group-card {
+  position: absolute;
+  z-index: z("header");
+}
+
+.user-card {
+  .first-row {
+    .user-card-avatar {
+      margin-top: 0px;
+    }
+  }
+}
+
+.user-content .list-actions {
+  margin-bottom: 0;
+}
+
+.user-content-wrapper .user-additional-controls button {
+  margin: 0.5em 0.75em;
+}
+
+// Bookmark
+
+body.user-activity-page .bookmark-list-wrapper {
+  .topic-list {
+    table-layout: auto !important;
+    .main-link {
+      display: block;
+      .link-bottom-line a {
+        display: inline-block;
+      }
+    }
+  }
+}

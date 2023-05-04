@@ -1,0 +1,236 @@
+:root {  
+  // Desktop topic variables
+  --avatar-post-width: calc(60px + 1em + var(--topic-body-width) + (var(--topic-body-width-padding) * 2) + (12px * 2));
+  --wo-avatar-width: calc(var(--topic-body-width) + (var(--topic-body-width-padding) * 2) + (12px * 2));
+  --topic-post-full-width: calc(60px + 1em + var(--topic-body-width) + (var(--topic-body-width-padding) * 2) + (12px * 2) + 83px);
+  --posts-filter-width: calc(60px + 1em + var(--topic-body-width) + (var(--topic-body-width-padding) * 2) + (12px * 2) - 2em);
+}
+
+// Desktop Topic Mixins
+
+@mixin topic-elements {
+  max-width: var(--wo-avatar-width);
+  margin-left: auto;
+}
+
+// FKBD - Topic
+
+.container.posts {
+  > .row {
+    max-width: var(--avatar-post-width);
+  }
+}
+
+// For responsive topic-body
+.topic-post {
+  article {
+    .row {
+      display: flex;
+      padding: 8px 0;
+    }
+    &#post_1 {
+      .row {
+        &:first-of-type {
+          padding-top: 0;
+        }
+      }
+    }
+  }
+  &.sticky-avatar {
+    .topic-avatar {
+      height: 100%;
+    }
+  }
+}
+
+.topic-body {
+  width: calc(690px + (11px * 2));
+  @include bg-br;
+  padding: 12px;
+  margin-left: 1em;
+  border-top: none;
+  &.highlighted {
+    animation: background-fade-topiclight 2s ease-out;
+  }
+  @media screen and (max-width: 834px) {
+    width: 100%;
+  }
+}
+
+.embedded-posts {
+  &.top {
+    .row {
+      padding: 0;
+      .topic-avatar {
+        border-top: none;
+      }
+      .topic-body {
+        box-shadow: none;
+        padding: 12px 0 0 0;
+        margin-left: 0;
+        border-top: none;
+      }
+    }
+  }
+  &.bottom {
+    .row {
+      padding: 0;
+      .topic-body {
+        box-shadow: none;
+        padding: 12px 0 0 0;
+        margin-left: 0;
+        border-radius: 0;
+      }
+    }
+  }
+  .collapse-down,
+  .collapse-up {
+    padding: 10px;
+  }
+}
+
+.topic-map {
+  margin: 20px 11px;
+}
+
+.archetype-private_message {
+  .topic-body {
+    width: var(--wo-avatar-width);
+    margin-left: 0;
+    padding: 12px 0 12px 12px;
+  }
+  .small-action.topic-post-visited {
+    max-width: var(--avatar-post-width);
+  }
+  .posts-filtered-notice {
+    max-width: var(--avatar-post-width);
+  }
+  .gap {
+    padding: 8px 0;
+    margin: 8px 0 8px auto;
+  }
+  .small-action-desc.timegap {
+    padding: 1em;
+    border-radius: var(--d-button-border-radius);
+    margin: 8px 0 8px -8px;
+  }
+}
+
+.topic-avatar {
+  width: 60px;
+  border: none;
+}
+
+.placeholder-avatar {
+  width: 60px;
+  height: 60px;
+}
+
+.topic-list .topic-list-item-separator td span {
+  background: #e9ebee;
+}
+
+.small-action {
+  border-top: none;
+  max-width: var(--avatar-post-width);
+  margin-left: auto;
+  .topic-avatar {
+    width: 60px;
+  }
+  .small-action-desc {
+    margin-left: 1em;
+  }
+  &.topic-post-visited {
+    @include topic-elements;
+  }
+}
+
+.gap {
+  @include topic-elements;
+  padding-left: 9px;
+}
+
+.time-gap {
+  .small-action {
+    .small-action-desc {
+      background: transparent;
+      border: none;
+    }
+    .topic-avatar {
+      display: none;
+    }
+  }
+}
+
+.posts-filtered-notice {
+  @include topic-elements;
+  padding: 1em 0;
+  border-radius: var(--d-default-border-radius);
+}
+
+#topic-footer-buttons {
+  max-width: var(--avatar-post-width);
+}
+
+.topic-area > .loading-container {
+  width: var(--topic-post-full-width);
+  @media screen and (max-width: 924px) {
+    width: 100%;
+  } 
+}
+
+.topic-status-info,
+.topic-timer-info {
+  max-width: var(--avatar-post-width);
+}
+
+.create-invite-modal,
+.create-invite-bulk-modal,
+.share-topic-modal {
+  &.modal {
+    .modal-body {
+      margin: 0;
+      padding: 1em;
+    }
+  }
+}
+
+#suggested-topics .topic-list .main-link {
+  max-width: var(--avatar-post-width);
+}
+
+.read-state {
+  right: 10px;
+}
+
+.tag-drop-row {
+  font-weight: normal !important;
+  font-size: 0.875em;
+}
+
+.topic-above-footer-buttons-outlet.presence {
+  .presence-users {
+    background: transparent;
+    margin-bottom: 1em;
+  }
+}
+
+// Lightbox
+
+.lightbox-wrapper .meta {
+  border-radius: 0 0 var(--d-default-border-radius) var(--d-default-border-radius);
+}
+
+// Signup CTA
+
+.signup-cta {
+  margin: 1em 0 !important;
+  max-width: var(--avatar-post-width);
+  width: 100%;
+}
+
+// FKBD - Emoji
+
+.emoji-picker {
+  border-radius: var(--d-default-border-radius);
+}

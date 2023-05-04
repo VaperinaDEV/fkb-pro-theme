@@ -1,0 +1,101 @@
+// FKBM - User
+
+// User
+
+.user-main {
+  width: calc(100vw - 20px);
+  .about {
+    margin-bottom: 20px;
+    background: transparent;
+    .details {
+      @include bg-br;
+    }
+    .controls {
+      ul {
+        li.follow-button-container div {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .new-user-wrapper {
+    .user-navigation {
+      width: calc(100% - 2em);
+    }
+  }
+  .user-content {
+    background: transparent;
+    .bulk-select.btn {
+      display: none;
+    }
+  }
+  .staff-counters {
+    display: block;
+    > div {
+      margin: 2px 10px 0 0;
+      a {
+        margin: 2px 10px 0 0;
+      }
+    }
+  }
+}
+
+body.user-activity-page .paginated-topics-list {
+  margin-top: -10px;
+}
+
+.topic-meta-data .names span a {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Groups 
+
+.groups-header {
+  width: calc(100vw - 20px);
+}
+
+.group {
+  width: calc(100vw - 20px);
+  margin: auto;
+  .user-content-wrapper {
+    .user-content {
+      max-width: 100%;
+      min-width: auto;
+    }
+  }
+}
+
+// Bookmark
+
+body.user-activity-page .bookmark-list-wrapper {
+  .topic-list.bookmark-list {
+    display: block;
+    .topic-list-data {
+      padding: 1em;
+    }
+    .main-link {
+      width: 100%;
+    }
+  }
+}
+
+// User Card
+
+#user-card {
+  .first-row {
+    .usercard-controls {
+      li {
+        border-left: 0 solid transparent !important;
+      }
+    }
+  }
+  .location-and-website {
+    .website-name {
+      a {
+        white-space: normal;
+      }
+    }
+  }
+}

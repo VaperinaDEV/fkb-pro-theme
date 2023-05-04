@@ -1,0 +1,63 @@
+// FKBD - Sidebar
+
+:root {
+  --d-sidebar-width: 20em;
+  @media screen and (max-width: 1250px) {
+    --d-sidebar-width: 18em;
+  }
+  --d-sidebar-row-font-size: var(--font-0);
+}
+
+// Sidebar
+
+.header-sidebar-toggle button {
+  margin-right: 0.5em;
+  .d-icon {
+    font-size: var(--font-up-3);
+    color: var(--secondary-low);
+  }
+}
+
+body.has-sidebar-page {
+  #main-outlet-wrapper {
+    padding-left: 1em;    
+    .sidebar-wrapper {
+      @include bg-br;
+      padding: 0;
+      top: calc(var(--header-offset) + 2em);
+      margin-top: calc(var(--header-offset) - 2em);
+      height: calc(var(--100dvh) - var(--header-offset, 0px) - 4em);
+      .sidebar-footer-wrapper {
+        .sidebar-footer-container {
+          background: var(--primary-low);
+        }
+      }
+    }
+  }
+  &.has-full-page-chat {
+    #main-outlet-wrapper {
+      gap: 0 2em;
+      @media screen and (max-width: 1100px) {
+        gap: 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .hamburger-panel {
+    .menu-panel {
+      .panel-body {
+        max-height: calc(100vh - 0.5em);
+        .sidebar-footer-wrapper {
+          .sidebar-footer-actions {
+            padding: 0.5em 0;
+          }
+        }
+      }
+    }
+    .header-cloak {
+      z-index: z("header") + 2;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+// FKBD - Right Sidebar Blocks
+
+@if $right-sidebar-blocks-enabled == "true" {    
+  .full-width {
+    display: grid;
+    grid: "tc-topic-list tc-right-sidebar";
+    gap: 0 2em;
+    @media screen and (max-width: 1099px) {
+      display: block;
+    }
+    #list-area {
+      width: 100%;
+      grid-area: tc-topic-list;
+    }
+    .tc-right-sidebar {
+      @include sticky;
+      top: calc(var(--header-offset) + 2em);
+      max-height: calc(100vh - 6em);
+      max-width: var(--d-sidebar-width);
+      width: 100%;
+      @include bg-br;
+      padding: 1em;
+      overflow-y: auto;
+      grid-area: tc-right-sidebar;
+      @media screen and (max-width: 1099px) {
+        display: none;
+      }
+    }
+  }
+}

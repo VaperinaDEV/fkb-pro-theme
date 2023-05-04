@@ -1,0 +1,47 @@
+// FKBC - Search
+
+// Search
+
+.search-menu {
+  .search-link {
+    border-radius: var(--d-default-border-radius);
+  }
+  .search-result-topic,
+  .search-result-post {
+    .search-link {
+      border-radius: var(--d-default-border-radius);
+    }
+  }
+}
+
+.search-container {
+  .search-header {
+    border-radius: var(--d-default-border-radius);
+  }
+  .search-advanced {
+    .search-info {
+      background-color: transparent;
+    }
+  }
+}
+
+.search-results {
+  box-sizing: border-box;
+}
+
+.fps-result {
+  @include bg-br;
+  padding: 1em 1em 1em 0.7em;
+  margin-bottom: 1em;
+  .topic {
+    .bulk-select {
+      border-radius: var(--d-default-border-radius) 0;
+      left: 0;
+      top: 0;
+    }
+  }
+}
+
+.fps-invalid {
+  border-radius: var(--d-default-border-radius);
+}

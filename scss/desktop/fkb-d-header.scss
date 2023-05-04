@@ -1,0 +1,21 @@
+// FKBD - Header
+
+// Header
+
+.d-header {
+  > .wrap {
+    max-width: calc(var(--d-sidebar-width) + var(--d-max-width));
+    .contents {
+      margin: auto;
+    }
+  }
+}
+
+// Menu panel
+
+.menu-panel {
+  border-radius: var(--d-default-border-radius);
+  @media screen and (max-width: 1100px) {
+    border-radius: 0;
+  }
+}
