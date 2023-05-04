@@ -264,3 +264,24 @@ body.user-activity-page .bookmark-list-wrapper {
     }
   }
 }
+
+// User Status
+
+.user-status-picker-wrap .user-status-picker {
+  border-radius: var(--d-input-border-radius);
+  .btn-emoji {
+    border-radius: var(--d-button-border-radius);    
+  }
+  .user-status-description {
+    box-shadow: none;
+  }
+  &.focused {
+    @include fkb-focus;
+  }
+}
+
+.user-card {
+  h3.user-status {
+    padding: 0.25em 0;
+  }
+}
