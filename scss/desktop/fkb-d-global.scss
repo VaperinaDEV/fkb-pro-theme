@@ -1,0 +1,13 @@
+// FKBD - Global
+
+// Main Outlet
+
+#main-outlet-wrapper {
+  padding: 0 1em;
+  #main-outlet {
+    padding-top: 2em;
+    .has-full-page-chat & {
+      padding-top: 0;
+    }
+  }
+}
