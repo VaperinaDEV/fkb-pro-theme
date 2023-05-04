@@ -163,10 +163,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     .container {
       position: -webkit-sticky;
       position: sticky;
-      top: 5.5em;
-      .mobile-view & {
-        top: 5em;
-      }
+      top: calc(var(--header-offset) + 2em);
       max-height: calc(100vh - 6em);
       max-width: 100%;
       #create-topic {
