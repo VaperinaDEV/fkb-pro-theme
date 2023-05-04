@@ -106,3 +106,15 @@ img.avatar,
     margin: 0 auto 1em;
   }
 }
+
+// Admin
+
+.admin-controls .nav-pills > li a.active {
+  background: transparent;
+}
+
+.boxed.white {
+  padding: 1em;
+  box-sizing: border-box;
+  @include bg-br;
+}
