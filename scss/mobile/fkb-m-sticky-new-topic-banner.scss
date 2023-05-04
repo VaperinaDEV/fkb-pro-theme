@@ -1,0 +1,48 @@
+// FKBM - Sticky New Topic Banner
+
+// Sticky New Topic Banner
+
+#list-area {
+  
+  // Latest page
+  
+  .alert.alert-info.clickable {
+    @include sticky-new-topic;
+    z-index: 8;
+    @include alert-info-clickable-mobile;
+  }
+  
+  // Tag page
+  
+  .show-more {
+    @include sticky-new-topic;
+    z-index: 8;
+    .alert.alert-info.clickable {
+      @include alert-info-clickable-mobile;
+    }
+  }
+  
+  .top-lists {
+    margin: 0 0 16px 0;
+    h2 {
+      margin: 8px 0;
+    }
+  }
+}
+
+// User message Sticky New Message Banner
+
+.user-messages-page {
+  .show-mores {
+    @include sticky-new-topic;
+    z-index: 8;
+    .alert.alert-info.clickable {
+      @include alert-info-clickable-mobile;
+    }
+  }
+}
+
+.list-controls,
+.user-primary-navigation {
+  scroll-margin-top: calc(var(--header-offset) * 2);
+}
