@@ -78,3 +78,31 @@ img.avatar,
   border: none;
   box-shadow: inset 0 1px 1px var(--tertiary);
 }
+
+// Banner
+
+.alert.alert-info {
+  background: var(--tertiary-500);
+  border-radius: var(--d-default-border-radius);
+}
+
+#banner {
+  background: var(--tertiary-low);
+  border-radius: var(--d-default-border-radius);
+  .lightbox-wrapper,
+  .lightbox-wrapper a.lightbox,
+  .lightbox-wrapper img {
+    border-radius: var(--d-default-border-radius);
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.navigation-topics,
+.navigation-categories,
+.category {
+  .alert.alert-info {
+    box-sizing: border-box;
+    margin: 0 auto 1em;
+  }
+}
