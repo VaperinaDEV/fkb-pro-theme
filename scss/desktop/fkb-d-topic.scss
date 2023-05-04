@@ -214,3 +214,23 @@
     margin-bottom: 1em;
   }
 }
+
+// Lightbox
+
+.lightbox-wrapper .meta {
+  border-radius: 0 0 var(--d-default-border-radius) var(--d-default-border-radius);
+}
+
+// Signup CTA
+
+.signup-cta {
+  margin: 1em 0 !important;
+  max-width: var(--avatar-post-width);
+  width: 100%;
+}
+
+// FKBD - Emoji
+
+.emoji-picker {
+  border-radius: var(--d-default-border-radius);
+}
