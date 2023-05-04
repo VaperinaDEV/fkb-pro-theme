@@ -23,17 +23,6 @@
   }
 }
 
-.user-main {
-  display: flex;
-  flex-flow: column wrap;
-  margin-bottom: 20px;
-  .about {
-    .secondary {
-      padding: 0;
-    }
-  }
-}
-
 .new-user-wrapper {
   .new-user-content-wrapper {
     .user-content {
