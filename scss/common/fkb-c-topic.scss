@@ -285,6 +285,135 @@ aside.quote.accepted-answer {
   }
 }
 
+// Modal Invite & Share & Bookmark
+
+.invites-show {
+  #modal-alert {
+    border-radius: var(--d-default-border-radius) var(--d-default-border-radius) 0 0;
+    margin: 0;
+  }
+  // Invite page
+  .invite-form,
+  .invite-success {
+    background-color: var(--secondary);
+  }
+}
+
+// Share Panel and Invite inputs
+
+.link-share-container {
+  input {
+    &:focus+button {
+      outline: none;
+      box-shadow: 0px 0px 0px 1px var(--tertiary);
+    }
+  }
+}
+
+.link-share-actions .alt-actions {
+  width: 100%;
+  button {
+    width: 100%;
+  }
+}
+
+.bookmark-with-reminder.modal .modal-body {
+  width: 100%;
+}
+
+// Onebox
+
+aside.onebox,
+blockquote aside.onebox {
+  border: 1px solid var(--tertiary);
+  background: var(--tertiary-very-low);
+  border-radius: var(--d-default-border-radius);
+}
+
+// Lightbox
+
+.cooked,
+.d-editor-preview {
+  img:not(.thumbnail):not(.site-icon):not(.avatar):not(.emoji):not(.ytp-thumbnail-image) {
+    border-radius: var(--d-default-border-radius);
+  }
+}
+
+.discourse-no-touch {
+  a.lightbox {
+    border-radius: var(--d-default-border-radius);
+    &:hover {
+      border-radius: var(--d-default-border-radius);
+    }
+  }
+}
+
+.modal.history-modal {
+  img {
+    max-width: 100%;
+    border-radius: var(--d-default-border-radius);
+  }
+  .revision-content,
+  .markdown {
+    img {
+      border-radius: var(--d-default-border-radius);
+    }
+  }
+}
+
+// Youtube-thumb
+
+.ytp-thumbnail-image {
+  height: 100% !important;
+}
+
+.lazyYT-container {
+  border-radius: var(--d-default-border-radius);
+}
+
+// Video
+
+.onebox.video-onebox,
+.video-container {
+  background: #000;
+  border-radius: var(--d-default-border-radius);
+  video {
+    border-radius: var(--d-default-border-radius);
+  }
+}
+
+// GIF
+
+.pausable-animated-image>canvas {
+  border-radius: var(--d-default-border-radius);
+}
+
+.gif-modal .gif-no-results {
+  justify-content: center;
+}
+
+// Poll
+
+.poll-ui-builder {
+  .poll-options .poll-option-value button {
+    margin-bottom: 9px;
+  }
+  .poll-type .poll-type-value {
+    padding: 6px;
+    border-radius: var(--d-button-border-radius);
+  }
+}
+
+.input-group.poll-date {
+  .d-date-time-input {
+    border-radius: var(--d-input-border-radius);
+  }
+}
+
+.poll {
+  border-radius: var(--d-default-border-radius);
+}
+
 // Suggested
 
 .suggested-topics {
