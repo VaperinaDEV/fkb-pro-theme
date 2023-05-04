@@ -233,6 +233,14 @@
   width: calc(100% - 10px);
 }
 
+.topic-statuses {
+  .topic-status {
+    .d-icon-far-check-square {
+      color: #008000;
+    }
+  }
+}
+
 #show-tag-info {
   body:not(.has-sidebar-page) & {
     margin: 0.5em 0;
