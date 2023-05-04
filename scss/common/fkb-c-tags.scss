@@ -1,0 +1,19 @@
+// FKBC - Tags
+
+// Tags Page
+
+section.tag-info {
+  @include bg-br;
+  margin: 0 0 16px 0;
+  border: none;
+}
+
+// Tags
+
+.tag-list {
+  margin-top: 0;
+}
+
+.discourse-tags {
+  display: inline-block;
+}
