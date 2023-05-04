@@ -65,14 +65,6 @@ p.favorite-count {
 
 .badge-card {
   @include bg-br;
-  .grant-count {
-    top: 0.5em;
-    right: 0.75em;
-  }
-  .check-display {
-    left: 0.75em;
-    top: 0.75em;
-  }
   .favorite-btn {
     box-shadow: 0px 0px 0px 1px var(--primary-low);
     border-radius: var(--d-default-border-radius);
