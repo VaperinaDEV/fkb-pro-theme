@@ -1,0 +1,68 @@
+// FKBC - Composer
+
+// Composer
+
+#reply-control {
+  #reply-title {
+    div.ac-wrap {
+      border-radius: var(--d-default-border-radius);
+    }
+    &:focus {
+      @include fkb-focus;
+    }
+  }
+}
+
+.grippie {
+  border-radius: var(--d-default-border-radius) var(--d-default-border-radius) 0 0;
+}
+
+#reply-control {
+  border-radius: var(--d-default-border-radius) var(--d-default-border-radius) 0 0;
+  #reply-title {
+    div.ac-wrap {
+      border-radius: var(--d-default-border-radius);
+    }
+  }
+}
+
+.d-editor-button-bar {
+  .select-kit {
+    &.single-select {
+      .select-kit-header {
+        .btn {
+          &:focus,
+          &:active {
+            box-shadow: none;
+          }
+        }
+      }
+    }
+    &.is-expanded {
+      .select-kit-header {
+        box-shadow: none;
+      }
+    }
+  }
+  button {
+    &.bold {
+      font-weight: bold;
+    }
+    &.italic {
+      font-style: italic;
+    }
+  }
+}
+
+.group-details-container,
+.tag-list {
+  @include bg-br;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+
+div.education {
+  @include bg-br;
+  padding: 1em;
+  border: none;
+}
