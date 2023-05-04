@@ -1,0 +1,106 @@
+// FKBC - Category
+
+// Category
+
+body[class*="category-"] {
+  &:not(.archetype-regular) {
+    &:not(.archetype-banner) {
+      .list-controls {
+        .category-navigation {
+          max-width: 100%;
+        }
+        ol {
+          max-width: 100%;
+          li.category-drop {
+            max-width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Category page
+
+.categories-and-latest,
+.categories-and-top {
+  div.column {
+    min-width: 100%;
+    &.categories {
+      margin-right: 0;
+    }
+    margin: 0 auto;
+    .latest-topic-list,
+    .top-topic-list {
+      @include bg-br;
+      .topic-stats {
+        display: none;
+      }
+    }
+  }
+}
+
+.navigation-categories {
+  .category-list {
+    margin-bottom: 16px;
+    @include bg-br;
+    &.with-topics {
+      margin-left: 0;
+    }
+    thead {
+      display: none;
+    }
+    tbody {
+      border-top: none;
+      .category {
+        border-left: none;
+        h3 {
+          padding-left: 0.5em;
+          border-left: 6px solid var(--category-color);
+        }
+      }
+      .topic-list-item,
+      tr {
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+      .latest {
+        padding: 0 10px 10px 10px;
+      }
+    }
+    .topics {
+      padding-right: 10px;
+    }
+  }
+}
+
+// Category boxes
+
+.category-boxes,
+.category-boxes-with-topics {
+  margin-top: 0;
+  margin-bottom: 0;
+  .category-box {
+    width: 100%;
+    .mobile-view & {
+      width: calc(100vw - 20px);
+    }
+    margin: 0 0 16px 0;
+    background: var(--secondary);
+    border-radius: var(--d-default-border-radius);
+    border: 2px solid var(--category-color);;
+    .category-box-inner {
+      border: none;
+    }
+  }
+}
+
+// Category Page View
+
+.category-read-only-banner {
+  min-width: calc(80vw - 16px);
+  text-align: center;
+  background: var(--highlight-low);
+  color: var(--primary);
+}
