@@ -1,0 +1,129 @@
+// FKBC Header
+
+// Header
+
+.d-header {
+  .header-buttons {
+    margin-top: 0;
+  }
+}
+
+// Header buttons
+
+.d-header-icons {
+  display: flex;
+  align-items: center;
+  .icon {
+    padding: 0.2em;
+    border-bottom: 1px solid transparent;
+    transition: none;
+    &:hover,
+    &:focus,
+    &:active {
+      background: transparent;
+      .d-icon {
+        color: var(--secondary-low);
+      }
+    }
+    .discourse-no-touch &:hover,
+    .discourse-no-touch &:focus {
+      background: var(--fkb-header-btn-hover);
+      border-bottom: 1px solid transparent;
+      border-radius: var(--d-button-border-radius);
+      .d-icon {
+        color: var(--secondary-low);
+      }
+    }
+  }
+  .d-icon {
+    font-size: var(--font-up-3);
+    color: var(--secondary-low);
+  }
+  .header-dropdown-toggle {
+    position: relative;
+    border-radius: var(--d-button-border-radius);
+    background: var(--fkb-header-btn);
+    margin-left: 0.5em;
+    &:hover {
+      background: var(--fkb-header-btn-hover);
+    }
+    &.active {
+      background: var(--tertiary-low);
+      .d-icon {
+        color: var(--tertiary);
+      }
+      &:hover {
+        background: var(--tertiary-low);
+        .d-icon {
+          color: var(--tertiary);
+        }
+      }
+    }
+  }
+  .badge-notification {
+    &.with-icon {
+      .d-icon {
+        color: var(--secondary) !important;
+      }
+    }
+  }  
+  // Welcome spot
+  .ring.revamped {
+    top: -4px;
+    right: -2px;
+  }
+}
+
+// Chat header icon
+
+.header-dropdown-toggle {
+  &.chat-header-icon {
+    a.icon,
+    span.icon,
+    .icon {
+      &:hover,
+      &:focus {
+        background: var(--fkb-header-btn-hover);
+      }
+      &.active {
+        background: var(--tertiary-low);
+        border-radius: var(--d-button-border-radius);
+        border: 1px solid transparent;
+        .d-icon {
+          color: var(--tertiary);
+        }
+        &:hover {
+          background: var(--tertiary-low);
+          .d-icon {
+            color: var(--tertiary);
+          }
+        }
+      }
+    }
+    .d-icon {
+      color: var(--secondary-low);
+    }
+  }
+}
+
+// Notification Badges
+
+.badge-notification {
+  font-size: var(--font-down-1);
+  border-radius: 25px;
+  padding: 0.22em 0.42em;
+}
+
+.drop-down-mode .d-header-icons .active .icon {
+  background-color: transparent;
+  border-color: transparent;
+  &:hover {
+    border-bottom: 1px solid transparent;
+  }
+  &:after {
+    border-color: transparent;
+  }
+  .d-icon {
+    color: var(--tertiary);
+  }
+}
