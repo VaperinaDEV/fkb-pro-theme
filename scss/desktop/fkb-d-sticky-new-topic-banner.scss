@@ -1,0 +1,40 @@
+// FKBD - Sticky New Topic Banner
+
+// Sticky New Topic Banner
+
+#list-area {
+  .show-more {
+    @include sticky-new-topic;
+    z-index: 1;
+    @media screen and (max-width: 1180px) {
+      margin: 0 auto -22px;
+      animation: none;
+    }
+    .alert.alert-info.clickable {
+      @include alert-info-clickable-desktop;
+    }
+  }
+  .top-lists {
+    margin: 1em;
+    h2 {
+      margin: 8px 0;
+    }
+  }
+}
+
+// User message Sticky New Message Banner
+
+.user-messages-page {
+  .show-mores {
+    @include sticky-new-topic;
+    z-index: 1;
+    .alert.alert-info.clickable {
+      @include alert-info-clickable-desktop;
+    }
+  }
+}
+
+.list-controls,
+.user-primary-navigation {
+  scroll-margin-top: calc(var(--header-offset) * 2);
+}
