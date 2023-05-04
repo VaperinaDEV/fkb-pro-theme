@@ -4,7 +4,7 @@
 
 .fkb-panel-sidebar {
   display: none;
-  top: 5.5em;
+  top: calc(var(--header-offset) + 2em);
   position: sticky;
   max-height: calc(100vh - 6em);
   width: var(--d-sidebar-width);
