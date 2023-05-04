@@ -1,3 +1,18 @@
+:root {  
+  // Desktop topic variables
+  --avatar-post-width: calc(60px + 1em + var(--topic-body-width) + (var(--topic-body-width-padding) * 2) + (12px * 2));
+  --wo-avatar-width: calc(var(--topic-body-width) + (var(--topic-body-width-padding) * 2) + (12px * 2));
+  --topic-post-full-width: calc(60px + 1em + var(--topic-body-width) + (var(--topic-body-width-padding) * 2) + (12px * 2) + 83px);
+  --posts-filter-width: calc(60px + 1em + var(--topic-body-width) + (var(--topic-body-width-padding) * 2) + (12px * 2) - 2em);
+}
+
+// Desktop Topic Mixins
+
+@mixin topic-elements {
+  max-width: var(--wo-avatar-width);
+  margin-left: auto;
+}
+
 // FKBD - Topic
 
 .container.posts {
