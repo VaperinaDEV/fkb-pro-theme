@@ -76,6 +76,12 @@
   }
 }
 
+// Fast edit
+
+button.save-fast-edit {
+  background: var(--tertiary);
+}
+
 // Topic post controls actions
 
 .topic-post nav.post-controls {
@@ -183,6 +189,75 @@
 
 span.highlighted {
   background-color: var(--tertiary-low-or-tertiary-high);
+}
+
+// Quote
+
+aside.quote {
+  .title {
+    border-left: 5px solid var(--tertiary);
+    border-radius: var(--d-default-border-radius) var(--d-default-border-radius) 0 0;
+    overflow: hidden;
+  }
+  blockquote {
+    border-left: 5px solid var(--tertiary);
+  }
+  .title + blockquote {
+    border-left: 5px solid var(--tertiary);
+    border-radius: 0 0 var(--d-default-border-radius) var(--d-default-border-radius);
+  }
+}
+
+.quote-controls {
+  color: var(--tertiary);
+  .d-icon {
+    color: var(--tertiary);
+  }
+}
+
+blockquote {
+  border-left: 5px solid var(--tertiary);
+  border-radius: var(--d-default-border-radius);
+}
+
+.quote-button {
+  &.visible {
+    border-radius: var(--d-default-border-radius);
+  }
+  .btn {
+    box-shadow: none !important;
+  }
+}
+
+// Solved Quote
+
+aside.quote.accepted-answer {
+  > .title {
+    padding: 12px;
+    background: green;
+    border: 3px solid green;
+    color: #fff;
+    border-bottom: 0;
+    .fa.accepted {
+      color: #fff;
+    }
+    span.by {
+      a {
+        color: #fff;
+        text-decoration: underline;
+      }
+    }
+    a {
+      color: #fff;
+      text-decoration: underline;
+    }
+    .quote-controls .d-icon {
+      color: #fff;
+    }
+  }
+  > blockquote {
+    border: 3px solid green;
+  }
 }
 
 // Solved
