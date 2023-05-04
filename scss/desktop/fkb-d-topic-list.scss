@@ -148,7 +148,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     @media screen and (max-width: 800px) {
       margin-right: 0;
       margin-bottom: 1em;
-      max-width: 100%;
+      width: 100%;
     }
     + .loading-container {
       grid-area: loader;
