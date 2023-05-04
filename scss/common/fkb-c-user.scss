@@ -213,3 +213,54 @@ body {
     }
   }
 }
+
+// Group
+
+.groups-boxes {
+  .group-box {
+    @include bg-br;
+  }
+}
+
+.directory {
+  .directory-table {
+    .groups-table {
+      margin-top: 1em;
+      @include bg-br;
+    }
+  }
+  .me {
+    .username a,
+    .name,
+    .title,
+    .number,
+    .time-read {
+      color: var(--tertiary);
+    }
+  }
+}
+
+// Bookmark
+
+body.user-activity-page .bookmark-list-wrapper {
+  .topic-list.bookmark-list {
+    display: table;
+    .topic-list-body {
+      display: table-row-group;
+      .bookmark-list-item {
+        display: table-row;
+        background: var(--secondary);
+        border-bottom: 1px solid var(--primary-low);
+        .main-link {
+          background: none;
+          box-shadow: none;
+          border-radius: 0;
+          padding: 1em;
+          .link-bottom-line {
+            padding: 0.6em 0;
+          }
+        }
+      }
+    }
+  }
+}
