@@ -14,7 +14,7 @@
     }
     .tc-right-sidebar {
       @include sticky;
-      top: 5.5em;
+      top: calc(var(--header-offset) + 2em);
       max-height: calc(100vh - 6em);
       max-width: var(--d-sidebar-width);
       width: 100%;
