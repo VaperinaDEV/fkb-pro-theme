@@ -77,7 +77,7 @@ h2.username,
     }
     .spinner {
       position: absolute;
-      left: 50%;
+      left: calc(50% - 20px);
     }
     .user-content {
       padding: 1em;
