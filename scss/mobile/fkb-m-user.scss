@@ -18,32 +18,15 @@
       }
     }
   }
-  .user-content-wrapper {
-    grid-row-gap: 10px;
-    .user-messages-inboxes-drop {
-      height: 100%;
-      .select-kit-header .select-kit-header-wrapper {
-        padding: 0.15em;
-      }
+  .new-user-wrapper {
+    .user-navigation {
+      width: calc(100% - 2em);
     }
-    .user-content {
-      .list-actions {
-        flex-flow: column;
-        flex: 1 0 auto;
-        width: auto;
-        max-width: 100%;
-        .bulk-select.btn {
-          display: none;
-        }
-        .btn {
-          margin-right: 0;
-        }
-      }
-      &.user-follows-tab {
-        .follow-users {
-          padding: 10px;
-        }
-      }
+  }
+  .user-content {
+    background: tranparent;
+    .bulk-select.btn {
+      display: none;
     }
   }
   .staff-counters {
