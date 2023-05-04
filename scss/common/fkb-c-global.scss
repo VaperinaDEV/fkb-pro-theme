@@ -107,6 +107,27 @@ img.avatar,
   }
 }
 
+// Modal
+// Modal Global
+
+.bootbox.modal,
+.dialog-content {
+  border-radius: var(--d-default-border-radius);
+  outline: 0;
+}
+
+.modal-inner-container {
+  border-radius: var(--d-default-border-radius);
+}
+
+.modal.has-tabs {
+  .modal-tabs {
+    .modal-tab {
+      border-radius: var(--d-default-border-radius);
+    }
+  }
+}
+
 // Admin
 
 .admin-controls .nav-pills > li a.active {
