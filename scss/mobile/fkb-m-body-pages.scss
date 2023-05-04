@@ -1,0 +1,14 @@
+// FKBM - Body Pages
+
+.contents.body-page {
+  .nav-pills {
+    flex-flow: wrap;
+  }
+  section.about.stats {
+    overflow: auto;
+  }
+}
+
+.body-page li {
+  margin-bottom: 0;
+}
