@@ -133,13 +133,12 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     }
     + span {
       grid-area: fkb-panel;
-      max-width: var(--d-sidebar-width);
     }
   }
   &:not(.has-sidebar-page) .list-controls {
     z-index: 100;
     grid-area: nav;
-    max-width: var(--d-sidebar-width);
+    width: var(--d-sidebar-width);
     @media screen and (max-width: 1100px) {
       margin-right: 2em;
     }
@@ -293,10 +292,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
 
 .full-width {
   #list-area {
-    max-width: calc(var(--d-sidebar-width) * 2 + 2em);
-    @media screen and (max-width: 1100px) {
-      max-width: 100%;
-    }
+    max-width: 100%;
     @media screen and (max-width: 800px) {
       width: calc(100vw - 20px);
     }
