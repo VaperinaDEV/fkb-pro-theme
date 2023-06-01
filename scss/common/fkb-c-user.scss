@@ -70,7 +70,7 @@ h2.username,
     position: relative;
     @include bg-br;
     margin-top: 1em;
-    min-height: 265px;
+    min-height: calc(100vh - 20em);
     .user-navigation-secondary {
       padding: 0 1em;
       border-bottom: none;
