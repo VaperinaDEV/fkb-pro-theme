@@ -81,6 +81,8 @@ h2.username,
     }
     .user-content {
       padding: 1em;
+      border-radius: var(--d-default-border-radius);
+      margin-top: 1em;
     }
   }
   .topic-list {
