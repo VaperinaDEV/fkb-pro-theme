@@ -25,8 +25,14 @@ body.has-sidebar-page {
       @include bg-br;
       padding: 0;
       top: calc(var(--header-offset) + 2em);
-      margin-top: calc(var(--header-offset) - 2em);
-      height: calc(var(--100dvh) - var(--header-offset, 0px) - 4em);
+      height: calc(
+        var(--composer-vh, var(--1dvh)) * 100 - var(--header-offset, 0px) - 4em
+      );
+      html.composer-open & {
+        height: calc(
+          var(--composer-vh, var(--1dvh)) * 100 - var(--header-offset, 0px) - 2em
+        );
+      }
       .sidebar-footer-wrapper {
         .sidebar-footer-container {
           background: var(--primary-low);
