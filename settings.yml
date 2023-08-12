@@ -1,14 +1,17 @@
+topic_image_height: 
+  default: "300px"
+  description: "Change the topic list image (thumbnail) height."
 topic_image_fit:
   default: cover
   type: enum
   choices:
     - contain
     - scale-down
-  description: "Select the topic list image thumbnail fit. More info: https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit"
+  description: "Select the topic list image (thumbnail) fit. More info: https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit"
 topic_image_backdrop:
   type: bool
   default: false
-  description: "Add backdrop to topic list image thumbnail."
+  description: "Add backdrop to topic list image (thumbnail)."
 topic_image_backdrop_blur: 
   default: "50px"
   description: "Change the topic_image_backdrop blur size. Set a lower value for less blurred backdrop image."
