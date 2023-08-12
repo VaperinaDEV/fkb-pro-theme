@@ -7,6 +7,7 @@ topic_image_fit:
   choices:
     - contain
     - scale-down
+    - none
   description: "Select the topic list image (thumbnail) fit. More info: https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit"
 topic_image_backdrop:
   type: bool
