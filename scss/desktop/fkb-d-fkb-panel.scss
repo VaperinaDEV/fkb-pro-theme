@@ -52,11 +52,9 @@
       flex-flow: row;
       padding: 0.5em 0.5em 0;
       .fkb-avatar {
-        margin: 0.5em;
-        div {
-          display: flex;
-          align-items: center;
-        }
+        display: flex;
+        align-items: center;
+        margin: 0.5em;        
         .fkb-user-names {
           display: flex;
           flex-flow: column;
