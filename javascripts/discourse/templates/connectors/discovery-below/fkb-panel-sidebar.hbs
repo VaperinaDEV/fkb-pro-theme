@@ -5,7 +5,17 @@
         <div class="fkb-panel-contents">
           <div class="fkb-panel-contents-top">
             <div class="fkb-avatar">
-              <MountWidget @widget="fkb-avatar" />
+              <a href="/u/{{this.currentUser.username}}">
+                {{avatar this.currentUser imageSize="medium"}}
+              </a>
+              <a href="/u/{{this.currentUser.username}}" class="fkb-user-names">
+                <span class="fkb-name">
+                  {{this.currentUser.name}}
+                </span>
+                <span class="fkb-username">
+                  {{this.currentUser.username}}
+                </span>
+              </a>              
             </div>
           </div>
           <div class="fkb-panel-contents-stats">
