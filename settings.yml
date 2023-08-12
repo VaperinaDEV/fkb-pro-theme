@@ -1,6 +1,6 @@
 topic_image_height: 
   default: "300px"
-  description: "Change the topic list image (thumbnail) height."
+  description: "Change the topic list image (thumbnail) section height."
 topic_image_fit:
   default: cover
   type: enum
