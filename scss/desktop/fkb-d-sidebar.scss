@@ -24,6 +24,7 @@ body.has-sidebar-page {
     .sidebar-wrapper {
       @include bg-br;
       padding: 0;
+      margin-top: 2em;
       top: calc(var(--header-offset) + 2em);
       height: calc(
         var(--composer-vh, var(--1dvh)) * 100 - var(--header-offset, 0px) - 4em
