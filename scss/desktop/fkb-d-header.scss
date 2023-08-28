@@ -13,9 +13,6 @@
 
 // Menu panel
 
-.menu-panel {
+.menu-panel.drop-down {
   border-radius: var(--d-default-border-radius);
-  @media screen and (max-width: 1100px) {
-    border-radius: 0;
-  }
 }
