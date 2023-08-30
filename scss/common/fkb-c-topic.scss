@@ -416,12 +416,24 @@ blockquote aside.onebox {
 
 // Suggested
 
-.suggested-topics {
-  .suggested-topics-title {
-    font-size: var(--font-up-4);
-    font-weight: normal;
-  }
-  h3 .badge-wrapper.box span {
-    display: inline-flex;
+// Suggested
+
+.more-topics__container {
+  .more-topics__lists {
+    .more-topics__list-title {
+      font-size: var(--font-up-3);
+    }
+    .topic-list-body {
+      .topic-list-item {
+        &:last-of-type {
+          border-bottom: 1px solid var(--primary-low);
+        }
+      }
+    }
+    .more-topics__browse-more {
+      .badge-wrapper.box span {
+        display: inline-flex;
+      }
+    }
   }
 }
