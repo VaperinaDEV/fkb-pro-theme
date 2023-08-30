@@ -195,8 +195,22 @@
   }
 }
 
-#suggested-topics .topic-list .main-link {
+// Suggested topics
+
+.more-topics__container {
   max-width: var(--avatar-post-width);
+  .more-topics__lists {
+    .topic-list-header {
+      display: none;
+    }
+  }
+}
+
+.topic-above-footer-buttons-outlet.presence {
+  .presence-users {
+    background: transparent;
+    margin-bottom: 1em;
+  }
 }
 
 .read-state {
