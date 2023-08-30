@@ -416,19 +416,34 @@ blockquote aside.onebox {
 
 // Suggested
 
-// Suggested
-
 .more-topics__container {
+  .nav {
+    margin-block: unset;
+    margin-bottom: 2em;
+    li {
+     .mobile-view & {
+        &:last-child {
+          margin-right: unset; 
+        }
+      }      
+      .btn {
+        color: var(--primary);
+        background-color: transparent;
+        font-size: var(--font-up-1);
+        padding: 0.5em;
+        margin: 0.25em;
+        &:hover {
+          box-shadow: unset;
+        }
+        &.active {
+          box-shadow: unset;
+        }
+      }
+    }
+  }
   .more-topics__lists {
     .more-topics__list-title {
       font-size: var(--font-up-3);
-    }
-    .topic-list-body {
-      .topic-list-item {
-        &:last-of-type {
-          border-bottom: 1px solid var(--primary-low);
-        }
-      }
     }
     .more-topics__browse-more {
       .badge-wrapper.box span {
