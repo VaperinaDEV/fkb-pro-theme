@@ -416,12 +416,40 @@ blockquote aside.onebox {
 
 // Suggested
 
-.suggested-topics {
-  .suggested-topics-title {
-    font-size: var(--font-up-4);
-    font-weight: normal;
+.more-topics__container {
+  .nav {
+    position: relative;
+    margin-block: unset;
+    margin-bottom: 1em;
+    li {
+     .mobile-view & {
+        &:last-child {
+          margin-right: unset; 
+        }
+      }      
+      .btn {
+        color: var(--primary);
+        background-color: transparent;
+        font-size: var(--font-up-1);
+        padding: 0.5em;
+        margin: 0.25em;
+        &:hover {
+          box-shadow: unset;
+        }
+        &.active {
+          box-shadow: unset;
+        }
+      }
+    }
   }
-  h3 .badge-wrapper.box span {
-    display: inline-flex;
+  .more-topics__lists {
+    .more-topics__list-title {
+      font-size: var(--font-up-3);
+    }
+    .more-topics__browse-more {
+      .badge-wrapper.box span {
+        display: inline-flex;
+      }
+    }
   }
 }
