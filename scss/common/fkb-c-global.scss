@@ -41,7 +41,8 @@ img.avatar,
         margin-right: 1em;
       }
     }
-    > a {
+    > a,
+    > button {
       padding: 0.5em;
       margin: 0.25em;
       body.has-sidebar-page .list-controls & {
@@ -55,20 +56,28 @@ img.avatar,
       transition: color 0.25s;
       &:hover,
       &:focus {
-        color: var(--tertiary);
-        background-color: transparent;
+        color: var(--tertiary) !important;
+        background: transparent !important;
         border-bottom-color: var(--tertiary-low);
       }
       &.active {
-        color: var(--tertiary);
-        background-color: transparent;
+        color: var(--tertiary) !important;
+        background: transparent !important;
         border-bottom-color: var(--tertiary);
       } 
     }
+    > button {
+      &:active {
+        color: var(--tertiary) !important;
+        background: transparent !important;
+        border-bottom-color: var(--tertiary);
+      }
+    }
     &.active {
-      > a {
-        background-color: transparent;
-        color: var(--tertiary);
+      > a,
+      > button {
+        background: transparent !important;
+        color: var(--tertiary) !important;
       }
     }
   }
