@@ -418,8 +418,9 @@ blockquote aside.onebox {
 
 .more-topics__container {
   .nav {
+    position: relative;
     margin-block: unset;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
     li {
      .mobile-view & {
         &:last-child {
