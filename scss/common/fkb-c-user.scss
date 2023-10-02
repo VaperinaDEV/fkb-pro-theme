@@ -125,10 +125,9 @@ h2.username,
 
 .fk-d-menu.-animated {
   &[data-identifier="card"] {
-    z-index: z("header");
-  }
-  .fk-d-menu__inner-content {
-    border-radius: var(--d-default-border-radius);
+    .fk-d-menu__inner-content {
+      border-radius: var(--d-default-border-radius);
+    }
   }
 }
 
