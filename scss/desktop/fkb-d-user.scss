@@ -9,6 +9,13 @@
   border-radius: var(--d-default-border-radius);
 }
 
+.user-card,
+.group-card {
+  &:not(.show) {
+    position: absolute !important;
+  }
+}
+
 .user-card {
   .first-row {
     .user-card-avatar {
