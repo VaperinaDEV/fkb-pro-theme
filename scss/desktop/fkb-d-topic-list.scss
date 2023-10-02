@@ -12,14 +12,14 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
   &.has-sidebar-page {  
     #main-outlet {
       grid-template-areas:
+        "above-outlet above-outlet"
         "alerts alerts"
         "pins pins"
         "nav nav"
         "loader fkb-panel"
         "topic-list fkb-panel";
-      grid-template-columns: 1fr auto;
       grid-template-rows: auto auto auto auto 1fr;
-    }    
+    }
     .list-controls {
       grid-area: nav;
       @include bg-br;
@@ -78,19 +78,23 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
       display: block;
     }
     grid-template-areas:
+      "above-outlet above-outlet above-outlet"
       "alerts alerts alerts"
       "pins pins pins"
       "nav loader fkb-panel"
       "nav topic-list fkb-panel";
-    grid-template-columns: auto 1fr auto;
     grid-template-rows: auto auto auto 1fr;
+    grid-template-columns: 1fr;
     gap: 0 2em;
     @media screen and (max-width: 1100px) {
       gap: 0;
     }
     @if $right-sidebar-blocks-enabled == "true" {
       gap: 0;
-    }    
+    }
+    .above-main-container-outlet {
+      grid-area: above-outlet;
+    }
   }
   .container:first-of-type {
     grid-area: alerts;
