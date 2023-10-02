@@ -9,12 +9,6 @@
   border-radius: var(--d-default-border-radius);
 }
 
-.user-card,
-.group-card {
-  position: absolute;
-  z-index: z("header");
-}
-
 .user-card {
   .first-row {
     .user-card-avatar {

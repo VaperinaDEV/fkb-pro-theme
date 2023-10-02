@@ -1,0 +1,27 @@
+.discourse-kanban {
+  display: grid;
+  &:not(:empty) {
+    @include bg-br;
+    margin-bottom: 16px;
+    padding: 1em;
+    &.fullscreen {
+      border-radius: 0;
+      padding: 0;
+      margin-bottom: 0;
+      .discourse-kanban-container {
+        padding: 50px 10px 10px;
+      }
+    }
+    .discourse-kanban-container {
+      margin-left: 0;
+      padding: 40px 0 5px 0;
+      .kanban-spacer {
+        flex-direction: row;
+        width: auto;
+        left: 20px;
+        top: 10px;
+        gap: 0.5em;
+      }
+    }
+  }
+}

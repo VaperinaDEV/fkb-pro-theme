@@ -123,22 +123,27 @@ h2.username,
 
 // User Card
 
-.user-card.show,
-.group-card.show,
-.user-card.no-bg,
-.group-card.no-bg {
-  border-radius: var(--d-default-border-radius);
-  .card-content {
-    border-radius: var(--d-default-border-radius);
-    border: 1px solid var(--primary-low);
+.fk-d-menu.-animated {
+  &[data-identifier="card"] {
+    .fk-d-menu__inner-content {
+      border-radius: var(--d-default-border-radius);
+    }
   }
 }
 
 .user-card,
 .group-card {
+  border-radius: var(--d-default-border-radius) !important;
+  &.show,
+  &.no-bg {
+    .card-content {
+      border-radius: var(--d-default-border-radius);
+      border: 1px solid var(--primary-low);
+    }
+  }
   h3 {
     padding: 0.25em 0.5em;
-  }
+  }  
 }
 
 #user-card {
