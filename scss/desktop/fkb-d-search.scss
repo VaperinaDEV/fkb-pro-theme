@@ -30,6 +30,7 @@
     }
     input#search-term {
       background: var(--fkb-panel);
+      border-radius: var(--d-input-border-radius);
       &:focus {
         background: var(--secondary);
       }
