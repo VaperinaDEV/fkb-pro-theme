@@ -66,11 +66,7 @@
     
     {{#if user}}
       <div class="fkb-panel-contents-bottom">
-        <a class="fkb-link btn-default btn no-text btn-icon" href="/u/{{user}}/summary">{{d-icon "user"}}</a>
-        <a class="fkb-link btn-default btn no-text btn-icon" href="/u/{{user}}/preferences/account">{{d-icon "cog"}}</a>
-        <a class="fkb-link btn-default btn no-text btn-icon" href="/u/{{user}}/activity/drafts">{{d-icon "pencil-alt"}}</a>
-        <a class="fkb-link btn-default btn no-text btn-icon" href="/u/{{user}}/activity/bookmarks">{{d-icon "bookmark"}}&nbsp;{{userBookmarkCount}}</a>
-        <a class="fkb-link btn-default btn no-text btn-icon" href="/u/{{user}}/messages">{{d-icon "envelope"}}</a>
+        <FkbPanelItems />
       </div>
     {{/if}}
     
@@ -88,5 +84,7 @@
         <DButton @class="btn-primary sign-up-button" @action={{route-action "showCreateAccount"}} @label="sign_up" />
       </div>
     {{/unless}}
+    
+    <FkbPanelToggleButton />
   </div>
 {{/unless}}
