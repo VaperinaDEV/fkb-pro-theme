@@ -17,6 +17,17 @@ export default {
           }
         },
       });
+      api.onPageChange((url, title) => {
+        const fkbHidden = localStorage.getItem("fkb_panel_hidden") === "true";
+        const fkbVisible = localStorage.getItem("fkb_panel_hidden") === "false";
+        const isHidden = document.body.classList.contains("fkb-panel-hidden");
+        
+        if (fkbHidden && !isHidden) {
+          document.body.classList.add("fkb-panel-hidden");
+        } else if (fkbVisible && isHidden) {
+          document.body.classList.remove("fkb-panel-hidden");
+        }
+      });
     });
   },
 };
