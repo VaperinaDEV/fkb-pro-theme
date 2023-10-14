@@ -19,10 +19,12 @@ topic_image_backdrop_blur:
 topic_image_backdrop_brightness: 
   default: "0.65"
   description: "Change the topic_image_backdrop brightness size. Set a lower value for less bright backdrop image."
+  
 right_sidebar_blocks_enabled:
   type: bool
   default: false
   description: "Enabling this will add Right Sidebar Blocks theme component support and replace the original fkb panel with it."
+  
 custom_sidebar_enabled:
   type: bool
   default: false
@@ -40,6 +42,34 @@ custom_sidebar_description:
             ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
             in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
   description: "Custom sidebar description for visitors. (HTML allowed)"
+  
+fkb_panel_items:
+  default: >-
+    [{"title":"Summary","link":"/my/summary","icon":"user"},
+    {"title":"Settings","link":"/my/preferences/account","icon":"cog"},
+    {"title":"Drafts","link":"/my/activity/drafts","icon":"pencil-alt"},
+    {"title":"Bookmarks","link":"/my/activity/bookmarks","icon":"bookmark"},
+    {"title":"Messages","link":"/my/messages","icon":"envelope"}]
+  json_schema: >-
+    {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },        
+          "link": {
+            "type": "string"
+          },
+          "icon": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
 fkb_panel_show_solutions:
   type: bool
   default: false
