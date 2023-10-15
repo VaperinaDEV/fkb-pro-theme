@@ -9,9 +9,10 @@
   max-height: calc(100vh - 6em);
   width: var(--d-sidebar-width);
   @include bg-br;
-  transition: margin-right 0.25s;
+  transition: transform var(--d-sidebar-animation-time);
   body.fkb-panel-hidden & {
-    display: none;
+    animation: fkb-panel-hide var(--d-sidebar-animation-time) forwards;
+    transform: translateX(calc(var(--d-sidebar-width) + 2em));
   }
   .fkb-panel {
     display: none;
