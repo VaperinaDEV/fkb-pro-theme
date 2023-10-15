@@ -110,13 +110,13 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
       @media screen and (max-width: 1099px) {
         display: none;
       }
+      @if $right-sidebar-blocks-enabled == "true" {
+        display: none;
+      }
     }
     @media screen and (max-width: 1099px) {
       display: none;
-    }
-    @if $right-sidebar-blocks-enabled == "true" {
-      display: none;
-    }    
+    }   
   }
   .category-breadcrumb {
     .badge-wrapper.bullet .badge-category-parent-bg,
