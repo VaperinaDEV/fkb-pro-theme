@@ -16,7 +16,7 @@
       .tc-right-sidebar {
         @include sticky;
         top: calc(var(--header-offset) + 2em);
-        max-height: calc(100vh - 8em);
+        max-height: calc(100vh - 10em);
         max-width: var(--d-sidebar-width);
         width: 100%;
         @include bg-br;
@@ -24,6 +24,9 @@
         overflow-y: auto;
         grid-area: tc-right-sidebar;
         @media screen and (max-width: 1099px) {
+          display: none;
+        }
+        body.fkb-panel-hidden & {
           display: none;
         }
       }
