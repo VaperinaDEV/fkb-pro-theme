@@ -9,10 +9,10 @@
   max-height: calc(100vh - 6em);
   width: var(--d-sidebar-width);
   @include bg-br;
-  transition: margin-right 0.25s;
+  transition: transform var(--d-sidebar-animation-time);
   body.fkb-panel-hidden & {
-    position: fixed;
-    right: -100%;
+    animation: fkb-panel-hide var(--d-sidebar-animation-time) forwards;
+    transform: translateX(100vw);
   }
   .fkb-panel {
     display: none;
@@ -188,13 +188,19 @@
         font-size: 0.9em;
       }
     }
-    button.fkb-panel-toggle {
-      position: fixed;
-      bottom: 1em;
-      right: 1em;
-      body.fkb-panel-hidden & {
-        transform: rotate(180deg);
-      }
+  }
+}
+
+
+// FKB Panel Toggle Button
+
+.fkb-panel-toggle-button {
+  button.fkb-panel-toggle {
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+    body.fkb-panel-hidden & {
+      transform: rotate(180deg);
     }
   }
 }

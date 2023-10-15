@@ -16,16 +16,21 @@
       .tc-right-sidebar {
         @include sticky;
         top: calc(var(--header-offset) + 2em);
-        max-height: calc(100vh - 8em);
+        max-height: calc(100vh - 10em);
         max-width: var(--d-sidebar-width);
         width: 100%;
         @include bg-br;
         padding: 1em;
         overflow-y: auto;
         grid-area: tc-right-sidebar;
+        transition: transform var(--d-sidebar-animation-time);
+        body.fkb-panel-hidden & {
+          animation: fkb-panel-hide var(--d-sidebar-animation-time) forwards;
+          transform: translateX(100vw);
+        }
         @media screen and (max-width: 1099px) {
           display: none;
-        }
+        }        
       }
     }
   }
