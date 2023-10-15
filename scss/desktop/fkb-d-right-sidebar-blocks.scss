@@ -26,7 +26,7 @@
         transition: transform var(--d-sidebar-animation-time);
         body.fkb-panel-hidden & {
           animation: fkb-panel-hide var(--d-sidebar-animation-time) forwards;
-          transform: translateX(calc(var(--d-sidebar-width) + 2em));
+          transform: translateX(100vw);
         }
         @media screen and (max-width: 1099px) {
           display: none;
