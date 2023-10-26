@@ -4,6 +4,11 @@
 
 .category-list {
   width: calc(100vw - 20px);
+  &.subcategory-list {
+    .parent-category {
+      display: none;
+    }
+  }
   .category-list-item {
     margin: 0;
     &:first-child {
