@@ -8,6 +8,14 @@
     .parent-category {
       display: none;
     }
+    .subcategories {
+      .category-list-item {
+        // If only one subcategory (first and last child)
+        &:first-child:last-child {
+          border-radius: var(--d-default-border-radius);
+        }
+      }
+    }
   }
   .category-list-item {
     margin: 0;
