@@ -7,34 +7,11 @@
   border-radius: var(--d-default-border-radius);
 }
 
-.badge-wrapper.bullet {
-  .badge-category-parent-bg {
-    width: 9px;
-    margin-right: 2px;
-    border-radius: 50%;
-    + .badge-category-bg {
-      width: 9px;
+.badge-category__wrapper {
+  .badge-category {
+    &:before {
+      border-radius: 50%;
     }
-  }
-  .badge-category-bg {
-    border-radius: 50%;
-  }
-}
-
-.badge-wrapper.box {
-  height: max-content;
-  span {
-    padding: 0 0.15em;
-    vertical-align: middle;
-    line-height: var(--line-height-medium);
-    svg {
-      width: 0.8em !important;
-      height: 0.8em !important;
-    }
-  }
-  span.badge-category-bg,
-  span.badge-category-parent-bg {
-    border-radius: var(--d-default-border-radius);
   }
 }
 
@@ -47,14 +24,6 @@ p.favorite-count {
     .d-icon {
       color: var(--header_primary);
     }
-  }
-  .badge-wrapper.bar {
-    span.badge-category {
-      color: var(--header_primary);
-    }
-  }
-  .badge-wrapper .d-icon {
-    color: currentColor;
   }
   .topic-header-extra .discourse-tags {
     a {

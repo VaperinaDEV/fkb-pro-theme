@@ -89,22 +89,10 @@
           }
         }
       }
-      .badge-wrapper {
+      .badge-category__wrapper {
         margin: 0.5em 0.5em -1em auto;
         font-size: var(--font-down-2);
         font-weight: normal;
-        &.box {
-          margin: 0 0.5em -1em auto;
-          span {
-            &.badge-category-bg,
-            &.badge-category-parent-bg {
-              border-radius: 0 0 0.75em 0.75em;
-            }
-          }
-        }
-        .d-icon {
-          color: currentColor;
-        }
       }
     }
     .link-middle-line {
