@@ -5,6 +5,7 @@
     .full-width {
       display: grid;
       grid: "tc-topic-list tc-right-sidebar";
+      grid-template-columns: 1fr;
       gap: 0 2em;
       @media screen and (max-width: 1099px) {
         display: block;
