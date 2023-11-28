@@ -5,15 +5,8 @@
 input,
 select,
 input[type] {
-  outline: none !important;
   &:focus {
     @include fkb-focus;
-  }
-}
-
-textarea {
-  &:focus {
-    outline: none !important;
   }
 }
 
@@ -27,7 +20,6 @@ textarea,
 }
 
 .d-editor-textarea-wrapper {
-  outline: none !important;
   &.in-focus {
     @include fkb-focus;
   }
@@ -35,7 +27,6 @@ textarea,
 
 .d-date-input {
   .date-picker {
-    outline: none !important;
     &:focus {
       @include fkb-focus;
     }
@@ -51,7 +42,6 @@ textarea,
 .select-kit.single-select {
   .select-kit-filter {
     border-radius: var(--d-select-body-border-radius) 0 var(--d-select-body-border-radius) 0;
-    outline: none !important;
     border: none !important;
     &.is-expanded .select-kit-header:not(.btn),
     .select-kit-header:not(.btn):focus,
@@ -80,10 +70,8 @@ textarea,
     }
   }
   &.multi-select {
-    outline: none !important;
     border-radius: var(--d-input-border-radius);
     .multi-select-header {
-      outline: none !important;
       border-radius: var(--d-input-border-radius);
       &.is-focused,
       &:focus {
@@ -105,7 +93,6 @@ textarea,
   }
   &.is-expanded {
     .select-kit-wrapper {
-      outline: none !important;
       .multi-select-header {
         @include fkb-focus;
       }
@@ -121,7 +108,6 @@ textarea,
   }
   &.combo-box {
     .select-kit-header {
-      outline: none !important;
       &.is-focused {
         @include fkb-focus;
       }
