@@ -18,7 +18,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
         "nav nav"
         "loader fkb-panel"
         "topic-list fkb-panel";
-      grid-template-rows: auto auto auto auto 1fr;
+      grid-template-rows: auto auto auto auto auto 1fr;
       grid-template-columns: 1fr;
     }
     .list-controls {
@@ -84,7 +84,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
       "pins pins pins"
       "nav loader fkb-panel"
       "nav topic-list fkb-panel";
-    grid-template-rows: auto auto auto 1fr;
+    grid-template-rows: auto auto auto auto 1fr;
     grid-template-columns: 0fr minmax(0, 1fr);
     gap: 0 2em;
     @media screen and (max-width: 1100px) {
