@@ -24,6 +24,11 @@ right_sidebar_blocks_enabled:
   type: bool
   default: false
   description: "Enabling this will add Right Sidebar Blocks theme component support and replace the original fkb panel with it."
+
+right_sidebar_below_fkb_panel:
+  type: bool
+  default: false
+  description: "Enabling this will add Right Sidebar Blocks theme component below the FKB Panel."
   
 custom_sidebar_enabled:
   type: bool

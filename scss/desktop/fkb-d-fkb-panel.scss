@@ -4,11 +4,8 @@
 
 .fkb-panel-sidebar {
   display: none;
-  top: calc(var(--header-offset) + 2em);
-  position: sticky;
-  max-height: calc(100vh - 6em);
+  height: 100%;
   width: var(--d-sidebar-width);
-  @include bg-br;
   transition: transform var(--d-sidebar-animation-time);
   body.fkb-panel-hidden & {
     animation: fkb-panel-hide var(--d-sidebar-animation-time) forwards;
@@ -16,6 +13,9 @@
   }
   .fkb-panel {
     display: none;
+    @include sticky;
+    top: calc(var(--header-offset) + 2em);
+    @include bg-br;
     margin-bottom: 0.5em;
     color: var(--primary-high);
     .visitor {
@@ -191,7 +191,6 @@
   }
 }
 
-
 // FKB Panel Toggle Button
 
 .fkb-panel-toggle-button {
@@ -204,3 +203,35 @@
     }
   }
 }
+
+// FKBD - Right Sidebar Blocks below FKB Panel
+
+@if $right-sidebar-below-fkb-panel == "true" {
+  .list-container {
+    .full-width {
+      #list-area {
+        width: 100%;
+      }
+      .tc-right-sidebar {
+        display: none;
+      }
+    }
+  }
+  .fkb-panel-sidebar {
+    .fkb-panel {
+      position: relative;
+      top: 0;
+      margin-bottom: 1em;
+    }
+    .tc-right-sidebar {
+      @include sticky;
+      top: calc(var(--header-offset) + 2em);
+      max-height: calc(100vh - var(--header-offset) - 4em);
+      max-width: var(--d-sidebar-width);
+      width: 100%;
+      @include bg-br;
+      padding: 1em;
+      overflow-y: auto;
+    }
+  }
+}     

@@ -24,7 +24,7 @@
 }
 
 .login-modal,
-.d-modal.create-account .modal-body {
+.d-modal.create-account .d-modal__body {
   border-radius: var(--d-default-border-radius);
 }
 
@@ -35,7 +35,7 @@
       border-radius: var(--d-default-border-radius) var(--d-default-border-radius) 0 0;
       margin: 0;
       + div {
-        > .modal-body {
+        > .d-modal__body {
           border-radius: 0 0 var(--d-default-border-radius) var(--d-default-border-radius);
           .login-left-side {
             border-radius: 0 var(--d-default-border-radius) var(--d-default-border-radius) var(--d-default-border-radius);
@@ -43,7 +43,7 @@
         }
       } 
     }
-    .modal-body {
+    .d-modal__body {
       border-radius: var(--d-default-border-radius);
     }
   }
