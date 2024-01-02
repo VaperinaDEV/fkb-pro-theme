@@ -109,6 +109,9 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
         &.bulk-select {
           position: absolute;
           top: 8px;
+          .mobile-view & {
+            top: 0;
+          }
           left: 0;          
           width: 100%;
           height: 100%;
