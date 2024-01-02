@@ -92,8 +92,10 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     .topic-list-item {
       position: relative;
       &:first-child {
-        &.bulk-select {
-          top: 0;
+        .topic-list-data {
+          &.bulk-select {
+            top: 0;
+          }
         }
       }
       .topic-list-data {
