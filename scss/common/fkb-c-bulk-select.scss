@@ -95,6 +95,10 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
         .topic-list-data {
           &.bulk-select {
             top: 0;
+            .mobile-view & {
+              padding-top: 0;
+              margin-top: -1px;
+            }
             label {
               height: calc(100% - 28px);
             }
