@@ -1,1 +1,8 @@
-{{!-- Remove topic list header --}}
+{{#if bulkSelectEnabled}}
+  <th class="bulk-select topic-list-data">
+    {{#if canBulkSelect}}
+      {{raw "flat-button" class="bulk-select" icon="list" title="topics.bulk.toggle"}}
+    {{/if}}
+  </th>
+{{/if}}
+{{raw "topic-list-header-column" order='default' name=listTitle bulkSelectEnabled=bulkSelectEnabled showBulkToggle=canBulkSelect canBulkSelect=canBulkSelect canDoBulkActions=canDoBulkActions}}

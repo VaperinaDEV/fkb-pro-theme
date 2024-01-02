@@ -1,0 +1,171 @@
+.navigation-topics,
+.user-messages-page,
+body[class*="tag-"]:not(.archetype-regular):not(.archetype-banner),
+body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
+  &.bulk-select-enabled:not(.bulk-still-active) {
+    .desktop-view & {
+      .dismiss-container-top {
+        @include sticky;
+        top: 13px;
+        z-index: z("header");
+      }
+    }
+    .mobile-view & {
+      .list-controls .navigation-container .navigation-controls {
+        display: none;
+      }
+    }
+  }
+  // Safari requires as it handle tpl as table-row and position absolute / relative not works
+  .topic-list {
+    .topic-list-item {
+      display: block;
+    }
+  }
+  .topic-list {
+    &.sticky-header .topic-list-header,
+    .topic-list-header {
+      display: block;    
+      position: fixed;
+      bottom: env(safe-area-inset-bottom);;
+      top: auto;
+      box-shadow: var(--shadow-card);      
+      background: var(--secondary);
+      border-top-left-radius: var(--d-default-border-radius);
+      border-top-right-radius: var(--d-default-border-radius);
+      z-index: z("usercard");
+      .mobile-view & {
+        left: 0;
+        bottom: 1.5em;
+        margin-bottom: env(safe-area-inset-bottom);        
+        border-top-right-radius: var(--d-default-border-radius);
+        border-bottom-right-radius: var(--d-default-border-radius);
+        border-top-left-radius: 0;
+      }
+      span:not(.bulk-select-topics) {
+        display: none;
+      }
+      tr {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border-bottom: none;
+        th.default.topic-list-data,
+        th.bulk-select.topic-list-data {
+          padding: 0;
+          button.bulk-select {
+            padding: 1rem 1.25rem;
+            margin-right: 0;
+            line-height: var(--line-height-small);
+          }
+        }
+        th.bulk-select.topic-list-data {
+          width: auto !important;
+          > button.bulk-select {
+            display: none;
+          }
+        }
+        th.default.topic-list-data {
+          .bulk-select-topics {
+            padding-left: 0;
+            align-items: center;
+          }
+        }
+      }
+    }
+    &.sticky-header .topic-list-header {
+      .mobile-view & {
+        max-width: calc(100% - 36px);
+        overflow: hidden;
+        tr {
+          max-width: 100%;
+          overflow: auto;
+          .bulk-select-topics .btn {
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+    .topic-list-data {
+      max-width: 100%;
+    }
+    .topic-list-item {
+      position: relative;
+      &:first-child {
+        .topic-list-data {
+          &.bulk-select {
+            top: 0;
+            .mobile-view & {
+              padding-top: 0;
+              margin-top: -1px;
+            }
+            label {
+              height: calc(100% - 28px);
+            }
+          }
+        }
+      }
+      .topic-list-data {
+        &.bulk-select {
+          position: absolute;
+          top: 8px;
+          .mobile-view & {
+            top: 0;
+          }
+          left: 0;          
+          width: 100%;
+          height: 100%;
+          max-width: 100%;
+          z-index: 3;
+          label {
+            display: flex;
+            flex-direction: row-reverse;
+            padding: 10px;
+            height: calc(100% - 36px);
+            background: rgba(var(--tertiary-rgb), 0.03);
+            border-radius: var(--d-default-border-radius);
+            .mobile-view & {
+              margin-top: 1px;
+            }
+            .discourse-no-touch &, 
+            .discourse-touch.desktop-view & {
+              &:hover,
+              &:active {
+                background: rgba(var(--tertiary-rgb), 0.1);
+              }
+              &.selected {
+                background: rgba(var(--tertiary-rgb), 0.3);
+              }
+            }
+            &.selected {
+              background: rgba(var(--tertiary-rgb), 0.3);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Bulk select still active on other pages
+body.bulk-select-enabled {
+  &.bulk-still-active {
+    .topic-list {
+      .topic-list-item {
+        .topic-list-data {
+          &.bulk-select {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+body.user-activity-page {
+  &:not(.user-activity-bookmarks-page) {
+    .topic-list-header {
+      display: none;
+    }
+  }
+}
