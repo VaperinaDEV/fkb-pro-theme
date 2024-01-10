@@ -39,6 +39,20 @@ export default {
           tracker.resetTracking();
         }
       });
+
+      // Sticky New Topic Banner PM
+      api.modifyClass("controller:user-topics-list", {
+        pluginId: "sticky-new-topics-banner",
+        @action
+        showInserted(event) {
+          event?.preventDefault();
+          this.model.loadBefore(this.pmTopicTrackingState.newIncoming);
+          this.pmTopicTrackingState.resetIncomingTracking();
+
+          const userNavigation = document.querySelector(".user-primary-navigation");
+          userNavigation.scrollIntoView();
+        }
+      }); 
     });
   },
 };
