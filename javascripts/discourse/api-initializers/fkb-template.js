@@ -38,6 +38,16 @@ export default {
         },
       });
 
+      api.modifyClass("component:discovery/topics", {
+        pluginId: "new-new",
+        get renderNewListHeaderControls() {
+          return (
+            this.showTopicsAndRepliesToggle &&
+            !this.args.bulkSelectEnabled
+          );
+        }
+      });
+
       api.modifyClass("component:topic-list", {
         pluginId: "toggle-bulk",
 
