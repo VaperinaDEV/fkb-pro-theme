@@ -243,7 +243,7 @@
             @include sticky;
             top: calc(var(--header-offset) + 2em);
             overflow-y: auto;
-            max-height: calc(100vh - var(--header-offset) - 4em);
+            max-height: calc(100vh - 10em);
           }
         }
       }
