@@ -28,10 +28,10 @@
         }
         
         .rs-component {
-          @include bg-br;
-          padding: 1em;
-          
           @if $right-sidebar-blocks-expanded == "true" {
+            @include bg-br;
+            padding: 1em;
+            
             &:last-of-type {
               @include sticky;
               top: calc(var(--header-offset) + 2em);
