@@ -2,6 +2,7 @@
 
 @if $right-sidebar-blocks-enabled == "true" {
   .list-container {
+    
     .full-width {
       display: grid;
       grid: "tc-topic-list tc-right-sidebar";
@@ -10,19 +11,38 @@
       @media screen and (max-width: 1099px) {
         display: block;
       }
+      
       #list-area {
         width: 100%;
         grid-area: tc-topic-list;
       }
-      .tc-right-sidebar {
-        @include sticky;
-        top: calc(var(--header-offset) + 2em);
-        max-height: calc(100vh - 10em);
+      
+      .tc-right-sidebar {   
+        @if $right-sidebar-blocks-expanded == "false" {
+          @include sticky;
+          top: calc(var(--header-offset) + 2em);
+          @include bg-br;
+          padding: 1em;
+          max-height: calc(100vh - 10em);
+          overflow-y: auto;
+        }
+        
+        .rs-component {
+          @include bg-br;
+          padding: 1em;
+          
+          @if $right-sidebar-blocks-expanded == "true" {
+            &:last-of-type {
+              @include sticky;
+              top: calc(var(--header-offset) + 2em);
+              overflow-y: auto;
+              max-height: calc(100vh - 10em);
+            }
+          }
+        }
+        
         max-width: var(--d-sidebar-width);
         width: 100%;
-        @include bg-br;
-        padding: 1em;
-        overflow-y: auto;
         grid-area: tc-right-sidebar;
         transition: transform var(--d-sidebar-animation-time);
         body.fkb-panel-hidden & {
@@ -31,7 +51,7 @@
         }
         @media screen and (max-width: 1099px) {
           display: none;
-        }
+        } 
 
         // Add custom scrollbar (borrow from sidebar)
         --scrollbarBg: transparent;
