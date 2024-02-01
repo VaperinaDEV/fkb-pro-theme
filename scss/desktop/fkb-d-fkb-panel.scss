@@ -223,15 +223,33 @@
       top: 0;
       margin-bottom: 1em;
     }
+    
     .tc-right-sidebar {
-      @include sticky;
-      top: calc(var(--header-offset) + 2em);
-      max-height: calc(100vh - var(--header-offset) - 4em);
+      @if $right-sidebar-blocks-expanded == "false" {
+        @include sticky;
+        top: calc(var(--header-offset) + 2em);
+        @include bg-br;
+        padding: 1em;
+        max-height: calc(100vh - var(--header-offset) - 4em);
+        overflow-y: auto;
+      }
+      
+      .rs-component {
+        @include bg-br;
+        padding: 1em;
+          
+        @if $right-sidebar-blocks-expanded == "true" {
+          &:last-of-type {
+            @include sticky;
+            top: calc(var(--header-offset) + 2em);
+            overflow-y: auto;
+            max-height: calc(100vh - var(--header-offset) - 4em);
+          }
+        }
+      }
+      
       max-width: var(--d-sidebar-width);
       width: 100%;
-      @include bg-br;
-      padding: 1em;
-      overflow-y: auto;
 
       // Add custom scrollbar (borrow from sidebar)
       --scrollbarBg: transparent;
