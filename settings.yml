@@ -29,6 +29,11 @@ right_sidebar_below_fkb_panel:
   type: bool
   default: false
   description: "Enabling this will add Right Sidebar Blocks theme component below the FKB Panel."
+
+right_sidebar_blocks_expanded:
+  type: bool
+  default: false
+  description: "In this mode the components appears separately and the last component is sticky."
   
 custom_sidebar_enabled:
   type: bool
