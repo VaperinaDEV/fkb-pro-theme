@@ -36,16 +36,25 @@ img.avatar,
 
 .nav-pills {
   > li {
-    margin-right: 0;
+    .mobile-view & {
+      border: none;
+      margin-right: 0.25em;
+      &:last-child {
+        margin-right: 1em;
+      }
+    }
     > a,
     > button {
-      padding: calc(0.5em + 4px) 0.75em 0.5em;
-      .mobile-view & {
-        padding: calc(0.25em + 4px) 0.5em 0.5em;
-        line-height: var(--line-height-small);
-        border-radius: 0;
+      padding: 0.5em;
+      margin: 0.25em;
+      body.has-sidebar-page .list-controls & {
+        padding: 0 0.5em;
+        margin: 0 0.25em;
       }
-      background: transparent;
+      .mobile-view & {
+        margin: 0.25em 0.5em 0.25em 0;
+        border-radius: 0;
+      }            
       border-bottom: 4px solid transparent;
       transition: color 0.25s;
       &:hover,
@@ -58,7 +67,7 @@ img.avatar,
         color: var(--tertiary) !important;
         background: transparent !important;
         border-bottom-color: var(--tertiary);
-      }
+      } 
     }
     > button {
       &:active {
