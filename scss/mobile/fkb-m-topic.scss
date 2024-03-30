@@ -121,20 +121,6 @@
   }
 }
 
-// Topic timeline
-
-#topic-progress {
-  border-radius: var(--d-default-border-radius);
-  overflow: hidden;
-}
-
-.timeline-container.timeline-fullscreen {
-  .topic-timeline .timeline-scrollarea-wrapper {
-    padding-right: 1em;
-    width: 120px;
-  }
-}
-
 // Reactions
 
 .fake-reaction {
@@ -151,20 +137,6 @@
       display: none;
     }
   }
-}
-
-// Topic Footer
-
-#topic-footer-buttons {
-  .topic-notifications-button {
-    .reason {
-      align-items: center;
-    }
-  }
-}
-
-.timeline-container.timeline-fullscreen.show .topic-timeline .timeline-footer-controls {
-  display: inline-flex;
 }
 
 // Lightbox

@@ -32,6 +32,8 @@ img.avatar,
   background: var(--secondary);
 }
 
+// Nav Pills
+
 .nav-pills {
   > li {
     .mobile-view & {
@@ -51,6 +53,7 @@ img.avatar,
       }
       .mobile-view & {
         margin: 0.25em 0.5em 0.25em 0;
+        border-radius: 0;
       }            
       border-bottom: 4px solid transparent;
       transition: color 0.25s;
