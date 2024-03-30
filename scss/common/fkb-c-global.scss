@@ -32,26 +32,20 @@ img.avatar,
   background: var(--secondary);
 }
 
+// Nav Pills
+
 .nav-pills {
   > li {
-    .mobile-view & {
-      border: none;
-      margin-right: 0.25em;
-      &:last-child {
-        margin-right: 1em;
-      }
-    }
+    margin-right: 0;
     > a,
     > button {
-      padding: 0.5em;
-      margin: 0.25em;
-      body.has-sidebar-page .list-controls & {
-        padding: 0 0.5em;
-        margin: 0 0.25em;
-      }
+      padding: calc(0.5em + 4px) 0.75em 0.5em;
       .mobile-view & {
-        margin: 0.25em 0.5em 0.25em 0;
-      }            
+        padding: calc(0.25em + 4px) 0.5em 0.5em;
+        line-height: var(--line-height-small);
+        border-radius: 0;
+      }
+      background: transparent;
       border-bottom: 4px solid transparent;
       transition: color 0.25s;
       &:hover,
@@ -64,7 +58,7 @@ img.avatar,
         color: var(--tertiary) !important;
         background: transparent !important;
         border-bottom-color: var(--tertiary);
-      } 
+      }
     }
     > button {
       &:active {
