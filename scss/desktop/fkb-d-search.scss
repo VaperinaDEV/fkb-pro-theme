@@ -10,12 +10,6 @@
     border-radius: var(--d-default-border-radius);
     line-height: var(--line-height-large);
   }
-  .search-link {
-    &:focus,
-    &:hover {
-      background: var(--highlight-low);
-    }
-  }
   .search-input {
     background: var(--fkb-panel);
     border: 1px solid transparent;

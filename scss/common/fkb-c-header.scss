@@ -168,9 +168,6 @@
         .desktop-view & {
           padding: 1em;
         }
-        &:hover {
-          background: var(--tertiary-400);
-        }
       }
       &.bottom-tabs {
         border-top: 1px solid var(--primary-300);
@@ -226,10 +223,6 @@
                 transform-origin: 1em;
               }
             }
-          }
-          &:hover,
-          &:focus-within {
-            background: var(--tertiary-400);
           }
         }
       }

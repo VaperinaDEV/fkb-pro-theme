@@ -12,6 +12,12 @@ img.avatar,
   border-radius: var(--d-avatar-border-radius);
 }
 
+.fk-d-toasts {
+  .fk-d-toast {
+    border-radius: var(--d-default-border-radius);
+  }
+}
+
 .tippy-box {
   border-radius: calc(var(--d-default-border-radius) / 2);
 }
@@ -126,14 +132,18 @@ img.avatar,
 // Modal
 // Modal Global
 
-.bootbox.modal,
 .dialog-content {
   border-radius: var(--d-default-border-radius);
   outline: 0;
 }
 
-.d-modal__container {
-  border-radius: var(--d-default-border-radius);
+.d-modal {
+  &__container {
+    border-radius: var(--d-default-border-radius);
+    .mobile-view & {
+      border-radius: var(--d-default-border-radius) var(--d-default-border-radius) 0 0;
+    }
+  }
 }
 
 .modal.has-tabs {

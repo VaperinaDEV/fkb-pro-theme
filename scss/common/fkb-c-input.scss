@@ -147,19 +147,4 @@ textarea,
       }
     }
   }
-  .select-kit-row {
-    &.is-highlighted {
-      background: var(--tertiary-low);
-    }
-    &.is-selected {
-      &.is-highlighted {
-        background: var(--tertiary-low);
-      }
-    }
-  }
-  .select-kit-collection {
-    &:hover .select-kit-row.is-highlighted:hover {
-      background: var(--tertiary-low);
-    }
-  }
 }
