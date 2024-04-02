@@ -14,6 +14,8 @@
       "header_background": "ffffff",
       "header_primary": "242526",
       "highlight": "147efb",
+      "selected": "c3dffd",
+      "hover": "dcecf",
       "danger": "f8745c",
       "success": "42b72a",
       "love": "fa6c8d"
@@ -26,6 +28,8 @@
       "header_background": "242526",
       "header_primary": "ffffff",
       "highlight": "147efb",
+      "selected": "033876",
+      "hover": "022c5d",  
       "danger": "f8745c",
       "success": "42b72a",
       "love": "fa6c8d"
