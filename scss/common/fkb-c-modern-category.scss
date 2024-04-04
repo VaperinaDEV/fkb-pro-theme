@@ -10,6 +10,9 @@
 
 .custom-category-boxes {
   &:not(.above-discovery-categories-outlet) {
+    @media (max-width: 1180px) {
+      grid-template-columns: 1fr;
+    }
     .category-box {
       .category-box-inner {
         column-gap: 24px;
