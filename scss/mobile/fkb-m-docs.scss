@@ -7,11 +7,6 @@ body:not(.categories-list) .docs-browse {
     .topic-list {
       .main-link {
         padding: 0.5em 0;
-        .link-bottom-line {
-          .mobile-view & {
-            padding: 0.6em 1em 0 0;
-          }
-        }
       }
     }
   }
