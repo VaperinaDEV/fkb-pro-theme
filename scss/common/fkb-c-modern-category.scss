@@ -1,0 +1,25 @@
+#header-list-area {
+  .custom-category-boxes {
+    grid-template-columns: 1fr 1fr;
+    margin-top: 0;
+    @media (max-width: 1180px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.custom-category-boxes {
+  &:not(.above-discovery-categories-outlet) {
+    .category-box {
+      .category-box-inner {
+        column-gap: 24px;
+      }
+    }
+  }
+}
+
+.navigation-categories .navigation-container,
+.categories-list .navigation-container {
+  border-bottom: none;
+  padding-top: 0;
+}
