@@ -19,6 +19,13 @@ topic_image_backdrop_blur:
 topic_image_backdrop_brightness: 
   default: "0.65"
   description: "Change the topic_image_backdrop brightness size. Set a lower value for less bright backdrop image."
+
+category_badge_style:
+  default: bullet
+  type: enum
+  choices:
+    - box
+  description: "Select the category badge style."
   
 right_sidebar_blocks_enabled:
   type: bool

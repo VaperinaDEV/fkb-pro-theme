@@ -11,8 +11,6 @@
     line-height: var(--line-height-large);
   }
   .search-input {
-    background: var(--fkb-panel);
-    border: 1px solid transparent;
     border-radius: var(--d-input-border-radius);
     &:focus {
       background: var(--secondary);
@@ -23,7 +21,6 @@
       box-shadow: 0px 0px 0px 1px var(--tertiary);
     }
     input#search-term {
-      background: var(--fkb-panel);
       border-radius: var(--d-input-border-radius);
       &:focus {
         background: var(--secondary);
