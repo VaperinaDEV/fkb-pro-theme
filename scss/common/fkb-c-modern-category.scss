@@ -2,6 +2,9 @@
   .custom-category-boxes {
     grid-template-columns: 1fr 1fr;
     margin-top: 0;
+    @media (max-width: 1180px) {
+      grid-template-columns: 1fr;
+    }
   }
 }
 
@@ -18,4 +21,5 @@
 .navigation-categories .navigation-container,
 .categories-list .navigation-container {
   border-bottom: none;
+  padding-top: 0;
 }
