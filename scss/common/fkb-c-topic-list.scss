@@ -91,7 +91,7 @@
       }
       .badge-category__wrapper {
         margin: 0.5em 0.5em -1em auto;
-        @if $category-badge-style === "box" {
+        @if $category-badge-style == "box" {
           margin: 0 0.5em -1em auto;
           .badge-category {
             border-radius: 0 0 calc(var(--d-default-border-radius) * 0.75) calc(var(--d-default-border-radius) * 0.75);
