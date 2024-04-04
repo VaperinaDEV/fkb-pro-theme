@@ -1,0 +1,11 @@
+.custom-search-banner-wrap {
+  .search-input {
+    input#search-term[type=text] {
+      box-shadow: none;
+    }
+  }
+  .results {
+    top: 3em;
+    border-radius: var(--d-default-border-radius);
+  }
+}
