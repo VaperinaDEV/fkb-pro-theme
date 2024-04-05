@@ -8,8 +8,13 @@ body:not(.categories-list) .docs-browse {
       .main-link {
         padding: 0.5em 0;
 
-        .link-bottom-line a {
-          white-space: normal;
+        .link-bottom-line {
+          .badge-category__wrapper {
+            .badge-category__name {
+              overflow: hidden !important;
+              max-width: 45vw;
+            }
+          }
         }
       }
     }
