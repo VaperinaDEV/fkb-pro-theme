@@ -6,6 +6,12 @@ body {
   background: var(--fkb-bg);
 }
 
+// Resets the Versatille banner modified width on main-outlet
+#main > div #main-outlet {
+  max-width: 100%;
+  width: 100%;
+}
+
 img.avatar,
 .card-avatar-placeholder,
 .placeholder-avatar {
