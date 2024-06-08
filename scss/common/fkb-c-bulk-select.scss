@@ -10,6 +10,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
         z-index: z("header");
       }
     }
+    
     .mobile-view & {
       .list-controls .navigation-container .navigation-controls {
         display: none;
@@ -41,6 +42,11 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
         border-top-right-radius: var(--d-default-border-radius);
         border-bottom-right-radius: var(--d-default-border-radius);
         border-top-left-radius: 0;
+      }
+      // If footer nav active on iPhone
+      html.footer-nav-visible:not(.footer-nav-ipad) & {
+        bottom: calc(var(--footer-nav-height) + 1.5em);
+        transition: right linear 0.1s;
       }
       span:not(.bulk-select-topics) {
         display: none;
