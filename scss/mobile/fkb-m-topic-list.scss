@@ -146,7 +146,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
   }
   
     // If footer nav active on iPhone
-  &.footer-nav-visible:not(.footer-nav-ipad) {
+  html.footer-nav-visible:not(.footer-nav-ipad) & {
     .list-controls {
       .navigation-container {
         .navigation-controls {
@@ -178,7 +178,7 @@ body.nav-controls-hidden {
     }
     
     // If footer nav active on iPhone
-    &.footer-nav-visible:not(.footer-nav-ipad) {
+    html.footer-nav-visible:not(.footer-nav-ipad) & {
       .list-controls {
         .navigation-container {
           .navigation-controls {
