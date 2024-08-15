@@ -260,6 +260,9 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     .category-navigation,
     .navigation-container {
       @include bg-br;
+      @media screen and (min-width: 801px) {
+        flex-direction: column;
+      }
       ol {
         padding: 1em 1em 0 1em;
         margin: 0;
