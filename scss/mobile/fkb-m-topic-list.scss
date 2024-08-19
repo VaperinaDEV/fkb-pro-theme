@@ -188,3 +188,31 @@ body.nav-controls-hidden {
 .extra-info-wrapper h1 {
   margin: 0;
 }
+
+// Navigation bar modal
+.fk-d-menu-modal {
+  &.list-control-toggle-link-content {
+    .d-modal__body {
+      padding-block: 0;
+    }
+    .dropdown-menu__item {
+      &:first-child {
+        a {
+          border-radius: var(--d-default-border-radius) var(--d-default-border-radius) 0 0;
+        }
+      }
+      &:not(last-child) {
+        a {
+          border-bottom: 1px solid var(--primary-low);
+        }
+      }
+      
+      a {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+        padding: 1em;
+      }
+    }
+  }
+}
