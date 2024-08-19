@@ -42,13 +42,13 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
         box-shadow: 0 0 0 1px var(--primary-high), var(--shadow-card);
         html.footer-nav-visible:not(.footer-nav-ipad) & {
           bottom: calc(var(--footer-nav-height) + 6em);
-          transition: right linear 0.1s;
+          transition: bottom linear 0.1s;
         }
       }
       // If footer nav active
       html.footer-nav-visible:not(.footer-nav-ipad) & {
         bottom: calc(var(--footer-nav-height) + 1.5em);
-        transition: right linear 0.1s;
+        transition: bottom linear 0.1s;
       }
       span:not(.bulk-select-topics) {
         display: none;
