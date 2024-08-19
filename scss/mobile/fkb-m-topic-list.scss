@@ -24,6 +24,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
       #navigation-bar {
         position: fixed;
         bottom: 1.5em;
+        left: 0.75em;
         margin-bottom: env(safe-area-inset-bottom); 
         z-index: 100;
         .list-control-toggle-link-trigger {
