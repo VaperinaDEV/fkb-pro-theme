@@ -36,12 +36,10 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
       border-top-right-radius: var(--d-default-border-radius);
       z-index: z("usercard");
       .mobile-view & {
-        left: 0;
-        bottom: 1.5em;
-        margin-bottom: env(safe-area-inset-bottom);        
-        border-top-right-radius: var(--d-default-border-radius);
-        border-bottom-right-radius: var(--d-default-border-radius);
-        border-top-left-radius: 0;
+        left: 0.65em;
+        bottom: 6em;
+        border-radius: var(--d-button-border-radius);
+        box-shadow: 0 0 0 1px var(--primary-high), var(--shadow-card);
       }
       // If footer nav active on iPhone
       html.footer-nav-visible:not(.footer-nav-ipad) & {
@@ -61,6 +59,12 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
           padding: 0;
           button.bulk-select {
             padding: 1rem 1.25rem;
+            .mobile-view & {
+              padding: 1rem;
+              .d-icon {
+                color: var(--primary-high-or-secondary-low);
+              }
+            }
             margin-right: 0;
             line-height: var(--line-height-small);
           }
