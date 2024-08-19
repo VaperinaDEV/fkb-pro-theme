@@ -40,8 +40,12 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
         bottom: 6em;
         border-radius: var(--d-button-border-radius);
         box-shadow: 0 0 0 1px var(--primary-high), var(--shadow-card);
+        html.footer-nav-visible:not(.footer-nav-ipad) & {
+          bottom: calc(var(--footer-nav-height) + 6em);
+          transition: right linear 0.1s;
+        }
       }
-      // If footer nav active on iPhone
+      // If footer nav active
       html.footer-nav-visible:not(.footer-nav-ipad) & {
         bottom: calc(var(--footer-nav-height) + 1.5em);
         transition: right linear 0.1s;
@@ -90,8 +94,13 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
         tr {
           max-width: 100%;
           overflow: auto;
-          .bulk-select-topics .btn {
-            white-space: nowrap;
+          .bulk-select-topics {
+            .btn {
+              white-space: nowrap;
+              &:last-child {
+                margin-right: 0.5em;
+              }
+            }
           }
         }
       }
