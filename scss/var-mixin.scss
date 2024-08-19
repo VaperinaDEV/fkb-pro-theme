@@ -6,14 +6,6 @@
   --d-input-border-radius: #{$border_radius_input};
   --d-select-body-border-radius: #{$border_radius_select_body};
   --d-avatar-border-radius: #{$border_radius_avatar};
-
-  // Nav Pills
-  --d-nav-color: var(--primary);
-  --d-nav-bg-color--hover: transparent;
-  --d-nav-color--active: var(--tertiary);
-  --d-nav-bg-color--active: transparent;
-  --d-nav-border-color--active: var(--d-nav-color--active);
-  --d-nav-underline-height: 0.125em;
 }
 
 /* Mixins */
