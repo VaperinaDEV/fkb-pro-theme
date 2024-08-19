@@ -26,7 +26,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
         bottom: 1.5em;
         left: 0.75em;
         margin-bottom: env(safe-area-inset-bottom); 
-        z-index: 100;
+        z-index: z("dropdown");
         .list-control-toggle-link-trigger {
           padding: 0.5em 0.65em;
           color: var(--primary-high);
