@@ -42,7 +42,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
       // Navigation Controls
       .navigation-controls {
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
         align-items: center;
         position: fixed;
         bottom: 1em;
@@ -61,6 +61,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
           padding: 0.75em 0.817em;
           border-radius: var(--d-button-border-radius);
           background: var(--primary-low);
+          order: 1;
           .d-icon {
             color: var(--primary-high);
           }
@@ -73,7 +74,6 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
           }
         }
         #create-topic {
-          order: 2;
           margin-right: 0;
           padding: 1.25em;
           border-radius: var(--d-button-border-radius);
