@@ -36,7 +36,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
       border-top-right-radius: var(--d-default-border-radius);
       z-index: z("usercard");
       .mobile-view & {
-        left: 0.65em;
+        left: 0.75em;
         bottom: 6em;
         border-radius: var(--d-button-border-radius);
         box-shadow: 0 0 0 1px var(--primary-high), var(--shadow-card);
