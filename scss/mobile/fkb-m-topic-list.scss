@@ -18,8 +18,8 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
       position: relative;
       .category-breadcrumb {
         display: flex !important;
-      }      
-
+        margin-bottom: 0;
+      }
       // Navigation Bar 
       #navigation-bar {
         position: fixed;
