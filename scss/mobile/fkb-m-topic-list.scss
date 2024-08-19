@@ -74,6 +74,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
           }
         }
         #create-topic {
+          order: 2;
           margin-right: 0;
           padding: 1.25em;
           border-radius: var(--d-button-border-radius);
@@ -112,6 +113,12 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
             &:focus {
               background: var(--primary-medium);
             }
+          }
+        }
+        // Dropdown
+        .select-kit {
+          &.single-select.dropdown-select-box {
+            order: 1;
           }
         }
         .bulk-select.btn {
