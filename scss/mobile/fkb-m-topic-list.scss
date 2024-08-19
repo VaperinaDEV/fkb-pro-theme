@@ -34,6 +34,10 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
           box-shadow: 0 0 0 1px var(--primary-high), var(--shadow-card);
           border-radius: var(--d-button-border-radius);
         }
+        html.footer-nav-visible:not(.footer-nav-ipad) & {
+          bottom: calc(var(--footer-nav-height) + 1.5em);
+          transition: bottom linear 0.1s;
+        }
       }
       // Navigation Controls
       .navigation-controls {
