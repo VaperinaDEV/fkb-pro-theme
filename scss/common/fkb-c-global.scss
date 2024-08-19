@@ -44,60 +44,6 @@ img.avatar,
   background: var(--secondary);
 }
 
-// Nav Pills
-
-.nav-pills {
-  > li {
-    .mobile-view & {
-      border: none;
-      margin-right: 0.25em;
-      &:last-child {
-        margin-right: 1em;
-      }
-    }
-    > a,
-    > button {
-      padding: 0.5em;
-      margin: 0.25em;
-      body.has-sidebar-page .list-controls & {
-        padding: 0 0.5em;
-        margin: 0 0.25em;
-      }
-      .mobile-view & {
-        margin: 0.25em 0.5em 0.25em 0;
-        border-radius: 0;
-      }            
-      border-bottom: 4px solid transparent;
-      transition: color 0.25s;
-      &:hover,
-      &:focus {
-        color: var(--tertiary) !important;
-        background: transparent !important;
-        border-bottom-color: var(--tertiary-low);
-      }
-      &.active {
-        color: var(--tertiary) !important;
-        background: transparent !important;
-        border-bottom-color: var(--tertiary);
-      } 
-    }
-    > button {
-      &:active {
-        color: var(--tertiary) !important;
-        background: transparent !important;
-        border-bottom-color: var(--tertiary);
-      }
-    }
-    &.active {
-      > a,
-      > button {
-        background: transparent !important;
-        color: var(--tertiary) !important;
-      }
-    }
-  }
-}
-
 // Spinner
 
 .spinner {

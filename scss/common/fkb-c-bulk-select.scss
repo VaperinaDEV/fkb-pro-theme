@@ -34,19 +34,21 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
       background: var(--secondary);
       border-top-left-radius: var(--d-default-border-radius);
       border-top-right-radius: var(--d-default-border-radius);
-      z-index: z("usercard");
+      z-index: z("dropdown");
       .mobile-view & {
-        left: 0;
-        bottom: 1.5em;
-        margin-bottom: env(safe-area-inset-bottom);        
-        border-top-right-radius: var(--d-default-border-radius);
-        border-bottom-right-radius: var(--d-default-border-radius);
-        border-top-left-radius: 0;
+        left: 0.75em;
+        bottom: 6em;
+        border-radius: var(--d-button-border-radius);
+        box-shadow: 0 0 0 1px var(--primary-high), var(--shadow-card);
+        html.footer-nav-visible:not(.footer-nav-ipad) & {
+          bottom: calc(var(--footer-nav-height) + 6em);
+          transition: bottom linear 0.1s;
+        }
       }
-      // If footer nav active on iPhone
+      // If footer nav active
       html.footer-nav-visible:not(.footer-nav-ipad) & {
         bottom: calc(var(--footer-nav-height) + 1.5em);
-        transition: right linear 0.1s;
+        transition: bottom linear 0.1s;
       }
       span:not(.bulk-select-topics) {
         display: none;
@@ -61,6 +63,12 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
           padding: 0;
           button.bulk-select {
             padding: 1rem 1.25rem;
+            .mobile-view & {
+              padding: 1rem;
+              .d-icon {
+                color: var(--primary-high-or-secondary-low);
+              }
+            }
             margin-right: 0;
             line-height: var(--line-height-small);
           }
@@ -86,8 +94,13 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
         tr {
           max-width: 100%;
           overflow: auto;
-          .bulk-select-topics .btn {
-            white-space: nowrap;
+          .bulk-select-topics {
+            .btn {
+              white-space: nowrap;
+              &:last-child {
+                margin-right: 0.5em;
+              }
+            }
           }
         }
       }

@@ -141,39 +141,53 @@ h2.username,
       border: 1px solid var(--primary-low);
     }
   }
-  h3 {
-    padding: 0.25em 0.5em;
-  }  
 }
 
 #user-card {
   .metadata {
-    margin-left: -0.25em;
-    > * {
+    html.mobile-view & {
+      font-size: var(--font-down-1);
+    }
+    > div {
       display: inline-flex;
       border-radius: var(--d-default-border-radius);
-      margin: 0.25em;
+      margin: 0.25em 0;
+      padding: 0.25em 0.5em;
       border: 1px solid var(--primary-low-mid);
       &:empty {
         display: none;
       }
-    }
-    span {
-      order: 0;
-      &.desc {
-        padding-right: 5px;
+      
+      span.desc {
+        padding-right: 0.5em;
+      }
+    
+      &.last-seen-metadata {
+        order: -1;
+      }
+
+      &.follow-statistics-user-card {
+        .metadata__following,
+        .metadata__followers {
+          color: var(--primary-high);
+          .value {
+            color: var(--primary);
+          }
+        }
+        div:nth-child(2) {
+          &:before {
+            content: "I";
+            margin-left: 0.5em;
+            margin-right: 0.25em;
+          }
+        }
       }
     }
-    div span.desc {
-      padding-right: 0;
-    }
-    h3:nth-child(3) {
+
+    .metadata__time-read {
       span:nth-child(2) {
-        padding-left: 5px;
+        margin-left: 0.25em;
       }
-    }
-    .last-seen-metadata {
-      order: -1;
     }
   }
 }

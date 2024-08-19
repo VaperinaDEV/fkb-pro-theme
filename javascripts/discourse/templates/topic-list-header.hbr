@@ -5,4 +5,4 @@
     {{/if}}
   </th>
 {{/if}}
-{{raw "topic-list-header-column" order='default' name=listTitle bulkSelectEnabled=bulkSelectEnabled showBulkToggle=canBulkSelect canBulkSelect=canBulkSelect canDoBulkActions=canDoBulkActions}}
+{{raw "topic-list-header-column" order='default' name=listTitle bulkSelectEnabled=bulkSelectEnabled showBulkToggle=canBulkSelect canBulkSelect=canBulkSelect canDoBulkActions=canDoBulkActions bulkSelectHelper=bulkSelectHelper}}
