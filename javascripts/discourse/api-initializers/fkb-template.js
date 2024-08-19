@@ -59,6 +59,7 @@ export default {
               callback(target);
             }
           };
+
           this._super(...arguments);
           onClick("button.bulk-select", () => {
             document.body.classList.toggle("bulk-select-enabled");
