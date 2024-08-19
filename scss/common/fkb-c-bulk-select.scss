@@ -34,7 +34,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
       background: var(--secondary);
       border-top-left-radius: var(--d-default-border-radius);
       border-top-right-radius: var(--d-default-border-radius);
-      z-index: z("usercard");
+      z-index: z("dropdown");
       .mobile-view & {
         left: 0.75em;
         bottom: 6em;
