@@ -225,6 +225,12 @@
     }
     
     .tc-right-sidebar {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      max-width: var(--d-sidebar-width);
+      width: 100%;
+      
       @if $right-sidebar-blocks-expanded == "false" {
         @include sticky;
         top: calc(var(--header-offset) + 2em);
@@ -247,10 +253,6 @@
           }
         }
       }
-
-      height: 100%;
-      max-width: var(--d-sidebar-width);
-      width: 100%;
 
       // Add custom scrollbar (borrow from sidebar)
       @include custom-scrollbar;
