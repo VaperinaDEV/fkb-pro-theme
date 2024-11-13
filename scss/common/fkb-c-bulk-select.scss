@@ -39,7 +39,6 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
         left: 0.75em;
         bottom: 6em;
         border-radius: var(--d-button-border-radius);
-        box-shadow: 0 0 0 1px var(--primary-high), var(--shadow-card);
         html.footer-nav-visible:not(.footer-nav-ipad) & {
           bottom: calc(var(--footer-nav-height) + 6em);
           transition: bottom linear 0.1s;
@@ -65,6 +64,8 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
             padding: 1rem 1.25rem;
             .mobile-view & {
               padding: 1rem;
+              border-radius: var(--d-button-border-radius);
+              box-shadow: 0 0 0 1px var(--primary-high), var(--shadow-card);
               .d-icon {
                 color: var(--primary-high-or-secondary-low);
               }
