@@ -103,6 +103,13 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     #main-outlet {
       gap: 0;
     }
+    &:not(.has-sidebar-page) {
+      #main-outlet {
+        &.list-controls {
+          margin-left: 2em;
+        }
+      }
+    }
   } 
   
   .container:first-of-type {
