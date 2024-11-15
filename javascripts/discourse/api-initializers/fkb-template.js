@@ -1,6 +1,7 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
 import { findRawTemplate } from "discourse-common/lib/raw-templates";
 import { htmlSafe } from "@ember/template";
+import { RUNTIME_OPTIONS } from "discourse-common/lib/raw-handlebars-helpers";
 import { schedule } from "@ember/runloop";
 
 export default {
@@ -12,11 +13,20 @@ export default {
         pluginId: "fkb-template",
 
         renderTopicListItem() {
-          const template = findRawTemplate("list/custom-topic-list-item");
+          const topicListModification = settings.disable_topic_list_modification;
+          const customTemplate = findRawTemplate("list/custom-topic-list-item");
+          const defaultTemplate = findRawTemplate("list/topic-list-item");
+          
+          function templateChooser() {
+            return topicListModification ? defaultTemplate : customTemplate;
+          }
+
+          const template = templateChooser();
+            
           if (template) {
             this.set(
               "topicListItemContents", 
-              htmlSafe(template(this))
+              htmlSafe(template(this, RUNTIME_OPTIONS))
             );
             schedule("afterRender", () => {
               if (this.isDestroyed || this.isDestroying) {
@@ -34,7 +44,7 @@ export default {
                 }
               }
             });            
-          }
+          } 
         },
       });
 
@@ -68,15 +78,18 @@ export default {
       });
 
       api.onPageChange((url, title) => {
-        const bodyHasBulkSelectClass = document.body.classList.contains("bulk-select-enabled");
         const currentUser = api.getCurrentUser();
+        const router = api.container.lookup("service:router");
+        const newRouteDiscovery = router.currentRouteName === "discovery.new";
+        const unreadRouteDiscovery = router.currentRouteName === "discovery.unread";
+        const bodyHasBulkSelectClass = document.body.classList.contains("bulk-select-enabled");
         
-        if ((url !== "/new" && 
+        if ((!newRouteDiscovery && 
             bodyHasBulkSelectClass && 
             currentUser && !currentUser.staff) && 
-            (url !== "/unread" && 
+            (!unreadRouteDiscovery && 
             bodyHasBulkSelectClass && 
-            currentUser && !currentUser.staff)) 
+            currentUser && !currentUser.staff))
         {
           document.body.classList.add("bulk-still-active");
         } else {
