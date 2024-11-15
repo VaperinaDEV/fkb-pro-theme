@@ -123,8 +123,8 @@ h2.username,
 
 // User Card
 
-.fk-d-menu.-animated {
-  &[data-identifier="card"] {
+.fk-d-menu {
+  &[data-identifier="usercard"] {
     .fk-d-menu__inner-content {
       border-radius: var(--d-default-border-radius);
     }
