@@ -9,7 +9,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
   
   // If sidebar opened
   
-  &.has-sidebar-page {  
+  &.has-sidebar-page {
     #main-outlet {
       grid-template-areas:
         "above-outlet above-outlet"
@@ -97,6 +97,21 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
       grid-area: above-outlet;
     }
   }
+  
+  // Makes full width topic list when fkb panel hidden 
+  &.fkb-panel-hidden {
+    #main-outlet {
+      gap: 0;
+    }
+    &:not(.has-sidebar-page) {
+      #main-outlet {
+        .list-controls {
+          margin-right: 2em;
+        }
+      }
+    }
+  } 
+  
   .container:first-of-type {
     grid-area: alerts;
   }
