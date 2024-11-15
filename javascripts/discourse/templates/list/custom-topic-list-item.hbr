@@ -79,6 +79,9 @@
     <a class="latest-activity-tlist {{view.likesHeat}}" href="{{topic.lastPostUrl}}">
       {{~format-date topic.bumpedAt format="tiny" noTitle="true"~}} {{d-icon "history"}}
     </a>
-    {{raw "list/posts-count-column" topic=topic}}
+    <a href class="posts-map badge-posts {{view.likesHeat}}" aria-label="{{view.title}}">
+      {{raw-plugin-outlet name="topic-list-before-reply-count"}}
+      {{number topic.replyCount noTitle="true"}} {{d-icon "far-comment"}}
+    </a>
   </div>
 </div>
