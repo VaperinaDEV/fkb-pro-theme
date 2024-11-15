@@ -5,7 +5,7 @@
 #list-area {
   .show-more {
     @include sticky-new-topic;
-    z-index: 1;
+    z-index: 3;
     @media screen and (max-width: 1180px) {
       margin: 0 auto -22px;
       animation: none;
@@ -27,7 +27,7 @@
 .user-messages-page {
   .show-mores {
     @include sticky-new-topic;
-    z-index: 1;
+    z-index: 3;
     .alert.alert-info.clickable {
       @include alert-info-clickable-desktop;
     }
