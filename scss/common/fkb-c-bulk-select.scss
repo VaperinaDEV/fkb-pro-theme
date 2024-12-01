@@ -3,7 +3,7 @@
   .user-messages-page,
   body[class*="tag-"]:not(.archetype-regular):not(.archetype-banner),
   body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
-    &.bulk-select-enabled:not(.bulk-still-active) {
+    &.bulk-select-enabled {
       .mobile-view & {
         .list-controls {
           .navigation-container {
@@ -170,21 +170,6 @@
               &.selected {
                 background: rgba(var(--tertiary-rgb), 0.3);
               }
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  // Bulk select still active on other pages
-  body.bulk-select-enabled {
-    &.bulk-still-active {
-      .topic-list {
-        .topic-list-item {
-          .topic-list-data {
-            &.bulk-select {
-              display: none;
             }
           }
         }
