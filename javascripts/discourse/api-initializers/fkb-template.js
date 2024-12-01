@@ -76,26 +76,6 @@ export default {
           });
         },
       });
-
-      api.onPageChange((url, title) => {
-        const currentUser = api.getCurrentUser();
-        const router = api.container.lookup("service:router");
-        const newRouteDiscovery = router.currentRouteName === "discovery.new";
-        const unreadRouteDiscovery = router.currentRouteName === "discovery.unread";
-        const bodyHasBulkSelectClass = document.body.classList.contains("bulk-select-enabled");
-        
-        if ((!newRouteDiscovery && 
-            bodyHasBulkSelectClass && 
-            currentUser && !currentUser.staff) && 
-            (!unreadRouteDiscovery && 
-            bodyHasBulkSelectClass && 
-            currentUser && !currentUser.staff))
-        {
-          document.body.classList.add("bulk-still-active");
-        } else {
-          document.body.classList.remove("bulk-still-active");
-        }
-      });
       
       api.onPageChange((url, title) => {
         const fkbHidden = localStorage.getItem("fkb_panel_hidden") === "true";
