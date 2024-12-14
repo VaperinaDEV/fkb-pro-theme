@@ -25,29 +25,12 @@
       // Navigation controls
       .list-controls {
         .nav-pills {
-          transform: translateY(-1.05em);
+          transform: translateY(-1em);
         }
         .navigation-container {
           .navigation-controls {      
             bottom: calc(var(--f-nav-height) + 1em);
           }
-        }
-      }
-    }
-    
-    // Topic list pages
-    // Bulk Select
-    &.user-messages-page,
-    &.navigation-topics,
-    &.navigation-filter,
-    &.categories-list,
-    &[class*="tag-"]:not(.archetype-regular):not(.archetype-banner),
-    &[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {    
-      // Bulk Select
-      .topic-list,
-      .topic-list.sticky-header {
-        .topic-list-header {
-          transform: translateY(-1em);
         }
       }
     }
@@ -65,8 +48,9 @@
         // Navigation controls
         .list-controls {
           .nav-pills {      
-            transform: translateY(calc((var(--f-nav-height) * -1) - 1.05em));
+            transform: translateY(calc((var(--f-nav-height) * -1) - 1em));
             transition: transform 0.1s linear;
+            bottom: 0 !important;
           }   
           .navigation-controls {
             bottom: calc(var(--f-nav-height) + 1em);
@@ -87,7 +71,7 @@
         .topic-list,
         .topic-list.sticky-header {
           .topic-list-header {
-            transform: translateY(calc((var(--f-nav-height) * -1) - 1em));
+            transform: translateY(calc((var(--f-nav-height) * -1) + 1em));
             transition: transform 0.1s linear;
           }
         }
