@@ -2,6 +2,10 @@ disable_topic_list_modification:
   type: bool
   default: false
   description: "Enable this setting to revert topic list to default Discourse version. It's useful if you want to use theme components like: Topic List Thumbnails..."
+f_nav_enabled:
+  type: bool
+  default: false
+  description: "Enable this setting if you have installed the F NAV theme component."
 topic_image_height: 
   default: "300px"
   description: "Change the topic list image (thumbnail) section height."

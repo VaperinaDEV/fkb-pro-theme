@@ -1,0 +1,81 @@
+@if $f-nav-enabled == "true" {
+  body.f-nav-hidden {
+    &.user-messages-page {
+      .show-mores {
+        top: 0.5em;
+      }
+    }
+    
+    // Header hide everywhere but topic, pm and chat
+    &:not(.archetype-regular):not(.archetype-private_message):not(.has-full-page-chat) {
+      #list-area {
+        .show-more {
+          top: 0.5em;
+        }
+      }
+    }
+    
+    // Topic list pages
+    &.navigation-topics,
+    &.categories-list,
+    &.navigation-filter,
+    &[class*="tag-"]:not(.archetype-regular):not(.archetype-banner),
+    &[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
+    
+      // Navigation controls
+      .list-controls {
+        .nav-pills {
+          transform: translateY(-1em);
+        }
+        .navigation-container {
+          .navigation-controls {      
+            bottom: calc(var(--f-nav-height) + 1em);
+          }
+        }
+      }
+    }
+  }
+  
+  // Topic elements scroll up position
+  html:not(.anon) {
+    body:not(.f-nav-hidden) {    
+      // Topic list pages
+      &.navigation-topics,
+      &.navigation-filter,
+      &.categories-list,
+      &[class*="tag-"]:not(.archetype-regular):not(.archetype-banner),
+      &[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
+        // Navigation controls
+        .list-controls {
+          .nav-pills {      
+            transform: translateY(calc((var(--f-nav-height) * -1) - 1em));
+            transition: transform 0.1s linear;
+            bottom: 0 !important;
+          }   
+          .navigation-controls {
+            bottom: calc(var(--f-nav-height) + 1em);
+          }
+        }
+      }
+        
+      // Topic list pages 
+      // Bulk Select
+      &.user-messages-page,
+      &.navigation-topics,
+      &.navigation-filter,
+      &.categories-list,
+      &[class*="tag-"]:not(.archetype-regular):not(.archetype-banner),
+      &[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
+        
+        // Bulk Select
+        .topic-list,
+        .topic-list.sticky-header {
+          .topic-list-header {
+            transform: translateY(calc((var(--f-nav-height) * -1) + 1em));
+            transition: transform 0.1s linear;
+          }
+        }
+      }
+    }
+  }
+}
