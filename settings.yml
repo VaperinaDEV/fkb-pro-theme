@@ -80,6 +80,7 @@ fkb_panel_items:
       { "title": Messages, "link": /my/messages, "icon": envelope },
     ]
   schema:
+    name: item
     identifier: title
     properties:
       title:
