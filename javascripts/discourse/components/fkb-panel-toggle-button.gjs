@@ -1,5 +1,6 @@
 import Component from "@glimmer/component";
 import { action } from "@ember/object";
+import DButton from "discourse/components/d-button";
 
 export default class FKBPanelHideButton extends Component {
   
@@ -11,5 +12,13 @@ export default class FKBPanelHideButton extends Component {
     } else {
       return localStorage.setItem("fkb_panel_hidden", true), document.body.classList.add("fkb-panel-hidden");
     }
-  } 
+  }
+
+  <template>
+    <DButton
+      @class="btn-default btn no-text btn-icon fkb-panel-toggle"
+      @action={{this.toggle}}
+      @icon="chevron-right"
+    />
+  </template>
 }
