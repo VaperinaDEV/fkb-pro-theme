@@ -69,15 +69,19 @@ custom_sidebar_description:
   description: "Custom sidebar description for visitors. (HTML allowed)"
 
 fkb_panel_items:
-  default: >-
-    [{"title":"Summary","link":"/my/summary","icon":"user"},
-    {"title":"Settings","link":"/my/preferences/account","icon":"gear"},
-    {"title":"Drafts","link":"/my/activity/drafts","icon":"pencil"},
-    {"title":"Bookmarks","link":"/my/activity/bookmarks","icon":"bookmark"},
-    {"title":"Messages","link":"/my/messages","icon":"envelope"}]
-  type: list
-  items:
-    type: object
+  description: "Set up the FKB Panel Items."
+  type: objects
+  default: 
+    [
+      { "title": Summary, "link": /my/summary, "icon": user },
+      { "title": Settings, "link": /my/preferences/account, "icon": gear },
+      { "title": Drafts, "link": /my/activity/drafts, "icon": pencil },
+      { "title": Bookmarks, "link": /my/activity/bookmarks, "icon": bookmark },
+      { "title": Messages, "link": /my/messages, "icon": envelope },
+    ]
+  schema:
+    name: "fi"
+    identifier: title
     properties:
       title:
         type: string
@@ -85,11 +89,12 @@ fkb_panel_items:
       link:
         type: string
         required: true
-        validation:
+        validations:
           url: true
       icon:
         type: string
         required: true
+
 fkb_panel_show_solutions:
   type: bool
   default: false
