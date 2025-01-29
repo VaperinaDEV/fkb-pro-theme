@@ -11,7 +11,7 @@ export default class TliMiddleSection extends Component {
 
   <template>
     <div class="tli-middle-section">
-      {{#if this.topic.excerpt}}
+      {{#if this.topic.hasExcerpt}}
         <div class="topic-excerpt">
           {{replaceEmoji (htmlSafe this.topic.excerpt)}}
           <a href={{this.topic.firstPostUrl}} class="topic-excerpt-more">
