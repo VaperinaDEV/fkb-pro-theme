@@ -17,6 +17,12 @@ export default {
           document.body.classList.toggle("bulk-select-enabled");
         }
       });
+
+      api.onPageChange((url, title) => {
+        if (document.body.classList.contains("bulk-select-enabled")) {
+          document.body.classList.remove("bulk-select-enabled");
+        }
+      });
     });
   },
 };
