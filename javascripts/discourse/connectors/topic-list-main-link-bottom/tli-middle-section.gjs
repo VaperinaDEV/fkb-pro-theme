@@ -9,6 +9,7 @@ import avatar from "discourse/helpers/avatar";
 import formatDate from "discourse/helpers/format-date";
 import replaceEmoji from "discourse/helpers/replace-emoji";
 import i18n from "discourse-common/helpers/i18n";
+import discourseTags from "discourse/helpers/discourse-tags";
 
 export default class TliMiddleSection extends Component {
   
@@ -40,17 +41,18 @@ export default class TliMiddleSection extends Component {
           </div>
         </a>
       {{/if}}
+      {{discourseTags @topic mode="list" tagsForUser=@tagsForUser}}
     </div>
 
     <div class="tli-bottom-section">
       {{#if (gt this.topic.like_count 0)}}
-        <a class="likes likes-tlist" href={{this.topic.summaryUrl}}>
+        <a class="likes likes-tlist" href="{{this.topic.lastUnreadUrl}}">
           {{number this.topic.like_count}}
           {{icon "heart"}}
         </a>
       {{/if}}
 
-      <a class={{concatClass "num views" this.topic.viewsHeat}}>
+      <a href="{{this.topic.lastUnreadUrl}}" class={{concatClass "num views" this.topic.viewsHeat}}>
         {{number this.topic.views numberKey="views_long"}} {{icon "far-eye"}}
       </a>
 
@@ -68,7 +70,7 @@ export default class TliMiddleSection extends Component {
         {{formatDate this.topic.bumpedAt format="tiny" noTitle="true"~}} {{icon "clock-rotate-left"}}
       </a>
 
-      <a href class={{concatClass "posts-map badge-posts" this.topic.view.likesHeat}} aria-label={{this.topic.view.title}}>
+      <a href="{{this.topic.lastUnreadUrl}}" class={{concatClass "posts-map badge-posts" this.topic.view.likesHeat}} aria-label={{this.topic.view.title}}>
         {{number this.topic.replyCount noTitle="true"}} {{icon "far-comment"}}
       </a>
     </div>
