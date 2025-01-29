@@ -22,7 +22,7 @@ export default class TliMiddleSection extends Component {
       {{#if this.topic.image_url}}
         <a href="{{this.topic.lastUnreadUrl}}">
           <div class="topic-image">
-            {{#if (theme-setting "topic_image_backdrop")}}
+            {{#if settings.topic_image_backdrop}}
               <div class="topic-image__backdrop" style="background-image: url({{this.topic.image_url}});" loading="lazy"></div>
             {{/if}}
             <img src="{{this.topic.image_url}}" class="topic-image__img" loading="lazy">
