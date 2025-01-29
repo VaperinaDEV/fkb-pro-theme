@@ -46,7 +46,7 @@ export default {
             });
           }
 
-          component.set("userCardBg", `${getURLWithCDN(userCardBg)}`);
+          component.set("userCardBg", `background-image: url(${getURLWithCDN(userCardBg)})`);
           component.set("stinkinBadges", stinkinBadges);
           component.set("allBadges", allBadges);
         });
