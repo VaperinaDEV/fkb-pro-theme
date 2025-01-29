@@ -1,4 +1,5 @@
 import Component from "@glimmer/component";
+import { htmlSafe } from "@ember/template";
 import { gt } from "truth-helpers";
 import concatClass from "discourse/helpers/concat-class";
 import icon from "discourse/helpers/d-icon";
@@ -28,7 +29,7 @@ export default class TliTopSection extends Component {
 
       <a
         href={{this.topic.lastPostUrl}}
-        data-user-card={{topic.last_poster_username}}
+        data-user-card={{this.topic.last_poster_username}}
         class="latest-poster-tlist"
       >
         {{avatar
