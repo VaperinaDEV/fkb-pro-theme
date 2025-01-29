@@ -58,9 +58,7 @@
       display: block;
       @include bg-br;
       padding: 1em;
-      .mobile-view & {
-        width: 100%;
-        
+      .mobile-view & {        
         .pull-left,
         .pull-right,
         .topic-item-stats {
@@ -68,6 +66,9 @@
         }
         .right {
           margin-left: 0;
+        }
+        .main-link {
+          width: 100%;
         }
       }
       font-size: var(--font-up-1-rem);
@@ -164,7 +165,11 @@
           height: #{$topic_image_height};
           overflow: hidden;
           width: calc(100% + 2em);
-          margin: .25em -1em 0 -1em;
+          margin: 0.25em -1em 0 -1em;
+          .mobile-view & {
+            width: calc(100% + 2em - 6px);
+            margin: 0.25em -1em 0 calc(-1em + 3px);
+          }
           &__backdrop {
             position: absolute;
             width: 100%;
