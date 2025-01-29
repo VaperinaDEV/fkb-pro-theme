@@ -13,26 +13,28 @@ export default class TliTopSection extends Component {
   }
 
   <template>
-    <div class="tli-top-section">
-      <div class="tli-top-section__category">
-        {{#unless this.topic.hideCategory}}
-          {{#unless this.topic.isPinnedUncategorized}}
-            {{categoryLink this.topic.category}}
+    {{#unless settings.disable_topic_list_modification}}
+      <div class="tli-top-section">
+        <div class="tli-top-section__category">
+          {{#unless this.topic.hideCategory}}
+            {{#unless this.topic.isPinnedUncategorized}}
+              {{categoryLink this.topic.category}}
+            {{/unless}}
           {{/unless}}
-        {{/unless}}
-      </div>
-      <div class="tli-top-section__author">
-        <UserLink @user={{get this.topic.posters "0.user"}}>
-          <div class="topic-list-avatar">          
-            {{avatar (get this.topic.posters "0.user") imageSize="large"}}
-            <div class="name-and-date">
-              <span class="full-name-tlist">{{this.topic.creator.name}}</span>
-              <span class="username">{{this.topic.creator.username}}</span>
-              <span class="list-date">{{i18n (themePrefix "created_at")}} {{formatDate this.topic.createdAt format="tiny"}}</span>
+        </div>
+        <div class="tli-top-section__author">
+          <UserLink @user={{get this.topic.posters "0.user"}}>
+            <div class="topic-list-avatar">          
+              {{avatar (get this.topic.posters "0.user") imageSize="large"}}
+              <div class="name-and-date">
+                <span class="full-name-tlist">{{this.topic.creator.name}}</span>
+                <span class="username">{{this.topic.creator.username}}</span>
+                <span class="list-date">{{i18n (themePrefix "created_at")}} {{formatDate this.topic.createdAt format="tiny"}}</span>
+              </div>
             </div>
-          </div>
-        </UserLink>
+          </UserLink>
+        </div>
       </div>
-    </div>
+    {{/unless}}
   </template>
 }
