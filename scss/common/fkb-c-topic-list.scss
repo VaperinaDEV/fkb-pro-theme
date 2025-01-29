@@ -135,7 +135,11 @@
             text-decoration: underline;
           }
         }
-      }  
+      }
+
+      .link-bottom-line {
+        display: none;
+      }
       
       .tli-middle-section {
         .topic-excerpt {
