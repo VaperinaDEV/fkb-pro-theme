@@ -54,12 +54,21 @@
       }
     }
     
-    .main-link {
+    > .topic-list-data {
       display: block;
       @include bg-br;
       padding: 1em;
       .mobile-view & {
         width: 100%;
+        
+        .pull-left,
+        .pull-right,
+        .topic-item-stats {
+          display: none;
+        }
+        .right {
+          margin-left: 0;
+        }
       }
       font-size: var(--font-up-1-rem);
       
