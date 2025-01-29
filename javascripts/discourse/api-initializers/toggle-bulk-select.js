@@ -5,8 +5,6 @@ export default {
   initialize() {
     withPluginApi("1.33.0", (api) => {
 
-      api.addValueTransformerName("toggle-bulk-click");
-
       api.registerValueTransformer("toggle-bulk-click", ({ value, context }) => {
         const onClick = (sel, callback) => {
           let target = context.event?.target.closest(sel);
