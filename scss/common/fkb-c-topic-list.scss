@@ -54,7 +54,7 @@
       }
     }
     
-    > .topic-list-item .topic-list-data {
+    .topic-list-item > .topic-list-data {
       display: block;
       @include bg-br;
       padding: 1em;
