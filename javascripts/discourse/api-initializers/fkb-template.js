@@ -6,7 +6,7 @@ export default {
     withPluginApi("1.8.0", (api) => {
 
       api.registerValueTransformer("topic-list-columns", ({ value: columns }) => {
-        if (settings.disable_topic_list_modification) {
+        if (!settings.disable_topic_list_modification) {
           columns.delete("posters");
           columns.delete("replies");
           columns.delete("views");
