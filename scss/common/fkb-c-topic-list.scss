@@ -3,6 +3,18 @@
 // Topic List
 
 @if $disable-topic-list-modification == "false" {
+
+  table.topic-list:not(.bookmark-list) {
+    tbody.topic-list-body {
+      tr.topic-list-item {
+        td.topic-list-data.num,
+        td.topic-list-data.posters {
+          display: none;
+        }
+      }
+    }
+  }
+  
   .topic-list-main-link a.title,
   .topic-list .main-link a.title,
   .latest-topic-list-item .main-link a.title {
@@ -48,7 +60,7 @@
       }
     }
     
-    .topic-list-item > .topic-list-data:not(.bulk-select) {
+    .topic-list-item:not(.bookmark-list) > .topic-list-data:not(.bulk-select) {
       display: block;
       @include bg-br;
       padding: 1em !important;
