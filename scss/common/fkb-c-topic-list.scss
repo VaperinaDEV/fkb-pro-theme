@@ -21,12 +21,6 @@
       &:first-child {
         padding-top: 0;
       }
-      &.highlighted {
-        animation: none;
-        .main-link {
-          animation: background-fade-topiclight 2s ease-out;
-        }
-      }
     }
     .topic-list-item-separator {
       display: block;
@@ -57,7 +51,8 @@
     .topic-list-item > .topic-list-data {
       display: block;
       @include bg-br;
-      padding: 1em;
+      padding: 1em !important;
+      max-width: 100%;
       .mobile-view & {        
         .pull-left,
         .pull-right,
@@ -154,8 +149,11 @@
       .tli-middle-section {
         .topic-excerpt {
           font-size: var(--font-0-rem);
+          .mobile-view & {
+            font-size: var(--font-down-2);
+          }
           color: var(--primary);
-          margin: 0 0 1em 0;
+          margin: 0.5em 0 1em 0;
           line-height: var(--line-height-large);
           @include fkb-word-wrap;
         }
@@ -244,6 +242,9 @@
         padding: 0.6em 0 0;
         a {
           font-size: var(--font-down-1);
+          .mobile-view & {
+            font-size: var(--font-down-2);
+          }
           display: flex;
           align-items: center;
           color: var(--primary-medium);
