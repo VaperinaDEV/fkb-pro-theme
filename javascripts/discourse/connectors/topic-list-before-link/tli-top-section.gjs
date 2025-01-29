@@ -1,4 +1,6 @@
 import Component from "@glimmer/component";
+import { get } from "@ember/helper";
+import UserLink from "discourse/components/user-link";
 import avatar from "discourse/helpers/avatar";
 import formatDate from "discourse/helpers/format-date";
 import categoryLink from "discourse/helpers/category-link";
@@ -20,25 +22,16 @@ export default class TliTopSection extends Component {
         {{/unless}}
       </div>
       <div class="tli-top-section__author">
-        <a
-          href={{this.topic.creator.path}}
-          data-user-card={{this.topic.creator.username}}
-        >
-          <div class="topic-list-avatar">
-            {{avatar
-              this.topic.creator
-              avatarTemplatePath="avatar_template"
-              usernamePath="user.username"
-              namePath="user.name"
-              imageSize="large"
-            }}
+        <UserLink @user={{get this.topic.posters "0.user"}}>
+          <div class="topic-list-avatar">          
+            {{avatar (get this.topic.posters "0.user") imageSize="large"}}
             <div class="name-and-date">
               <span class="full-name-tlist">{{this.topic.creator.name}}</span>
               <span class="username">{{this.topic.creator.username}}</span>
               <span class="list-date">{{i18n (themePrefix "created_at")}} {{formatDate this.topic.createdAt format="tiny"}}</span>
             </div>
           </div>
-        </a>
+        </UserLink>
       </div>
     </div>
   </template>
