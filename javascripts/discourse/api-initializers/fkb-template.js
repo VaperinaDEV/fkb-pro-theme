@@ -9,6 +9,14 @@ export default {
   initialize() {
     withPluginApi("0.8.7", (api) => {
 
+      api.registerValueTransformer("topic-list-columns", ({ value: columns }) => {
+        columns.delete("posters");
+        columns.delete("replies");
+        columns.delete("views");
+        columns.delete("activity");
+        return columns;
+      });
+
       api.modifyClass("component:discovery/topics", {
         pluginId: "new-new",
         get renderNewListHeaderControls() {
