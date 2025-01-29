@@ -4,25 +4,20 @@ export default {
   name: "toggle-bulk",
   initialize() {
     withPluginApi("1.33.0", (api) => {
-
-      api.registerValueTransformer("toggle-bulk-click", ({ value, context }) => {
-        const onClick = (sel, callback) => {
-          let target = context.event?.target.closest(sel);
-          if (target) {
-            callback(target);
-          }
-        };
-
-        if (typeof value === "function") {
-          value(context.event);
+      
+      api.registerValueTransformer("topic-list-item-class", ({ value }) => {
+        if (document.body.classList.contains("bulk-select-enabled")) {
+          value.push("bulk-select-active");
         }
-
-        onClick("button.bulk-select", () => {
-          document.body.classList.toggle("bulk-select-enabled");
-        });
-
         return value;
       });
+
+      document.addEventListener("click", (e) => {
+        if (e.target.closest("button.bulk-select")) {
+          document.body.classList.toggle("bulk-select-enabled");
+          api.triggerRerender();
+        }
+      });
     });
-  }
+  },
 };
