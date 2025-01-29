@@ -49,7 +49,7 @@ export default class TliTopSection extends Component {
       </a>
 
       <a href class={{concatClass "posts-map badge-posts" this.topic.view.likesHeat}} aria-label={{this.topic.view.title}}>
-        {{number this.topic.replyCount noTitle="true"}} {{d-icon "far-comment"}}
+        {{number this.topic.replyCount noTitle="true"}} {{icon "far-comment"}}
       </a>
     </div>
   </template>
