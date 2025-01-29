@@ -21,20 +21,20 @@ export default class TliTopSection extends Component {
       </div>
       <div class="tli-top-section__author">
         <a
-          href={{this.topic.posters.[0].user.userPath}}
-          data-user-card={{this.topic.posters.[0].user.username}}
+          href={{this.topic.creator.path}}
+          data-user-card={{this.topic.creator.username}}
         >
           <div class="topic-list-avatar">
             {{avatar
-              this.topic.posters.[0].user
+              this.topic.creator
               avatarTemplatePath="user.avatar_template"
               usernamePath="user.username"
               namePath="user.name"
               imageSize="large"
             }}
             <div class="name-and-date">
-              <span class="full-name-tlist">{{this.topic.posters.[0].user.name}}</span>
-              <span class="username">{{this.topic.posters.[0].user.username}}</span>
+              <span class="full-name-tlist">{{this.topic.creator.name}}</span>
+              <span class="username">{{this.topic.creator.username}}</span>
               <span class="list-date">{{i18n (themePrefix "created_at")}} {{formatDate this.topic.createdAt format="tiny"}}</span>
             </div>
           </div>
