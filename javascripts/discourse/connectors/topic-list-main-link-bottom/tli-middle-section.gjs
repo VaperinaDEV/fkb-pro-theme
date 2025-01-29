@@ -17,7 +17,7 @@ export default class TliMiddleSection extends Component {
   }
 
   get topicBackgroundStyle() {
-    return htmlSafe(`background-image: url({this.topic.image_url})`);
+    return htmlSafe(`background-image: url(${this.topic.image_url})`);
   }
 
   <template>
