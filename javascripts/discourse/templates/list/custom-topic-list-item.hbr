@@ -77,7 +77,7 @@
       {{avatar topic.lastPosterUser imageSize="tiny"}}
     </a>
     <a class="latest-activity-tlist {{view.likesHeat}}" href="{{topic.lastPostUrl}}">
-      {{~format-date topic.bumpedAt format="tiny" noTitle="true"~}} {{d-icon "history"}}
+      {{~format-date topic.bumpedAt format="tiny" noTitle="true"~}} {{d-icon "clock-rotate-left"}}
     </a>
     <a href class="posts-map badge-posts {{view.likesHeat}}" aria-label="{{view.title}}">
       {{raw-plugin-outlet name="topic-list-before-reply-count"}}
