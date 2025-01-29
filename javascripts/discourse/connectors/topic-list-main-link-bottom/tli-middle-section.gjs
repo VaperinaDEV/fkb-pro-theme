@@ -16,6 +16,10 @@ export default class TliMiddleSection extends Component {
     return this.args.outletArgs.topic;
   }
 
+  get topicBackgroundStyle() {
+    return htmlSafe(`background-image: url({this.topic.image_url})`);
+  }
+
   <template>
     <div class="tli-middle-section">
       {{#if this.topic.hasExcerpt}}
@@ -30,7 +34,7 @@ export default class TliMiddleSection extends Component {
         <a href="{{this.topic.lastUnreadUrl}}">
           <div class="topic-image">
             {{#if settings.topic_image_backdrop}}
-              <div class="topic-image__backdrop" style="background-image: url({{this.topic.image_url}});" loading="lazy"></div>
+              <div class="topic-image__backdrop" style={{this.topicBackgroundStyle}} loading="lazy"></div>
             {{/if}}
             <img src="{{this.topic.image_url}}" class="topic-image__img" loading="lazy">
           </div>
@@ -48,20 +52,6 @@ export default class TliMiddleSection extends Component {
 
       <a class={{concatClass "num views" this.topic.viewsHeat}}>
         {{number this.topic.views numberKey="views_long"}} {{icon "far-eye"}}
-      </a>
-
-      <a
-        href={{this.topic.lastPostUrl}}
-        data-user-card={{this.topic.last_poster_username}}
-        class="latest-poster-tlist"
-      >
-        {{avatar
-          this.topic.lastPosterUser
-          avatarTemplatePath="user.avatar_template"
-          usernamePath="user.username"
-          namePath="user.name"
-          imageSize="tiny"
-        }}
       </a>
 
       <UserLink
