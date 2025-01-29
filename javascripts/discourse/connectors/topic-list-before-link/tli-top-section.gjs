@@ -29,7 +29,10 @@ export default class TliTopSection extends Component {
               <div class="name-and-date">
                 <span class="full-name-tlist">{{this.topic.creator.name}}</span>
                 <span class="username">{{this.topic.creator.username}}</span>
-                <span class="list-date">{{i18n (themePrefix "created_at")}} {{formatDate this.topic.createdAt format="tiny"}}</span>
+                <span class="list-date">
+                  {{i18n (themePrefix "created_at")}} 
+                  {{formatDate this.topic.createdAt format="tiny"}}
+                </span>
               </div>
             </div>
           </UserLink>
