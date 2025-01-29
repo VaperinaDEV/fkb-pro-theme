@@ -1,19 +1,17 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
-import { findRawTemplate } from "discourse-common/lib/raw-templates";
-import { htmlSafe } from "@ember/template";
-import { RUNTIME_OPTIONS } from "discourse-common/lib/raw-handlebars-helpers";
-import { schedule } from "@ember/runloop";
 
 export default {
   name: "fkbpro",
   initialize() {
-    withPluginApi("0.8.7", (api) => {
+    withPluginApi("1.8.0", (api) => {
 
       api.registerValueTransformer("topic-list-columns", ({ value: columns }) => {
-        columns.delete("posters");
-        columns.delete("replies");
-        columns.delete("views");
-        columns.delete("activity");
+        if (settings.disable_topic_list_modification) {
+          columns.delete("posters");
+          columns.delete("replies");
+          columns.delete("views");
+          columns.delete("activity");
+        }
         return columns;
       });
 
