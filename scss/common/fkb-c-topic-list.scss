@@ -52,13 +52,6 @@
     .views {
       width: auto;
     }
-
-    .topic-list-data {
-      &:last-of-type,
-      &:first-of-type {
-        padding: 1em;
-      }
-    }
     
     .topic-list-item:not(.bookmark-list-item) 
     > .topic-list-data:not(.bulk-select) {
