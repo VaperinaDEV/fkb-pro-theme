@@ -1,4 +1,5 @@
 import Component from "@glimmer/component";
+import { htmlSafe } from "@ember/template";
 import replaceEmoji from "discourse/helpers/replace-emoji";
 import i18n from "discourse-common/helpers/i18n";
 
