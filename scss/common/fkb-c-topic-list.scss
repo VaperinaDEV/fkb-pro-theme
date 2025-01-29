@@ -60,7 +60,8 @@
       }
     }
     
-    .topic-list-item:not(.bookmark-list) > .topic-list-data:not(.bulk-select) {
+    .topic-list-item:not(.bookmark-list-item) 
+    > .topic-list-data:not(.bulk-select) {
       display: block;
       @include bg-br;
       padding: 1em !important;
