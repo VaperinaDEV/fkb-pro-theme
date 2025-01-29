@@ -47,7 +47,7 @@ export default class TliMiddleSection extends Component {
   
       <div class="tli-bottom-section">
         {{#if (gt this.topic.like_count 0)}}
-          <a class="likes likes-tlist" href="{{this.topic.lastUnreadUrl}}">
+          <a href="{{this.topic.lastUnreadUrl}}" class="likes likes-tlist">
             {{number this.topic.like_count}}
             {{icon "heart"}}
           </a>
@@ -65,13 +65,17 @@ export default class TliMiddleSection extends Component {
         </UserLink>
   
         <a 
-          class={{concatClass "latest-activity-tlist" this.topic.view.likesHeat}}
           href="{{this.topic.lastPostUrl}}"
+          class={{concatClass "latest-activity-tlist" this.topic.view.likesHeat}}
          >
           {{formatDate this.topic.bumpedAt format="tiny" noTitle="true"~}} {{icon "clock-rotate-left"}}
         </a>
   
-        <a href="{{this.topic.lastUnreadUrl}}" class={{concatClass "posts-map badge-posts" this.topic.view.likesHeat}} aria-label={{this.topic.view.title}}>
+        <a 
+          href="{{this.topic.lastUnreadUrl}}"
+          class={{concatClass "posts-map badge-posts" this.topic.view.likesHeat}}
+          aria-label={{this.topic.view.title}}
+        >
           {{number this.topic.replyCount noTitle="true"}} {{icon "far-comment"}}
         </a>
       </div>
