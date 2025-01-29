@@ -26,7 +26,7 @@ export default class TliTopSection extends Component {
         >
           <div class="topic-list-avatar">
             {{avatar
-              this.user
+              user
               avatarTemplatePath="user.avatar_template"
               usernamePath="user.username"
               namePath="user.name"
