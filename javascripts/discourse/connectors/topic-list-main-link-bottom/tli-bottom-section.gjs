@@ -33,7 +33,7 @@ export default class TliTopSection extends Component {
         class="latest-poster-tlist"
       >
         {{avatar
-          topic.lastPosterUser
+          this.topic.lastPosterUser
           avatarTemplatePath="user.avatar_template"
           usernamePath="user.username"
           namePath="user.name"
