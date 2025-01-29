@@ -15,7 +15,7 @@ export default {
       document.addEventListener("click", (e) => {
         if (e.target.closest("button.bulk-select")) {
           document.body.classList.toggle("bulk-select-enabled");
-          api.triggerRerender();
+          api.appEvents.trigger("page:changed");
         }
       });
     });
