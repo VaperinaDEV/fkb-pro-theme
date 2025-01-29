@@ -82,6 +82,8 @@
             display: flex;
             align-items: center;
             .topic-list-avatar {
+              display: flex;
+              gap: 0.5em;
               margin: 0 8px 0 0;
             }
             .name-and-date {
@@ -128,7 +130,7 @@
         }
       }  
       
-      .link-bottom-line {
+      .tli-middle-section {
         .topic-excerpt {
           font-size: var(--font-0-rem);
           color: var(--primary);
