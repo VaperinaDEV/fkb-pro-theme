@@ -48,10 +48,9 @@
     }
 
     .topic-list-data {
-      padding: unset;
       &:last-of-type,
       &:first-of-type {
-        padding: unset;
+        padding: 1em;
       }
     }
     
@@ -72,7 +71,7 @@
           display: flex;
           justify-content: right;
           .badge-category__wrapper {
-            margin: 0.5em 0.5em -1em auto;
+            margin: 0 0.5em -1em auto;
             @if $category-badge-style == "box" {
               margin: 0 0.5em -1em auto;
               .badge-category {
@@ -224,7 +223,7 @@
       
       .tli-bottom-section {
         display: flex;
-        padding: 0.6em 0;
+        padding: 0.6em 0 0;
         a {
           font-size: var(--font-down-1);
           display: flex;
