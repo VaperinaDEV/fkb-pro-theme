@@ -41,7 +41,7 @@ export default class TliMiddleSection extends Component {
           </div>
         </a>
       {{/if}}
-      {{discourseTags @topic mode="list" tagsForUser=@tagsForUser}}
+      {{discourseTags this.topic mode="list" tagsForUser=@tagsForUser}}
     </div>
 
     <div class="tli-bottom-section">
