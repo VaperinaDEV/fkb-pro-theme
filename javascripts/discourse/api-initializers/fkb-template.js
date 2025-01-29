@@ -57,25 +57,6 @@ export default {
           );
         }
       });
-
-      api.modifyClass("component:topic-list", {
-        pluginId: "toggle-bulk",
-
-        click(e) {
-          const onClick = (sel, callback) => {
-            let target = e.target.closest(sel);
-
-            if (target) {
-              callback(target);
-            }
-          };
-
-          this._super(...arguments);
-          onClick("button.bulk-select", () => {
-            document.body.classList.toggle("bulk-select-enabled");
-          });
-        },
-      });
       
       api.onPageChange((url, title) => {
         const fkbHidden = localStorage.getItem("fkb_panel_hidden") === "true";
