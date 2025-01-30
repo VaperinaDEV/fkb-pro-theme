@@ -85,6 +85,11 @@
           }
           th.bulk-select.topic-list-data {
             width: auto !important;
+            .desktop-view & {
+              > button.bulk-select {
+                display: none;
+              }
+            }
           }
           th.default.topic-list-data {
             .bulk-select-topics {
