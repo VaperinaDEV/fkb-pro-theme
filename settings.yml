@@ -67,34 +67,34 @@ custom_sidebar_description:
             ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
             in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
   description: "Custom sidebar description for visitors. (HTML allowed)"
-  
+
 fkb_panel_items:
-  default: >-
-    [{"title":"Summary","link":"/my/summary","icon":"user"},
-    {"title":"Settings","link":"/my/preferences/account","icon":"cog"},
-    {"title":"Drafts","link":"/my/activity/drafts","icon":"pencil-alt"},
-    {"title":"Bookmarks","link":"/my/activity/bookmarks","icon":"bookmark"},
-    {"title":"Messages","link":"/my/messages","icon":"envelope"}]
-  json_schema: >-
-    {
-      "type": "array",
-      "uniqueItems": true,
-      "items": {
-        "type": "object",
-        "properties": {
-          "title": {
-            "type": "string"
-          },        
-          "link": {
-            "type": "string"
-          },
-          "icon": {
-            "type": "string"
-          }
-        },
-        "additionalProperties": false
-      }
-    }
+  description: "Set up the FKB Panel Items."
+  type: objects
+  default: 
+    [
+      { "title": Summary, "link": /my/summary, "icon": user },
+      { "title": Settings, "link": /my/preferences/account, "icon": gear },
+      { "title": Drafts, "link": /my/activity/drafts, "icon": pencil },
+      { "title": Bookmarks, "link": /my/activity/bookmarks, "icon": bookmark },
+      { "title": Messages, "link": /my/messages, "icon": envelope },
+    ]
+  schema:
+    name: item
+    identifier: title
+    properties:
+      title:
+        type: string
+        required: true
+      link:
+        type: string
+        required: true
+        validations:
+          url: true
+      icon:
+        type: string
+        required: true
+
 fkb_panel_show_solutions:
   type: bool
   default: false

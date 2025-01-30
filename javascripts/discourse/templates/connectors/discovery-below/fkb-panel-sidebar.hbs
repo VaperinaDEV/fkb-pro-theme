@@ -1,7 +1,7 @@
-{{#unless site.mobileView}}
+{{#unless this.site.mobileView}}
   <div class="fkb-panel">
-    {{#if user}}
-      <div class="fkb-panel-top" style="background-image: url('{{userCardBg}}');">
+    {{#if this.user}}
+      <div class="fkb-panel-top" style={{html-safe this.userCardBg}}>
         <div class="fkb-panel-contents">
           <div class="fkb-panel-contents-top">
             <div class="fkb-avatar">
@@ -20,26 +20,26 @@
           </div>
           <div class="fkb-panel-contents-stats">
             <div class="stats">
-              <UserStat @value={{userLikesReceived}} @icon="heart" @label="user.summary.likes_received" /> 
-              <a href="/u/{{user}}/activity/likes-given">
-                <UserStat @value={{userLikesGiven}} @icon="heart" @label="user.summary.likes_given" />
+              <UserStat @value={{this.userLikesReceived}} @icon="heart" @label="user.summary.likes_received" /> 
+              <a href="/u/{{this.user}}/activity/likes-given">
+                <UserStat @value={{this.userLikesGiven}} @icon="heart" @label="user.summary.likes_given" />
               </a>
               {{#if (theme-setting 'fkb_panel_show_solutions')}}
-                <a href="/u/{{user}}/activity/solved">
-                  <UserStat @value={{userSolvedCount}} @icon="check-square" @label="solved.solution_summary.other" />
+                <a href="/u/{{this.user}}/activity/solved">
+                  <UserStat @value={{this.userSolvedCount}} @icon="square-check" @label="solved.solution_summary.other" />
                 </a>
               {{/if}}
-              <a href="/u/{{user}}/activity/topics">
-                <UserStat @value={{userTopicCount}} @label="user.summary.topic_count" />
+              <a href="/u/{{this.user}}/activity/topics">
+                <UserStat @value={{this.userTopicCount}} @label="user.summary.topic_count" />
               </a>
-              <a href="/u/{{user}}/activity/replies">
-                <UserStat @value={{userPostCount}} @label="user.summary.post_count" />
+              <a href="/u/{{this.user}}/activity/replies">
+                <UserStat @value={{this.userPostCount}} @label="user.summary.post_count" />
               </a>
             </div>
             {{#if (theme-setting 'fkb_panel_show_badges')}}
-            {{#if stinkinBadges}}
+            {{#if this.stinkinBadges}}
               <div class="badges">
-                {{#each stinkinBadges as |b|}}
+                {{#each this.stinkinBadges as |b|}}
                   <a href="/badges/{{b.id}}/{{b.slug}}">
                     <span class="user-badge badge-type-{{b.badge_type_id}}" title={{b.description}} data-badge-name={{b.name}}>
                       {{icon-or-image b}}
@@ -51,9 +51,9 @@
                     </span>
                   </a>
                 {{/each}}
-                <a href="/u/{{user}}/badges">
+                <a href="/u/{{this.user}}/badges">
                   <span class="user-badge">
-                    <span class="count">{{i18n (theme-prefix "sidebar.all_badges")}} ({{allBadges}})</span>
+                    <span class="count">{{i18n (theme-prefix "sidebar.all_badges")}} ({{this.allBadges}})</span>
                   </span>
                 </a>
               </div>
@@ -64,13 +64,13 @@
       </div>
     {{/if}}   
     
-    {{#if user}}
+    {{#if this.user}}
       <div class="fkb-panel-contents-bottom">
         <FkbPanelItems />
       </div>
     {{/if}}
     
-    {{#unless user}}
+    {{#unless this.user}}
       <div class="visitor">
         <h2>{{i18n (theme-prefix "sidebar.welcome")}}</h2>
         {{#if (theme-setting 'custom_sidebar_enabled') }}

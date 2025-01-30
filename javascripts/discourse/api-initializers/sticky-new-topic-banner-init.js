@@ -1,31 +1,43 @@
-import { withPluginApi } from "discourse/lib/plugin-api";
+import { apiInitializer } from "discourse/lib/api";
 import { action } from "@ember/object";
+import { popupAjaxError } from "discourse/lib/ajax-error";
 
-export default {
-  name: "sticky-new-topic-banner",
-  initialize() {
-    withPluginApi("0.8.7", (api) => {
-    
-      // Sticky New Topic Banner Latest
-      api.modifyClass("component:discovery/topics", {
-        pluginId: "sticky-new-topics-banner",
+export default apiInitializer("1.8.0", (api) => {
+  
+  // Sticky New Topic Banner Latest
+  api.modifyClass(
+    "component:discovery/topics",
+    (Superclass) =>
+      class extends Superclass {
         @action
-        showInserted(event) {
+        async showInserted(event) {
           event?.preventDefault();
-          const tracker = this.topicTrackingState;
-
+          
+          if (this.args.model.loadingBefore) {
+            return; // Already loading
+          }
+    
           const listControls = document.querySelector(".list-controls");
           listControls.scrollIntoView();
-        
-          // Move inserted into topics
-          this.args.model.loadBefore(tracker.get("newIncoming"), true);
-          tracker.resetTracking();
+          
+          const { topicTrackingState } = this;
+          
+          try {
+            const topicIds = [...topicTrackingState.newIncoming];
+            await this.args.model.loadBefore(topicIds, true);
+            topicTrackingState.clearIncoming(topicIds);
+          } catch (e) {
+            popupAjaxError(e);
+          }
         }
-      });
-      
-      // Sticky New Topic Banner Category
-      api.modifyClass("controller:discovery/categories", {
-        pluginId: "sticky-new-topics-banner",
+      }
+  );
+
+  // Sticky New Topic Banner Category
+  api.modifyClass(
+    "controller:discovery/categories",
+    (Superclass) =>
+      class extends Superclass {
         @action
         showInserted(event) {
           event?.preventDefault();
@@ -38,7 +50,33 @@ export default {
           this.model.loadBefore(tracker.get("newIncoming"), true);
           tracker.resetTracking();
         }
-      }); 
-    });
-  },
-};
+      }
+  );
+
+  // Sticky New Topic Banner PM
+  api.modifyClass(
+    "controller:user-topics-list",
+    (Superclass) =>
+      class extends Superclass {      
+        @action
+        async showInserted(event) {
+          event?.preventDefault();
+          
+          if (this.model.loadingBefore) {
+            return;
+          }
+    
+          const userNavigation = document.querySelector(".user-navigation-primary");
+          userNavigation.scrollIntoView();  
+          
+          try {
+            const topicIds = [...this.pmTopicTrackingState.newIncoming];
+            await this.model.loadBefore(topicIds);
+            this.pmTopicTrackingState.resetIncomingTracking(topicIds);
+          } catch (e) {
+            popupAjaxError(e);
+          }
+        }
+      }
+  );
+});
