@@ -9,40 +9,6 @@
         display: block;
       }
     }
-    .mobile-view & {
-      .topic-list-item:first-child {
-        .topic-list-data.bulk-select-enabled {
-          .pull-left,
-          .pull-left label {
-            top: 0;
-            height: calc(100% - 4px);
-          }
-        }
-      }
-      .topic-list-data.bulk-select-enabled {
-        .pull-left,
-        .pull-left label {
-          position: absolute;
-          left: 0;
-          top: 4px;
-          z-index: 3;
-          width: 100%;
-          height: calc(100% - 8px);
-        }
-        .pull-left {
-          display: block !important;
-          label {
-            background: rgba(var(--tertiary-rgb), 0.06);
-            border-radius: var(--d-default-border-radius);
-            input {
-              position: absolute;
-              top: 1em;
-              right: 1em;
-            }
-          }
-        }
-      }
-    }
     .topic-list {
       &.sticky-header .topic-list-header,
       .topic-list-header {
