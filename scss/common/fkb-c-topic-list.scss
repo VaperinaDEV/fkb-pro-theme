@@ -53,21 +53,12 @@
       width: auto;
     }
     
-    .topic-list-item:not(.bookmark-list-item) 
-    > .topic-list-data:not(.bulk-select) {
+    .main-link {
       display: block;
       @include bg-br;
       padding: 1em !important;
       max-width: 100%;
-      .mobile-view & {        
-        .pull-left,
-        .pull-right,
-        .topic-item-stats {
-          display: none;
-        }
-        .right {
-          margin-left: 0;
-        }
+      .mobile-view & {
         .main-link {
           width: 100%;
         }
