@@ -40,22 +40,28 @@
     color: var(--secondary-low);
   }
   .header-dropdown-toggle {
-    position: relative;
-    border-radius: var(--d-button-border-radius);
-    background: var(--fkb-header-btn);
-    margin-left: 0.5em;
-    &:hover {
-      background: var(--fkb-header-btn-hover);
+    > button,
+    > a {
+      position: relative;
+      border-radius: var(--d-button-border-radius);
+      background: var(--fkb-header-btn);
+      margin-left: 0.5em;
+      &:hover {
+        background: var(--fkb-header-btn-hover);
+      }
     }
     &.active {
-      background: var(--tertiary-low);
-      .d-icon {
-        color: var(--tertiary);
-      }
-      &:hover {
+      > button,
+      > a {
         background: var(--tertiary-low);
         .d-icon {
           color: var(--tertiary);
+        }
+        &:hover {
+          background: var(--tertiary-low);
+          .d-icon {
+            color: var(--tertiary);
+          }
         }
       }
     }
