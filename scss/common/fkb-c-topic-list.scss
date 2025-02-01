@@ -52,26 +52,23 @@
     .views {
       width: auto;
     }
+
+    .topic-list-item {
+      &.highlighted {
+        animation: none;
+        .main-link {
+          @media (prefers-reduced-motion: no-preference) {
+            animation: background-fade-topiclight 2.5s ease-out;
+          }
+        }
+      }
+    }
     
-    .topic-list-item:not(.bookmark-list-item) 
-    > .topic-list-data:not(.bulk-select) {
+    .main-link {
       display: block;
       @include bg-br;
       padding: 1em !important;
       max-width: 100%;
-      .mobile-view & {        
-        .pull-left,
-        .pull-right,
-        .topic-item-stats {
-          display: none;
-        }
-        .right {
-          margin-left: 0;
-        }
-        .main-link {
-          width: 100%;
-        }
-      }
       font-size: var(--font-up-1-rem);
       
       .tli-top-section {
@@ -156,12 +153,14 @@
         .topic-excerpt {
           font-size: var(--font-0-rem);
           .mobile-view & {
-            font-size: var(--font-down-2);
+            font-size: var(--font-down-1);
           }
-          color: var(--primary);
-          margin: 0.5em 0 1em 0;
-          line-height: var(--line-height-large);
-          @include fkb-word-wrap;
+          .topic-excerpt-link {
+            color: var(--primary);
+            margin: 0.5em 0 1em 0;
+            line-height: var(--line-height-large);
+            @include fkb-word-wrap;
+          }
         }
 
         .topic-image {
@@ -170,10 +169,6 @@
           overflow: hidden;
           width: calc(100% + 2em);
           margin: 0.25em -1em 0 -1em;
-          .mobile-view & {
-            width: calc(100% + 2em - 6px);
-            margin: 0.25em -1em 0 calc(-1em + 3px);
-          }
           &__backdrop {
             position: absolute;
             width: 100%;
