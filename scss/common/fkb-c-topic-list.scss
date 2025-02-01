@@ -56,7 +56,7 @@
     .main-link {
       display: block;
       @include bg-br;
-      padding: 1em !important;
+      padding: 1em;
       max-width: 100%;
       .mobile-view & {
         .main-link {
