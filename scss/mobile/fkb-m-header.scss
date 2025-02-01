@@ -6,9 +6,11 @@ body.search-page {
   .d-header-icons {
     .header-dropdown-toggle {
       &.search-dropdown {
-        background-color: var(--tertiary-low);
-        .d-icon {
-          color: var(--tertiary);
+        #search-button {
+          background-color: var(--tertiary-low);
+          .d-icon {
+            color: var(--tertiary);
+          }
         }
       }
     }
