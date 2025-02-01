@@ -7,6 +7,7 @@ import number from "discourse/helpers/number";
 import UserLink from "discourse/components/user-link";
 import avatar from "discourse/helpers/avatar";
 import formatDate from "discourse/helpers/format-date";
+import dirSpan from "discourse/helpers/dir-span";
 import replaceEmoji from "discourse/helpers/replace-emoji";
 import i18n from "discourse-common/helpers/i18n";
 import discourseTags from "discourse/helpers/discourse-tags";
@@ -25,9 +26,11 @@ export default class TliMiddleSection extends Component {
     <div class="tli-middle-section">
       {{#if this.topic.hasExcerpt}}
         <div class="topic-excerpt">
-          {{replaceEmoji (htmlSafe this.topic.excerpt)}}
-          <a href={{this.topic.firstPostUrl}} class="topic-excerpt-more">
-            {{i18n "js.read_more"}}
+          <a href={{this.topic.url}} class="topic-excerpt-link">
+            {{dirSpan this.topic.escapedExcerpt htmlSafe="true"}}
+            {{#if this.topic.excerptTruncated}}
+              <span class="topic-excerpt-more">{{i18n "read_more"}}</span>
+            {{/if}}
           </a>
         </div>
       {{/if}}
