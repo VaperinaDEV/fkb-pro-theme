@@ -52,6 +52,15 @@
     .views {
       width: auto;
     }
+
+    .topic-list-data {
+      &:first-of-type {
+        padding-left: 1em;
+      }
+      &:last-of-type {
+        padding-right: 1em;
+      }
+    }
     
     .main-link {
       display: block;
