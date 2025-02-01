@@ -58,11 +58,6 @@
       @include bg-br;
       padding: 1em;
       max-width: 100%;
-      .mobile-view & {
-        .main-link {
-          width: 100%;
-        }
-      }
       font-size: var(--font-up-1-rem);
       
       .tli-top-section {
@@ -161,10 +156,6 @@
           overflow: hidden;
           width: calc(100% + 2em);
           margin: 0.25em -1em 0 -1em;
-          .mobile-view & {
-            width: calc(100% + 2em - 6px);
-            margin: 0.25em -1em 0 calc(-1em + 3px);
-          }
           &__backdrop {
             position: absolute;
             width: 100%;
