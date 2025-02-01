@@ -279,7 +279,7 @@ h2.username,
 
 body.user-activity-page .bookmark-list-wrapper {
   .topic-list.bookmark-list {
-    display: table;
+    display: table;      
     .topic-list-body {
       display: table-row-group;
       .bookmark-list-item {
@@ -290,7 +290,9 @@ body.user-activity-page .bookmark-list-wrapper {
           background: none;
           box-shadow: none;
           border-radius: 0;
-          padding: 1em;
+          border: none;
+          padding-left: 0;
+          padding-right: 0;
           .link-bottom-line {
             padding: 0.6em 0;
           }
