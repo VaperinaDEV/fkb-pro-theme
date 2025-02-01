@@ -4,7 +4,9 @@ import TliMiddleSection from "../components/topic-list-item/tli-middle-section";
 
 export default apiInitializer("1.8.0", (api) => {
 
-  api.registerValueTransformer("topic-list-item-mobile-layout", () => false);
+  if (!settings.disable_topic_list_modification) {
+    api.registerValueTransformer("topic-list-item-mobile-layout", () => false);
+  }
 
   api.registerValueTransformer("topic-list-columns", ({ value: columns }) => {
     if (!settings.disable_topic_list_modification) {
@@ -17,8 +19,10 @@ export default apiInitializer("1.8.0", (api) => {
     return columns;
   });
 
-  api.renderInOutlet("topic-list-before-link", TliTopSection);
-  api.renderInOutlet("topic-list-main-link-bottom", TliMiddleSection);
+  if (!settings.disable_topic_list_modification) {
+    api.renderInOutlet("topic-list-before-link", TliTopSection);
+    api.renderInOutlet("topic-list-main-link-bottom", TliMiddleSection);
+  }
 
   api.modifyClass(
     "component:discovery/topics",
