@@ -142,12 +142,14 @@
         .topic-excerpt {
           font-size: var(--font-0-rem);
           .mobile-view & {
-            font-size: var(--font-down-2);
+            font-size: var(--font-down-1);
           }
-          color: var(--primary);
-          margin: 0.5em 0 1em 0;
-          line-height: var(--line-height-large);
-          @include fkb-word-wrap;
+          .topic-excerpt-link {
+            color: var(--primary);
+            margin: 0.5em 0 1em 0;
+            line-height: var(--line-height-large);
+            @include fkb-word-wrap;
+          }
         }
 
         .topic-image {
