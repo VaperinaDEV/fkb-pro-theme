@@ -1,4 +1,4 @@
-{{#if this.site.useGlimmerTopicList}}
+{{#unless site.useGlimmerTopicList}}
   {{~raw-plugin-outlet name="topic-list-before-columns"}}
   
   {{#if bulkSelectEnabled}}
@@ -84,4 +84,4 @@
       </a>
     </div>
   </div>
-{{/if}}
+{{/unless}}
