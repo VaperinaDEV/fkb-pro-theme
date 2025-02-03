@@ -1,4 +1,4 @@
-{{#unless site.useGlimmerTopicList}}
+{{#unless this.site.useGlimmerTopicList}}
   {{#if (theme-setting 'disable_topic_list_modification')}}
     {{~raw-plugin-outlet name="topic-list-header-before"~}}
     {{~plugin-outlet name="topic-list-header-before"~}}
