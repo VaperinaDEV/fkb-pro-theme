@@ -18,6 +18,7 @@ body:not(.glimmer-topic-list-failed) {
 body.glimmer-topic-list-failed {
   @import "common/fkb-c-topic-list-no-glimmer";
 }
+@import "common/fkb-c-bulk-select";
 @import "common/fkb-c-topic";
 @import "common/fkb-c-private-message";
 @import "common/fkb-c-composer";
