@@ -1,4 +1,4 @@
-{{#if site.useGlimmerTopicList}}
+{{#if this.site.useGlimmerTopicList}}
   {{~raw-plugin-outlet name="topic-list-before-columns"}}
   
   {{#if bulkSelectEnabled}}
