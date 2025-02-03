@@ -36,41 +36,41 @@ export default apiInitializer("1.8.0", (api) => {
       (Superclass) =>
         class extends Superclass {
 
-        renderTopicListItem() {
-          const topicListModification = settings.disable_topic_list_modification;
-          const customTemplate = findRawTemplate("list/custom-topic-list-item");
-          const defaultTemplate = findRawTemplate("list/topic-list-item");
-            
-          function templateChooser() {
-            return topicListModification ? defaultTemplate : customTemplate;
-          }
-  
-          const template = templateChooser();
+          renderTopicListItem() {
+            const topicListModification = settings.disable_topic_list_modification;
+            const customTemplate = findRawTemplate("list/custom-topic-list-item");
+            const defaultTemplate = findRawTemplate("list/topic-list-item");
               
-          if (template) {
-            this.set(
-              "topicListItemContents",
-              htmlSafe(template(this, RUNTIME_OPTIONS))
-            );
-            schedule("afterRender", () => {
-              if (this.isDestroyed || this.isDestroying) {
-                return;
-              }
-              if (this.selected && this.selected.includes(this.topic)) {
-                this.element.querySelector("input.bulk-select").checked = true;
-                this.element.querySelector(".bulk-select.topic-list-data label").classList.add("selected");
-              }             
-              if (this._shouldFocusLastVisited()) {
-                const title = this._titleElement();
-                if (title) {
-                  title.addEventListener("focus", this._onTitleFocus);
-                  title.addEventListener("blur", this._onTitleBlur);
+            function templateChooser() {
+              return topicListModification ? defaultTemplate : customTemplate;
+            }
+    
+            const template = templateChooser();
+                
+            if (template) {
+              this.set(
+                "topicListItemContents",
+                htmlSafe(template(this, RUNTIME_OPTIONS))
+              );
+              schedule("afterRender", () => {
+                if (this.isDestroyed || this.isDestroying) {
+                  return;
                 }
-              }
-            });            
+                if (this.selected && this.selected.includes(this.topic)) {
+                  this.element.querySelector("input.bulk-select").checked = true;
+                  this.element.querySelector(".bulk-select.topic-list-data label").classList.add("selected");
+                }             
+                if (this._shouldFocusLastVisited()) {
+                  const title = this._titleElement();
+                  if (title) {
+                    title.addEventListener("focus", this._onTitleFocus);
+                    title.addEventListener("blur", this._onTitleBlur);
+                  }
+                }
+              });            
+            }
           }
         }
-      }
     );
   }
 
