@@ -148,6 +148,12 @@
       .link-bottom-line {
         display: none;
       }
+
+      // hide pinned topic excerpt
+      // to prevent duplicated topic excerpt
+      > a.topic-excerpt {
+        display: none;
+      }
       
       .tli-middle-section {
         .topic-excerpt {
