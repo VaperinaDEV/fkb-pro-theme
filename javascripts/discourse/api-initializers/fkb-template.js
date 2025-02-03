@@ -1,7 +1,8 @@
 import { apiInitializer } from "discourse/lib/api";
-import { findRawTemplate } from "discourse/lib/raw-templates";
-import { schedule } from "@ember/runloop";
+import { findRawTemplate } from "discourse-common/lib/raw-templates";
 import { htmlSafe } from "@ember/template";
+import { RUNTIME_OPTIONS } from "discourse-common/lib/raw-handlebars-helpers";
+import { schedule } from "@ember/runloop";
 import TliTopSection from "../components/topic-list-item/tli-top-section";
 import TliMiddleSection from "../components/topic-list-item/tli-middle-section";
 
