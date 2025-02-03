@@ -12,9 +12,12 @@
 @import "common/fkb-c-tags";
 
 @import "common/fkb-c-category";
-@import "common/fkb-c-topic-list";
-@import "common/fkb-c-topic-list-no-glimmer";
-@import "common/fkb-c-bulk-select";
+body:not(.glimmer-topic-list-failed) {
+  @import "common/fkb-c-topic-list";
+}
+body.glimmer-topic-list-failed {
+  @import "common/fkb-c-topic-list-no-glimmer";
+}
 @import "common/fkb-c-topic";
 @import "common/fkb-c-private-message";
 @import "common/fkb-c-composer";
