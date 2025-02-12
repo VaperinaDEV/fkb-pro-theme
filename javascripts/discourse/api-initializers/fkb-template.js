@@ -8,28 +8,8 @@ import TliMiddleSection from "../components/topic-list-item/tli-middle-section";
 
 export default apiInitializer("1.8.0", (api) => {
   const site = api.container.lookup("site:main");
-
-  if (site.useGlimmerTopicList) {
-    if (!settings.disable_topic_list_modification) {
-      api.registerValueTransformer("topic-list-item-mobile-layout", () => false);
-    }
   
-    api.registerValueTransformer("topic-list-columns", ({ value: columns }) => {
-      if (!settings.disable_topic_list_modification) {
-        columns.delete("posters");
-        columns.delete("replies");
-        columns.delete("views");
-        columns.delete("activity");
-      }
-      
-      return columns;
-    });
-  
-    if (!settings.disable_topic_list_modification) {
-      api.renderInOutlet("topic-list-before-link", TliTopSection);
-      api.renderInOutlet("topic-list-main-link-bottom", TliMiddleSection);
-    }
-  } else {
+  if (!site.useGlimmerTopicList) {
     // Use same template on Desktop and MobileView
     api.modifyClass(
       "component:topic-list-item",
@@ -72,6 +52,26 @@ export default apiInitializer("1.8.0", (api) => {
           }
         }
     );
+  } else {
+    if (!settings.disable_topic_list_modification) {
+      api.registerValueTransformer("topic-list-item-mobile-layout", () => false);
+    }
+  
+    api.registerValueTransformer("topic-list-columns", ({ value: columns }) => {
+      if (!settings.disable_topic_list_modification) {
+        columns.delete("posters");
+        columns.delete("replies");
+        columns.delete("views");
+        columns.delete("activity");
+      }
+      
+      return columns;
+    });
+  
+    if (!settings.disable_topic_list_modification) {
+      api.renderInOutlet("topic-list-before-link", TliTopSection);
+      api.renderInOutlet("topic-list-main-link-bottom", TliMiddleSection);
+    }
   }
 
   api.modifyClass(
