@@ -41,7 +41,7 @@
 
 @keyframes fkb-panel-hide {
   0% {
-    @include sticky;
+    position: sticky;
   }
   100% {
     position: fixed;
