@@ -19,7 +19,7 @@
       
       .tc-right-sidebar {   
         @if $right-sidebar-blocks-expanded == "false" {
-          @include sticky;
+          position: sticky;
           top: calc(var(--header-offset) + 2em);
           @include bg-br;
           padding: 1em;
@@ -33,7 +33,7 @@
             padding: 1em;
             
             &:last-of-type {
-              @include sticky;
+              position: sticky;
               top: calc(var(--header-offset) + 2em);
               overflow-y: auto;
               max-height: calc(100vh - 10em);
