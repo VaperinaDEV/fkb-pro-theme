@@ -21,6 +21,14 @@
       &:first-child {
         padding-top: 0;
       }
+      &.highlighted {
+        animation: none;
+        .main-link {
+          @media (prefers-reduced-motion: no-preference) {
+            animation: background-fade-topiclight 2.5s ease-out;
+          }
+        }
+      }
     }
     .topic-list-item-separator {
       display: block;
