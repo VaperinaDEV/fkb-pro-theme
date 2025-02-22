@@ -35,8 +35,10 @@
       }
       &.highlighted {
         animation: none;
-        @media (prefers-reduced-motion: no-preference) {
-          animation: background-fade-topiclight 2.5s ease-out;
+        .main-link {
+          @media (prefers-reduced-motion: no-preference) {
+            animation: background-fade-topiclight 2.5s ease-out;
+          }
         }
       }
     }
