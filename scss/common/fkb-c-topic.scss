@@ -178,12 +178,12 @@ button.save-fast-edit {
     border-radius: var(--d-button-border-radius);
     margin-right: 0.25em;
     color: var(--primary-high);
-    .d-icon {
-      color: var(--primary-high);
-    }
     &:focus,
     &:hover {
       background: var(--primary-low);
+    }
+    .d-icon {
+      color: var(--primary-high);
     }
   }
 }
@@ -448,7 +448,7 @@ blockquote aside.onebox {
         &:last-child {
           margin-right: unset; 
         }
-      }      
+      }
       .btn {
         color: var(--primary);
         background-color: transparent;

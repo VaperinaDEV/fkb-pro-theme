@@ -10,9 +10,9 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     z-index: z("usercard");
     .container {
       max-width: 100%;
-      @include bg-br;
       padding: 1em;
       margin-bottom: 1em;
+      @include bg-br;
     }
     .navigation-container {
       position: relative;
@@ -62,15 +62,16 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
           border-radius: var(--d-button-border-radius);
           background: var(--primary-low);
           order: 1;
-          .d-icon {
-            color: var(--primary-high);
-          }
           &:hover,
           &:focus {
             background: var(--primary-medium);
             .d-icon {
               color: var(--primary-low);
             }
+          }
+          
+          .d-icon {
+            color: var(--primary-high);
           }
         }
         #create-topic {
@@ -83,6 +84,15 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
           font-size: var(--font-0);
           transition: transform 0.25s ease, box-shadow 0.25s ease;
           box-shadow: 0px 5px 5px -1px rgba(0, 0, 0, 0.25);
+          &:active {
+            background: var(--tertiary-hover);
+            box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.25);
+            transform: scale(0.9);
+          }
+          &:focus {
+            background: var(--tertiary-hover);
+          }
+          
           .d-icon {
             width: 1.5em;
             height: 1.5em;
@@ -93,14 +103,6 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
           }
           .d-button-label {
             display: none;
-          }
-          &:active {
-            background: var(--tertiary-hover);
-            box-shadow: 0px 0px 5px -1px rgba(0, 0, 0, 0.25);
-            transform: scale(0.9);
-          }
-          &:focus {
-            background: var(--tertiary-hover);
           }
           &.open-draft {
             background: var(--primary-medium);

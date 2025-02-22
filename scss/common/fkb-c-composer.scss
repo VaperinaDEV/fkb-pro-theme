@@ -4,11 +4,11 @@
 
 #reply-control {
   #reply-title {
-    div.ac-wrap {
-      border-radius: var(--d-default-border-radius);
-    }
     &:focus {
       @include fkb-focus;
+    }
+    div.ac-wrap {
+      border-radius: var(--d-default-border-radius);
     }
   }
 }
@@ -56,13 +56,13 @@
 
 .group-details-container,
 .tag-list {
-  @include bg-br;
   padding: 1em;
   margin-bottom: 1em;
+  @include bg-br;
 }
 
 div.education {
-  @include bg-br;
   padding: 1em;
   border: none;
+  @include bg-br;
 }

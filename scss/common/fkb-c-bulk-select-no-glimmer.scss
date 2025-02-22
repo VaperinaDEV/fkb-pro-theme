@@ -62,14 +62,14 @@
               padding: 0;
               button.bulk-select {
                 padding: 1rem 1.25rem;
+                margin-right: 0;
+                line-height: var(--line-height-small);
                 .mobile-view & {
                   padding: 1rem;
                   .d-icon {
                     color: var(--primary-high-or-secondary-low);
                   }
                 }
-                margin-right: 0;
-                line-height: var(--line-height-small);
               }
             }
             th.bulk-select.topic-list-data {
@@ -140,14 +140,14 @@
             &.bulk-select {
               position: absolute;
               top: 8px;
-              .mobile-view & {
-                top: 0;
-              }
               left: 0;          
               width: 100%;
               height: 100%;
               max-width: 100%;
               z-index: 3;
+              .mobile-view & {
+                top: 0;
+              }
               label {
                 display: flex;
                 flex-direction: row-reverse;

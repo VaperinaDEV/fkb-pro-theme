@@ -2,10 +2,10 @@
 
 :root {
   --d-sidebar-width: 20em;
+  --d-sidebar-row-font-size: var(--font-0);
   @media screen and (max-width: 1250px) {
     --d-sidebar-width: 18em;
   }
-  --d-sidebar-row-font-size: var(--font-0);
 }
 
 // Sidebar
@@ -22,13 +22,13 @@ body.has-sidebar-page {
   #main-outlet-wrapper {
     padding-left: 1em;    
     .sidebar-wrapper {
-      @include bg-br;
       padding: 0;
       margin-top: 2em;
       top: calc(var(--header-offset) + 2em);
       height: calc(
         var(--composer-vh, var(--1dvh)) * 100 - var(--header-offset, 0px) - 4em
       );
+      @include bg-br;
       html.composer-open & {
         height: calc(
           var(--composer-vh, var(--1dvh)) * 100 - var(--header-offset, 0px) - 2em

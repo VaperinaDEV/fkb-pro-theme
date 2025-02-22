@@ -45,13 +45,10 @@
 
 .topic-body {
   width: calc(690px + (11px * 2));
-  @include bg-br;
   padding: 12px;
   margin-left: 1em;
   border-top: none;
-  &.highlighted {
-    animation: background-fade-topiclight 2s ease-out;
-  }
+  @include bg-br;
   @media screen and (max-width: 834px) {
     width: 100%;
   }
@@ -146,8 +143,8 @@
 }
 
 .gap {
-  @include topic-elements;
   padding-left: 9px;
+  @include topic-elements;
 }
 
 .time-gap {
@@ -163,9 +160,9 @@
 }
 
 .posts-filtered-notice {
-  @include topic-elements;
   padding: 1em 0;
   border-radius: var(--d-default-border-radius);
+  @include topic-elements;
 }
 
 #topic-footer-buttons {

@@ -49,14 +49,14 @@
               padding: 0;
               button.bulk-select {
                 padding: 1rem 1.25rem;
+                margin-right: 0;
+                line-height: var(--line-height-small);
                 .mobile-view & {
                   padding: 1rem;
                   .d-icon {
                     color: var(--primary-high-or-secondary-low);
                   }
                 }
-                margin-right: 0;
-                line-height: var(--line-height-small);
               }
             }
             th.bulk-select.topic-list-data {

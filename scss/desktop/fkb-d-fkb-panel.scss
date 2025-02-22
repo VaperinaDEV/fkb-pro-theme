@@ -15,9 +15,9 @@
     display: none;
     position: sticky;
     top: calc(var(--header-offset) + 2em);
-    @include bg-br;
     margin-bottom: 0.5em;
     color: var(--primary-high);
+    @include bg-br;
     .visitor {
       display: none;
     }
@@ -235,16 +235,16 @@
       @if $right-sidebar-blocks-expanded == "false" {
         position: sticky;
         top: calc(var(--header-offset) + 2em);
-        @include bg-br;
         padding: 1em;
         max-height: calc(100vh - var(--header-offset) - 4em);
         overflow-y: auto;
+        @include bg-br;
       }
       
       .rs-component {
         @if $right-sidebar-blocks-expanded == "true" {
-          @include bg-br;
           padding: 1em;
+          @include bg-br;
           
           &:last-of-type {
             position: sticky;
