@@ -95,14 +95,15 @@
         background: var(--tertiary-low);
         border-radius: var(--d-button-border-radius);
         border: 1px solid transparent;
-        .d-icon {
-          color: var(--tertiary);
-        }
         &:hover {
           background: var(--tertiary-low);
           .d-icon {
             color: var(--tertiary);
           }
+        }
+        
+        .d-icon {
+          color: var(--tertiary);
         }
       }
     }
@@ -129,6 +130,7 @@
   &:after {
     border-color: transparent;
   }
+  
   .d-icon {
     color: var(--tertiary);
   }
