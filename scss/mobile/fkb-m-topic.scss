@@ -24,11 +24,8 @@
         padding-top: 0;
       }
       .topic-body {
-        @include bg-br;
         padding: 1em;
-        &.highlighted {
-          animation: background-fade-topiclight 2s ease-out;
-        }
+        @include bg-br;
       }
       .cooked .lightbox img {
         width: 100%;
