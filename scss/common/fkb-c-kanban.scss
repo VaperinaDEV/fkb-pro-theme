@@ -1,9 +1,9 @@
 .discourse-kanban {
   display: grid;
   &:not(:empty) {
-    @include bg-br;
     margin-bottom: 16px;
     padding: 1em;
+    @include bg-br;
     &.fullscreen {
       border-radius: 0;
       padding: 0;
