@@ -41,8 +41,8 @@
       width: auto;
     }
     .main-link {
-      @include bg-br;
       font-size: var(--font-up-1-rem);
+      @include bg-br;
       .mobile-view & {
         width: 100%;
       }
