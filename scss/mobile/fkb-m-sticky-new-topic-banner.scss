@@ -7,16 +7,16 @@
   // Latest page
   
   .alert.alert-info.clickable {
-    @include sticky-new-topic;
     z-index: 8;
+    @include sticky-new-topic;
     @include alert-info-clickable-mobile;
   }
   
   // Tag page
   
   .show-more {
-    @include sticky-new-topic;
     z-index: 8;
+    @include sticky-new-topic;
     .alert.alert-info.clickable {
       @include alert-info-clickable-mobile;
     }
@@ -34,8 +34,8 @@
 
 .user-messages-page {
   .show-mores {
-    @include sticky-new-topic;
     z-index: 8;
+    @include sticky-new-topic;
     .alert.alert-info.clickable {
       @include alert-info-clickable-mobile;
     }
