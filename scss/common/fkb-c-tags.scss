@@ -3,9 +3,9 @@
 // Tags Page
 
 section.tag-info {
-  @include bg-br;
   margin: 0 0 16px 0;
   border: none;
+  @include bg-br;
 }
 
 // Tags
