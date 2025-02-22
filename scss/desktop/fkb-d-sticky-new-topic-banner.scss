@@ -5,11 +5,11 @@
 #list-area {
   .show-more {
     z-index: 3;
+    @include sticky-new-topic;
     @media screen and (max-width: 1180px) {
       margin: 0 auto -22px;
       animation: none;
     }
-    @include sticky-new-topic;
     .alert.alert-info.clickable {
       @include alert-info-clickable-desktop;
     }
