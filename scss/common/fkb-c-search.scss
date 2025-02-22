@@ -30,9 +30,9 @@
 }
 
 .fps-result {
-  @include bg-br;
   padding: 1em 1em 1em 0.7em;
   margin-bottom: 1em;
+  @include bg-br;
   .topic {
     .bulk-select {
       border-radius: var(--d-default-border-radius) 0;
