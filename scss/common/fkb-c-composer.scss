@@ -4,11 +4,11 @@
 
 #reply-control {
   #reply-title {
-    div.ac-wrap {
-      border-radius: var(--d-default-border-radius);
-    }
     &:focus {
       @include fkb-focus;
+    }
+    div.ac-wrap {
+      border-radius: var(--d-default-border-radius);
     }
   }
 }
