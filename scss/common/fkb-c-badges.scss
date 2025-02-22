@@ -20,13 +20,13 @@
 @if $category-badge-style == "box" {
   .badge-category__wrapper {
     .badge-category {
-      &:before {
-        display: none;
-      }
       background: var(--category-badge-color);
       color: #ffffff !important;
       padding: 4px 8px;
       border-radius: var(--d-default-border-radius);
+      &:before {
+        display: none;
+      }
     }
     .d-icon {
       color: #ffffff !important;
@@ -47,15 +47,15 @@
             background: var(--category-badge-color) !important;
             border-color: var(--category-badge-color);
             .select-kit-header-wrapper {
+              > .d-icon {
+                color: #ffffff;
+              }
               .select-kit-selected-name .name {
                 > .badge-category__wrapper {
                   .badge-category {
                     padding: 0;
                   }
                 }
-              }
-              > .d-icon {
-                color: #ffffff;
               }
             }
           }
