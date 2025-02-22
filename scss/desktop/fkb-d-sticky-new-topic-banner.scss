@@ -4,12 +4,12 @@
 
 #list-area {
   .show-more {
-    @include sticky-new-topic;
     z-index: 3;
     @media screen and (max-width: 1180px) {
       margin: 0 auto -22px;
       animation: none;
     }
+    @include sticky-new-topic;
     .alert.alert-info.clickable {
       @include alert-info-clickable-desktop;
     }
@@ -26,8 +26,8 @@
 
 .user-messages-page {
   .show-mores {
-    @include sticky-new-topic;
     z-index: 3;
+    @include sticky-new-topic;
     .alert.alert-info.clickable {
       @include alert-info-clickable-desktop;
     }
