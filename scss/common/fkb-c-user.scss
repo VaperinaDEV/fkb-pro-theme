@@ -14,9 +14,9 @@ h2.username,
   .about {
     border-radius: var(--d-default-border-radius);
     .details {
-      @include bg-br;
       padding: 1em;
       border: none;
+      @include bg-br;
     }
     .secondary {
       padding: 0.5em;
@@ -60,17 +60,17 @@ h2.username,
   margin-top: 1em;
   .user-navigation {
     &.user-navigation-primary {
-      @include bg-br;
       padding: 0 1em;
       margin: 1em 0 0;
       border-bottom: none;
+      @include bg-br;
     }
   }
   .new-user-content-wrapper {
     position: relative;
-    @include bg-br;
     margin-top: 1em;
     min-height: calc(100vh - 20em);
+    @include bg-br;
     .user-navigation-secondary {
       padding: 0 1em;
       border-bottom: none;
@@ -145,7 +145,7 @@ h2.username,
 
 #user-card {
   .metadata {
-    html.mobile-view & {
+    .mobile-view & {
       font-size: var(--font-down-1);
     }
     > div {
