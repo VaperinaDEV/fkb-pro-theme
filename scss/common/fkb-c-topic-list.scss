@@ -219,15 +219,15 @@
             font-size: var(--font-down-1-rem);
             margin: 0.25em;
             border-radius: var(--d-default-border-radius);
-            &:after {
-              content: '';
-            }
             .tag-icon {
               > .d-icon {
                 transform: scale(1.25);
                 margin-right: 0.5em;
               }
             }
+          }
+          &__tag-separator {
+            display: none;
           }
         }
         
