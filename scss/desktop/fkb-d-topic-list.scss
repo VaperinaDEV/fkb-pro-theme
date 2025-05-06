@@ -119,12 +119,12 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
   .tag-info {
     grid-area: pins;
   }
-  .list-container + span {
+  .list-container {
     @media screen and (max-width: 1099px) {
       display: none;
     }
-    .fkb-panel-sidebar,
-    .fkb-panel {
+    ~ .fkb-panel-sidebar,
+    ~ .fkb-panel-sidebar .fkb-panel {
       display: flex;
       flex-direction: column;
       @media screen and (max-width: 1099px) {
@@ -152,7 +152,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     @media (max-width: 1099px) {
       padding: 0;
     }
-    + span {
+    ~ .fkb-panel-sidebar {
       grid-area: fkb-panel;
     }
   }
