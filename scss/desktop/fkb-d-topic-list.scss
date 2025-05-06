@@ -87,7 +87,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     @media screen and (max-width: 800px) {
       display: block;
     }
-    @media screen and (max-width: 1100px) {
+    @media screen and (max-width: 1099px) {
       gap: 0;
     }
     @if $right-sidebar-blocks-enabled == "true" {
@@ -119,12 +119,9 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
   .tag-info {
     grid-area: pins;
   }
-  .list-container + span {
-    @media screen and (max-width: 1099px) {
-      display: none;
-    }
-    .fkb-panel-sidebar,
-    .fkb-panel {
+  .list-container {
+    ~ .fkb-panel-sidebar,
+    ~ .fkb-panel-sidebar .fkb-panel {
       display: flex;
       flex-direction: column;
       @media screen and (max-width: 1099px) {
@@ -152,7 +149,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     @media (max-width: 1099px) {
       padding: 0;
     }
-    + span {
+    ~ .fkb-panel-sidebar {
       grid-area: fkb-panel;
     }
   }
@@ -160,7 +157,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     z-index: 100;
     grid-area: nav;
     width: var(--d-sidebar-width);
-    @media screen and (max-width: 1100px) {
+    @media screen and (max-width: 1099px) {
       margin-right: 2em;
     }
     @if $right-sidebar-blocks-enabled == "true" {
@@ -245,7 +242,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     .nav-pills {
       flex-direction: column;
       padding: 0 1em;
-      @media screen and (max-width: 1100px) {
+      @media screen and (max-width: 1099px) {
         flex-direction: row;
       }
     }
