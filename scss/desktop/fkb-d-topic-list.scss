@@ -51,15 +51,6 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
           .d-icon {
             color: var(--secondary);
           }
-          &.open-draft {
-            background: var(--primary-medium);
-            border: 2px solid var(--primary-medium);
-            &:focus,
-            &:hover {
-              background: var(--primary-high);
-              border: 2px solid var(--primary-high);
-            }
-          }
         }
       }   
     }
@@ -128,7 +119,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     @media screen and (max-width: 1099px) {
       display: none;
     }
-    @if $right-sidebar-blocks-enabled == "true" {
+    @if $right-sidebar-blocks-enabled == "true" and $right-sidebar-below-fkb-panel == "false" {
       display: none;
     }
   }
