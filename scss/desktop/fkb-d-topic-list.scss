@@ -87,7 +87,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     @media screen and (max-width: 800px) {
       display: block;
     }
-    @media screen and (max-width: 1100px) {
+    @media screen and (max-width: 1099px) {
       gap: 0;
     }
     @if $right-sidebar-blocks-enabled == "true" {
@@ -120,9 +120,6 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     grid-area: pins;
   }
   .list-container {
-    @media screen and (max-width: 1099px) {
-      display: none;
-    }
     ~ .fkb-panel-sidebar,
     ~ .fkb-panel-sidebar .fkb-panel {
       display: flex;
