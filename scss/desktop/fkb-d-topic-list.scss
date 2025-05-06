@@ -31,10 +31,10 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
       }
       .category-breadcrumb {
         margin: var(--nav-space) 0 var(--nav-space) var(--nav-space);
-      }     
+      }
       #navigation-bar {
         margin: var(--nav-space) auto var(--nav-space) var(--nav-space);
-      }     
+      }
       .navigation-controls {
         margin: var(--nav-space);        
         #create-topic {
@@ -144,6 +144,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     }
   }
 
+  .list-container + span, // keep it for older Discourse versions
   .fkb-panel-sidebar {
     grid-area: fkb-panel;
   }
