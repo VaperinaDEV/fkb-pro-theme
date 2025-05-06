@@ -123,15 +123,14 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
   
   .fkb-panel-sidebar,
   .fkb-panel-sidebar .fkb-panel {
-      display: flex;
-      flex-direction: column;
-      @media screen and (max-width: 1099px) {
-        display: none;
-      }
-      @if $right-sidebar-blocks-enabled == "true" {
-        display: none;
-      }
-    }  
+    display: flex;
+    flex-direction: column;
+    @media screen and (max-width: 1099px) {
+      display: none;
+    }
+    @if $right-sidebar-blocks-enabled == "true" {
+      display: none;
+    }
   }
 
   .category-breadcrumb {
