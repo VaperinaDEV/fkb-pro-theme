@@ -1,9 +1,10 @@
 :root {  
   // Desktop topic variables
-  --avatar-post-width: calc(60px + 1em + var(--topic-body-width) + (var(--topic-body-width-padding) * 2) + (12px * 2));
+  --topic-avatar-width: 60px;
+  --avatar-post-width: calc(var(--topic-avatar-width) + 1em + var(--topic-body-width) + (var(--topic-body-width-padding) * 2) + (12px * 2));
   --wo-avatar-width: calc(var(--topic-body-width) + (var(--topic-body-width-padding) * 2) + (12px * 2));
-  --topic-post-full-width: calc(60px + 1em + var(--topic-body-width) + (var(--topic-body-width-padding) * 2) + (12px * 2) + 83px);
-  --posts-filter-width: calc(60px + 1em + var(--topic-body-width) + (var(--topic-body-width-padding) * 2) + (12px * 2) - 2em);
+  --topic-post-full-width: calc(var(--topic-avatar-width) + 1em + var(--topic-body-width) + (var(--topic-body-width-padding) * 2) + (12px * 2) + 83px);
+  --posts-filter-width: calc(var(--topic-avatar-width) + 1em + var(--topic-body-width) + (var(--topic-body-width-padding) * 2) + (12px * 2) - 2em);
 }
 
 // Desktop Topic Mixins
@@ -114,13 +115,13 @@
 }
 
 .topic-avatar {
-  width: 60px;
+  width: var(--topic-avatar-width);
   border: none;
 }
 
 .placeholder-avatar {
-  width: 60px;
-  height: 60px;
+  width: var(--topic-avatar-width);
+  height: var(--topic-avatar-width);
 }
 
 .topic-list .topic-list-item-separator td span {
@@ -132,7 +133,7 @@
   max-width: var(--avatar-post-width);
   margin-left: auto;
   .topic-avatar {
-    width: 60px;
+    width: var(--topic-avatar-width);
   }
   .small-action-desc {
     margin-left: 1em;
