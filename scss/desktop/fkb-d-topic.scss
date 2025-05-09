@@ -89,6 +89,14 @@
 
 .topic-map {
   margin: 20px 11px;
+  &.--op {
+    border-top: none;
+    max-width: 100%;
+  }
+  &.--bottom {
+    border-bottom: none;
+    max-width: var(--avatar-post-width);
+  }
 }
 
 .archetype-private_message {
