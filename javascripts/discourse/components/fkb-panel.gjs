@@ -5,8 +5,6 @@ import { htmlSafe } from "@ember/template";
 import didInsert from "@ember/render-modifiers/modifiers/did-insert";
 import { service } from "@ember/service";
 import { getURLWithCDN } from "discourse/lib/get-url";
-import avatar from "discourse/helpers/avatar";
-import replaceEmoji from "discourse/helpers/replace-emoji";
 import routeAction from "discourse/helpers/route-action";
 import ConditionalLoadingSpinner from "discourse/components/conditional-loading-spinner";
 import DButton from "discourse/components/d-button";
@@ -52,7 +50,10 @@ export default class FkbPanel extends Component {
   }
 
   get fkbPanelCover() {
-    return url(${getURLWithCDN(this.userCardDetails.user.card_background_upload_url)});
+    if (!this.userCardDetails?.user?.card_background_upload_url) {
+      return null;
+    }
+    return `background-image: url("${getURLWithCDN(this.userCardDetails.user.card_background_upload_url)}")`;
   }
 
   <template>
