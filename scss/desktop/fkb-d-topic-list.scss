@@ -112,7 +112,8 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     grid-area: pins;
   }
   
-  .fkb-panel {
+  .fkb-panel-sidebar,
+  .fkb-panel-sidebar .fkb-panel {
     display: flex;
     flex-direction: column;
     @media screen and (max-width: 1099px) {
@@ -144,7 +145,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
   }
 
   .list-container + span, // keep it for older Discourse versions
-  .fkb-panel {
+  .fkb-panel-sidebar {
     grid-area: fkb-panel;
   }
 
