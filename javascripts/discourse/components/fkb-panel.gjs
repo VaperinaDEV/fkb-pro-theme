@@ -120,15 +120,11 @@ export default class FkbPanel extends Component {
             </div>
           </div>
         </div>
-      {{/if}}   
-      
-      {{#if this.currentUser}}
         <div class="fkb-panel-contents-bottom">
           <FkbPanelItems />
         </div>
-      {{/if}}
-
-    </ConditionalLoadingSpinner>
+      </ConditionalLoadingSpinner>
+    {{/if}}
 
     {{#unless this.currentUser}}
       <div class="visitor">
