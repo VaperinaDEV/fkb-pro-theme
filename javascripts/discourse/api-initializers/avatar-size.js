@@ -22,7 +22,7 @@ function oldAvatarSize(api) {
 
 export default {
   name: "avatar-size",
-  initialize(container) {
+  initialize(api) {
     const site = api.container.lookup("site:main");
 
     if (!site.mobileView) {
