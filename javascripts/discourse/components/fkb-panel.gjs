@@ -6,6 +6,7 @@ import didInsert from "@ember/render-modifiers/modifiers/did-insert";
 import { service } from "@ember/service";
 import { getURLWithCDN } from "discourse/lib/get-url";
 import ConditionalLoadingSpinner from "discourse/components/conditional-loading-spinner";
+import avatar from "discourse/helpers/avatar";
 import DButton from "discourse/components/d-button";
 import UserStat from "discourse/components/user-stat";
 import concatClass from "discourse/helpers/concat-class";
