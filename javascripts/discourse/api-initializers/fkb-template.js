@@ -1,6 +1,7 @@
 import { apiInitializer } from "discourse/lib/api";
 import TliTopSection from "../components/topic-list-item/tli-top-section";
 import TliMiddleSection from "../components/topic-list-item/tli-middle-section";
+import FkbPanel from "../components/fkb-panel";
 
 export default apiInitializer("1.8.0", (api) => {
   
@@ -23,6 +24,8 @@ export default apiInitializer("1.8.0", (api) => {
     api.renderInOutlet("topic-list-before-link", TliTopSection);
     api.renderInOutlet("topic-list-main-link-bottom", TliMiddleSection);
   }
+
+  api.renderInOutlet("discovery-below", FkbPanel);
 
   api.modifyClass(
     "component:discovery/topics",
