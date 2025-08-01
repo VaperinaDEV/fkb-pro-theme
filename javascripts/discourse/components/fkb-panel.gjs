@@ -5,7 +5,6 @@ import { htmlSafe } from "@ember/template";
 import didInsert from "@ember/render-modifiers/modifiers/did-insert";
 import { service } from "@ember/service";
 import { getURLWithCDN } from "discourse/lib/get-url";
-import routeAction from "discourse/helpers/route-action";
 import ConditionalLoadingSpinner from "discourse/components/conditional-loading-spinner";
 import DButton from "discourse/components/d-button";
 import UserStat from "discourse/components/user-stat";
