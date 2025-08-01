@@ -16,6 +16,7 @@ import routeAction from "discourse/helpers/route-action";
 import { ajax } from "discourse/lib/ajax";
 import { i18n } from "discourse-i18n";
 import FkbPanelItems from "./fkb-panel-items";
+import RightSidebarBlocksBelow from "./right-sidebar-blocks-below";
 
 export default class FkbPanel extends Component {
   @service currentUser;
@@ -144,6 +145,7 @@ export default class FkbPanel extends Component {
           </div>
         {{/unless}}
       </div>
+      <RightSidebarBlocksBelow />
     </div>
   </template>
 }
