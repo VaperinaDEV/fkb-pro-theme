@@ -7,6 +7,7 @@ import { service } from "@ember/service";
 import { getURLWithCDN } from "discourse/lib/get-url";
 import ConditionalLoadingSpinner from "discourse/components/conditional-loading-spinner";
 import avatar from "discourse/helpers/avatar";
+import iconOrImage from "discourse/helpers/icon-or-image";
 import DButton from "discourse/components/d-button";
 import UserStat from "discourse/components/user-stat";
 import concatClass from "discourse/helpers/concat-class";
@@ -101,7 +102,7 @@ export default class FkbPanel extends Component {
                   {{#each this.userCardDetails.badges as |b|}}
                     <a href="/badges/{{b.id}}/{{b.slug}}">
                       <span class="user-badge badge-type-{{b.badge_type_id}}" title={{b.description}} data-badge-name={{b.name}}>
-                        {{icon-or-image b}}
+                        {{iconOrImage b}}
                         <span class="badge-display-name">{{b.name}}</span>
                         {{#if b.multiple_grant}}
                           <span class="count">&nbsp;(&times;{{b.grant_count}})</span>
