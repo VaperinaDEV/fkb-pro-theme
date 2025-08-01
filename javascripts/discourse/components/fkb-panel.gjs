@@ -144,10 +144,6 @@ export default class FkbPanel extends Component {
     {{/unless}}
   </div>
 
-  {{#if settings.right_sidebar_below_fkb_panel}}
-    <div class="tc-right-sidebar">
-      {{right-sidebar-blocks}}
-    </div>
-  {{/if}}
+
   </template>
 }
