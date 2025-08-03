@@ -84,20 +84,38 @@ export default class FkbPanel extends Component {
                   </div>
                   <div class="fkb-panel-contents-stats">
                     <div class="stats">
-                      <UserStat @value={{this.userDetails.user_summary.likes_received}} @icon="heart" @label="user.summary.likes_received" /> 
-                      <a href="/u/{{this.currentUser}}/activity/likes-given">
-                        <UserStat @value={{this.userDetails.user_summary.likes_given}} @icon="heart" @label="user.summary.likes_given" />
+                      <UserStat
+                        @value={{this.userDetails.user_summary.likes_received}}
+                        @icon="heart"
+                        @label="user.summary.likes_received"
+                      /> 
+                      <a href="/u/{{this.currentUser.username}}/activity/likes-given">
+                        <UserStat
+                          @value={{this.userDetails.user_summary.likes_given}}
+                          @icon="heart"
+                          @label="user.summary.likes_given"
+                        />
                       </a>
                       {{#if settings.fkb_panel_show_solutions}}
-                        <a href="/u/{{this.currentUser}}/activity/solved">
-                          <UserStat @value={{this.userDetails.user_summary.solved_count}} @icon="square-check" @label="solved.solution_summary.other" />
+                        <a href="/u/{{this.currentUser.username}}/activity/solved">
+                          <UserStat
+                            @value={{this.userDetails.user_summary.solved_count}}
+                            @icon="square-check"
+                            @label="solved.solution_summary.other"
+                          />
                         </a>
                       {{/if}}
-                      <a href="/u/{{this.currentUser}}/activity/topics">
-                        <UserStat @value={{this.userDetails.user_summary.topic_count}} @label="user.summary.topic_count" />
+                      <a href="/u/{{this.currentUser.username}}/activity/topics">
+                        <UserStat
+                          @value={{this.userDetails.user_summary.topic_count}}
+                          @label="user.summary.topic_count"
+                        />
                       </a>
-                      <a href="/u/{{this.currentUser}}/activity/replies">
-                        <UserStat @value={{this.userDetails.user_summary.post_count}} @label="user.summary.post_count" />
+                      <a href="/u/{{this.currentUser.username}}/activity/replies">
+                        <UserStat
+                          @value={{this.userDetails.user_summary.post_count}}
+                          @label="user.summary.post_count"
+                        />
                       </a>
                     </div>
                     {{#if settings.fkb_panel_show_badges}}
