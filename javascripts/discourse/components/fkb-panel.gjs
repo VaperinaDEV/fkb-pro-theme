@@ -58,11 +58,13 @@ export default class FkbPanel extends Component {
     }
   }
 
-  get fkbPanelCover() {
-    if (!this.userCardDetails?.user?.card_background_upload_url) {
-      return null;
-    }
-    return `background-image: url("${getURLWithCDN(this.userCardDetails.user.card_background_upload_url)}")`;
+  get hasBackgroundImage() {
+    return !!this.userCardDetails?.user?.card_background_upload_url;
+  }
+  
+  get backgroundImageStyle() {
+    const url = this.userCardDetails?.user?.card_background_upload_url;
+    return url ? htmlSafe(`background-image: url("${getURLWithCDN(url)}")`) : null;
   }
 
   <template>
@@ -71,7 +73,10 @@ export default class FkbPanel extends Component {
         <div class="fkb-panel">
           {{#if this.currentUser}}
             <ConditionalLoadingSpinner @condition={{this.loading}}>
-              <div class="fkb-panel-top" style={{htmlSafe this.fkbPanelCover}}>
+              <div
+                class="fkb-panel-top"
+                style={{this.backgroundImageStyle}}
+              >
                 <div class="fkb-panel-contents">
                   <div class="fkb-panel-contents-top">
                     <div class="fkb-avatar">
