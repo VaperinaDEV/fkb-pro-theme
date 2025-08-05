@@ -24,7 +24,7 @@ export default class FkbPanel extends Component {
   @service site;
 
   @tracked userDetails;
-  @tracked userCardDetails;
+  @tracked userCardDetails = JSON.parse(sessionStorage.getItem("userCardDetails")) || null;
   @tracked loading;
 
   @action
@@ -39,13 +39,19 @@ export default class FkbPanel extends Component {
     try {
       const [summaryResponse, cardResponse] = await Promise.all([
         ajax(`/u/${this.currentUser.username}/summary.json`),
-        ajax(`/u/${this.currentUser.username}/card.json`)
+        this.userCardDetails
+          ? Promise.resolve(this.userCardDetails)
+          : ajax(`/u/${this.currentUser.username}/card.json`)
       ]);
   
       this.userDetails = summaryResponse;
-      this.userCardDetails = cardResponse;
+  
+      if (!this.userCardDetails) {
+        this.userCardDetails = cardResponse;
+        sessionStorage.setItem("userCardDetails", JSON.stringify(cardResponse));
+      }
+  
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.error("Error fetching user details or card:", error);
     } finally {
       this.loading = false;
