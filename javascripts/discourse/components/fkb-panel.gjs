@@ -2,6 +2,7 @@ import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { action } from "@ember/object";
 import { htmlSafe } from "@ember/template";
+import { concat } from "@ember/helper";
 import didInsert from "@ember/render-modifiers/modifiers/did-insert";
 import { service } from "@ember/service";
 import { getURLWithCDN } from "discourse/lib/get-url";
@@ -57,14 +58,13 @@ export default class FkbPanel extends Component {
       this.loading = false;
     }
   }
-
+  
   get hasBackgroundImage() {
     return !!this.userCardDetails?.user?.card_background_upload_url;
   }
   
-  get backgroundImageStyle() {
-    const url = this.userCardDetails?.user?.card_background_upload_url;
-    return url ? htmlSafe(`background-image: url("${getURLWithCDN(url)}")`) : null;
+  get backgroundImageURL() {
+    return getURLWithCDN(this.userCardDetails?.user?.card_background_upload_url || "");
   }
 
   <template>
@@ -74,10 +74,9 @@ export default class FkbPanel extends Component {
           {{#if this.currentUser}}
             <ConditionalLoadingSpinner @condition={{this.loading}}>
               <div
-                class="fkb-panel-top"
-                style={{this.backgroundImageStyle}}
+                class="fkb-panel-top {{if this.hasBackgroundImage "has-cover"}}"
+                style={{if this.hasBackgroundImage (htmlSafe (concat "background-image: url('" this.backgroundImageURL "')"))}}
               >
-                <p>{{this.userCardDetails.user.card_background_upload_url}}</p>
                 <div class="fkb-panel-contents">
                   <div class="fkb-panel-contents-top">
                     <div class="fkb-avatar">
