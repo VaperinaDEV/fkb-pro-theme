@@ -2,6 +2,7 @@ import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { action } from "@ember/object";
 import { htmlSafe } from "@ember/template";
+import { concat } from "@ember/helper";
 import didInsert from "@ember/render-modifiers/modifiers/did-insert";
 import { service } from "@ember/service";
 import { getURLWithCDN } from "discourse/lib/get-url";
@@ -23,8 +24,8 @@ export default class FkbPanel extends Component {
   @service currentUser;
   @service site;
 
-  @tracked userDetails;
-  @tracked userCardDetails;
+  @tracked userDetails = JSON.parse(sessionStorage.getItem("userDetails")) || null;
+  @tracked userCardDetails = JSON.parse(sessionStorage.getItem("userCardDetails")) || null;
   @tracked loading;
 
   @action
@@ -37,26 +38,39 @@ export default class FkbPanel extends Component {
     }
   
     try {
-      const [summaryResponse, cardResponse] = await Promise.all([
-        ajax(`/u/${this.currentUser.username}/summary.json`),
-        ajax(`/u/${this.currentUser.username}/card.json`)
-      ]);
+      const summaryPromise = this.userDetails
+        ? Promise.resolve(this.userDetails)
+        : ajax(`/u/${this.currentUser.username}/summary.json`);
   
-      this.userDetails = summaryResponse;
-      this.userCardDetails = cardResponse;
+      const cardPromise = this.userCardDetails
+        ? Promise.resolve(this.userCardDetails)
+        : ajax(`/u/${this.currentUser.username}/card.json`);
+  
+      const [summaryResponse, cardResponse] = await Promise.all([summaryPromise, cardPromise]);
+  
+      if (!this.userDetails) {
+        this.userDetails = summaryResponse;
+        sessionStorage.setItem("userDetails", JSON.stringify(summaryResponse));
+      }
+  
+      if (!this.userCardDetails) {
+        this.userCardDetails = cardResponse;
+        sessionStorage.setItem("userCardDetails", JSON.stringify(cardResponse));
+      }
+  
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.error("Error fetching user details or card:", error);
     } finally {
       this.loading = false;
     }
   }
-
-  get fkbPanelCover() {
-    if (!this.userCardDetails?.user?.card_background_upload_url) {
-      return null;
-    }
-    return `background-image: url("${getURLWithCDN(this.userCardDetails.user.card_background_upload_url)}")`;
+  
+  get hasBackgroundImage() {
+    return !!this.userCardDetails?.user?.card_background_upload_url;
+  }
+  
+  get backgroundImageURL() {
+    return getURLWithCDN(this.userCardDetails?.user?.card_background_upload_url || "");
   }
 
   <template>
@@ -65,7 +79,10 @@ export default class FkbPanel extends Component {
         <div class="fkb-panel">
           {{#if this.currentUser}}
             <ConditionalLoadingSpinner @condition={{this.loading}}>
-              <div class="fkb-panel-top" style={{htmlSafe this.fkbPanelCover}}>
+              <div
+                class="fkb-panel-top {{if this.hasBackgroundImage "has-cover"}}"
+                style={{if this.hasBackgroundImage (htmlSafe (concat "background-image: url('" this.backgroundImageURL "')"))}}
+              >
                 <div class="fkb-panel-contents">
                   <div class="fkb-panel-contents-top">
                     <div class="fkb-avatar">
@@ -133,7 +150,7 @@ export default class FkbPanel extends Component {
                             </span>
                           </a>
                         {{/each}}
-                        <a href="/u/{{this.currentUser}}/badges">
+                        <a href="/u/{{this.currentUser.username}}/badges">
                           <span class="user-badge">
                             <span class="count">{{i18n (themePrefix "sidebar.all_badges")}} ({{this.userCardDetails.user.badge_count}})</span>
                           </span>
