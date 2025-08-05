@@ -77,6 +77,7 @@ export default class FkbPanel extends Component {
                 class="fkb-panel-top"
                 style={{this.backgroundImageStyle}}
               >
+                <p>{{this.userCardDetails.user.card_background_upload_url}}</p>
                 <div class="fkb-panel-contents">
                   <div class="fkb-panel-contents-top">
                     <div class="fkb-avatar">
