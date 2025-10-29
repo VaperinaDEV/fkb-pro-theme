@@ -3,11 +3,33 @@
 // Main Outlet
 
 #main-outlet-wrapper {
-  padding: 0 1em;
+  padding: 0 1.5em 2em;
+  background: var(--secondary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   #main-outlet {
+    width: 100%;
     padding-top: 2em;
+    margin: 0 auto;
+    max-width: calc(var(--d-max-width) + var(--d-sidebar-width) + 4em);
+
     .has-full-page-chat & {
       padding-top: 0;
     }
+
+    @media screen and (max-width: 1099px) {
+      max-width: 100%;
+    }
+
+    @media screen and (max-width: 800px) {
+      padding-top: 1.5em;
+    }
   }
+}
+
+body.has-sidebar-page #main-outlet-wrapper {
+  padding-bottom: 0;
 }

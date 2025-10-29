@@ -25,13 +25,21 @@
     .topic-list-body {
       display: block;
       border: none;
+      margin: 0;
     }
     .topic-list-item {
       display: block;
       padding: 8px 0;
+      margin-bottom: 1.25em;
+      scroll-margin-top: calc(var(--header-offset, 3.5em) + 1.5em);
+      content-visibility: auto;
+      contain-intrinsic-size: 220px;
       border: none;
       &:first-child {
         padding-top: 0;
+      }
+      &:last-child {
+        margin-bottom: 0;
       }
       &.highlighted {
         animation: none;
@@ -66,8 +74,10 @@
       padding: 1em !important;
       max-width: 100%;
       font-size: var(--font-up-1-rem);
+      will-change: transform, box-shadow;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
       @include bg-br;
-      
+
       .tli-top-section {
         display: flex;
         flex-direction: column;
@@ -144,6 +154,21 @@
 
       .link-bottom-line {
         display: none;
+      }
+
+      &:hover,
+      &:focus-visible {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 32px -24px var(--fkb-shadow);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        transition: none;
+
+        &:hover,
+        &:focus-visible {
+          transform: none;
+        }
       }
 
       // hide pinned topic excerpt

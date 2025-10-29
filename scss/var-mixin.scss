@@ -15,8 +15,10 @@
 
 @mixin bg-br {
   background: var(--secondary);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--fkb-surface-border);
+  box-shadow: 0 12px 30px -20px var(--fkb-shadow);
   border-radius: var(--d-default-border-radius);
+  transition: box-shadow 0.2s ease;
 }
 
 @mixin fkb-focus {
@@ -92,6 +94,9 @@
   animation: newPostUpSticky 0.2s ease-out;
   width: max-content;
   margin: -22px auto -22px;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
 }
 
 // Alert info clickable
@@ -147,31 +152,31 @@
   --scrollbarBg: transparent;
   --scrollbarThumbBg: var(--primary-low);
   --scrollbarWidth: 0.5em;
-    
+
   scrollbar-color: transparent var(--scrollbarBg);
   transition: scrollbar-color 0.25s ease-in-out;
   transition-delay: 0.5s;
-  
+
   &:hover {
     scrollbar-color: var(--scrollbarThumbBg) var(--scrollbarBg);
-    
-    &::scrollbar-thumb {
+
+    &::-webkit-scrollbar-thumb {
       background-color: var(--scrollbarThumbBg);
     }
-    
+
     transition-delay: 0s;
   }
-    
-  &::scrollbar {
+
+  &::-webkit-scrollbar {
     width: var(--scrollbarWidth);
   }
-    
-  &::scrollbar-thumb {
+
+  &::-webkit-scrollbar-thumb {
     background-color: transparent;
     border-radius: calc(var(--scrollbarWidth) / 2);
   }
-    
-  &::scrollbar-track {
+
+  &::-webkit-scrollbar-track {
     background-color: transparent;
   }
 }

@@ -24,6 +24,9 @@
 
 // For responsive topic-body
 .topic-post {
+  scroll-margin-top: calc(var(--header-offset, 3.5em) + 1.5em);
+  content-visibility: auto;
+  contain-intrinsic-size: 480px;
   article {
     .row {
       display: flex;
