@@ -13,11 +13,39 @@ $light-theme-fkb-btn: #{$light_btn};
 $dark-theme-fkb-btn-hover: #{$dark_btn_hover};
 $light-theme-fkb-btn-hover: #{$light_btn_hover};
 
+$light-theme-fkb-app-bg: #f0f2f5;
+$dark-theme-fkb-app-bg: #18191a;
+
+$light-theme-fkb-card-bg: #ffffff;
+$dark-theme-fkb-card-bg: #242526;
+
+$light-theme-fkb-card-border: rgba(0, 0, 0, 0.06);
+$dark-theme-fkb-card-border: rgba(255, 255, 255, 0.12);
+
+$light-theme-fkb-card-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.45);
+$dark-theme-fkb-card-shadow: 0 24px 48px -28px rgba(0, 0, 0, 0.6);
+
+$light-theme-fkb-card-shadow-hover: 0 24px 56px -20px rgba(30, 41, 59, 0.45);
+$dark-theme-fkb-card-shadow-hover: 0 28px 64px -24px rgba(0, 0, 0, 0.65);
+
+$light-theme-fkb-muted-text: #65676b;
+$dark-theme-fkb-muted-text: #b0b3b8;
+
+$light-theme-fkb-divider: rgba(0, 0, 0, 0.08);
+$dark-theme-fkb-divider: rgba(255, 255, 255, 0.08);
+
 $fkb-bg: dark-light-choose($light-theme-fkb-bg, $dark-theme-fkb-bg);
 $fkb-header-btn: dark-light-choose($light-theme-fkb-header-btn, $dark-theme-fkb-header-btn);
 $fkb-header-btn-hover: dark-light-choose($light-theme-fkb-header-btn-hover, $dark-theme-fkb-header-btn-hover);
 $fkb-btn: dark-light-choose($light-theme-fkb-btn, $dark-theme-fkb-btn);
 $fkb-btn-hover: dark-light-choose($light-theme-fkb-btn-hover, $dark-theme-fkb-btn-hover);
+$fkb-app-bg: dark-light-choose($light-theme-fkb-app-bg, $dark-theme-fkb-app-bg);
+$fkb-card-bg: dark-light-choose($light-theme-fkb-card-bg, $dark-theme-fkb-card-bg);
+$fkb-card-border: dark-light-choose($light-theme-fkb-card-border, $dark-theme-fkb-card-border);
+$fkb-card-shadow: dark-light-choose($light-theme-fkb-card-shadow, $dark-theme-fkb-card-shadow);
+$fkb-card-shadow-hover: dark-light-choose($light-theme-fkb-card-shadow-hover, $dark-theme-fkb-card-shadow-hover);
+$fkb-muted-text: dark-light-choose($light-theme-fkb-muted-text, $dark-theme-fkb-muted-text);
+$fkb-divider: dark-light-choose($light-theme-fkb-divider, $dark-theme-fkb-divider);
 
 :root {
   --fkb-bg: #{$fkb-bg};
@@ -25,4 +53,11 @@ $fkb-btn-hover: dark-light-choose($light-theme-fkb-btn-hover, $dark-theme-fkb-bt
   --fkb-header-btn-hover: #{$fkb-header-btn-hover};
   --fkb-btn: #{$fkb-btn};
   --fkb-btn-hover: #{$fkb-btn-hover};
+  --fkb-app-bg: #{$fkb-app-bg};
+  --fkb-card-bg: #{$fkb-card-bg};
+  --fkb-card-border: #{$fkb-card-border};
+  --fkb-card-shadow: #{$fkb-card-shadow};
+  --fkb-card-shadow-hover: #{$fkb-card-shadow-hover};
+  --fkb-muted-text: #{$fkb-muted-text};
+  --fkb-divider: #{$fkb-divider};
 }

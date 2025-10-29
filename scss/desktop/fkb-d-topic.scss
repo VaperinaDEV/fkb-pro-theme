@@ -5,30 +5,62 @@
   --wo-avatar-width: calc(var(--topic-body-width) + (var(--topic-body-width-padding) * 2) + (12px * 2));
   --topic-post-full-width: calc(var(--topic-avatar-width) + 1em + var(--topic-body-width) + (var(--topic-body-width-padding) * 2) + (12px * 2) + 83px);
   --posts-filter-width: calc(var(--topic-avatar-width) + 1em + var(--topic-body-width) + (var(--topic-body-width-padding) * 2) + (12px * 2) - 2em);
+  --topic-card-max-width: clamp(320px, 70vw, 760px);
+  --topic-card-padding: clamp(1.25rem, 1vw + 1rem, 1.75rem);
 }
 
 // Desktop Topic Mixins
 
 @mixin topic-elements {
-  max-width: var(--wo-avatar-width);
+  max-width: var(--topic-card-max-width);
   margin-left: auto;
+  margin-right: auto;
 }
 
 // FKBD - Topic
 
 .container.posts {
   > .row {
-    max-width: var(--avatar-post-width);
+    max-width: var(--topic-card-max-width);
+    margin: 0 auto;
+    width: 100%;
   }
 }
 
 // For responsive topic-body
 .topic-post {
+  margin-bottom: 1.5rem;
+
   article {
-    .row {
-      display: flex;
-      padding: 8px 0;
+    background: var(--fkb-card-bg);
+    border: 1px solid var(--fkb-card-border);
+    border-radius: calc(var(--d-default-border-radius) * 1.5);
+    box-shadow: var(--fkb-card-shadow);
+    padding: var(--topic-card-padding);
+    display: grid;
+    gap: var(--topic-card-padding);
+    overflow: hidden;
+
+    @media (max-width: 720px) {
+      border-radius: var(--d-default-border-radius);
+      padding: 1.25rem;
     }
+
+    .row {
+      padding: 0;
+    }
+
+    > .row:first-of-type {
+      display: grid;
+      grid-template-columns: min-content minmax(0, 1fr);
+      gap: 1.25rem;
+      align-items: flex-start;
+
+      @media (max-width: 720px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
     &#post_1 {
       .row {
         &:first-of-type {
@@ -37,19 +69,27 @@
       }
     }
   }
+
   &.sticky-avatar {
     .topic-avatar {
       height: 100%;
     }
   }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 }
 
 .topic-body {
-  width: calc(690px + (11px * 2));
-  padding: 12px;
-  margin-left: 1em;
+  width: 100%;
+  max-width: var(--topic-card-max-width);
+  padding: 0;
+  margin-left: 0;
   border-top: none;
-  @include bg-br;
+  background: transparent;
+  box-shadow: none;
+
   @media screen and (max-width: 834px) {
     width: 100%;
   }
@@ -88,43 +128,66 @@
 }
 
 .topic-map {
-  margin: 20px 11px;
+  margin: 1.5rem auto;
+  max-width: var(--topic-card-max-width);
+  background: var(--fkb-card-bg);
+  border: 1px solid var(--fkb-card-border);
+  border-radius: calc(var(--d-default-border-radius) * 1.5);
+  box-shadow: var(--fkb-card-shadow);
+  padding: 1.5rem;
+
   &.--op {
     border-top: none;
     max-width: 100%;
   }
+
   &.--bottom {
     border-bottom: none;
-    max-width: var(--avatar-post-width);
+    max-width: var(--topic-card-max-width);
   }
 }
 
 .archetype-private_message {
   .topic-body {
-    width: var(--wo-avatar-width);
-    margin-left: 0;
-    padding: 12px 0 12px 12px;
+    width: 100%;
+    max-width: var(--topic-card-max-width);
+    margin: 0 auto;
+    padding: 0;
   }
   .small-action.topic-post-visited {
-    max-width: var(--avatar-post-width);
+    max-width: var(--topic-card-max-width);
   }
   .posts-filtered-notice {
-    max-width: var(--avatar-post-width);
+    max-width: var(--topic-card-max-width);
   }
   .gap {
-    padding: 8px 0;
-    margin: 8px 0 8px auto;
+    padding: 8px 1rem;
+    margin: 8px auto;
   }
   .small-action-desc.timegap {
     padding: 1em;
     border-radius: var(--d-button-border-radius);
-    margin: 8px 0 8px -8px;
+    margin: 8px auto;
   }
 }
 
 .topic-avatar {
   width: var(--topic-avatar-width);
   border: none;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  .avatar-wrapper {
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 0 3px var(--fkb-card-border);
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+  }
 }
 
 .placeholder-avatar {
@@ -136,15 +199,125 @@
   background: #e9ebee;
 }
 
+.topic-meta-data {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+
+  .names {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    align-items: center;
+
+    .username,
+    .poster-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--primary-high);
+    }
+
+    .user-title {
+      color: var(--fkb-muted-text);
+      font-size: var(--font-down-1);
+    }
+  }
+
+  .post-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--fkb-muted-text);
+    font-size: var(--font-down-1);
+
+    .d-icon {
+      color: inherit;
+    }
+  }
+}
+
+.topic-body .cooked {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--primary-high);
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  ul,
+  ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  blockquote {
+    border-left: 4px solid var(--tertiary);
+    padding-left: 1rem;
+    color: var(--fkb-muted-text);
+  }
+
+  img,
+  video {
+    border-radius: var(--d-default-border-radius);
+  }
+}
+
+.topic-post article .post-controls {
+  border-top: 1px solid var(--fkb-divider);
+  padding-top: 1rem;
+  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: space-between;
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .actions > :is(button, a, .btn, .like-count) {
+    border-radius: 999px;
+    padding: 0.45rem 1.1rem;
+    font-weight: 600;
+    background: transparent;
+    color: var(--fkb-muted-text);
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+
+    &:hover,
+    &:focus {
+      background: var(--primary-very-low);
+      color: var(--primary-high);
+      transform: translateY(-1px);
+    }
+  }
+
+  .read-state {
+    margin-left: auto;
+  }
+}
+
 .small-action {
   border-top: none;
-  max-width: var(--avatar-post-width);
-  margin-left: auto;
+  max-width: var(--topic-card-max-width);
+  margin: 0 auto 1.5rem auto;
+  background: var(--fkb-card-bg);
+  border: 1px solid var(--fkb-card-border);
+  border-radius: calc(var(--d-default-border-radius) * 1.5);
+  box-shadow: var(--fkb-card-shadow);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   .topic-avatar {
     width: var(--topic-avatar-width);
   }
   .small-action-desc {
-    margin-left: 1em;
+    margin-left: 0;
+    color: var(--fkb-muted-text);
+    font-weight: 600;
   }
   &.topic-post-visited {
     @include topic-elements;
@@ -152,8 +325,10 @@
 }
 
 .gap {
-  padding-left: 9px;
+  padding: 0 1rem;
+  margin: 0 auto 1.5rem;
   @include topic-elements;
+  color: var(--fkb-muted-text);
 }
 
 .time-gap {
@@ -169,25 +344,41 @@
 }
 
 .posts-filtered-notice {
-  padding: 1em 0;
-  border-radius: var(--d-default-border-radius);
+  padding: 1rem 1.25rem;
+  border-radius: calc(var(--d-default-border-radius) * 1.5);
+  background: var(--fkb-card-bg);
+  border: 1px solid var(--fkb-card-border);
+  box-shadow: var(--fkb-card-shadow);
+  color: var(--fkb-muted-text);
   @include topic-elements;
 }
 
 #topic-footer-buttons {
-  max-width: var(--avatar-post-width);
+  max-width: var(--topic-card-max-width);
+  margin: 2rem auto 0;
+  background: var(--fkb-card-bg);
+  border: 1px solid var(--fkb-card-border);
+  border-radius: calc(var(--d-default-border-radius) * 1.5);
+  box-shadow: var(--fkb-card-shadow);
+  padding: 1rem 1.25rem;
 }
 
 .topic-area > .loading-container {
-  width: var(--topic-post-full-width);
+  width: var(--topic-card-max-width);
   @media screen and (max-width: 924px) {
     width: 100%;
-  } 
+  }
 }
 
 .topic-status-info,
 .topic-timer-info {
-  max-width: var(--avatar-post-width);
+  max-width: var(--topic-card-max-width);
+  margin: 1.5rem auto;
+  background: var(--fkb-card-bg);
+  border: 1px solid var(--fkb-card-border);
+  border-radius: calc(var(--d-default-border-radius) * 1.5);
+  box-shadow: var(--fkb-card-shadow);
+  padding: 1.25rem;
 }
 
 .create-invite-modal,
@@ -204,7 +395,13 @@
 // Suggested topics
 
 .more-topics__container {
-  max-width: var(--avatar-post-width);
+  max-width: var(--topic-card-max-width);
+  margin: 2rem auto 0;
+  background: var(--fkb-card-bg);
+  border: 1px solid var(--fkb-card-border);
+  border-radius: calc(var(--d-default-border-radius) * 1.5);
+  box-shadow: var(--fkb-card-shadow);
+  padding: 1.5rem;
   .more-topics__lists {
     .topic-list-header {
       display: none;

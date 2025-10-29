@@ -7,6 +7,7 @@
   --d-select-body-border-radius: #{$border_radius_select_body};
   --d-avatar-border-radius: #{$border_radius_avatar};
   --topic-list-item-background-color: transparent;
+  --fkb-feed-max-width: 1280px;
 }
 
 /* Mixins */
@@ -14,9 +15,16 @@
 // GLobal Mixins
 
 @mixin bg-br {
-  background: var(--secondary);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  background: var(--fkb-card-bg);
   border-radius: var(--d-default-border-radius);
+  border: 1px solid var(--fkb-card-border);
+  box-shadow: var(--fkb-card-shadow);
+  transition: box-shadow 0.2s ease;
+
+  &:hover,
+  &:focus-within {
+    box-shadow: var(--fkb-card-shadow-hover);
+  }
 }
 
 @mixin fkb-focus {
