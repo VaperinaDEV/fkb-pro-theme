@@ -2,12 +2,24 @@
 
 // Main Outlet
 
+body {
+  background: var(--fkb-app-bg);
+}
+
 #main-outlet-wrapper {
   padding: 0 1em;
+  max-width: var(--fkb-feed-max-width);
+  margin: 0 auto;
+
   #main-outlet {
     padding-top: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
     .has-full-page-chat & {
       padding-top: 0;
+      gap: 0;
     }
   }
 }
