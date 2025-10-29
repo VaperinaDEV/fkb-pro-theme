@@ -16,17 +16,38 @@ $light-theme-fkb-btn-hover: #{$light_btn_hover};
 $light-theme-fkb-app-bg: #f0f2f5;
 $dark-theme-fkb-app-bg: #18191a;
 
+$light-theme-fkb-app-bg-accent: #e9eef7;
+$dark-theme-fkb-app-bg-accent: #111827;
+
+$light-theme-fkb-app-bg-gradient:
+  radial-gradient(circle at 18% 22%, rgba(99, 102, 241, 0.22), transparent 55%),
+  radial-gradient(circle at 82% 12%, rgba(59, 130, 246, 0.18), transparent 48%),
+  linear-gradient(180deg, #f5f7fb 0%, #eef1f8 40%, #f0f2f5 100%);
+$dark-theme-fkb-app-bg-gradient:
+  radial-gradient(circle at 25% 18%, rgba(99, 102, 241, 0.18), transparent 52%),
+  radial-gradient(circle at 82% 0%, rgba(56, 189, 248, 0.12), transparent 45%),
+  linear-gradient(180deg, #0f172a 0%, #10131a 45%, #18191a 100%);
+
 $light-theme-fkb-card-bg: #ffffff;
 $dark-theme-fkb-card-bg: #242526;
 
 $light-theme-fkb-card-border: rgba(0, 0, 0, 0.06);
 $dark-theme-fkb-card-border: rgba(255, 255, 255, 0.12);
 
+$light-theme-fkb-card-border-strong: rgba(15, 23, 42, 0.08);
+$dark-theme-fkb-card-border-strong: rgba(255, 255, 255, 0.1);
+
 $light-theme-fkb-card-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.45);
 $dark-theme-fkb-card-shadow: 0 24px 48px -28px rgba(0, 0, 0, 0.6);
 
 $light-theme-fkb-card-shadow-hover: 0 24px 56px -20px rgba(30, 41, 59, 0.45);
 $dark-theme-fkb-card-shadow-hover: 0 28px 64px -24px rgba(0, 0, 0, 0.65);
+
+$light-theme-fkb-app-surface: rgba(255, 255, 255, 0.82);
+$dark-theme-fkb-app-surface: rgba(36, 37, 38, 0.82);
+
+$light-theme-fkb-surface-glow: rgba(99, 102, 241, 0.22);
+$dark-theme-fkb-surface-glow: rgba(59, 130, 246, 0.18);
 
 $light-theme-fkb-muted-text: #65676b;
 $dark-theme-fkb-muted-text: #b0b3b8;
@@ -40,10 +61,15 @@ $fkb-header-btn-hover: dark-light-choose($light-theme-fkb-header-btn-hover, $dar
 $fkb-btn: dark-light-choose($light-theme-fkb-btn, $dark-theme-fkb-btn);
 $fkb-btn-hover: dark-light-choose($light-theme-fkb-btn-hover, $dark-theme-fkb-btn-hover);
 $fkb-app-bg: dark-light-choose($light-theme-fkb-app-bg, $dark-theme-fkb-app-bg);
+$fkb-app-bg-accent: dark-light-choose($light-theme-fkb-app-bg-accent, $dark-theme-fkb-app-bg-accent);
+$fkb-app-bg-gradient: dark-light-choose($light-theme-fkb-app-bg-gradient, $dark-theme-fkb-app-bg-gradient);
 $fkb-card-bg: dark-light-choose($light-theme-fkb-card-bg, $dark-theme-fkb-card-bg);
 $fkb-card-border: dark-light-choose($light-theme-fkb-card-border, $dark-theme-fkb-card-border);
+$fkb-card-border-strong: dark-light-choose($light-theme-fkb-card-border-strong, $dark-theme-fkb-card-border-strong);
 $fkb-card-shadow: dark-light-choose($light-theme-fkb-card-shadow, $dark-theme-fkb-card-shadow);
 $fkb-card-shadow-hover: dark-light-choose($light-theme-fkb-card-shadow-hover, $dark-theme-fkb-card-shadow-hover);
+$fkb-app-surface: dark-light-choose($light-theme-fkb-app-surface, $dark-theme-fkb-app-surface);
+$fkb-surface-glow: dark-light-choose($light-theme-fkb-surface-glow, $dark-theme-fkb-surface-glow);
 $fkb-muted-text: dark-light-choose($light-theme-fkb-muted-text, $dark-theme-fkb-muted-text);
 $fkb-divider: dark-light-choose($light-theme-fkb-divider, $dark-theme-fkb-divider);
 
@@ -54,10 +80,15 @@ $fkb-divider: dark-light-choose($light-theme-fkb-divider, $dark-theme-fkb-divide
   --fkb-btn: #{$fkb-btn};
   --fkb-btn-hover: #{$fkb-btn-hover};
   --fkb-app-bg: #{$fkb-app-bg};
+  --fkb-app-bg-accent: #{$fkb-app-bg-accent};
+  --fkb-app-bg-gradient: #{$fkb-app-bg-gradient};
   --fkb-card-bg: #{$fkb-card-bg};
   --fkb-card-border: #{$fkb-card-border};
+  --fkb-card-border-strong: #{$fkb-card-border-strong};
   --fkb-card-shadow: #{$fkb-card-shadow};
   --fkb-card-shadow-hover: #{$fkb-card-shadow-hover};
+  --fkb-app-surface: #{$fkb-app-surface};
+  --fkb-surface-glow: #{$fkb-surface-glow};
   --fkb-muted-text: #{$fkb-muted-text};
   --fkb-divider: #{$fkb-divider};
 }
