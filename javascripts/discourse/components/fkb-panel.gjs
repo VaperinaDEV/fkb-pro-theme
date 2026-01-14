@@ -4,6 +4,7 @@ import { action } from "@ember/object";
 import { htmlSafe } from "@ember/template";
 import { concat } from "@ember/helper";
 import didInsert from "@ember/render-modifiers/modifiers/did-insert";
+import didUpdate from "@ember/render-modifiers/modifiers/did-update";
 import { service } from "@ember/service";
 import { getURLWithCDN } from "discourse/lib/get-url";
 import ConditionalLoadingSpinner from "discourse/components/conditional-loading-spinner";
@@ -27,13 +28,10 @@ export default class FkbPanel extends Component {
 
   @tracked loading = false;
 
-  get needsFetch() {
-    return this.currentUser && !this.fkbCache.userDetails && !this.loading;
-  }
-
   @action
   async autoFetch() {
-    if (this.needsFetch) {
+    if (this.currentUser && !this.fkbCache.userDetails && !this.loading) {
+      console.log("A cache ürült, automatikus frissítés...");
       await this.fetchUserDetails();
     }
   }
@@ -76,10 +74,11 @@ export default class FkbPanel extends Component {
 
   <template>
     {{#unless this.site.mobileView}}
-      <div class="fkb-panel-sidebar" {{didInsert this.fetchUserDetails}}>
-        {{#if this.needsFetch}}
-          <div {{didInsert this.autoFetch}}></div>
-        {{/if}}
+      <div
+        class="fkb-panel-sidebar"
+        {{didInsert this.fetchUserDetails}}
+        {{didUpdate this.autoFetch this.fkbCache.userDetails}}
+      >
         <div class="fkb-panel">
           {{#if this.currentUser}}
             <ConditionalLoadingSpinner @condition={{this.loading}}>
