@@ -141,26 +141,27 @@ export default class FkbPanel extends Component {
                       {{/if}}
                     </div>
                     {{#if settings.fkb_panel_show_badges}}
-                    {{#if this.userCardDetails}}
-                      <div class="badges">
-                        {{#each this.userCardDetails.badges as |b|}}
-                          <a href="/badges/{{b.id}}/{{b.slug}}">
-                            <span class="user-badge badge-type-{{b.badge_type_id}}" title={{b.description}} data-badge-name={{b.name}}>
-                              {{iconOrImage b}}
-                              <span class="badge-display-name">{{b.name}}</span>
-                              {{#if b.multiple_grant}}
-                                <span class="count">&nbsp;(&times;{{b.grant_count}})</span>
-                              {{/if}}
-                              {{yield}}
+                      {{#if this.userCardDetails}}
+                        <div class="badges">
+                          {{#each this.userCardDetails.badges as |b|}}
+                            <a href="/badges/{{b.id}}/{{b.slug}}">
+                              <span class="user-badge badge-type-{{b.badge_type_id}}" title={{b.description}} data-badge-name={{b.name}}>
+                                {{iconOrImage b}}
+                                <span class="badge-display-name">{{b.name}}</span>
+                                {{#if b.multiple_grant}}
+                                  <span class="count">&nbsp;(&times;{{b.grant_count}})</span>
+                                {{/if}}
+                                {{yield}}
+                              </span>
+                            </a>
+                          {{/each}}
+                          <a href="/u/{{this.currentUser.username}}/badges">
+                            <span class="user-badge">
+                              <span class="count">{{i18n (themePrefix "sidebar.all_badges")}} ({{this.userCardDetails.user.badge_count}})</span>
                             </span>
                           </a>
-                        {{/each}}
-                        <a href="/u/{{this.currentUser.username}}/badges">
-                          <span class="user-badge">
-                            <span class="count">{{i18n (themePrefix "sidebar.all_badges")}} ({{this.userCardDetails.user.badge_count}})</span>
-                          </span>
-                        </a>
-                      </div>
+                        </div>
+                      {{/if}}
                     {{/if}}
                   </div>
                 </div>
