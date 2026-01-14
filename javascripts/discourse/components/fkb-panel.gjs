@@ -24,9 +24,38 @@ export default class FkbPanel extends Component {
   @service currentUser;
   @service site;
 
-  @tracked userDetails = JSON.parse(sessionStorage.getItem("userDetails")) || null;
-  @tracked userCardDetails = JSON.parse(sessionStorage.getItem("userCardDetails")) || null;
+  @tracked userDetails = this.loadFromSession("userDetails");
+  @tracked userCardDetails = this.loadFromSession("userCardDetails");
   @tracked loading;
+
+  // Calculate TTL
+  get cacheTTL() {
+    const settingMinutes = settings.fkb_panel_cache_ttl || 10; // Default 10 minutes
+    return settingMinutes * 60000;
+  }
+
+  // Helper to check expiry and load data
+  loadFromSession(key) {
+    try {
+      const stored = sessionStorage.getItem(key);
+      if (!stored) return null;
+
+      const parsed = JSON.parse(stored);
+      
+      // Check if data is older than CACHE_TTL
+      const now = Date.now();
+      if (!parsed.timestamp || (now - parsed.timestamp > this.cacheTTL)) {
+        // Data expired, return null to force fetch
+        sessionStorage.removeItem(key);
+        return null;
+      }
+
+      return parsed.data;
+    } catch (e) {
+      console.warn("Error parsing session storage", e);
+      return null;
+    }
+  }
 
   @action
   async fetchUserDetails() {
@@ -38,6 +67,7 @@ export default class FkbPanel extends Component {
     }
   
     try {
+      // If data exists (loaded from valid cache), use it. Otherwise fetch.
       const summaryPromise = this.userDetails
         ? Promise.resolve(this.userDetails)
         : ajax(`/u/${this.currentUser.username}/summary.json`);
@@ -47,15 +77,21 @@ export default class FkbPanel extends Component {
         : ajax(`/u/${this.currentUser.username}/card.json`);
   
       const [summaryResponse, cardResponse] = await Promise.all([summaryPromise, cardPromise]);
+
+      const now = Date.now();
   
       if (!this.userDetails) {
         this.userDetails = summaryResponse;
-        sessionStorage.setItem("userDetails", JSON.stringify(summaryResponse));
+        // Wrap data with timestamp
+        const cacheData = { timestamp: now, data: summaryResponse };
+        sessionStorage.setItem("userDetails", JSON.stringify(cacheData));
       }
   
       if (!this.userCardDetails) {
         this.userCardDetails = cardResponse;
-        sessionStorage.setItem("userCardDetails", JSON.stringify(cardResponse));
+        // Wrap data with timestamp
+        const cacheData = { timestamp: now, data: cardResponse };
+        sessionStorage.setItem("userCardDetails", JSON.stringify(cacheData));
       }
   
     } catch (error) {
