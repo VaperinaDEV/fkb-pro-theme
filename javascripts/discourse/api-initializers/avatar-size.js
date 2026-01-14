@@ -1,34 +1,8 @@
-import { withSilencedDeprecations } from "discourse/lib/deprecated";
-import { withPluginApi } from "discourse/lib/plugin-api";
+import { apiInitializer } from "discourse/lib/api";
 
-function avatarSize(api) {
-  // Change avatar size on desktop
-  api.registerValueTransformer(
-    "post-avatar-size",
-    () => 60
-  );
-  
-  // wrap the old widget code silencing the deprecation warnings
-  withSilencedDeprecations("discourse.post-stream-widget-overrides", () =>
-    oldAvatarSize(api)
-  );
-}
-
-// old widget code
-function oldAvatarSize(api) {
-  // Change avatar size on desktop
-  api.changeWidgetSetting("post-avatar", "size", 60);
-}
-
-export default {
-  name: "avatar-size",
-  initialize(container) {
-    const site = container.lookup("site:main");
-
-    if (!site.mobileView) {
-      withPluginApi((api) => {
-        avatarSize(api);
-      });
-    }
-  },
-};
+export default apiInitializer("0.11.1", (api) => {
+  const caps = api.container.lookup("service:capabilities");
+  api.registerValueTransformer("post-avatar-size", () => {
+    return caps.viewport.sm ? 60 : 48;
+  });
+});

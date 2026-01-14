@@ -4,35 +4,42 @@ export default {
   name: "discourse-navigation-controls",
 
   initialize() {
-    withPluginApi("0.8.13", (api) => {
-      const site = api.container.lookup("site:main");
-      if (!site.mobileView) return;
-            
-      let scrollTop = window.scrollY;
+    withPluginApi("0.11.1", (api) => {
+      const html = document.documentElement;
       const body = document.body;
-      const scrollMax = 0;
-      let lastScrollTop = 0;
       const hiddenNavClass = "nav-controls-hidden";
+      let lastScrollTop = 0;
+      
+      // Define scroll handler
+      const onScroll = () => {
+        const isMobileView = html.classList.contains("mobile-view");
 
-      const add_class_on_scroll = () => body.classList.add(hiddenNavClass);
-      const remove_class_on_scroll = () => body.classList.remove(hiddenNavClass);
+        if (isMobileView) {
+          const scrollTop = window.scrollY;
 
-      window.addEventListener('scroll', function() { 
-        scrollTop = window.scrollY;
-        if (
-          lastScrollTop < scrollTop &&
-          scrollTop > scrollMax &&
-          !body.classList.contains(hiddenNavClass)
-        ) { 
-          add_class_on_scroll();
-        } else if (
-          lastScrollTop > scrollTop &&
-          body.classList.contains(hiddenNavClass)
-        ) { 
-          remove_class_on_scroll();
+          // Scroll Down -> Hide
+          if (scrollTop > lastScrollTop && scrollTop > 0) {
+            if (!body.classList.contains(hiddenNavClass)) {
+              body.classList.add(hiddenNavClass);
+            }
+          } 
+          // Scroll Up -> Show
+          else if (scrollTop < lastScrollTop) {
+            if (body.classList.contains(hiddenNavClass)) {
+              body.classList.remove(hiddenNavClass);
+            }
+          }
+          
+          lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        } else {
+          // If NOT mobile (desktop), ensure navigation is visible
+          if (body.classList.contains(hiddenNavClass)) {
+            body.classList.remove(hiddenNavClass);
+          }
         }
-        lastScrollTop = scrollTop;
-      });
+      };
+
+      window.addEventListener('scroll', onScroll, { passive: true });
     });
   },
 };
