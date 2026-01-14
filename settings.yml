@@ -68,6 +68,11 @@ custom_sidebar_description:
             in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
   description: "Custom sidebar description for visitors. (HTML allowed)"
 
+fkb_panel_cache_ttl:
+  default: 10
+  type: integer
+  description: "The duration (in minutes) for which user data is cached in the browser. Reduces server load by preventing re-fetching data on every page refresh. (Default: 10)"
+
 fkb_panel_items:
   description: "Set up the FKB Panel Items."
   type: objects
