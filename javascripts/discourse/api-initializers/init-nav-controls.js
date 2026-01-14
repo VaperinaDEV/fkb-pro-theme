@@ -5,16 +5,16 @@ export default {
 
   initialize() {
     withPluginApi("0.11.1", (api) => {
+      const html = document.documentElement;
       const body = document.body;
       const hiddenNavClass = "nav-controls-hidden";
       let lastScrollTop = 0;
       
       // Define scroll handler
       const onScroll = () => {
-        const caps = api.container.lookup("service:capabilities");
+        const isMobileView = html.classList.contains("mobile-view");
 
-        // Check specifically for 'sm' viewport (mobile)
-        if (caps.viewport.sm) {
+        if (isMobileView) {
           const scrollTop = window.scrollY;
 
           // Scroll Down -> Hide
