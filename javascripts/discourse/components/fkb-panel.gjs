@@ -31,7 +31,6 @@ export default class FkbPanel extends Component {
   @action
   async autoFetch() {
     if (this.currentUser && !this.fkbCache.userDetails && !this.loading) {
-      console.log("A cache ürült, automatikus frissítés...");
       await this.fetchUserDetails();
     }
   }
