@@ -4,38 +4,37 @@ export default {
   name: "discourse-navigation-controls",
 
   initialize() {
-    withPluginApi("0.8.13", (api) => {
-      const caps = api.container.lookup("service:capabilities");
+    withPluginApi("0.8.13", (api) => {      
+      let scrollTop = window.scrollY;
       const body = document.body;
-      const hiddenNavClass = "nav-controls-hidden";
       const scrollMax = 0;
       let lastScrollTop = 0;
+      const hiddenNavClass = "nav-controls-hidden";
 
-      window.addEventListener('scroll', () => {
+      const add_class_on_scroll = () => body.classList.add(hiddenNavClass);
+      const remove_class_on_scroll = () => body.classList.remove(hiddenNavClass);
+
+      window.addEventListener('scroll', function() {
+        const caps = api.container.lookup("service:capabilities");
+
         if (!caps.viewport.sm) {
-          if (body.classList.contains(hiddenNavClass)) {
-            body.classList.remove(hiddenNavClass);
-          }
           return;
         }
-
-        const scrollTop = window.scrollY;
-
+        scrollTop = window.scrollY;
         if (
           lastScrollTop < scrollTop &&
           scrollTop > scrollMax &&
           !body.classList.contains(hiddenNavClass)
-        ) {
-          body.classList.add(hiddenNavClass);
+        ) { 
+          add_class_on_scroll();
         } else if (
           lastScrollTop > scrollTop &&
           body.classList.contains(hiddenNavClass)
-        ) {
-          body.classList.remove(hiddenNavClass);
+        ) { 
+          remove_class_on_scroll();
         }
-        
         lastScrollTop = scrollTop;
-      }, { passive: true });
+      });
     });
   },
 };
