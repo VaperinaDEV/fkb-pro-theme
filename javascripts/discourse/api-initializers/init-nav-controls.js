@@ -4,26 +4,27 @@ export default {
   name: "discourse-navigation-controls",
 
   initialize() {
-    withPluginApi("0.8.13", (api) => {      
+    withPluginApi("0.11.1", (api) => {
       const body = document.body;
       const hiddenNavClass = "nav-controls-hidden";
-      const scrollMax = 0;
-      let lastScrollTop = window.scrollY; // Initialize with current scroll position
-
-      window.addEventListener('scroll', function() {
+      let lastScrollTop = 0;
+      
+      // Define scroll handler
+      const onScroll = () => {
         const caps = api.container.lookup("service:capabilities");
 
-        // Only execute logic if the viewport is small (sm)
+        // Check specifically for 'sm' viewport (mobile)
         if (caps.viewport.sm) {
           const scrollTop = window.scrollY;
 
-          if (scrollTop > lastScrollTop && scrollTop > scrollMax) {
-            // Scrolling Down
+          // Scroll Down -> Hide
+          if (scrollTop > lastScrollTop && scrollTop > 0) {
             if (!body.classList.contains(hiddenNavClass)) {
               body.classList.add(hiddenNavClass);
             }
-          } else if (scrollTop < lastScrollTop) {
-            // Scrolling Up
+          } 
+          // Scroll Up -> Show
+          else if (scrollTop < lastScrollTop) {
             if (body.classList.contains(hiddenNavClass)) {
               body.classList.remove(hiddenNavClass);
             }
@@ -31,12 +32,14 @@ export default {
           
           lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
         } else {
-          // Ensure class is removed when NOT in sm viewport
+          // If NOT mobile (desktop), ensure navigation is visible
           if (body.classList.contains(hiddenNavClass)) {
             body.classList.remove(hiddenNavClass);
           }
         }
-      }, { passive: true });
+      };
+
+      window.addEventListener('scroll', onScroll, { passive: true });
     });
   },
 };
