@@ -4,41 +4,39 @@ export default {
   name: "discourse-navigation-controls",
 
   initialize() {
-    withPluginApi("0.8.13", (api) => {
-      const caps = api.container.lookup("service:capabilities");
-
-      let scrollTop = window.scrollY;
+    withPluginApi("0.8.13", (api) => {      
       const body = document.body;
-      const scrollMax = 0;
-      let lastScrollTop = 0;
       const hiddenNavClass = "nav-controls-hidden";
-
-      const add_class_on_scroll = () => body.classList.add(hiddenNavClass);
-      const remove_class_on_scroll = () => body.classList.remove(hiddenNavClass);
+      const scrollMax = 0;
+      let lastScrollTop = window.scrollY; // Initialize with current scroll position
 
       window.addEventListener('scroll', function() {
+        const caps = api.container.lookup("service:capabilities");
+
+        // Only execute logic if the viewport is small (sm)
         if (caps.viewport.sm) {
-          scrollTop = window.scrollY;
-          if (
-            lastScrollTop < scrollTop &&
-            scrollTop > scrollMax &&
-            !body.classList.contains(hiddenNavClass)
-          ) { 
-            add_class_on_scroll();
-          } else if (
-            lastScrollTop > scrollTop &&
-            body.classList.contains(hiddenNavClass)
-          ) { 
-            remove_class_on_scroll();
+          const scrollTop = window.scrollY;
+
+          if (scrollTop > lastScrollTop && scrollTop > scrollMax) {
+            // Scrolling Down
+            if (!body.classList.contains(hiddenNavClass)) {
+              body.classList.add(hiddenNavClass);
+            }
+          } else if (scrollTop < lastScrollTop) {
+            // Scrolling Up
+            if (body.classList.contains(hiddenNavClass)) {
+              body.classList.remove(hiddenNavClass);
+            }
           }
-          lastScrollTop = scrollTop;
+          
+          lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
         } else {
-          // Ensure the class is removed when switching to desktop mode
+          // Ensure class is removed when NOT in sm viewport
           if (body.classList.contains(hiddenNavClass)) {
-            remove_class_on_scroll();
+            body.classList.remove(hiddenNavClass);
           }
         }
-      });
+      }, { passive: true });
     });
   },
 };
