@@ -6,36 +6,36 @@ export default {
   initialize() {
     withPluginApi("0.8.13", (api) => {
       const caps = api.container.lookup("service:capabilities");
-      
-      if (!caps.viewport.sm) {
-        return;
-      }
-      
-      let scrollTop = window.scrollY;
       const body = document.body;
+      const hiddenNavClass = "nav-controls-hidden";
       const scrollMax = 0;
       let lastScrollTop = 0;
-      const hiddenNavClass = "nav-controls-hidden";
 
-      const add_class_on_scroll = () => body.classList.add(hiddenNavClass);
-      const remove_class_on_scroll = () => body.classList.remove(hiddenNavClass);
+      window.addEventListener('scroll', () => {
+        if (!caps.viewport.sm) {
+          if (body.classList.contains(hiddenNavClass)) {
+            body.classList.remove(hiddenNavClass);
+          }
+          return;
+        }
 
-      window.addEventListener('scroll', function() { 
-        scrollTop = window.scrollY;
+        const scrollTop = window.scrollY;
+
         if (
           lastScrollTop < scrollTop &&
           scrollTop > scrollMax &&
           !body.classList.contains(hiddenNavClass)
-        ) { 
-          add_class_on_scroll();
+        ) {
+          body.classList.add(hiddenNavClass);
         } else if (
           lastScrollTop > scrollTop &&
           body.classList.contains(hiddenNavClass)
-        ) { 
-          remove_class_on_scroll();
+        ) {
+          body.classList.remove(hiddenNavClass);
         }
+        
         lastScrollTop = scrollTop;
-      });
+      }, { passive: true });
     });
   },
 };
