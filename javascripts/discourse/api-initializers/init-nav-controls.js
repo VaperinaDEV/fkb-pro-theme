@@ -4,7 +4,9 @@ export default {
   name: "discourse-navigation-controls",
 
   initialize() {
-    withPluginApi("0.8.13", (api) => {      
+    withPluginApi("0.8.13", (api) => {
+      const caps = api.container.lookup("service:capabilities");
+
       let scrollTop = window.scrollY;
       const body = document.body;
       const scrollMax = 0;
@@ -15,8 +17,6 @@ export default {
       const remove_class_on_scroll = () => body.classList.remove(hiddenNavClass);
 
       window.addEventListener('scroll', function() {
-        const caps = api.container.lookup("service:capabilities");
-
         if (caps.viewport.sm) {
           scrollTop = window.scrollY;
           if (
