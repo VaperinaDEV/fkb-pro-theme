@@ -25,33 +25,32 @@ export default class FkbPanel extends Component {
   @service site;
   @service fkbCache;
 
-  @tracked hasFetched = false;
   @tracked loading = false;
+
+  get needsFetch() {
+    return this.currentUser && !this.fkbCache.userDetails && !this.loading;
+  }
+
+  @action
+  async autoFetch() {
+    if (this.needsFetch) {
+      await this.fetchUserDetails();
+    }
+  }
 
   @action
   async fetchUserDetails() {
-    if (!this.currentUser) return;
-
-    this.fkbCache.checkExpiry();
-
-    if (this.fkbCache.userDetails && this.fkbCache.userCardDetails) {
-      return;
-    }
-
+    if (!this.currentUser || this.loading) return;
+    
     this.loading = true;
-
     try {
-      if (!this.fkbCache.userDetails) {
-        const summary = await ajax(`/u/${this.currentUser.username}/summary.json`);
-        this.fkbCache.save("userDetails", summary);
-      }
-
-      if (!this.fkbCache.userCardDetails) {
-        const card = await ajax(`/u/${this.currentUser.username}/card.json`);
-        this.fkbCache.save("userCardDetails", card);
-      }
+      const summary = await ajax(`/u/${this.currentUser.username}/summary.json`);
+      this.fkbCache.save("userDetails", summary);
+      
+      const card = await ajax(`/u/${this.currentUser.username}/card.json`);
+      this.fkbCache.save("userCardDetails", card);
     } catch (e) {
-      console.error("FKB panel fetch error", e);
+      console.error(e);
     } finally {
       this.loading = false;
     }
@@ -78,6 +77,9 @@ export default class FkbPanel extends Component {
   <template>
     {{#unless this.site.mobileView}}
       <div class="fkb-panel-sidebar" {{didInsert this.fetchUserDetails}}>
+        {{#if this.needsFetch}}
+          <div {{didInsert this.autoFetch}}></div>
+        {{/if}}
         <div class="fkb-panel">
           {{#if this.currentUser}}
             <ConditionalLoadingSpinner @condition={{this.loading}}>
