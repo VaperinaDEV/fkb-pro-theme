@@ -16,48 +16,58 @@ export default class FkbCacheService extends Service {
     this.loadAll();
     this.startAutoCleanup();
     
-    registerDestructor(this, () => clearInterval(this._timer));
+    registerDestructor(this, () => {
+      if (this._timer) clearInterval(this._timer);
+    });
   }
 
   startAutoCleanup() {
-    // Check expiration 30s
+    // 30 sec check
     this._timer = setInterval(() => {
       this.checkExpiry();
     }, 30000);
   }
 
   checkExpiry() {
-    let expired = false;
     ["userDetails", "userCardDetails"].forEach(key => {
-      const stored = sessionStorage.getItem(key);
+      const stored = localStorage.getItem(key);
       if (stored) {
-        const parsed = JSON.parse(stored);
-        if (Date.now() - parsed.timestamp > this.cacheTTL) {
-          sessionStorage.removeItem(key);
+        try {
+          const parsed = JSON.parse(stored);
+          if (Date.now() - parsed.timestamp > this.cacheTTL) {
+            localStorage.removeItem(key);
+            this[key] = null;
+          } else if (!this[key]) {
+            this[key] = parsed.data;
+          }
+        } catch (e) {
           this[key] = null;
-          expired = true;
         }
+      } else if (this[key]) {
+        this[key] = null;
       }
     });
-    return expired;
   }
 
   load(key) {
     try {
-      const stored = sessionStorage.getItem(key);
+      const stored = localStorage.getItem(key);
       if (!stored) return null;
-      const parsed = JSON.parse(stored);
       
+      const parsed = JSON.parse(stored);
       if (Date.now() - parsed.timestamp > this.cacheTTL) {
+        localStorage.removeItem(key);
         return null;
       }
       return parsed.data;
-    } catch { return null; }
+    } catch { 
+      return null; 
+    }
   }
 
   save(key, data) {
     this[key] = data;
-    sessionStorage.setItem(key, JSON.stringify({
+    localStorage.setItem(key, JSON.stringify({
       timestamp: Date.now(),
       data,
     }));
