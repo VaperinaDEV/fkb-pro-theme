@@ -4,6 +4,7 @@ import { action } from "@ember/object";
 import { htmlSafe } from "@ember/template";
 import { concat } from "@ember/helper";
 import didInsert from "@ember/render-modifiers/modifiers/did-insert";
+import didUpdate from "@ember/render-modifiers/modifiers/did-update";
 import { service } from "@ember/service";
 import { getURLWithCDN } from "discourse/lib/get-url";
 import ConditionalLoadingSpinner from "discourse/components/conditional-loading-spinner";
@@ -23,59 +24,65 @@ import FkbPanelToggleButton from "./fkb-panel-toggle-button";
 export default class FkbPanel extends Component {
   @service currentUser;
   @service site;
+  @service fkbCache;
 
-  @tracked userDetails = JSON.parse(sessionStorage.getItem("userDetails")) || null;
-  @tracked userCardDetails = JSON.parse(sessionStorage.getItem("userCardDetails")) || null;
-  @tracked loading;
+  @tracked loading = false;
+
+  @action
+  async autoFetch() {
+    if (this.currentUser && !this.fkbCache.userDetails && !this.loading) {
+      console.log("A cache ürült, automatikus frissítés...");
+      await this.fetchUserDetails();
+    }
+  }
 
   @action
   async fetchUserDetails() {
-    this.loading = true;
+    if (!this.currentUser || this.loading) return;
   
-    if (!this.currentUser) {
-      this.loading = false;
+    this.fkbCache.checkExpiry();
+  
+    if (this.fkbCache.userDetails && this.fkbCache.userCardDetails) {
       return;
     }
   
+    this.loading = true;
     try {
-      const summaryPromise = this.userDetails
-        ? Promise.resolve(this.userDetails)
-        : ajax(`/u/${this.currentUser.username}/summary.json`);
-  
-      const cardPromise = this.userCardDetails
-        ? Promise.resolve(this.userCardDetails)
-        : ajax(`/u/${this.currentUser.username}/card.json`);
-  
-      const [summaryResponse, cardResponse] = await Promise.all([summaryPromise, cardPromise]);
-  
-      if (!this.userDetails) {
-        this.userDetails = summaryResponse;
-        sessionStorage.setItem("userDetails", JSON.stringify(summaryResponse));
-      }
-  
-      if (!this.userCardDetails) {
-        this.userCardDetails = cardResponse;
-        sessionStorage.setItem("userCardDetails", JSON.stringify(cardResponse));
-      }
-  
-    } catch (error) {
-      console.error("Error fetching user details or card:", error);
+      const summary = await ajax(`/u/${this.currentUser.username}/summary.json`);
+      this.fkbCache.save("userDetails", summary);
+      
+      const card = await ajax(`/u/${this.currentUser.username}/card.json`);
+      this.fkbCache.save("userCardDetails", card);
     } finally {
       this.loading = false;
     }
+  }
+
+  get userDetails() {
+    return this.fkbCache.userDetails;
+  }
+
+  get userCardDetails() {
+    return this.fkbCache.userCardDetails;
   }
   
   get hasBackgroundImage() {
     return !!this.userCardDetails?.user?.card_background_upload_url;
   }
-  
+
   get backgroundImageURL() {
-    return getURLWithCDN(this.userCardDetails?.user?.card_background_upload_url || "");
+    return getURLWithCDN(
+      this.userCardDetails?.user?.card_background_upload_url || ""
+    );
   }
 
   <template>
     {{#unless this.site.mobileView}}
-      <div class="fkb-panel-sidebar" {{didInsert this.fetchUserDetails}}>
+      <div
+        class="fkb-panel-sidebar"
+        {{didInsert this.fetchUserDetails}}
+        {{didUpdate this.autoFetch this.fkbCache.userDetails}}
+      >
         <div class="fkb-panel">
           {{#if this.currentUser}}
             <ConditionalLoadingSpinner @condition={{this.loading}}>
@@ -101,62 +108,64 @@ export default class FkbPanel extends Component {
                   </div>
                   <div class="fkb-panel-contents-stats">
                     <div class="stats">
-                      <UserStat
-                        @value={{this.userDetails.user_summary.likes_received}}
-                        @icon="heart"
-                        @label="user.summary.likes_received"
-                      /> 
-                      <a href="/u/{{this.currentUser.username}}/activity/likes-given">
+                      {{#if this.userDetails}}
                         <UserStat
-                          @value={{this.userDetails.user_summary.likes_given}}
+                          @value={{this.userDetails.user_summary.likes_received}}
                           @icon="heart"
-                          @label="user.summary.likes_given"
+                          @label="user.summary.likes_received"
                         />
-                      </a>
-                      {{#if settings.fkb_panel_show_solutions}}
-                        <a href="/u/{{this.currentUser.username}}/activity/solved">
+                        <a href="/u/{{this.currentUser.username}}/activity/likes-given">
                           <UserStat
-                            @value={{this.userDetails.user_summary.solved_count}}
-                            @icon="square-check"
-                            @label="solved.solution_summary.other"
+                            @value={{this.userDetails.user_summary.likes_given}}
+                            @icon="heart"
+                            @label="user.summary.likes_given"
+                          />
+                        </a>
+                        {{#if settings.fkb_panel_show_solutions}}
+                          <a href="/u/{{this.currentUser.username}}/activity/solved">
+                            <UserStat
+                              @value={{this.userDetails.user_summary.solved_count}}
+                              @icon="square-check"
+                              @label="solved.solution_summary.other"
+                            />
+                          </a>
+                        {{/if}}
+                        <a href="/u/{{this.currentUser.username}}/activity/topics">
+                          <UserStat
+                            @value={{this.userDetails.user_summary.topic_count}}
+                            @label="user.summary.topic_count"
+                          />
+                        </a>
+                        <a href="/u/{{this.currentUser.username}}/activity/replies">
+                          <UserStat
+                            @value={{this.userDetails.user_summary.post_count}}
+                            @label="user.summary.post_count"
                           />
                         </a>
                       {{/if}}
-                      <a href="/u/{{this.currentUser.username}}/activity/topics">
-                        <UserStat
-                          @value={{this.userDetails.user_summary.topic_count}}
-                          @label="user.summary.topic_count"
-                        />
-                      </a>
-                      <a href="/u/{{this.currentUser.username}}/activity/replies">
-                        <UserStat
-                          @value={{this.userDetails.user_summary.post_count}}
-                          @label="user.summary.post_count"
-                        />
-                      </a>
                     </div>
                     {{#if settings.fkb_panel_show_badges}}
-                    {{#if this.userDetails.badges}}
-                      <div class="badges">
-                        {{#each this.userCardDetails.badges as |b|}}
-                          <a href="/badges/{{b.id}}/{{b.slug}}">
-                            <span class="user-badge badge-type-{{b.badge_type_id}}" title={{b.description}} data-badge-name={{b.name}}>
-                              {{iconOrImage b}}
-                              <span class="badge-display-name">{{b.name}}</span>
-                              {{#if b.multiple_grant}}
-                                <span class="count">&nbsp;(&times;{{b.grant_count}})</span>
-                              {{/if}}
-                              {{yield}}
+                      {{#if this.userCardDetails}}
+                        <div class="badges">
+                          {{#each this.userCardDetails.badges as |b|}}
+                            <a href="/badges/{{b.id}}/{{b.slug}}">
+                              <span class="user-badge badge-type-{{b.badge_type_id}}" title={{b.description}} data-badge-name={{b.name}}>
+                                {{iconOrImage b}}
+                                <span class="badge-display-name">{{b.name}}</span>
+                                {{#if b.multiple_grant}}
+                                  <span class="count">&nbsp;(&times;{{b.grant_count}})</span>
+                                {{/if}}
+                                {{yield}}
+                              </span>
+                            </a>
+                          {{/each}}
+                          <a href="/u/{{this.currentUser.username}}/badges">
+                            <span class="user-badge">
+                              <span class="count">{{i18n (themePrefix "sidebar.all_badges")}} ({{this.userCardDetails.user.badge_count}})</span>
                             </span>
                           </a>
-                        {{/each}}
-                        <a href="/u/{{this.currentUser.username}}/badges">
-                          <span class="user-badge">
-                            <span class="count">{{i18n (themePrefix "sidebar.all_badges")}} ({{this.userCardDetails.user.badge_count}})</span>
-                          </span>
-                        </a>
-                      </div>
-                    {{/if}}
+                        </div>
+                      {{/if}}
                     {{/if}}
                   </div>
                 </div>
