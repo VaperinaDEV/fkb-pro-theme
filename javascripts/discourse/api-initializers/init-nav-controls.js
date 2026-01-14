@@ -5,9 +5,12 @@ export default {
 
   initialize() {
     withPluginApi("0.8.13", (api) => {
-      const site = api.container.lookup("site:main");
-      if (!site.mobileView) return;
-            
+      const caps = api.container.lookup("service:capabilities");
+      
+      if (!caps.viewport.sm) {
+        return;
+      }
+      
       let scrollTop = window.scrollY;
       const body = document.body;
       const scrollMax = 0;
