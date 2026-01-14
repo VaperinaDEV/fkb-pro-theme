@@ -66,40 +66,41 @@ export default class FkbPanel extends Component {
   @action
   async fetchUserDetails() {
     this.loading = true;
-  
+
     if (!this.currentUser) {
       this.loading = false;
       return;
     }
-  
+
     try {
-      // If data exists (loaded from valid cache), use it. Otherwise fetch.
+      const freshUserDetails = this.loadFromSession("userDetails");
+      const freshUserCardDetails = this.loadFromSession("userCardDetails");
+
+      if (!freshUserDetails) { this.userDetails = null; }
+      if (!freshUserCardDetails) { this.userCardDetails = null; }
+
       const summaryPromise = this.userDetails
         ? Promise.resolve(this.userDetails)
         : ajax(`/u/${this.currentUser.username}/summary.json`);
-  
+
       const cardPromise = this.userCardDetails
         ? Promise.resolve(this.userCardDetails)
         : ajax(`/u/${this.currentUser.username}/card.json`);
-  
+
       const [summaryResponse, cardResponse] = await Promise.all([summaryPromise, cardPromise]);
 
       const now = Date.now();
-  
+
       if (!this.userDetails) {
         this.userDetails = summaryResponse;
-        // Wrap data with timestamp
-        const cacheData = { timestamp: now, data: summaryResponse };
-        sessionStorage.setItem("userDetails", JSON.stringify(cacheData));
+        sessionStorage.setItem("userDetails", JSON.stringify({ timestamp: now, data: summaryResponse }));
       }
-  
+
       if (!this.userCardDetails) {
         this.userCardDetails = cardResponse;
-        // Wrap data with timestamp
-        const cacheData = { timestamp: now, data: cardResponse };
-        sessionStorage.setItem("userCardDetails", JSON.stringify(cacheData));
+        sessionStorage.setItem("userCardDetails", JSON.stringify({ timestamp: now, data: cardResponse }));
       }
-  
+
     } catch (error) {
       console.error("Error fetching user details or card:", error);
     } finally {
