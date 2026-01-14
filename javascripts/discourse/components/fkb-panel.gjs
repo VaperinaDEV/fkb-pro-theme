@@ -24,9 +24,15 @@ export default class FkbPanel extends Component {
   @service currentUser;
   @service site;
 
-  @tracked userDetails = this.loadFromSession("userDetails");
-  @tracked userCardDetails = this.loadFromSession("userCardDetails");
+  @tracked userDetails;
+  @tracked userCardDetails;
   @tracked loading;
+
+  constructor() {
+    super(...arguments);
+    this.userDetails = this.loadFromSession("userDetails");
+    this.userCardDetails = this.loadFromSession("userCardDetails");
+  }
 
   // Calculate TTL
   get cacheTTL() {
