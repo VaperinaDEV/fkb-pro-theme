@@ -39,7 +39,13 @@ export default class FkbPanel extends Component {
   @action
   async fetchUserDetails() {
     if (!this.currentUser || this.loading) return;
-    
+  
+    this.fkbCache.checkExpiry();
+  
+    if (this.fkbCache.userDetails && this.fkbCache.userCardDetails) {
+      return;
+    }
+  
     this.loading = true;
     try {
       const summary = await ajax(`/u/${this.currentUser.username}/summary.json`);
@@ -47,8 +53,6 @@ export default class FkbPanel extends Component {
       
       const card = await ajax(`/u/${this.currentUser.username}/card.json`);
       this.fkbCache.save("userCardDetails", card);
-    } catch (e) {
-      console.error(e);
     } finally {
       this.loading = false;
     }
