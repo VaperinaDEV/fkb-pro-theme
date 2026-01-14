@@ -25,51 +25,32 @@ export default class FkbPanel extends Component {
   @service site;
   @service fkbCache;
 
-  @tracked loading;
-
-  constructor() {
-    super(...arguments);
-
-    this._onSessionUpdate = () => {
-      this.fkbCache.loadAll();
-    };
-
-    window.addEventListener("fkb-session-updated", this._onSessionUpdate);
-  }
-
-  willDestroy() {
-    super.willDestroy(...arguments);
-    window.removeEventListener("fkb-session-updated", this._onSessionUpdate);
-  }
+  @tracked hasFetched = false;
+  @tracked loading = false;
 
   @action
   async fetchUserDetails() {
-    if (!this.currentUser) return;
+    if (!this.currentUser || this.hasFetched) return;
 
+    this.hasFetched = true;
     this.loading = true;
 
     try {
-      const requests = [];
-
       if (!this.fkbCache.userDetails) {
-        requests.push(
-          ajax(`/u/${this.currentUser.username}/summary.json`).then((r) => {
-            this.fkbCache.userDetails = r;
-            this.fkbCache.save("userDetails", r);
-          })
+        const summary = await ajax(
+          `/u/${this.currentUser.username}/summary.json`
         );
+        this.fkbCache.userDetails = summary;
+        this.fkbCache.save("userDetails", summary);
       }
 
       if (!this.fkbCache.userCardDetails) {
-        requests.push(
-          ajax(`/u/${this.currentUser.username}/card.json`).then((r) => {
-            this.fkbCache.userCardDetails = r;
-            this.fkbCache.save("userCardDetails", r);
-          })
+        const card = await ajax(
+          `/u/${this.currentUser.username}/card.json`
         );
+        this.fkbCache.userCardDetails = card;
+        this.fkbCache.save("userCardDetails", card);
       }
-
-      await Promise.all(requests);
     } catch (e) {
       console.error("FKB panel fetch error", e);
     } finally {
@@ -123,42 +104,44 @@ export default class FkbPanel extends Component {
                   </div>
                   <div class="fkb-panel-contents-stats">
                     <div class="stats">
-                      <UserStat
-                        @value={{this.userDetails.user_summary.likes_received}}
-                        @icon="heart"
-                        @label="user.summary.likes_received"
-                      /> 
-                      <a href="/u/{{this.currentUser.username}}/activity/likes-given">
+                      {{#if this.userDetails}}
                         <UserStat
-                          @value={{this.userDetails.user_summary.likes_given}}
+                          @value={{this.userDetails.user_summary.likes_received}}
                           @icon="heart"
-                          @label="user.summary.likes_given"
+                          @label="user.summary.likes_received"
                         />
-                      </a>
-                      {{#if settings.fkb_panel_show_solutions}}
-                        <a href="/u/{{this.currentUser.username}}/activity/solved">
+                        <a href="/u/{{this.currentUser.username}}/activity/likes-given">
                           <UserStat
-                            @value={{this.userDetails.user_summary.solved_count}}
-                            @icon="square-check"
-                            @label="solved.solution_summary.other"
+                            @value={{this.userDetails.user_summary.likes_given}}
+                            @icon="heart"
+                            @label="user.summary.likes_given"
+                          />
+                        </a>
+                        {{#if settings.fkb_panel_show_solutions}}
+                          <a href="/u/{{this.currentUser.username}}/activity/solved">
+                            <UserStat
+                              @value={{this.userDetails.user_summary.solved_count}}
+                              @icon="square-check"
+                              @label="solved.solution_summary.other"
+                            />
+                          </a>
+                        {{/if}}
+                        <a href="/u/{{this.currentUser.username}}/activity/topics">
+                          <UserStat
+                            @value={{this.userDetails.user_summary.topic_count}}
+                            @label="user.summary.topic_count"
+                          />
+                        </a>
+                        <a href="/u/{{this.currentUser.username}}/activity/replies">
+                          <UserStat
+                            @value={{this.userDetails.user_summary.post_count}}
+                            @label="user.summary.post_count"
                           />
                         </a>
                       {{/if}}
-                      <a href="/u/{{this.currentUser.username}}/activity/topics">
-                        <UserStat
-                          @value={{this.userDetails.user_summary.topic_count}}
-                          @label="user.summary.topic_count"
-                        />
-                      </a>
-                      <a href="/u/{{this.currentUser.username}}/activity/replies">
-                        <UserStat
-                          @value={{this.userDetails.user_summary.post_count}}
-                          @label="user.summary.post_count"
-                        />
-                      </a>
                     </div>
                     {{#if settings.fkb_panel_show_badges}}
-                    {{#if this.userDetails.badges}}
+                    {{#if this.userCardDetails}}
                       <div class="badges">
                         {{#each this.userCardDetails.badges as |b|}}
                           <a href="/badges/{{b.id}}/{{b.slug}}">
@@ -178,7 +161,6 @@ export default class FkbPanel extends Component {
                           </span>
                         </a>
                       </div>
-                    {{/if}}
                     {{/if}}
                   </div>
                 </div>
