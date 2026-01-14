@@ -1,9 +1,11 @@
 import Service from "@ember/service";
 import { tracked } from "@glimmer/tracking";
+import { registerDestructor } from "@ember/destroyable";
 
 export default class FkbCacheService extends Service {
   @tracked userDetails = null;
   @tracked userCardDetails = null;
+  _timer = null;
 
   get cacheTTL() {
     return (settings.fkb_panel_cache_ttl || 10) * 60000;
@@ -12,9 +14,20 @@ export default class FkbCacheService extends Service {
   constructor() {
     super(...arguments);
     this.loadAll();
+    this.startAutoCleanup();
+    
+    registerDestructor(this, () => clearInterval(this._timer));
+  }
+
+  startAutoCleanup() {
+    // Check expiration 30s
+    this._timer = setInterval(() => {
+      this.checkExpiry();
+    }, 30000);
   }
 
   checkExpiry() {
+    let expired = false;
     ["userDetails", "userCardDetails"].forEach(key => {
       const stored = sessionStorage.getItem(key);
       if (stored) {
@@ -22,9 +35,11 @@ export default class FkbCacheService extends Service {
         if (Date.now() - parsed.timestamp > this.cacheTTL) {
           sessionStorage.removeItem(key);
           this[key] = null;
+          expired = true;
         }
       }
     });
+    return expired;
   }
 
   load(key) {
