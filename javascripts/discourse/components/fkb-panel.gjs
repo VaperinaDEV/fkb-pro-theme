@@ -23,97 +23,76 @@ import FkbPanelToggleButton from "./fkb-panel-toggle-button";
 export default class FkbPanel extends Component {
   @service currentUser;
   @service site;
+  @service fkbCache;
 
-  @tracked userDetails;
-  @tracked userCardDetails;
   @tracked loading;
 
   constructor() {
     super(...arguments);
-    this.userDetails = this.loadFromSession("userDetails");
-    this.userCardDetails = this.loadFromSession("userCardDetails");
+
+    this._onSessionUpdate = () => {
+      this.fkbCache.loadAll();
+    };
+
+    window.addEventListener("fkb-session-updated", this._onSessionUpdate);
   }
 
-  // Calculate TTL
-  get cacheTTL() {
-    const settingMinutes = settings.fkb_panel_cache_ttl || 10; // Default 10 minutes
-    return settingMinutes * 60000;
-  }
-
-  // Helper to check expiry and load data
-  loadFromSession(key) {
-    try {
-      const stored = sessionStorage.getItem(key);
-      if (!stored) return null;
-
-      const parsed = JSON.parse(stored);
-      
-      // Check if data is older than CACHE_TTL
-      const now = Date.now();
-      if (!parsed.timestamp || (now - parsed.timestamp > this.cacheTTL)) {
-        // Data expired, return null to force fetch
-        sessionStorage.removeItem(key);
-        return null;
-      }
-
-      return parsed.data;
-    } catch (e) {
-      console.warn("Error parsing session storage", e);
-      return null;
-    }
+  willDestroy() {
+    super.willDestroy(...arguments);
+    window.removeEventListener("fkb-session-updated", this._onSessionUpdate);
   }
 
   @action
   async fetchUserDetails() {
+    if (!this.currentUser) return;
+
     this.loading = true;
 
-    if (!this.currentUser) {
-      this.loading = false;
-      return;
-    }
-
     try {
-      const freshUserDetails = this.loadFromSession("userDetails");
-      const freshUserCardDetails = this.loadFromSession("userCardDetails");
+      const requests = [];
 
-      if (!freshUserDetails) { this.userDetails = null; }
-      if (!freshUserCardDetails) { this.userCardDetails = null; }
-
-      const summaryPromise = this.userDetails
-        ? Promise.resolve(this.userDetails)
-        : ajax(`/u/${this.currentUser.username}/summary.json`);
-
-      const cardPromise = this.userCardDetails
-        ? Promise.resolve(this.userCardDetails)
-        : ajax(`/u/${this.currentUser.username}/card.json`);
-
-      const [summaryResponse, cardResponse] = await Promise.all([summaryPromise, cardPromise]);
-
-      const now = Date.now();
-
-      if (!this.userDetails) {
-        this.userDetails = summaryResponse;
-        sessionStorage.setItem("userDetails", JSON.stringify({ timestamp: now, data: summaryResponse }));
+      if (!this.fkbCache.userDetails) {
+        requests.push(
+          ajax(`/u/${this.currentUser.username}/summary.json`).then((r) => {
+            this.fkbCache.userDetails = r;
+            this.fkbCache.save("userDetails", r);
+          })
+        );
       }
 
-      if (!this.userCardDetails) {
-        this.userCardDetails = cardResponse;
-        sessionStorage.setItem("userCardDetails", JSON.stringify({ timestamp: now, data: cardResponse }));
+      if (!this.fkbCache.userCardDetails) {
+        requests.push(
+          ajax(`/u/${this.currentUser.username}/card.json`).then((r) => {
+            this.fkbCache.userCardDetails = r;
+            this.fkbCache.save("userCardDetails", r);
+          })
+        );
       }
 
-    } catch (error) {
-      console.error("Error fetching user details or card:", error);
+      await Promise.all(requests);
+    } catch (e) {
+      console.error("FKB panel fetch error", e);
     } finally {
       this.loading = false;
     }
+  }
+
+  get userDetails() {
+    return this.fkbCache.userDetails;
+  }
+
+  get userCardDetails() {
+    return this.fkbCache.userCardDetails;
   }
   
   get hasBackgroundImage() {
     return !!this.userCardDetails?.user?.card_background_upload_url;
   }
-  
+
   get backgroundImageURL() {
-    return getURLWithCDN(this.userCardDetails?.user?.card_background_upload_url || "");
+    return getURLWithCDN(
+      this.userCardDetails?.user?.card_background_upload_url || ""
+    );
   }
 
   <template>
