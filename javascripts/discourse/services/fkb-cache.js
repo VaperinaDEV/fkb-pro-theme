@@ -39,9 +39,6 @@ export default class FkbCacheService extends Service {
         data,
       })
     );
-
-    // trigger same-tab listeners
-    window.dispatchEvent(new Event("fkb-session-updated"));
   }
 
   loadAll() {
