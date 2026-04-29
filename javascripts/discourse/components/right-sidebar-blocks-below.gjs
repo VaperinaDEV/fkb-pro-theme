@@ -10,9 +10,7 @@ export default class RightSidebarBlocksBelow extends Component {
     {{#if settings.right_sidebar_below_fkb_panel}}
       {{#if this.rightSidebarBlocks}}
         <div class="tc-right-sidebar">
-          {{#let this.rightSidebarBlocks as |RightSidebarBlocks|}}
-            <RightSidebarBlocks />
-          {{/let}}
+          <this.rightSidebarBlocks />
         </div>
       {{/if}}
     {{/if}}
