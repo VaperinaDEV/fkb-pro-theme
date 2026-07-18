@@ -154,7 +154,6 @@ export default class FkbPanel extends Component {
                                 {{#if b.multiple_grant}}
                                   <span class="count">&nbsp;(&times;{{b.grant_count}})</span>
                                 {{/if}}
-                                {{yield}}
                               </span>
                             </a>
                           {{/each}}
