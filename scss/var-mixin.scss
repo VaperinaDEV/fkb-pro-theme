@@ -33,17 +33,6 @@
 
 // Keyframes
 
-// FKB Panel Hide / Show
-
-@keyframes fkb-panel-hide {
-  0% {
-    position: sticky;
-  }
-  100% {
-    position: fixed;
-  }
-}
-
 // Topics and Posts
 @keyframes background-fade-topiclight {
   0% {

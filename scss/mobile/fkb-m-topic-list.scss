@@ -47,7 +47,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
         position: fixed;
         bottom: 1em;
         right: 1em;
-        grid-gap: 0.5em;
+        gap: 0.5em;
         margin-bottom: env(safe-area-inset-bottom);
         transition: right 0.25s ease-in;
         z-index: z("usercard");
@@ -210,7 +210,7 @@ body.nav-controls-hidden {
           border-radius: var(--d-default-border-radius) var(--d-default-border-radius) 0 0;
         }
       }
-      &:not(last-child) {
+      &:not(:last-child) {
         a {
           border-bottom: 1px solid var(--primary-low);
         }

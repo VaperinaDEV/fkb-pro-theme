@@ -2,4 +2,6 @@ en:
   sidebar: 
     welcome: "Welcome"
     all_badges: "all badges"
+    show_panel: "Show panel"
+    hide_panel: "Hide panel"
   created_at: "Created"

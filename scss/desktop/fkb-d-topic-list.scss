@@ -19,7 +19,12 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
         "loader fkb-panel"
         "topic-list fkb-panel";
       grid-template-rows: auto auto auto auto auto 1fr;
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr) var(--d-sidebar-width);
+      gap: 0 2em;
+      min-width: 0;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
     }
     .list-controls {
       grid-area: nav;
@@ -56,9 +61,15 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     }
   }
   
-  #main-outlet-wrapper {  
+  #main-outlet-wrapper {
     &.wrap {
-      max-width: calc(var(--d-sidebar-width) + var(--d-max-width));
+      max-width: calc((var(--d-sidebar-width) * 2) + var(--d-max-width));
+      @media screen and (max-width: 1099px) {
+        max-width: calc(var(--d-sidebar-width) + var(--d-max-width));
+      }
+      @media screen and (max-width: 800px) {
+        max-width: 100%;
+      }
     }
   }
   
@@ -73,13 +84,19 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
       "nav loader fkb-panel"
       "nav topic-list fkb-panel";
     grid-template-rows: auto auto auto auto 1fr;
-    grid-template-columns: 0fr minmax(0, 1fr);
+    grid-template-columns: var(--d-sidebar-width) minmax(0, 1fr) var(--d-sidebar-width);
     gap: 0 2em;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    @media screen and (max-width: 1099px) {
+      grid-template-columns: var(--d-sidebar-width) minmax(0, 1fr);
+      gap: 0 2em;
+    }
     @media screen and (max-width: 800px) {
       display: block;
-    }
-    @media screen and (max-width: 1099px) {
-      gap: 0;
     }
     @if $right-sidebar-blocks-enabled == "true" {
       gap: 0;
@@ -92,12 +109,23 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
   // Makes full width topic list when fkb panel hidden 
   &.fkb-panel-hidden {
     #main-outlet {
+      // The FKB panel is removed from the layout while hidden.
+      // Keep the navigation column and give all remaining width to the list.
+      grid-template-columns: var(--d-sidebar-width) minmax(0, 1fr);
+      gap: 0 2em;
+    }
+
+    &.has-sidebar-page #main-outlet {
+      grid-template-columns: minmax(0, 1fr);
       gap: 0;
     }
+
     &:not(.has-sidebar-page) {
       #main-outlet {
+        grid-template-columns: var(--d-sidebar-width) minmax(0, 1fr);
+
         .list-controls {
-          margin-right: 2em;
+          margin-right: 0;
         }
       }
     }
@@ -139,6 +167,36 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
 
   .list-container {
     grid-area: topic-list;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: visible;
+
+    #list-area {
+      min-width: 0;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .topic-list {
+      display: block;
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .topic-list-body,
+    .topic-list-item,
+    .topic-list-item .main-link {
+      min-width: 0;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
     @media (max-width: 1099px) {
       padding: 0;
     }
@@ -290,7 +348,44 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
   #list-area {
     max-width: 100%;
     @media screen and (max-width: 800px) {
-      width: calc(100vw - 20px);
+      width: 100%;
+      max-width: calc(100% - 20px);
+    }
+  }
+}
+
+// FKBD - Topic card visual polish
+@media screen and (min-width: 1100px) {
+  .navigation-topics,
+  .categories-list,
+  body[class*="tag-"]:not(.archetype-regular):not(.archetype-banner),
+  body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
+    .topic-list .topic-list-item {
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+
+      .main-link {
+        .tli-top-section {
+          &__category {
+            .badge-category__wrapper {
+              margin-bottom: -0.75em;
+            }
+          }
+        }
+
+        .link-top-line .title {
+          letter-spacing: -0.01em;
+        }
+
+        .tli-middle-section .topic-excerpt-link {
+          margin-top: 0.4em;
+          margin-bottom: 0.85em;
+        }
+
+        .tli-bottom-section {
+          min-height: 1.75em;
+        }
+      }
     }
   }
 }

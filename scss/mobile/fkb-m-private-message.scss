@@ -5,7 +5,8 @@
 .archetype-private_message {
   .post-stream {
     article {
-      max-width: calc(100vw - 20px);
+      width: 100%;
+      max-width: calc(100% - 20px);
       margin-bottom: 5px;
     }
   }
