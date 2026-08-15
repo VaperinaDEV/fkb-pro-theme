@@ -4,26 +4,51 @@ import { popupAjaxError } from "discourse/lib/ajax-error";
 
 export default apiInitializer("1.8.0", (api) => {
   
+  // Sticky New Topic Banner Latest
+  api.modifyClass(
+    "component:discovery/topics",
+    (Superclass) =>
+      class extends Superclass {
+        @action
+        async showInserted(event) {
+          event?.preventDefault();
+          
+          if (this.args.model.loadingBefore) {
+            return; // Already loading
+          }
+    
+          const listControls = document.querySelector(".list-controls");
+          listControls.scrollIntoView();
+          
+          const { topicTrackingState } = this;
+          
+          try {
+            const topicIds = [...topicTrackingState.newIncoming];
+            await this.args.model.loadBefore(topicIds, true);
+            topicTrackingState.clearIncoming(topicIds);
+          } catch (e) {
+            popupAjaxError(e);
+          }
+        }
+      }
+  );
+
   // Sticky New Topic Banner Category
   api.modifyClass(
     "controller:discovery/categories",
     (Superclass) =>
       class extends Superclass {
         @action
-        async showInserted(event) {
+        showInserted(event) {
           event?.preventDefault();
           const tracker = this.topicTrackingState;
         
-          document.querySelector(".list-controls")?.scrollIntoView();
+          const listControls = document.querySelector(".list-controls");
+          listControls.scrollIntoView();
 
-          try {
-            // Move inserted into topics
-            const topicIds = [...tracker.get("newIncoming")];
-            await this.model.loadBefore(topicIds, true);
-            tracker.resetTracking();
-          } catch (e) {
-            popupAjaxError(e);
-          }
+          // Move inserted into topics
+          this.model.loadBefore(tracker.get("newIncoming"), true);
+          tracker.resetTracking();
         }
       }
   );
@@ -41,7 +66,8 @@ export default apiInitializer("1.8.0", (api) => {
             return;
           }
     
-          document.querySelector(".user-navigation-primary")?.scrollIntoView();
+          const userNavigation = document.querySelector(".user-navigation-primary");
+          userNavigation.scrollIntoView();  
           
           try {
             const topicIds = [...this.pmTopicTrackingState.newIncoming];

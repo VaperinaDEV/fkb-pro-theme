@@ -6,8 +6,7 @@
   grid-template-areas: "posts";
   grid-template-columns: auto;
   > .row {
-    width: 100%;
-    max-width: calc(100% - 20px);
+    max-width: calc(100vw - 20px);
   }
   .topic-navigation {
     grid-area: posts;

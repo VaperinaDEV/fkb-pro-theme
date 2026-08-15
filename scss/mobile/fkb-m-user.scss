@@ -3,8 +3,7 @@
 // User
 
 .user-main {
-  width: 100%;
-  max-width: calc(100% - 20px);
+  width: calc(100vw - 20px);
   .about {
     margin-bottom: 20px;
     background: transparent;
@@ -54,13 +53,11 @@ body.user-activity-page .paginated-topics-list {
 // Groups 
 
 .groups-header {
-  width: 100%;
-  max-width: calc(100% - 20px);
+  width: calc(100vw - 20px);
 }
 
 .group {
-  width: 100%;
-  max-width: calc(100% - 20px);
+  width: calc(100vw - 20px);
   margin: auto;
   .user-content-wrapper {
     .user-content {

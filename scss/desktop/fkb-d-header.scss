@@ -4,11 +4,7 @@
 
 .d-header {
   > .wrap {
-    width: 100%;
-    max-width: min(
-      calc((var(--d-sidebar-width) * 2) + var(--d-max-width)),
-      calc(100vw - 2em)
-    );
+    max-width: calc(var(--d-sidebar-width) + var(--d-max-width));
     .contents {
       margin: auto;
     }

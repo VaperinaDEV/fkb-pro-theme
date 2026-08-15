@@ -8,13 +8,17 @@ import didUpdate from "@ember/render-modifiers/modifiers/did-update";
 import { service } from "@ember/service";
 import { getURLWithCDN } from "discourse/lib/get-url";
 import ConditionalLoadingSpinner from "discourse/components/conditional-loading-spinner";
+import avatar from "discourse/helpers/avatar";
+import iconOrImage from "discourse/helpers/icon-or-image";
+import DButton from "discourse/components/d-button";
+import UserStat from "discourse/components/user-stat";
+import concatClass from "discourse/helpers/concat-class";
+import replaceEmoji from "discourse/helpers/replace-emoji";
+import routeAction from "discourse/helpers/route-action";
 import { ajax } from "discourse/lib/ajax";
+import { i18n } from "discourse-i18n";
 import FkbPanelItems from "./fkb-panel-items";
 import RightSidebarBlocksBelow from "./right-sidebar-blocks-below";
-import FkbPanelUser from "./fkb-panel-user";
-import FkbPanelStats from "./fkb-panel-stats";
-import FkbPanelBadges from "./fkb-panel-badges";
-import FkbPanelVisitor from "./fkb-panel-visitor";
 import FkbPanelToggleButton from "./fkb-panel-toggle-button";
 
 export default class FkbPanel extends Component {
@@ -26,13 +30,7 @@ export default class FkbPanel extends Component {
 
   @action
   async autoFetch() {
-    this.fkbCache.activateUser(this.currentUser?.id);
-
-    if (
-      this.currentUser &&
-      (!this.fkbCache.userDetails || !this.fkbCache.userCardDetails) &&
-      !this.loading
-    ) {
+    if (this.currentUser && !this.fkbCache.userDetails && !this.loading) {
       await this.fetchUserDetails();
     }
   }
@@ -40,31 +38,23 @@ export default class FkbPanel extends Component {
   @action
   async fetchUserDetails() {
     if (!this.currentUser || this.loading) return;
-
-    this.fkbCache.activateUser(this.currentUser.id);
+  
     this.fkbCache.checkExpiry();
-
+  
     if (this.fkbCache.userDetails && this.fkbCache.userCardDetails) {
       return;
     }
-
+  
     this.loading = true;
-
     try {
-      const [summary, card] = await Promise.all([
-        ajax(`/u/${this.currentUser.username}/summary.json`),
-        ajax(`/u/${this.currentUser.username}/card.json`),
-      ]);
-
+      const summary = await ajax(`/u/${this.currentUser.username}/summary.json`);
       this.fkbCache.save("userDetails", summary);
+      
+      const card = await ajax(`/u/${this.currentUser.username}/card.json`);
       this.fkbCache.save("userCardDetails", card);
     } finally {
       this.loading = false;
     }
-  }
-
-  get currentUserId() {
-    return this.currentUser?.id;
   }
 
   get userDetails() {
@@ -90,12 +80,7 @@ export default class FkbPanel extends Component {
       <div
         class="fkb-panel-sidebar"
         {{didInsert this.fetchUserDetails}}
-        {{didUpdate
-          this.autoFetch
-          this.currentUserId
-          this.fkbCache.userDetails
-          this.fkbCache.userCardDetails
-        }}
+        {{didUpdate this.autoFetch this.fkbCache.userDetails}}
       >
         <div class="fkb-panel">
           {{#if this.currentUser}}
@@ -106,17 +91,80 @@ export default class FkbPanel extends Component {
               >
                 <div class="fkb-panel-contents">
                   <div class="fkb-panel-contents-top">
-                    <FkbPanelUser @user={{this.currentUser}} />
+                    <div class="fkb-avatar">
+                      <a href="/u/{{this.currentUser.username}}">
+                        {{avatar this.currentUser imageSize="medium"}}
+                      </a>
+                      <a href="/u/{{this.currentUser.username}}" class="fkb-user-names">
+                        <span class="fkb-name">
+                          {{this.currentUser.name}}
+                        </span>
+                        <span class="fkb-username">
+                          {{this.currentUser.username}}
+                        </span>
+                      </a>              
+                    </div>
                   </div>
                   <div class="fkb-panel-contents-stats">
-                    <FkbPanelStats
-                      @user={{this.currentUser}}
-                      @userDetails={{this.userDetails}}
-                    />
-                    <FkbPanelBadges
-                      @user={{this.currentUser}}
-                      @userCardDetails={{this.userCardDetails}}
-                    />
+                    <div class="stats">
+                      {{#if this.userDetails}}
+                        <UserStat
+                          @value={{this.userDetails.user_summary.likes_received}}
+                          @icon="heart"
+                          @label="user.summary.likes_received"
+                        />
+                        <a href="/u/{{this.currentUser.username}}/activity/likes-given">
+                          <UserStat
+                            @value={{this.userDetails.user_summary.likes_given}}
+                            @icon="heart"
+                            @label="user.summary.likes_given"
+                          />
+                        </a>
+                        {{#if settings.fkb_panel_show_solutions}}
+                          <a href="/u/{{this.currentUser.username}}/activity/solved">
+                            <UserStat
+                              @value={{this.userDetails.user_summary.solved_count}}
+                              @icon="square-check"
+                              @label="solved.solution_summary.other"
+                            />
+                          </a>
+                        {{/if}}
+                        <a href="/u/{{this.currentUser.username}}/activity/topics">
+                          <UserStat
+                            @value={{this.userDetails.user_summary.topic_count}}
+                            @label="user.summary.topic_count"
+                          />
+                        </a>
+                        <a href="/u/{{this.currentUser.username}}/activity/replies">
+                          <UserStat
+                            @value={{this.userDetails.user_summary.post_count}}
+                            @label="user.summary.post_count"
+                          />
+                        </a>
+                      {{/if}}
+                    </div>
+                    {{#if settings.fkb_panel_show_badges}}
+                      {{#if this.userCardDetails}}
+                        <div class="badges">
+                          {{#each this.userCardDetails.badges as |b|}}
+                            <a href="/badges/{{b.id}}/{{b.slug}}">
+                              <span class="user-badge badge-type-{{b.badge_type_id}}" title={{b.description}} data-badge-name={{b.name}}>
+                                {{iconOrImage b}}
+                                <span class="badge-display-name">{{b.name}}</span>
+                                {{#if b.multiple_grant}}
+                                  <span class="count">&nbsp;(&times;{{b.grant_count}})</span>
+                                {{/if}}
+                              </span>
+                            </a>
+                          {{/each}}
+                          <a href="/u/{{this.currentUser.username}}/badges">
+                            <span class="user-badge">
+                              <span class="count">{{i18n (themePrefix "sidebar.all_badges")}} ({{this.userCardDetails.user.badge_count}})</span>
+                            </span>
+                          </a>
+                        </div>
+                      {{/if}}
+                    {{/if}}
                   </div>
                 </div>
               </div>
@@ -127,7 +175,18 @@ export default class FkbPanel extends Component {
           {{/if}}
       
           {{#unless this.currentUser}}
-            <FkbPanelVisitor @description={{settings.custom_sidebar_description}} />
+            <div class="visitor">
+              <h2>{{i18n (themePrefix "sidebar.welcome")}}</h2>
+              {{#if settings.custom_sidebar_enabled}}
+                {{#if settings.custom_sidebar_image}}
+                  <img src="{{settings.custom_sidebar_image}}"/>
+                {{/if}}
+                <p>{{{settings.custom_sidebar_description}}}</p>
+                {{else}}
+                {{replaceEmoji (i18n "signup_cta.value_prop")}}
+              {{/if}}
+              <DButton @class="btn-primary sign-up-button" @action={{routeAction "showCreateAccount"}} @label="sign_up" />
+            </div>
           {{/unless}}
         </div>
   

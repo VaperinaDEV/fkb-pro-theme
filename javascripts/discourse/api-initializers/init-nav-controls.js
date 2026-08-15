@@ -9,10 +9,9 @@ export default {
       const body = document.body;
       const hiddenNavClass = "nav-controls-hidden";
       let lastScrollTop = 0;
-      let frameId = null;
-
-      // Run DOM work at most once per animation frame.
-      const updateNavigation = () => {
+      
+      // Define scroll handler
+      const onScroll = () => {
         const isMobileView = html.classList.contains("mobile-view");
 
         if (isMobileView) {
@@ -40,18 +39,7 @@ export default {
         }
       };
 
-      const onScroll = () => {
-        if (frameId !== null) {
-          return;
-        }
-
-        frameId = window.requestAnimationFrame(() => {
-          frameId = null;
-          updateNavigation();
-        });
-      };
-
-      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener('scroll', onScroll, { passive: true });
     });
   },
 };
