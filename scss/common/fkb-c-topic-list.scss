@@ -30,6 +30,13 @@
       display: block;
       padding: 8px 0;
       border: none;
+      // Skip layout/paint work for topic cards that are far outside the viewport.
+      // `auto` remembers the real height after the row has rendered, minimizing
+      // layout shifts while keeping long topic lists cheap to scroll.
+      &:not(.topic-list-item-separator) {
+        content-visibility: auto;
+        contain-intrinsic-block-size: auto 280px;
+      }
       &:first-child {
         padding-top: 0;
       }
@@ -63,9 +70,13 @@
     
     .main-link {
       display: block;
-      padding: 1em !important;
+      width: 100%;
+      min-width: 0;
       max-width: 100%;
+      padding: 1em !important;
       font-size: var(--font-up-1-rem);
+      box-sizing: border-box;
+      overflow: hidden;
       @include bg-br;
       
       .tli-top-section {
@@ -89,18 +100,25 @@
         }
         
         &__author {
+          min-width: 0;
+          max-width: 100%;
           padding: 1em 0 0.5em 0;
           margin-right: auto;
           a {
             display: flex;
             align-items: center;
+            min-width: 0;
+            max-width: 100%;
             .topic-list-avatar {
               display: flex;
+              flex: 0 0 auto;
               gap: 0.5em;
               margin: 0 8px 0 0;
             }
             .name-and-date {
               display: flex;
+              min-width: 0;
+              max-width: 100%;
               flex-direction: column;
               span:empty + span:not(:empty) {
                 color: var(--primary) !important;
@@ -111,6 +129,9 @@
                 font-size: var(--font-down-1);
                 font-weight: bold;
                 color: var(--primary);
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
               }
               .username {
                 font-size: var(--font-down-2);
@@ -118,6 +139,7 @@
                 color: var(--primary-high-or-secondary-low);
               }
               .list-date {
+                display: block;
                 font-size: var(--font-down-3);
                 color: var(--primary-medium);
               }
@@ -131,11 +153,14 @@
           padding: 0;
         }
         .title {
+          min-width: 0;
+          max-width: 100%;
           font-size: var(--font-up-3-rem);
           color: var(--tertiary);
           line-height: var(--line-height-medium);
           margin-bottom: 0.5em;
           padding: 0.25em 0;
+          overflow-wrap: anywhere;
           &:hover {
             text-decoration: underline;
           }
@@ -154,6 +179,8 @@
       
       .tli-middle-section {
         .topic-excerpt {
+          min-width: 0;
+          max-width: 100%;
           font-size: var(--font-0-rem);
           .mobile-view & {
             font-size: var(--font-down-1);
@@ -170,6 +197,7 @@
           position: relative;
           height: #{$topic_image_height};
           overflow: hidden;
+          contain: layout paint;
           width: calc(100% + 2em);
           margin: 0.25em -1em 0 -1em;
           &__backdrop {
@@ -207,18 +235,25 @@
         
         .discourse-tags {
           display: flex;
-          margin: 1em 0 0 0;
+          flex-wrap: wrap;
+          align-items: stretch;
+          min-width: 0;
+          max-width: 100%;
+          margin: 1em -0.25em 0;
           a {
-            display: inherit;
-            flex: 1 0 auto;
+            display: inline-flex;
+            flex: 0 1 auto;
+            min-width: 0;
+            max-width: calc(100% - 0.5em);
+            align-items: center;
             justify-content: center;
-            max-width: 100%;
             line-height: var(--line-height-large);
             border: 0.5em solid transparent;
             background: var(--fkb-btn);
             font-size: var(--font-down-1-rem);
             margin: 0.25em;
             border-radius: var(--d-default-border-radius);
+            overflow-wrap: anywhere;
             .tag-icon {
               > .d-icon {
                 transform: scale(1.25);
@@ -243,14 +278,18 @@
       
       .tli-bottom-section {
         display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        min-width: 0;
         padding: 0.6em 0 0;
         a {
           font-size: var(--font-down-1);
           .mobile-view & {
             font-size: var(--font-down-2);
           }
-          display: flex;
+          display: inline-flex;
           align-items: center;
+          min-width: 0;
           color: var(--primary-medium);
           &.likes .d-icon {
            color: var(--love);
@@ -269,9 +308,14 @@
         .latest-poster-tlist {
           margin-left: auto;
           margin-right: 0.667em;
+          max-width: 100%;
         }
         .latest-activity-tlist {
           margin-right: 0.667em;
+          time {
+            font: inherit;
+            color: inherit;
+          }
         }
       }
     }

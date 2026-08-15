@@ -4,51 +4,29 @@ import { popupAjaxError } from "discourse/lib/ajax-error";
 
 export default apiInitializer("1.8.0", (api) => {
   
-  // Sticky New Topic Banner Latest
-  api.modifyClass(
-    "component:discovery/topics",
-    (Superclass) =>
-      class extends Superclass {
-        @action
-        async showInserted(event) {
-          event?.preventDefault();
-          
-          if (this.args.model.loadingBefore) {
-            return; // Already loading
-          }
-    
-          const listControls = document.querySelector(".list-controls");
-          listControls.scrollIntoView();
-          
-          const { topicTrackingState } = this;
-          
-          try {
-            const topicIds = [...topicTrackingState.newIncoming];
-            await this.args.model.loadBefore(topicIds, true);
-            topicTrackingState.clearIncoming(topicIds);
-          } catch (e) {
-            popupAjaxError(e);
-          }
-        }
-      }
-  );
-
   // Sticky New Topic Banner Category
   api.modifyClass(
     "controller:discovery/categories",
     (Superclass) =>
       class extends Superclass {
         @action
-        showInserted(event) {
+        async showInserted(event) {
           event?.preventDefault();
           const tracker = this.topicTrackingState;
         
-          const listControls = document.querySelector(".list-controls");
-          listControls.scrollIntoView();
+          document.querySelector(".list-controls")?.scrollIntoView();
 
-          // Move inserted into topics
-          this.model.loadBefore(tracker.get("newIncoming"), true);
-          tracker.resetTracking();
+          try {
+            // Move inserted into topics
+            const topicIds = [...tracker.get("newIncoming")];
+            if (!topicIds.length) {
+              return;
+            }
+            await this.model.loadBefore(topicIds, true);
+            tracker.resetTracking();
+          } catch (e) {
+            popupAjaxError(e);
+          }
         }
       }
   );
@@ -66,11 +44,13 @@ export default apiInitializer("1.8.0", (api) => {
             return;
           }
     
-          const userNavigation = document.querySelector(".user-navigation-primary");
-          userNavigation.scrollIntoView();  
+          document.querySelector(".user-navigation-primary")?.scrollIntoView();
           
           try {
             const topicIds = [...this.pmTopicTrackingState.newIncoming];
+            if (!topicIds.length) {
+              return;
+            }
             await this.model.loadBefore(topicIds);
             this.pmTopicTrackingState.resetIncomingTracking(topicIds);
           } catch (e) {

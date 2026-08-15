@@ -1,45 +1,45 @@
-import { withPluginApi } from "discourse/lib/plugin-api";
+import { apiInitializer } from "discourse/lib/api";
 
-export default {
-  name: "discourse-navigation-controls",
+export default apiInitializer("1.8.0", (api) => {
+  const html = document.documentElement;
+  const body = document.body;
+  const hiddenNavClass = "nav-controls-hidden";
+  let lastScrollTop = window.scrollY || 0;
+  let frameId = null;
 
-  initialize() {
-    withPluginApi("0.11.1", (api) => {
-      const html = document.documentElement;
-      const body = document.body;
-      const hiddenNavClass = "nav-controls-hidden";
-      let lastScrollTop = 0;
-      
-      // Define scroll handler
-      const onScroll = () => {
-        const isMobileView = html.classList.contains("mobile-view");
+  const updateNavigation = () => {
+    frameId = null;
 
-        if (isMobileView) {
-          const scrollTop = window.scrollY;
+    const isMobileView = html.classList.contains("mobile-view");
 
-          // Scroll Down -> Hide
-          if (scrollTop > lastScrollTop && scrollTop > 0) {
-            if (!body.classList.contains(hiddenNavClass)) {
-              body.classList.add(hiddenNavClass);
-            }
-          } 
-          // Scroll Up -> Show
-          else if (scrollTop < lastScrollTop) {
-            if (body.classList.contains(hiddenNavClass)) {
-              body.classList.remove(hiddenNavClass);
-            }
-          }
-          
-          lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-        } else {
-          // If NOT mobile (desktop), ensure navigation is visible
-          if (body.classList.contains(hiddenNavClass)) {
-            body.classList.remove(hiddenNavClass);
-          }
-        }
-      };
+    if (!isMobileView) {
+      body.classList.remove(hiddenNavClass);
+      return;
+    }
 
-      window.addEventListener('scroll', onScroll, { passive: true });
-    });
-  },
-};
+    const scrollTop = window.scrollY || 0;
+
+    if (scrollTop > lastScrollTop && scrollTop > 0) {
+      body.classList.add(hiddenNavClass);
+    } else if (scrollTop < lastScrollTop || scrollTop <= 0) {
+      body.classList.remove(hiddenNavClass);
+    }
+
+    lastScrollTop = Math.max(0, scrollTop);
+  };
+
+  const onScroll = () => {
+    if (frameId !== null) {
+      return;
+    }
+
+    frameId = window.requestAnimationFrame(updateNavigation);
+  };
+
+  api.onAppEvent("page:changed", () => {
+    lastScrollTop = window.scrollY || 0;
+    body.classList.remove(hiddenNavClass);
+  });
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+});
