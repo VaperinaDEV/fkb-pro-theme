@@ -6,15 +6,18 @@
     .full-width {
       display: grid;
       grid: "tc-topic-list tc-right-sidebar";
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr) var(--d-sidebar-width);
       gap: 0 2em;
       @media screen and (max-width: 1099px) {
         display: block;
       }
       
       #list-area {
-        width: 100%;
         grid-area: tc-topic-list;
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
       }
       
       .tc-right-sidebar {   
@@ -42,13 +45,15 @@
         }
         
         height: 100%;
-        max-width: var(--d-sidebar-width);
+        min-width: 0;
+        max-width: 100%;
         width: 100%;
+        box-sizing: border-box;
         grid-area: tc-right-sidebar;
         transition: transform var(--d-sidebar-animation-time);
         body.fkb-panel-hidden & {
           animation: fkb-panel-hide var(--d-sidebar-animation-time) forwards;
-          transform: translateX(100vw);
+          transform: translateX(100%);
         }
         @media screen and (max-width: 1099px) {
           display: none;

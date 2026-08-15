@@ -6,13 +6,29 @@
   display: none;
   height: 100%;
   width: var(--d-sidebar-width);
-  transition: transform var(--d-sidebar-animation-time);
+  min-width: 0;
+  max-width: var(--d-sidebar-width);
+  box-sizing: border-box;
+  transition: transform var(--d-sidebar-animation-time) ease;
+
+  // When hidden, take the panel out of the grid and anchor it to the
+  // viewport edge before sliding it away. This prevents the panel from
+  // being positioned inside the remaining grid columns after the FKB
+  // column is removed.
   body.fkb-panel-hidden & {
-    animation: fkb-panel-hide var(--d-sidebar-animation-time) forwards;
-    transform: translateX(100vw);
+    position: fixed;
+    top: calc(var(--header-offset) + 2em);
+    right: 0;
+    z-index: 1001;
+    transform: translateX(100%);
+    pointer-events: none;
   }
   .fkb-panel {
     display: none;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
     position: sticky;
     top: calc(var(--header-offset) + 2em);
     margin-bottom: 0.5em;
@@ -229,8 +245,10 @@
       display: flex;
       flex-direction: column;
       height: 100%;
-      max-width: var(--d-sidebar-width);
+      min-width: 0;
+      max-width: 100%;
       width: 100%;
+      box-sizing: border-box;
       
       @if $right-sidebar-blocks-expanded == "false" {
         position: sticky;

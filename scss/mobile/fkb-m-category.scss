@@ -3,7 +3,8 @@
 // Category page
 
 .category-list {
-  width: calc(100vw - 20px);
+  width: 100%;
+  max-width: calc(100% - 20px);
   &.subcategory-list {
     .parent-category {
       display: none;

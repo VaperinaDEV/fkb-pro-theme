@@ -1,4 +1,6 @@
 import { apiInitializer } from "discourse/lib/api";
+import { action } from "@ember/object";
+import { popupAjaxError } from "discourse/lib/ajax-error";
 import TliTopSection from "../components/topic-list-item/tli-top-section";
 import TliMiddleSection from "../components/topic-list-item/tli-middle-section";
 import FkbPanel from "../components/fkb-panel";
@@ -26,29 +28,41 @@ export default apiInitializer("1.8.0", (api) => {
   }
 
   api.renderInOutlet("discovery-below", FkbPanel);
-
+      
+  // Keep discovery/topics customization in one place. This avoids multiple
+  // modifyClass calls targeting the same core component.
   api.modifyClass(
     "component:discovery/topics",
     (Superclass) =>
-      class extends Superclass { 
+      class extends Superclass {
         get renderNewListHeaderControls() {
           return (
             this.showTopicsAndRepliesToggle &&
             !this.args.bulkSelectEnabled
           );
         }
+
+        @action
+        async showInserted(event) {
+          event?.preventDefault();
+
+          if (this.args.model.loadingBefore) {
+            return;
+          }
+
+          document.querySelector(".list-controls")?.scrollIntoView();
+
+          const { topicTrackingState } = this;
+
+          try {
+            const topicIds = [...topicTrackingState.newIncoming];
+            await this.args.model.loadBefore(topicIds, true);
+            topicTrackingState.clearIncoming(topicIds);
+          } catch (e) {
+            popupAjaxError(e);
+          }
+        }
       }
   );
-      
-  api.onPageChange((url, title) => {
-    const fkbHidden = localStorage.getItem("fkb_panel_hidden") === "true";
-    const fkbVisible = localStorage.getItem("fkb_panel_hidden") === "false";
-    const isHidden = document.body.classList.contains("fkb-panel-hidden");
-        
-    if (fkbHidden && !isHidden) {
-      document.body.classList.add("fkb-panel-hidden");
-    } else if (fkbVisible && isHidden) {
-      document.body.classList.remove("fkb-panel-hidden");
-    }
-  });
+
 });
