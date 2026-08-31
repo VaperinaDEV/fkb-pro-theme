@@ -91,6 +91,18 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     max-width: 100%;
     box-sizing: border-box;
 
+    @media screen and (max-width: 1099px) and (min-width: 801px) {
+      grid-template-areas:
+        "above-outlet above-outlet"
+        "alerts alerts"
+        "pins pins"
+        "category-heading category-heading"
+        "nav loader"
+        "topic-list topic-list";
+      grid-template-rows: auto auto auto auto auto 1fr;
+      grid-template-columns: var(--d-sidebar-width) minmax(0, 1fr);
+      gap: 0 2em;
+    }
     @media screen and (max-width: 1099px) {
       grid-template-columns: var(--d-sidebar-width) minmax(0, 1fr);
       gap: 0 2em;
@@ -111,8 +123,25 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     #main-outlet {
       // The FKB panel is removed from the layout while hidden.
       // Keep the navigation column and give all remaining width to the list.
+      grid-template-areas:
+        "above-outlet above-outlet"
+        "alerts alerts"
+        "pins pins"
+        "nav loader"
+        "topic-list topic-list";
       grid-template-columns: var(--d-sidebar-width) minmax(0, 1fr);
       gap: 0 2em;
+
+      @media screen and (max-width: 1099px) and (min-width: 801px) {
+        grid-template-areas:
+          "above-outlet above-outlet"
+          "alerts alerts"
+          "pins pins"
+          "category-heading category-heading"
+          "nav loader"
+          "topic-list topic-list";
+        grid-template-rows: auto auto auto auto auto 1fr;
+      }
     }
 
     &.has-sidebar-page #main-outlet {
@@ -230,6 +259,29 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
       display: none;
       p {
         font-size: 1.2157em;
+      }
+    }
+    @media screen and (max-width: 1099px) and (min-width: 801px) {
+      // On tablet, let the category heading participate in the main grid
+      // instead of placing it inside the narrow navigation column.
+      display: contents;
+
+      > .container {
+        display: contents;
+      }
+
+      .category-heading {
+        display: block;
+        grid-area: category-heading;
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 1em;
+      }
+
+      .navigation-container {
+        grid-area: nav;
+        width: var(--d-sidebar-width);
+        min-width: 0;
       }
     }
     .container {
