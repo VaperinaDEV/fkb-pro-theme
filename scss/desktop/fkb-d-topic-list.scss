@@ -225,12 +225,6 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
       grid-area: loader;
       margin: 0 auto;
     }
-    .category-heading {
-      display: none;
-      p {
-        font-size: 1.2157em;
-      }
-    }
 
     @media screen and (min-width: 801px) and (max-width: 1099px) {
       display: contents;
@@ -240,11 +234,12 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
       }
 
       .category-heading {
-        display: block;
+        display: flex;
         grid-area: category;
         width: 100%;
         min-width: 0;
         margin-bottom: 2em;
+        @include bg-br;
       }
 
       .navigation-container {
