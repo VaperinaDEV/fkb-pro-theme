@@ -91,19 +91,15 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     max-width: 100%;
     box-sizing: border-box;
 
-    @media screen and (max-width: 1099px) and (min-width: 801px) {
+    @media screen and (max-width: 1099px) {
       grid-template-areas:
         "above-outlet above-outlet"
         "alerts alerts"
         "pins pins"
-        "category-heading category-heading"
+        "category category"
         "nav loader"
-        "topic-list topic-list";
+        "nav topic-list";
       grid-template-rows: auto auto auto auto auto 1fr;
-      grid-template-columns: var(--d-sidebar-width) minmax(0, 1fr);
-      gap: 0 2em;
-    }
-    @media screen and (max-width: 1099px) {
       grid-template-columns: var(--d-sidebar-width) minmax(0, 1fr);
       gap: 0 2em;
     }
@@ -118,48 +114,22 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     }
   }
   
-  // Makes full width topic list when fkb panel hidden 
-  &.fkb-panel-hidden {
-    #main-outlet {
-      // The FKB panel is removed from the layout while hidden.
-      // Keep the navigation column and give all remaining width to the list.
-      grid-template-areas:
-        "above-outlet above-outlet"
-        "alerts alerts"
-        "pins pins"
-        "nav loader"
-        "topic-list topic-list";
-      grid-template-columns: var(--d-sidebar-width) minmax(0, 1fr);
-      gap: 0 2em;
 
-      @media screen and (max-width: 1099px) and (min-width: 801px) {
-        grid-template-areas:
-          "above-outlet above-outlet"
-          "alerts alerts"
-          "pins pins"
-          "category-heading category-heading"
-          "nav loader"
-          "topic-list topic-list";
-        grid-template-rows: auto auto auto auto auto 1fr;
-      }
-    }
-
-    &.has-sidebar-page #main-outlet {
-      grid-template-columns: minmax(0, 1fr);
-      gap: 0;
-    }
-
-    &:not(.has-sidebar-page) {
+  // Remove the FKB column from the desktop layout when the panel is hidden.
+  @media screen and (min-width: 1100px) {
+    &.fkb-panel-hidden {
       #main-outlet {
         grid-template-columns: var(--d-sidebar-width) minmax(0, 1fr);
+        gap: 0 2em;
+      }
 
-        .list-controls {
-          margin-right: 0;
-        }
+      &.has-sidebar-page #main-outlet {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0;
       }
     }
-  } 
-  
+  }
+
   .container:first-of-type {
     grid-area: alerts;
   }
@@ -261,9 +231,8 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
         font-size: 1.2157em;
       }
     }
-    @media screen and (max-width: 1099px) and (min-width: 801px) {
-      // On tablet, let the category heading participate in the main grid
-      // instead of placing it inside the narrow navigation column.
+
+    @media screen and (min-width: 801px) and (max-width: 1099px) {
       display: contents;
 
       > .container {
@@ -272,10 +241,10 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
 
       .category-heading {
         display: block;
-        grid-area: category-heading;
+        grid-area: category;
         width: 100%;
-        max-width: 100%;
-        margin-bottom: 1em;
+        min-width: 0;
+        margin-bottom: 2em;
       }
 
       .navigation-container {
