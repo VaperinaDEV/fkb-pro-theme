@@ -209,7 +209,8 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
 
   &:not(.has-sidebar-page) .list-controls {
     z-index: 100;
-    grid-area: nav;
+    grid-column: 1;
+    grid-row: 4 / -1;
     width: var(--d-sidebar-width);
     @media screen and (max-width: 1099px) {
       margin-right: 2em;
@@ -227,7 +228,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
       margin: 0 auto;
     }
     .container {
-      max-height: calc(100vh - 6em);
+      max-height: none;
       max-width: 100%;
       #create-topic {
         height: 45px;
