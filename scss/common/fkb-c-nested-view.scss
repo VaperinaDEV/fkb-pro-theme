@@ -1,0 +1,25 @@
+@use "lib/viewport";
+
+.nested-view {
+  .nested-post__gutter,
+  .nested-post__header {
+    .topic-avatar {
+      img.avatar {
+        width: var(--nested-avatar-size);
+        height: var(--nested-avatar-size);
+      }
+    }
+  }
+
+  @include viewport.until(sm) {
+    .nested-view__mobile-focus-back,
+    .nested-view__mobile-ancestor {
+      .topic-avatar {
+        img.avatar {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+}
