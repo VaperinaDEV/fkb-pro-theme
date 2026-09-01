@@ -215,9 +215,6 @@
     bottom: 1em;
     right: 1em;
     z-index: 3;
-    body.fkb-panel-hidden & {
-      transform: rotate(180deg);
-    }
   }
 }
 
