@@ -20,6 +20,7 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
         "topic-list";
       grid-template-rows: auto auto auto auto auto 1fr;
       grid-template-columns: minmax(0, 1fr);
+      gap: 0;
       min-width: 0;
       width: 100%;
       max-width: 100%;
@@ -35,17 +36,6 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
           "topic-list fkb-panel";
         grid-template-columns: minmax(0, 1fr) var(--d-sidebar-width);
         gap: 0 2em;
-      }
-      @if $right-sidebar-blocks-enabled == "true" and $right-sidebar-below-fkb-panel == "false" {
-        grid-template-areas:
-          "above-outlet"
-          "alerts"
-          "pins"
-          "nav"
-          "loader"
-          "topic-list";
-        grid-template-columns: minmax(0, 1fr);
-        gap: 0;
       }
     }
     .list-controls {
@@ -123,16 +113,6 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
       grid-template-columns: var(--d-sidebar-width) minmax(0, 1fr) var(--d-sidebar-width);
     }
 
-    @if $right-sidebar-blocks-enabled == "true" and $right-sidebar-below-fkb-panel == "false" {
-      grid-template-areas:
-        "above-outlet above-outlet"
-        "alerts alerts"
-        "pins pins"
-        "nav loader"
-        "nav topic-list";
-      grid-template-columns: var(--d-sidebar-width) minmax(0, 1fr);
-    }
-
     @media screen and (max-width: 1099px) {
       grid-template-columns: var(--d-sidebar-width) minmax(0, 1fr);
       gap: 0 2em;
@@ -185,9 +165,6 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     display: flex;
     flex-direction: column;
     @media screen and (max-width: 1099px) {
-      display: none;
-    }
-    @if $right-sidebar-blocks-enabled == "true" and $right-sidebar-below-fkb-panel == "false" {
       display: none;
     }
   }
@@ -266,9 +243,15 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
       grid-area: loader;
       margin: 0 auto;
     }
+    .category-heading {
+      display: none;
+      p {
+        font-size: 1.2157em;
+      }
+    }
     .container {
       height: 100%;
-      max-width: 100%;
+      max-width: 100%;    
       #create-topic {
         height: 45px;
         color: var(--secondary);
