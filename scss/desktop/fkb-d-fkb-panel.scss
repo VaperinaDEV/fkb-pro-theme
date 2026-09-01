@@ -210,6 +210,17 @@
 // FKB Panel Toggle Button
 
 .fkb-panel-toggle-button {
+  // The toggle is useful only while the FKB panel can actually be shown.
+  // Keep it in sync with the panel breakpoint instead of leaving a floating
+  // button behind after CSS hides the panel.
+  @media screen and (max-width: 1099px) {
+    display: none;
+  }
+
+  @if $right-sidebar-blocks-enabled == "true" and $right-sidebar-below-fkb-panel == "false" {
+    display: none;
+  }
+
   button.fkb-panel-toggle {
     position: fixed;
     bottom: 1em;
