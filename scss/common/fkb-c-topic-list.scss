@@ -379,6 +379,10 @@
   }
 }
 
+.tc-right-sidebar:not(.fkb-panel-right-sidebar) {
+  display: none;
+}
+
 @if $disable-topic-list-modification == "true" {
   .topic-list {
     .topic-list-item-separator {
