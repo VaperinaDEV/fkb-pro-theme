@@ -21,6 +21,7 @@ export default class FkbPanel extends Component {
   @service currentUser;
   @service site;
   @service fkbCache;
+  @service fkbPanelState;
 
   @tracked loading = false;
   @tracked isAvailable = true;
@@ -154,54 +155,54 @@ export default class FkbPanel extends Component {
   <template>
     {{#unless this.site.mobileView}}
       {{#if this.isAvailable}}
-        <div
-          class="fkb-panel-sidebar"
-          {{didInsert this.fetchUserDetails}}
-          {{didUpdate
-            this.autoFetch
-            this.currentUserId
-          }}
-        >
-          <div class="fkb-panel">
-            {{#if this.currentUser}}
-              <ConditionalLoadingSpinner @condition={{this.loading}}>
-                <div
-                  class="fkb-panel-top {{if this.hasBackgroundImage "has-cover"}}"
-                  style={{if this.hasBackgroundImage (htmlSafe (concat "background-image: url('" this.backgroundImageURL "')"))}}
-                >
-                  <div class="fkb-panel-contents">
-                    <div class="fkb-panel-contents-top">
-                      <FkbPanelUser @user={{this.currentUser}} />
-                    </div>
-                    <div class="fkb-panel-contents-stats">
-                      <FkbPanelStats
-                        @user={{this.currentUser}}
-                        @userDetails={{this.userDetails}}
-                      />
-                      <FkbPanelBadges
-                        @user={{this.currentUser}}
-                        @userCardDetails={{this.userCardDetails}}
-                      />
+        {{#unless this.fkbPanelState.hidden}}
+          <div
+            class="fkb-panel-sidebar"
+            {{didInsert this.fetchUserDetails}}
+            {{didUpdate
+              this.autoFetch
+              this.currentUserId
+            }}
+          >
+            <div class="fkb-panel">
+              {{#if this.currentUser}}
+                <ConditionalLoadingSpinner @condition={{this.loading}}>
+                  <div
+                    class="fkb-panel-top {{if this.hasBackgroundImage "has-cover"}}"
+                    style={{if this.hasBackgroundImage (htmlSafe (concat "background-image: url('" this.backgroundImageURL "')"))}}
+                  >
+                    <div class="fkb-panel-contents">
+                      <div class="fkb-panel-contents-top">
+                        <FkbPanelUser @user={{this.currentUser}} />
+                      </div>
+                      <div class="fkb-panel-contents-stats">
+                        <FkbPanelStats
+                          @user={{this.currentUser}}
+                          @userDetails={{this.userDetails}}
+                        />
+                        <FkbPanelBadges
+                          @user={{this.currentUser}}
+                          @userCardDetails={{this.userCardDetails}}
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="fkb-panel-contents-bottom">
-                  <FkbPanelItems />
-                </div>
-              </ConditionalLoadingSpinner>
-            {{/if}}
-        
-            {{#unless this.currentUser}}
-              <FkbPanelVisitor @description={{settings.custom_sidebar_description}} />
-            {{/unless}}
-          </div>
+                  <div class="fkb-panel-contents-bottom">
+                    <FkbPanelItems />
+                  </div>
+                </ConditionalLoadingSpinner>
+              {{/if}}
+          
+              {{#unless this.currentUser}}
+                <FkbPanelVisitor @description={{settings.custom_sidebar_description}} />
+              {{/unless}}
+            </div>
   
-          <RightSidebarBlocksBelow />
-        </div>
+            <RightSidebarBlocksBelow />
+          </div>
+        {{/unless}}
 
-        <div class="fkb-panel-toggle-button">
-          <FkbPanelToggleButton />
-        </div>
+        <FkbPanelToggleButton />
       {{/if}}
     {{/unless}}
   </template>
