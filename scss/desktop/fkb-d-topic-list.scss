@@ -243,12 +243,6 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
       grid-area: loader;
       margin: 0 auto;
     }
-    .category-heading {
-      display: none;
-      p {
-        font-size: 1.2157em;
-      }
-    }
     .container {
       height: 100%;
       max-width: 100%;    
