@@ -21,11 +21,52 @@ export default class FkbPanel extends Component {
   @service currentUser;
   @service site;
   @service fkbCache;
+  @service fkbPanelState;
 
   @tracked loading = false;
+  @tracked isAvailable = !(
+    settings.right_sidebar_blocks_enabled &&
+    !settings.right_sidebar_below_fkb_panel
+  );
 
   _fetchToken = 0;
   _fetchUserId = null;
+  _mediaQuery = null;
+
+  constructor(owner, args) {
+    super(owner, args);
+    this.setupAvailability();
+  }
+
+  setupAvailability() {
+    if (typeof window === "undefined" || !window.matchMedia) {
+      return;
+    }
+
+    this._mediaQuery = window.matchMedia("(min-width: 1100px)");
+    this.isAvailable = this._mediaQuery.matches && !this.isReplacedByRightSidebar;
+    this._handleAvailabilityChange = (event) => {
+      this.isAvailable = event.matches && !this.isReplacedByRightSidebar;
+    };
+
+    if (this._mediaQuery.addEventListener) {
+      this._mediaQuery.addEventListener("change", this._handleAvailabilityChange);
+    } else {
+      this._mediaQuery.addListener(this._handleAvailabilityChange);
+    }
+  }
+
+  willDestroy() {
+    if (this._mediaQuery && this._handleAvailabilityChange) {
+      if (this._mediaQuery.removeEventListener) {
+        this._mediaQuery.removeEventListener("change", this._handleAvailabilityChange);
+      } else {
+        this._mediaQuery.removeListener(this._handleAvailabilityChange);
+      }
+    }
+
+    super.willDestroy(...arguments);
+  }
 
   @action
   async autoFetch() {
@@ -92,6 +133,13 @@ export default class FkbPanel extends Component {
     }
   }
 
+  get isReplacedByRightSidebar() {
+    return (
+      settings.right_sidebar_blocks_enabled &&
+      !settings.right_sidebar_below_fkb_panel
+    );
+  }
+
   get currentUserId() {
     return this.currentUser?.id;
   }
@@ -116,54 +164,56 @@ export default class FkbPanel extends Component {
 
   <template>
     {{#unless this.site.mobileView}}
-      <div
-        class="fkb-panel-sidebar"
-        {{didInsert this.fetchUserDetails}}
-        {{didUpdate
-          this.autoFetch
-          this.currentUserId
-        }}
-      >
-        <div class="fkb-panel">
-          {{#if this.currentUser}}
-            <ConditionalLoadingSpinner @condition={{this.loading}}>
-              <div
-                class="fkb-panel-top {{if this.hasBackgroundImage "has-cover"}}"
-                style={{if this.hasBackgroundImage (htmlSafe (concat "background-image: url('" this.backgroundImageURL "')"))}}
-              >
-                <div class="fkb-panel-contents">
-                  <div class="fkb-panel-contents-top">
-                    <FkbPanelUser @user={{this.currentUser}} />
+      {{#if this.isAvailable}}
+        {{#unless this.fkbPanelState.hidden}}
+          <div
+            class="fkb-panel-sidebar"
+            {{didInsert this.fetchUserDetails}}
+            {{didUpdate
+              this.autoFetch
+              this.currentUserId
+            }}
+          >
+            <div class="fkb-panel">
+              {{#if this.currentUser}}
+                <ConditionalLoadingSpinner @condition={{this.loading}}>
+                  <div
+                    class="fkb-panel-top {{if this.hasBackgroundImage "has-cover"}}"
+                    style={{if this.hasBackgroundImage (htmlSafe (concat "background-image: url('" this.backgroundImageURL "')"))}}
+                  >
+                    <div class="fkb-panel-contents">
+                      <div class="fkb-panel-contents-top">
+                        <FkbPanelUser @user={{this.currentUser}} />
+                      </div>
+                      <div class="fkb-panel-contents-stats">
+                        <FkbPanelStats
+                          @user={{this.currentUser}}
+                          @userDetails={{this.userDetails}}
+                        />
+                        <FkbPanelBadges
+                          @user={{this.currentUser}}
+                          @userCardDetails={{this.userCardDetails}}
+                        />
+                      </div>
+                    </div>
                   </div>
-                  <div class="fkb-panel-contents-stats">
-                    <FkbPanelStats
-                      @user={{this.currentUser}}
-                      @userDetails={{this.userDetails}}
-                    />
-                    <FkbPanelBadges
-                      @user={{this.currentUser}}
-                      @userCardDetails={{this.userCardDetails}}
-                    />
+                  <div class="fkb-panel-contents-bottom">
+                    <FkbPanelItems />
                   </div>
-                </div>
-              </div>
-              <div class="fkb-panel-contents-bottom">
-                <FkbPanelItems />
-              </div>
-            </ConditionalLoadingSpinner>
-          {{/if}}
-      
-          {{#unless this.currentUser}}
-            <FkbPanelVisitor @description={{settings.custom_sidebar_description}} />
-          {{/unless}}
-        </div>
+                </ConditionalLoadingSpinner>
+              {{/if}}
+          
+              {{#unless this.currentUser}}
+                <FkbPanelVisitor @description={{settings.custom_sidebar_description}} />
+              {{/unless}}
+            </div>
   
-        <RightSidebarBlocksBelow />
-      </div>
-  
-      <div class="fkb-panel-toggle-button">
+            <RightSidebarBlocksBelow />
+          </div>
+        {{/unless}}
+
         <FkbPanelToggleButton />
-      </div>
+      {{/if}}
     {{/unless}}
   </template>
 }

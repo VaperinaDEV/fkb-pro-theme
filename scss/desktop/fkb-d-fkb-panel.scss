@@ -210,29 +210,25 @@
 // FKB Panel Toggle Button
 
 .fkb-panel-toggle-button {
-  button.fkb-panel-toggle {
-    position: fixed;
-    bottom: 1em;
-    right: 1em;
-    z-index: 3;
-    body.fkb-panel-hidden & {
-      transform: rotate(180deg);
-    }
+
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  z-index: 3;
+  
+  // The toggle is useful only while the FKB panel can actually be shown.
+  // Keep it in sync with the panel breakpoint instead of leaving a floating
+  // button behind after CSS hides the panel.
+  @media screen and (max-width: 1099px) {
+    display: none;
   }
 }
 
 // FKBD - Right Sidebar Blocks below FKB Panel
 
 @if $right-sidebar-below-fkb-panel == "true" {
-  .list-container {
-    .full-width {
-      #list-area {
-        width: 100%;
-      }
-      .tc-right-sidebar {
-        display: none;
-      }
-    }
+  .list-container .full-width #list-area {
+    width: 100%;
   }
   .fkb-panel-sidebar {
     .fkb-panel {

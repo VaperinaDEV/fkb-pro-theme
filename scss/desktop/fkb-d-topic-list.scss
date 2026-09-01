@@ -12,19 +12,31 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
   &.has-sidebar-page {
     #main-outlet {
       grid-template-areas:
-        "above-outlet above-outlet"
-        "alerts alerts"
-        "pins pins"
-        "nav nav"
-        "loader fkb-panel"
-        "topic-list fkb-panel";
+        "above-outlet"
+        "alerts"
+        "pins"
+        "nav"
+        "loader"
+        "topic-list";
       grid-template-rows: auto auto auto auto auto 1fr;
-      grid-template-columns: minmax(0, 1fr) var(--d-sidebar-width);
-      gap: 0 2em;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0;
       min-width: 0;
       width: 100%;
       max-width: 100%;
       box-sizing: border-box;
+
+      &:has(> .fkb-panel-sidebar) {
+        grid-template-areas:
+          "above-outlet above-outlet"
+          "alerts alerts"
+          "pins pins"
+          "nav nav"
+          "loader fkb-panel"
+          "topic-list fkb-panel";
+        grid-template-columns: minmax(0, 1fr) var(--d-sidebar-width);
+        gap: 0 2em;
+      }
     }
     .list-controls {
       grid-area: nav;
@@ -78,18 +90,28 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
   #main-outlet {
     display: grid;
     grid-template-areas:
-      "above-outlet above-outlet above-outlet"
-      "alerts alerts alerts"
-      "pins pins pins"
-      "nav loader fkb-panel"
-      "nav topic-list fkb-panel";
+      "above-outlet above-outlet"
+      "alerts alerts"
+      "pins pins"
+      "nav loader"
+      "nav topic-list";
     grid-template-rows: auto auto auto auto 1fr;
-    grid-template-columns: var(--d-sidebar-width) minmax(0, 1fr) var(--d-sidebar-width);
+    grid-template-columns: var(--d-sidebar-width) minmax(0, 1fr);
     gap: 0 2em;
     min-width: 0;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
+
+    &:has(> .fkb-panel-sidebar) {
+      grid-template-areas:
+        "above-outlet above-outlet above-outlet"
+        "alerts alerts alerts"
+        "pins pins pins"
+        "nav loader fkb-panel"
+        "nav topic-list fkb-panel";
+      grid-template-columns: var(--d-sidebar-width) minmax(0, 1fr) var(--d-sidebar-width);
+    }
 
     @media screen and (max-width: 1099px) {
       grid-template-columns: var(--d-sidebar-width) minmax(0, 1fr);
@@ -98,14 +120,12 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     @media screen and (max-width: 800px) {
       display: block;
     }
-    @if $right-sidebar-blocks-enabled == "true" {
-      gap: 0;
-    }
     .above-main-container-outlet {
       grid-area: above-outlet;
     }
   }
   
+  // Only add the FKB grid track when the panel is actually rendered.
   // Makes full width topic list when fkb panel hidden 
   &.fkb-panel-hidden {
     #main-outlet {
@@ -145,9 +165,6 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     display: flex;
     flex-direction: column;
     @media screen and (max-width: 1099px) {
-      display: none;
-    }
-    @if $right-sidebar-blocks-enabled == "true" and $right-sidebar-below-fkb-panel == "false" {
       display: none;
     }
   }

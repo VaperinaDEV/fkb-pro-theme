@@ -1,7 +1,6 @@
 import { apiInitializer } from "discourse/lib/api";
 
 export default apiInitializer("1.8.0", (api) => {
-  const html = document.documentElement;
   const body = document.body;
   const hiddenNavClass = "nav-controls-hidden";
   let lastScrollTop = window.scrollY || 0;
@@ -10,9 +9,10 @@ export default apiInitializer("1.8.0", (api) => {
   const updateNavigation = () => {
     frameId = null;
 
-    const isMobileView = html.classList.contains("mobile-view");
+    const capabilities = api.container.lookup("service:capabilities");
+    const viewportSm = capabilities.viewport.sm;
 
-    if (!isMobileView) {
+    if (viewportSm) {
       body.classList.remove(hiddenNavClass);
       return;
     }
@@ -36,7 +36,7 @@ export default apiInitializer("1.8.0", (api) => {
     frameId = window.requestAnimationFrame(updateNavigation);
   };
 
-  api.onAppEvent("page:changed", () => {
+  api.onPageChange((url, title) => {
     lastScrollTop = window.scrollY || 0;
     body.classList.remove(hiddenNavClass);
   });
