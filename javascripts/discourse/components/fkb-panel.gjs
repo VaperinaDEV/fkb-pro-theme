@@ -24,7 +24,10 @@ export default class FkbPanel extends Component {
   @service fkbPanelState;
 
   @tracked loading = false;
-  @tracked isAvailable = true;
+  @tracked isAvailable = !(
+    settings.right_sidebar_blocks_enabled &&
+    !settings.right_sidebar_below_fkb_panel
+  );
 
   _fetchToken = 0;
   _fetchUserId = null;
@@ -41,9 +44,9 @@ export default class FkbPanel extends Component {
     }
 
     this._mediaQuery = window.matchMedia("(min-width: 1100px)");
-    this.isAvailable = this._mediaQuery.matches;
+    this.isAvailable = this._mediaQuery.matches && !this.isReplacedByRightSidebar;
     this._handleAvailabilityChange = (event) => {
-      this.isAvailable = event.matches;
+      this.isAvailable = event.matches && !this.isReplacedByRightSidebar;
     };
 
     if (this._mediaQuery.addEventListener) {
@@ -128,6 +131,13 @@ export default class FkbPanel extends Component {
         this.loading = false;
       }
     }
+  }
+
+  get isReplacedByRightSidebar() {
+    return (
+      settings.right_sidebar_blocks_enabled &&
+      !settings.right_sidebar_below_fkb_panel
+    );
   }
 
   get currentUserId() {
