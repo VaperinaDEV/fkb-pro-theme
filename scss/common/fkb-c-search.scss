@@ -1,26 +1,32 @@
-// FKBC - Search
-
-// Search
+// VC - Search
 
 .search-menu {
-  .search-link {
-    border-radius: var(--d-default-border-radius);
+  .search-input {
+    input.search-term__input:focus {
+      box-shadow: none;
+    }
   }
-  .search-result-topic,
-  .search-result-post {
-    .search-link {
-      border-radius: var(--d-default-border-radius);
+}
+
+.search-menu-panel {
+  .search-menu-container {
+    .search-input-wrapper {
+      padding: 0.75em 1rem;
     }
   }
 }
 
 .search-container {
   .search-header {
-    border-radius: var(--d-default-border-radius);
+    @include bg-br;
   }
-  .search-advanced {
-    .search-info {
-      background-color: transparent;
+  .search-bar {
+    background: var(--primary-low);
+  }
+  .search-filters {
+    background: transparent;
+    .search-advanced-filters {
+      background: transparent;
     }
   }
 }
@@ -29,19 +35,33 @@
   box-sizing: border-box;
 }
 
-.fps-result {
-  padding: 1em 1em 1em 0.7em;
-  margin-bottom: 1em;
-  @include bg-br;
-  .topic {
-    .bulk-select {
-      border-radius: var(--d-default-border-radius) 0;
-      left: 0;
-      top: 0;
+.fps-invalid {
+  border-radius: var(--d-default-border-radius);
+}
+
+// Search link selection
+
+.modal {
+  .modal-body.insert-link {
+    .inputs {
+      .internal-link-results {
+        width: 100%;
+        padding: 0;
+        border-radius: var(--d-select-body-border-radius);
+        > .search-link {
+          padding: 0.5em;
+          border-bottom: none;
+          .search-category {
+            display: block;
+          }
+        }
+      }
     }
   }
 }
 
-.fps-invalid {
+// AI Search
+
+.semantic-search__container {
   border-radius: var(--d-default-border-radius);
 }
