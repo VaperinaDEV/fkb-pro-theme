@@ -227,8 +227,15 @@
 // FKBD - Right Sidebar Blocks below FKB Panel
 
 @if $right-sidebar-below-fkb-panel == "true" {
-  .list-container .full-width #list-area {
-    width: 100%;
+  .list-container {
+    .full-width {
+      #list-area {
+        width: 100%;
+      }
+      .tc-right-sidebar {
+        display: none;
+      }
+    }
   }
   .fkb-panel-sidebar {
     .fkb-panel {
