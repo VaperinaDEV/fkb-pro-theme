@@ -378,6 +378,28 @@
   }
 }
 
+.category-heading {
+  &.--has-logo {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--space-4);
+  }
+  &__content {
+    min-width: 0;
+    .badge-category__wrapper {
+      max-width: 100%;
+      white-space: normal;
+      overflow-wrap: anywhere;
+      .badge-category {
+        &.--style-emoji,
+        &.--style-icon {
+          align-items: baseline;
+        }
+      }
+    }
+  }
+}
+
 @if $disable-topic-list-modification == "true" {
   .topic-list {
     .topic-list-item-separator {
