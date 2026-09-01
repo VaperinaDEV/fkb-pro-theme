@@ -20,7 +20,6 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
         "topic-list";
       grid-template-rows: auto auto auto auto auto 1fr;
       grid-template-columns: minmax(0, 1fr);
-      gap: 0;
       min-width: 0;
       width: 100%;
       max-width: 100%;
@@ -140,9 +139,6 @@ body[class*="category-"]:not(.archetype-regular):not(.archetype-banner) {
     }
     @media screen and (max-width: 800px) {
       display: block;
-    }
-    @if $right-sidebar-blocks-enabled == "true" {
-      gap: 0;
     }
     .above-main-container-outlet {
       grid-area: above-outlet;
