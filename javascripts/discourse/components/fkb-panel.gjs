@@ -29,7 +29,11 @@ export default class FkbPanel extends Component {
   _fetchUserId = null;
   _mediaQuery = null;
 
-  @action
+  constructor(owner, args) {
+    super(owner, args);
+    this.setupAvailability();
+  }
+
   setupAvailability() {
     if (typeof window === "undefined" || !window.matchMedia) {
       return;
@@ -149,58 +153,56 @@ export default class FkbPanel extends Component {
 
   <template>
     {{#unless this.site.mobileView}}
-      <div {{didInsert this.setupAvailability}}>
-        {{#if this.isAvailable}}
-          <div
-            class="fkb-panel-sidebar"
-            {{didInsert this.fetchUserDetails}}
-            {{didUpdate
-              this.autoFetch
-              this.currentUserId
-            }}
-          >
-            <div class="fkb-panel">
-              {{#if this.currentUser}}
-                <ConditionalLoadingSpinner @condition={{this.loading}}>
-                  <div
-                    class="fkb-panel-top {{if this.hasBackgroundImage "has-cover"}}"
-                    style={{if this.hasBackgroundImage (htmlSafe (concat "background-image: url('" this.backgroundImageURL "')"))}}
-                  >
-                    <div class="fkb-panel-contents">
-                      <div class="fkb-panel-contents-top">
-                        <FkbPanelUser @user={{this.currentUser}} />
-                      </div>
-                      <div class="fkb-panel-contents-stats">
-                        <FkbPanelStats
-                          @user={{this.currentUser}}
-                          @userDetails={{this.userDetails}}
-                        />
-                        <FkbPanelBadges
-                          @user={{this.currentUser}}
-                          @userCardDetails={{this.userCardDetails}}
-                        />
-                      </div>
+      {{#if this.isAvailable}}
+        <div
+          class="fkb-panel-sidebar"
+          {{didInsert this.fetchUserDetails}}
+          {{didUpdate
+            this.autoFetch
+            this.currentUserId
+          }}
+        >
+          <div class="fkb-panel">
+            {{#if this.currentUser}}
+              <ConditionalLoadingSpinner @condition={{this.loading}}>
+                <div
+                  class="fkb-panel-top {{if this.hasBackgroundImage "has-cover"}}"
+                  style={{if this.hasBackgroundImage (htmlSafe (concat "background-image: url('" this.backgroundImageURL "')"))}}
+                >
+                  <div class="fkb-panel-contents">
+                    <div class="fkb-panel-contents-top">
+                      <FkbPanelUser @user={{this.currentUser}} />
+                    </div>
+                    <div class="fkb-panel-contents-stats">
+                      <FkbPanelStats
+                        @user={{this.currentUser}}
+                        @userDetails={{this.userDetails}}
+                      />
+                      <FkbPanelBadges
+                        @user={{this.currentUser}}
+                        @userCardDetails={{this.userCardDetails}}
+                      />
                     </div>
                   </div>
-                  <div class="fkb-panel-contents-bottom">
-                    <FkbPanelItems />
-                  </div>
-                </ConditionalLoadingSpinner>
-              {{/if}}
-          
-              {{#unless this.currentUser}}
-                <FkbPanelVisitor @description={{settings.custom_sidebar_description}} />
-              {{/unless}}
-            </div>
+                </div>
+                <div class="fkb-panel-contents-bottom">
+                  <FkbPanelItems />
+                </div>
+              </ConditionalLoadingSpinner>
+            {{/if}}
+        
+            {{#unless this.currentUser}}
+              <FkbPanelVisitor @description={{settings.custom_sidebar_description}} />
+            {{/unless}}
+          </div>
   
-            <RightSidebarBlocksBelow />
-          </div>
+          <RightSidebarBlocksBelow />
+        </div>
 
-          <div class="fkb-panel-toggle-button">
-            <FkbPanelToggleButton />
-          </div>
-        {{/if}}
-      </div>
+        <div class="fkb-panel-toggle-button">
+          <FkbPanelToggleButton />
+        </div>
+      {{/if}}
     {{/unless}}
   </template>
 }
