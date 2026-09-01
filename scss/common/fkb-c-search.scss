@@ -20,9 +20,6 @@
   .search-header {
     @include bg-br;
   }
-  .search-bar {
-    background: var(--primary-low);
-  }
   .search-filters {
     background: transparent;
     .search-advanced-filters {
