@@ -379,8 +379,13 @@
   }
 }
 
-.tc-right-sidebar:not(.fkb-panel-right-sidebar) {
-  display: none;
+@if $right-sidebar-below-fkb-panel == "true" {
+  // The original Right Sidebar Blocks instance must disappear when the
+  // sidebar is moved into the FKB panel. The nested FKB instance gets a
+  // dedicated class so it remains visible.
+  .tc-right-sidebar:not(.fkb-panel-right-sidebar) {
+    display: none;
+  }
 }
 
 @if $disable-topic-list-modification == "true" {
