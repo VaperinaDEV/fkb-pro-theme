@@ -1,6 +1,6 @@
 // FKBD - Right Sidebar Blocks
 
-@if $right-sidebar-blocks-enabled == "true" and $right-sidebar-below-fkb-panel == "false" {
+@if $right-sidebar-blocks-enabled == "true" {
   .list-container {
     
     .full-width {
