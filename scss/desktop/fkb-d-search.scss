@@ -3,28 +3,36 @@
 // Search Widget
 
 .search-menu {
-  input[type="text"] {
-    box-shadow: none;
-  }
   .search-context .show-help {
     border-radius: var(--d-default-border-radius);
     line-height: var(--line-height-large);
   }
+  .search-link .blurb {
+    color: var(--primary);
+  }
   .search-input {
+    background: var(--primary-low);
+    box-shadow: 0 0 0 1px var(--primary-300);
+    border: 1px solid transparent;
     border-radius: var(--d-input-border-radius);
-    &:focus {
-      background: var(--secondary);
-    }
+    outline: none !important;
+    padding: 0.25rem 0.75rem 0.25rem 0.5rem;
     &:focus-within {
-      outline: none;
-      border-radius: var(--d-input-border-radius);
-      box-shadow: 0px 0px 0px 1px var(--tertiary);
+      background: var(--secondary);
     }
     input#search-term {
       border-radius: var(--d-input-border-radius);
       &:focus {
+        outline: none !important;
+        box-shadow: none;
         background: var(--secondary);
       }
+    }
+  }
+  .search-random-quick-tip {
+    .tip-label {
+      border-radius: var(--d-button-border-radius);
+      line-height: 1;
     }
   }
   .search-menu-recent {
@@ -40,10 +48,11 @@
         }
       }
     }
-    .search-random-quick-tip {
-      .tip-label.tip-clickable {
-        border-radius: 4px;
-      }
+  }
+  .badge-category,
+  .discourse-tag {
+    .d-icon {
+      color: unset;
     }
   }
 }
