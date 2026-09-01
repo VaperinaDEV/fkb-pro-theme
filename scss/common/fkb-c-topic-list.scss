@@ -30,13 +30,6 @@
       display: block;
       padding: 8px 0;
       border: none;
-      // Skip layout/paint work for topic cards that are far outside the viewport.
-      // `auto` remembers the real height after the row has rendered, minimizing
-      // layout shifts while keeping long topic lists cheap to scroll.
-      &:not(.topic-list-item-separator) {
-        content-visibility: auto;
-        contain-intrinsic-block-size: auto 280px;
-      }
       &:first-child {
         padding-top: 0;
       }
