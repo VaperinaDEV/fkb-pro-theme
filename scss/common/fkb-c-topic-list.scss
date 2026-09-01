@@ -379,6 +379,18 @@
   }
 }
 
+@if $right-sidebar-below-fkb-panel == "true" {
+  .tc-right-sidebar:not(.fkb-panel-right-sidebar) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1099px) {
+  .tc-right-sidebar:not(.fkb-panel-right-sidebar) {
+    display: none;
+  }
+}
+
 @if $disable-topic-list-modification == "true" {
   .topic-list {
     .topic-list-item-separator {
